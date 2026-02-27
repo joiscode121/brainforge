@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import ClientLayout from '@/components/ClientLayout';
 import { loadProgress, updateStreak, saveProgress } from '@/lib/storage';
 import { loadAllDomains, Domain } from '@/lib/domains';
 import { getReviewCount } from '@/lib/spaced-repetition';
-import { Flame, Play, Target } from 'lucide-react';
+import { Flame, Play, Target, BookOpen, Brain, RotateCcw } from 'lucide-react';
 
 export default function Home() {
   const [progress, setProgress] = useState(loadProgress());
@@ -24,19 +25,37 @@ export default function Home() {
     setReviewCount(getReviewCount(progress.reviewQueue));
   }, []);
 
+  // Pick a random topic for "Today's Lesson"
+  const todaysTopic = domains.length > 0 ? (() => {
+    const withTopics = domains.filter(d => d.topics && d.topics.length > 0);
+    if (withTopics.length === 0) return null;
+    const domain = withTopics[Math.floor(Math.random() * withTopics.length)];
+    const topic = domain.topics![Math.floor(Math.random() * domain.topics!.length)];
+    return { domain, topic };
+  })() : null;
+
   return (
     <ClientLayout>
       <div className="max-w-2xl mx-auto p-6 space-y-6">
         {/* Header */}
-        <div className="text-center space-y-2">
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center space-y-2"
+        >
           <h1 className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
             BrainForge
           </h1>
-          <p className="text-white/60 text-sm">Master everything, one question at a time</p>
-        </div>
+          <p className="text-white/60 text-sm">Master everything, one topic at a time</p>
+        </motion.div>
 
-        {/* Streak & XP Card */}
-        <div className="glass-card p-6">
+        {/* Streak + XP Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="glass-card p-6"
+        >
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center gap-2 mb-1">
@@ -45,7 +64,7 @@ export default function Home() {
                 <span className="text-white/60">day streak</span>
               </div>
               <div className="text-sm text-white/60">
-                Level {progress.level} · {progress.xp} XP
+                Level {progress.level} | {progress.xp} XP
               </div>
             </div>
             <div className="text-right">
@@ -56,117 +75,121 @@ export default function Home() {
             </div>
           </div>
           
-          {/* XP Progress bar */}
           <div className="mt-4 h-2 bg-white/10 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-cyan-400 to-purple-500 transition-all duration-500"
-              style={{ width: `${(progress.xp % 100)}%` }}
+            <motion.div
+              className="h-full bg-gradient-to-r from-cyan-400 to-purple-500"
+              initial={{ width: 0 }}
+              animate={{ width: `${(progress.xp % 100)}%` }}
+              transition={{ duration: 0.8, delay: 0.3 }}
             />
           </div>
-        </div>
+        </motion.div>
 
-        {/* Daily Mix */}
-        <Link href="/daily-mix" className="block">
-          <div className="glass-card p-6 hover:bg-white/10 cursor-pointer group">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Play className="text-white" size={24} fill="white" />
+        {/* Today's Lesson */}
+        {todaysTopic && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <Link href={`/learn/${todaysTopic.domain.id}/${todaysTopic.topic.id}`}>
+              <div className="glass-card p-6 hover:bg-white/10 cursor-pointer group border border-cyan-500/20">
+                <div className="text-xs text-cyan-400 uppercase tracking-wider mb-3 font-medium">
+                  Today's Lesson
                 </div>
-                <div>
-                  <h3 className="font-bold text-lg">Daily Mix</h3>
-                  <p className="text-sm text-white/60">15-20 min curated session</p>
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <BookOpen className="text-white" size={28} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-lg">{todaysTopic.topic.title}</h3>
+                    <p className="text-sm text-white/60">{todaysTopic.domain.name} | {todaysTopic.topic.difficulty}</p>
+                  </div>
                 </div>
               </div>
-              <Target className="text-cyan-400" size={32} />
-            </div>
-          </div>
-        </Link>
-
-        {/* Review Queue */}
-        {reviewCount > 0 && (
-          <Link href="/review" className="block">
-            <div className="glass-card p-6 border-2 border-orange-500/50 hover:bg-orange-500/10 cursor-pointer">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="font-bold text-lg">Review Queue</h3>
-                  <p className="text-sm text-white/60">{reviewCount} cards due today</p>
-                </div>
-                <div className="text-3xl font-bold text-orange-500">{reviewCount}</div>
-              </div>
-            </div>
-          </Link>
+            </Link>
+          </motion.div>
         )}
 
-        {/* Domain Progress Rings */}
-        <div className="space-y-4">
-          <h2 className="text-xl font-bold">Your Domains</h2>
-          <div className="grid grid-cols-2 gap-4">
-            {domains.map((domain) => {
-              const domainProgress = progress.domains[domain.id];
-              const xp = domainProgress?.xp || 0;
-              const level = domainProgress?.level || 1;
-              const progressPercent = (xp % 50) * 2; // 0-100%
+        {/* Quick Actions */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="grid grid-cols-2 gap-4"
+        >
+          <Link href="/domains">
+            <div className="glass-card p-5 hover:bg-white/10 cursor-pointer text-center group">
+              <Brain className="text-purple-400 mx-auto mb-2 group-hover:scale-110 transition-transform" size={28} />
+              <div className="font-bold text-sm">Explore</div>
+              <div className="text-xs text-white/40">{domains.length} domains</div>
+            </div>
+          </Link>
+          
+          <Link href="/review">
+            <div className="glass-card p-5 hover:bg-white/10 cursor-pointer text-center group relative">
+              <RotateCcw className="text-cyan-400 mx-auto mb-2 group-hover:scale-110 transition-transform" size={28} />
+              <div className="font-bold text-sm">Review</div>
+              <div className="text-xs text-white/40">{reviewCount} due</div>
+              {reviewCount > 0 && (
+                <div className="absolute top-3 right-3 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center font-bold">
+                  {reviewCount}
+                </div>
+              )}
+            </div>
+          </Link>
+        </motion.div>
+
+        {/* Domain Progress */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+        >
+          <h2 className="text-lg font-bold mb-3">Your Domains</h2>
+          <div className="space-y-3">
+            {domains.map((domain, i) => {
+              const dp = progress.domains[domain.id];
+              const totalQ = domain.topics 
+                ? domain.topics.reduce((s, t) => s + (t.questions?.length || 0), 0)
+                : domain.levels 
+                  ? Object.values(domain.levels).reduce((s, l) => s + l.questions.length, 0)
+                  : 0;
+              const completed = dp?.completedQuestions?.length || 0;
+              const pct = totalQ > 0 ? Math.round((completed / totalQ) * 100) : 0;
 
               return (
                 <Link key={domain.id} href={`/domain/${domain.id}`}>
-                  <div className="glass-card p-4 hover:bg-white/10 cursor-pointer group">
-                    <div className="flex flex-col items-center gap-3">
-                      {/* Progress Ring */}
-                      <div className="relative w-20 h-20">
-                        <svg className="transform -rotate-90" width="80" height="80">
-                          {/* Background circle */}
-                          <circle
-                            cx="40"
-                            cy="40"
-                            r="36"
-                            stroke="rgba(255,255,255,0.1)"
-                            strokeWidth="6"
-                            fill="none"
+                  <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.4 + i * 0.05 }}
+                    className="glass-card p-4 hover:bg-white/10 cursor-pointer group flex items-center gap-4"
+                  >
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
+                      style={{ background: `${domain.color}15`, border: `1.5px solid ${domain.color}30` }}
+                    >
+                      {domain.icon}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="font-semibold text-sm truncate">{domain.name}</div>
+                      <div className="flex items-center gap-2 mt-1">
+                        <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                          <div
+                            className="h-full rounded-full transition-all"
+                            style={{ width: `${pct}%`, background: domain.color }}
                           />
-                          {/* Progress circle */}
-                          <circle
-                            cx="40"
-                            cy="40"
-                            r="36"
-                            stroke={domain.color}
-                            strokeWidth="6"
-                            fill="none"
-                            strokeDasharray={`${progressPercent * 2.26} 226`}
-                            strokeLinecap="round"
-                            className="transition-all duration-500"
-                          />
-                        </svg>
-                        <div className="absolute inset-0 flex items-center justify-center text-2xl">
-                          {domain.icon}
                         </div>
-                      </div>
-                      
-                      <div className="text-center">
-                        <div className="font-semibold text-sm">{domain.name}</div>
-                        <div className="text-xs text-white/60">Level {level}</div>
+                        <span className="text-xs text-white/40 w-8 text-right">{pct}%</span>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </Link>
               );
             })}
           </div>
-        </div>
-
-        {/* Quick Stats */}
-        <div className="glass-card p-6">
-          <h3 className="font-bold mb-4">Today's Goal</h3>
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-white/60">Complete 10 questions</span>
-              <span className="text-cyan-400 font-semibold">0/10</span>
-            </div>
-            <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-              <div className="h-full bg-cyan-400 w-0" />
-            </div>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </ClientLayout>
   );

@@ -1,867 +1,747 @@
 {
   "id": "ai-ml",
-  "name": "AI/ML Research",
+  "name": "AI & Machine Learning",
   "icon": "🤖",
-  "color": "#06b6d4",
-  "description": "Neural networks, transformers, diffusion models, and cutting-edge ML research",
-  "levels": {
-    "beginner": {
-      "name": "Beginner",
-      "description": "Fundamentals of neural networks and machine learning",
+  "color": "#8B5CF6",
+  "description": "Deep dive into modern AI architectures, from neural networks to transformers and beyond",
+  "topics": [
+    {
+      "id": "neural-networks-fundamentals",
+      "title": "Neural Networks Fundamentals",
+      "chapter": 1,
+      "difficulty": "beginner",
+      "study": {
+        "content": "# Neural Networks: The Foundation of Deep Learning\n\nNeural networks are computational models inspired by the human brain, consisting of interconnected nodes (neurons) organized in layers. At their core, they learn to map inputs to outputs through **backpropagation**.\n\n## The Perceptron\n\nThe simplest unit is the **perceptron**, which computes:\n\n$$y = f\\left(\\sum_{i=1}^{n} w_i x_i + b\\right)$$\n\nWhere $w_i$ are weights, $x_i$ are inputs, $b$ is the bias, and $f$ is an activation function.\n\n## Activation Functions\n\nActivation functions introduce non-linearity:\n\n**Sigmoid**: $\\sigma(x) = \\frac{1}{1 + e^{-x}}$ - Squashes to (0,1)\n\n**ReLU**: $\\text{ReLU}(x) = \\max(0, x)$ - Most popular, solves vanishing gradient\n\n**Tanh**: $\\tanh(x) = \\frac{e^x - e^{-x}}{e^x + e^{-x}}$ - Range (-1,1)\n\n## Backpropagation\n\nTraining uses the **chain rule**:\n\n$$\\frac{\\partial L}{\\partial w} = \\frac{\\partial L}{\\partial y} \\cdot \\frac{\\partial y}{\\partial w}$$\n\nWeights update via gradient descent:\n\n$$w_{new} = w_{old} - \\eta \\frac{\\partial L}{\\partial w}$$\n\nDeep networks learn hierarchical representations, with early layers detecting simple features and deeper layers combining them into complex abstractions. This enables neural networks to solve previously intractable problems in computer vision, natural language processing, and beyond.",
+        "keyPoints": [
+          "Perceptrons are linear classifiers; activation functions add non-linearity",
+          "Backpropagation uses chain rule to compute gradients for weight updates",
+          "ReLU activation solves vanishing gradient problem in deep networks",
+          "Deep networks learn hierarchical feature representations"
+        ],
+        "readingTimeMin": 4
+      },
+      "mindmap": "mindmap\n  root((Neural Networks))\n    Architecture\n      Input Layer\n      Hidden Layers\n      Output Layer\n    Perceptron\n      Weights\n      Bias\n      Activation\n    Training\n      Forward Pass\n      Loss Calculation\n      Backpropagation\n      Gradient Descent\n    Activation Functions\n      Sigmoid\n      ReLU\n      Tanh",
+      "slides": [
+        {
+          "title": "What is a Neural Network?",
+          "content": "Computational models inspired by biological neurons, organized in layers that transform inputs to outputs through learned weights.",
+          "visual": "diagram",
+          "visualData": "Input → Hidden → Output",
+          "narration": "Neural networks are inspired by the brain. They consist of layers of artificial neurons that process information and learn patterns from data."
+        },
+        {
+          "title": "The Perceptron",
+          "content": "The basic unit that computes a weighted sum of inputs, adds bias, and applies an activation function.",
+          "visual": "equation",
+          "visualData": "y = f(Σ wᵢxᵢ + b)",
+          "narration": "Each neuron performs a simple calculation: multiply inputs by weights, add a bias term, and pass through an activation function."
+        },
+        {
+          "title": "Activation Functions",
+          "content": "Non-linear functions that enable networks to learn complex patterns. ReLU is most common.",
+          "visual": "equation",
+          "visualData": "ReLU(x) = max(0, x)",
+          "narration": "Without activation functions, neural networks would just be linear models. ReLU is simple and effective, solving gradient problems in deep networks."
+        },
+        {
+          "title": "Backpropagation",
+          "content": "Training algorithm that uses chain rule to compute gradients and adjust weights.",
+          "visual": "equation",
+          "visualData": "∂L/∂w = ∂L/∂y · ∂y/∂w",
+          "narration": "Backpropagation is the magic that makes neural networks learn. It calculates gradients backwards through the network."
+        }
+      ],
       "questions": [
         {
-          "id": "ai-b1",
+          "id": "nn-q1",
           "type": "multiple-choice",
-          "question": "What is a neuron in a neural network?",
+          "question": "What is the primary purpose of activation functions in neural networks?",
           "options": [
-            "A biological cell",
-            "A computational unit that takes inputs, applies weights, and produces an output",
-            "A type of activation function",
-            "A layer in the network"
-          ],
-          "correct": 1,
-          "explanation": "An artificial neuron is a computational unit inspired by biological neurons. It takes weighted inputs, sums them, and applies an activation function.",
-          "xp": 10
-        },
-        {
-          "id": "ai-b2",
-          "type": "multiple-choice",
-          "question": "What does ReLU (Rectified Linear Unit) do?",
-          "options": [
-            "Returns max(0, x)",
-            "Returns a value between 0 and 1",
-            "Returns a value between -1 and 1",
-            "Returns the square of the input"
-          ],
-          "correct": 0,
-          "explanation": "ReLU is f(x) = max(0, x). Simple, efficient, helps avoid vanishing gradients.",
-          "xp": 10
-        },
-        {
-          "id": "ai-b3",
-          "type": "multiple-choice",
-          "question": "What is backpropagation?",
-          "options": [
-            "A forward pass",
-            "An algorithm for computing gradients of loss with respect to weights",
-            "A type of architecture",
-            "A preprocessing technique"
-          ],
-          "correct": 1,
-          "explanation": "Backpropagation uses chain rule to compute gradients layer by layer, backwards from output.",
-          "xp": 10
-        },
-        {
-          "id": "ai-b4",
-          "type": "multiple-choice",
-          "question": "What is the purpose of a loss function?",
-          "options": [
-            "To activate neurons",
-            "To measure how wrong predictions are",
-            "To normalize data",
-            "To split data into batches"
-          ],
-          "correct": 1,
-          "explanation": "Loss function quantifies prediction error. Training minimizes loss by adjusting weights.",
-          "xp": 10
-        },
-        {
-          "id": "ai-b5",
-          "type": "multiple-choice",
-          "question": "What is overfitting?",
-          "options": [
-            "Model is too simple",
-            "Model memorizes training data but fails on new data",
-            "Learning rate is too high",
-            "Model trains too quickly"
-          ],
-          "correct": 1,
-          "explanation": "Overfitting: model learns noise from training data that doesnt generalize.",
-          "xp": 10
-        },
-        {
-          "id": "ai-b6",
-          "type": "multiple-choice",
-          "question": "What is dropout?",
-          "options": [
-            "Speed up training",
-            "Randomly disable neurons to prevent overfitting",
-            "Normalize activations",
+            "Introduce non-linearity to learn complex patterns",
+            "Speed up training time",
+            "Reduce memory usage",
             "Initialize weights"
           ],
-          "correct": 1,
-          "explanation": "Dropout randomly zeros neurons during training, forcing robust feature learning.",
-          "xp": 10
-        },
-        {
-          "id": "ai-b7",
-          "type": "multiple-choice",
-          "question": "What does SGD stand for?",
-          "options": [
-            "Standard Gradient Descent",
-            "Stochastic Gradient Descent",
-            "Smooth Gradient Distribution",
-            "Sequential Gradient Deployment"
-          ],
-          "correct": 1,
-          "explanation": "Stochastic Gradient Descent updates with random batches, faster and helps escape local minima.",
-          "xp": 10
-        },
-        {
-          "id": "ai-b8",
-          "type": "multiple-choice",
-          "question": "Convolutional layers are primarily used for?",
-          "options": [
-            "Text processing",
-            "Image processing and feature extraction",
-            "Time series",
-            "Graph analysis"
-          ],
-          "correct": 1,
-          "explanation": "Convolutional layers detect local patterns like edges using sliding filters.",
-          "xp": 10
-        },
-        {
-          "id": "ai-b9",
-          "type": "multiple-choice",
-          "question": "What is the vanishing gradient problem?",
-          "options": [
-            "Gradients too large",
-            "Gradients become extremely small, preventing learning in early layers",
-            "Learning rate decreases",
-            "Neurons stop firing"
-          ],
-          "correct": 1,
-          "explanation": "Gradients shrink exponentially through deep layers with certain activations.",
-          "xp": 10
-        },
-        {
-          "id": "ai-b10",
-          "type": "multiple-choice",
-          "question": "What is batch normalization?",
-          "options": [
-            "Normalizing input data",
-            "Normalizing activations within mini-batches during training",
-            "Adjusting batch size",
-            "Removing outliers"
-          ],
-          "correct": 1,
-          "explanation": "Batch norm stabilizes training, allows higher learning rates, acts as regularization.",
-          "xp": 10
-        },
-        {
-          "id": "ai-b11",
-          "type": "multiple-choice",
-          "question": "What is transfer learning?",
-          "options": [
-            "Moving data",
-            "Using pre-trained model on related task to boost performance on new task",
-            "Transferring weights randomly",
-            "Converting formats"
-          ],
-          "correct": 1,
-          "explanation": "Transfer learning leverages knowledge from large datasets by fine-tuning on specific tasks.",
-          "xp": 10
-        },
-        {
-          "id": "ai-b12",
-          "type": "multiple-choice",
-          "question": "What is softmax used for?",
-          "options": [
-            "Regularization",
-            "Converting raw scores into probabilities for multi-class classification",
-            "Feature extraction",
-            "Gradient clipping"
-          ],
-          "correct": 1,
-          "explanation": "Softmax transforms logits into probability distribution summing to 1.",
-          "xp": 10
-        },
-        {
-          "id": "ai-b13",
-          "type": "multiple-choice",
-          "question": "What is an epoch?",
-          "options": [
-            "One weight update",
-            "One complete pass through entire training dataset",
-            "One batch",
-            "One layer"
-          ],
-          "correct": 1,
-          "explanation": "An epoch means model has seen every training example once.",
-          "xp": 10
-        },
-        {
-          "id": "ai-b14",
-          "type": "multiple-choice",
-          "question": "What is learning rate?",
-          "options": [
-            "Data processing speed",
-            "Step size for weight updates during gradient descent",
-            "Computer speed",
-            "Epochs per second"
-          ],
-          "correct": 1,
-          "explanation": "Learning rate controls weight change size. Too high: instability. Too low: slow training.",
-          "xp": 10
-        },
-        {
-          "id": "ai-b15",
-          "type": "multiple-choice",
-          "question": "What is validation set for?",
-          "options": [
-            "Final testing",
-            "Tuning hyperparameters and monitoring overfitting during training",
-            "Training the model",
-            "Data augmentation"
-          ],
-          "correct": 1,
-          "explanation": "Validation set evaluates performance and tunes hyperparameters without touching test set.",
-          "xp": 10
-        },
-        {
-          "id": "ai-b16",
-          "type": "multiple-choice",
-          "question": "What does CNN stand for?",
-          "options": [
-            "Convolutional Neural Network",
-            "Computational Neural Network",
-            "Complex Neural Network",
-            "Cascading Neural Network"
-          ],
           "correct": 0,
-          "explanation": "CNNs use convolutions to learn hierarchical spatial features, revolutionizing vision.",
+          "explanation": "Activation functions introduce non-linearity, allowing networks to learn complex, non-linear relationships. Without them, multiple layers would collapse into a single linear transformation.",
           "xp": 10
         },
         {
-          "id": "ai-b17",
+          "id": "nn-q2",
           "type": "multiple-choice",
-          "question": "What is data augmentation?",
+          "question": "Which activation function is most commonly used in modern deep networks?",
           "options": [
-            "Adding layers",
-            "Creating modified training data (rotations, crops) to increase dataset size",
-            "Increasing batch size",
-            "Adding noise to weights"
+            "Sigmoid",
+            "Tanh",
+            "ReLU",
+            "Linear"
           ],
-          "correct": 1,
-          "explanation": "Data augmentation artificially expands training set with transformations.",
+          "correct": 2,
+          "explanation": "ReLU (Rectified Linear Unit) is most popular because it's computationally efficient and solves the vanishing gradient problem.",
           "xp": 10
         },
         {
-          "id": "ai-b18",
+          "id": "nn-q3",
           "type": "multiple-choice",
-          "question": "What is gradient descent?",
+          "question": "What does backpropagation compute?",
           "options": [
-            "Data collection",
-            "Optimization algorithm moving in direction of steepest loss decrease",
-            "Type of network",
-            "Regularization technique"
+            "The output of the network",
+            "Gradients of the loss with respect to weights",
+            "The optimal learning rate",
+            "The number of hidden layers needed"
           ],
           "correct": 1,
-          "explanation": "Gradient descent computes loss gradient and updates parameters to minimize error.",
+          "explanation": "Backpropagation computes gradients (∂L/∂w) using the chain rule, showing how each weight affects the loss.",
           "xp": 10
         },
         {
-          "id": "ai-b19",
+          "id": "nn-q4",
           "type": "multiple-choice",
-          "question": "What is a hyperparameter?",
+          "question": "In gradient descent, if the learning rate η is too large, what happens?",
           "options": [
-            "Parameter learned during training",
-            "Configuration setting chosen before training (learning rate, batch size)",
-            "Final output",
-            "Activation function"
+            "Training is too slow",
+            "The model underfits",
+            "Weights may oscillate or diverge",
+            "Activation functions stop working"
           ],
-          "correct": 1,
-          "explanation": "Hyperparameters control learning process, unlike model parameters learned from data.",
-          "xp": 10
+          "correct": 2,
+          "explanation": "A learning rate that's too large causes weight updates to overshoot optimal values, leading to oscillation or divergence.",
+          "xp": 15
         },
         {
-          "id": "ai-b20",
+          "id": "nn-q5",
           "type": "multiple-choice",
-          "question": "What is test set for?",
+          "question": "What is a key advantage of deep networks over shallow ones?",
           "options": [
-            "Training",
-            "Unbiased evaluation of final model performance",
-            "Tuning hyperparameters",
-            "Augmenting data"
+            "Always train faster",
+            "Use less memory",
+            "Learn hierarchical feature representations",
+            "Never overfit"
           ],
-          "correct": 1,
-          "explanation": "Test set provides final assessment on truly unseen data.",
-          "xp": 10
+          "correct": 2,
+          "explanation": "Deep networks learn hierarchical features: early layers detect simple patterns, deeper layers combine them into complex concepts.",
+          "xp": 15
+        }
+      ],
+      "resources": [
+        {
+          "title": "Neural Networks and Deep Learning",
+          "url": "http://neuralnetworksanddeeplearning.com/"
+        },
+        {
+          "title": "3Blue1Brown: Neural Networks",
+          "url": "https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi"
         }
       ]
     },
-    "intermediate": {
-      "name": "Intermediate",
-      "description": "Advanced architectures and training techniques",
+    {
+      "id": "cnns",
+      "title": "Convolutional Neural Networks",
+      "chapter": 2,
+      "difficulty": "beginner",
+      "study": {
+        "content": "**Convolutional Neural Networks (CNNs)** revolutionized computer vision by exploiting the spatial structure of images. Unlike fully connected networks that treat pixels independently, CNNs use **convolutional layers** that apply learned filters across the image, preserving spatial relationships.\n\nA convolution operation slides a small **kernel** (or filter) across the input, computing dot products at each position: $$(I * K)[i,j] = \\sum_m \\sum_n I[i+m, j+n] \\cdot K[m,n]$$ These kernels learn to detect features like edges, textures, and patterns. Early layers detect simple features (edges, corners), while deeper layers combine these into complex patterns (faces, objects).\n\n**Pooling layers** reduce spatial dimensions while retaining important features. **Max pooling** takes the maximum value in each region: $$P[i,j] = \\max_{m,n \\in R_{i,j}} I[m,n]$$ This provides translation invariance and reduces computational cost.\n\nA typical CNN architecture follows this pattern: `INPUT → CONV → RELU → POOL → CONV → RELU → POOL → FC → OUTPUT`. The **receptive field** of a neuron grows with depth, allowing it to capture increasingly global features. CNNs have dramatically fewer parameters than fully connected networks because of **weight sharing**—the same filter is used across the entire image. For a 224×224 RGB image, a fully connected first layer would need ~150,000 parameters per neuron, while a 3×3 convolutional filter needs only 27 parameters regardless of image size. This efficiency, combined with their ability to learn hierarchical features, makes CNNs the foundation of modern computer vision systems.",
+        "keyPoints": [
+          "Convolutional layers apply learned filters to detect spatial features while preserving image structure",
+          "Pooling layers reduce dimensions and provide translation invariance",
+          "Weight sharing dramatically reduces parameters compared to fully connected networks"
+        ],
+        "readingTimeMin": 5
+      },
+      "mindmap": "mindmap\n  root((CNNs))\n    Layers\n      Convolutional\n      Pooling\n      Fully Connected\n    Operations\n      Convolution\n      Activation\n      Max Pooling\n    Key Concepts\n      Receptive Field\n      Weight Sharing\n      Feature Hierarchy\n    Applications\n      Image Classification\n      Object Detection\n      Segmentation",
+      "slides": [
+        {
+          "title": "Convolution Operation",
+          "content": "Convolutional layers slide learned filters across the input, detecting local patterns while preserving spatial structure.",
+          "visual": "equation",
+          "visualData": "(I * K)[i,j] = \\sum_m \\sum_n I[i+m, j+n] \\cdot K[m,n]",
+          "narration": "The convolution operation applies a small kernel or filter across the image, computing weighted sums at each position to detect features like edges and textures."
+        },
+        {
+          "title": "Pooling for Efficiency",
+          "content": "Pooling layers downsample feature maps, reducing computational cost while maintaining important spatial features through operations like max pooling.",
+          "visual": "equation",
+          "visualData": "MaxPool[i,j] = \\max_{m,n \\in Region} I[m,n]",
+          "narration": "Max pooling takes the maximum activation in each region, providing translation invariance and reducing the spatial dimensions of feature maps."
+        },
+        {
+          "title": "Hierarchical Features",
+          "content": "CNNs learn feature hierarchies: early layers detect edges and textures, middle layers combine these into parts, and deep layers recognize complete objects.",
+          "visual": "text",
+          "visualData": "Layer 1: Edges → Layer 2: Textures → Layer 3: Parts → Layer 4: Objects",
+          "narration": "CNNs build increasingly complex representations. Early layers detect simple features like edges, while deeper layers combine these into sophisticated patterns and objects."
+        }
+      ],
       "questions": [
         {
-          "id": "ai-i1",
+          "id": "cnn-q1",
           "type": "multiple-choice",
-          "question": "Key innovation of Transformer architecture?",
+          "question": "What is the main advantage of weight sharing in CNNs?",
           "options": [
-            "CNNs for NLP",
-            "Self-attention allowing parallel processing of sequences",
-            "Recurrent connections",
-            "Dropout"
-          ],
-          "correct": 1,
-          "explanation": "Transformers use self-attention to weigh importance of positions, enabling parallelization.",
-          "xp": 15
-        },
-        {
-          "id": "ai-i2",
-          "type": "multiple-choice",
-          "question": "What does BERT stand for?",
-          "options": [
-            "Bidirectional Encoder Representations from Transformers",
-            "Basic Encoding Retrieval Transformer",
-            "Bidirectional Embedding Recurrent Transformer",
-            "Binary Encoded Representation"
+            "Dramatically reduces the number of parameters compared to fully connected layers",
+            "Increases training speed by 10x",
+            "Eliminates the need for activation functions",
+            "Removes the need for pooling layers"
           ],
           "correct": 0,
-          "explanation": "BERT pre-trains bidirectional representations by masking words, revolutionizing NLP.",
-          "xp": 15
+          "explanation": "Weight sharing means the same filter is applied across the entire image, reducing parameters from potentially millions to just a few dozen per filter, while still capturing spatial patterns.",
+          "xp": 10
         },
         {
-          "id": "ai-i3",
+          "id": "cnn-q2",
           "type": "multiple-choice",
-          "question": "Purpose of positional encoding in Transformers?",
+          "question": "What does max pooling do in a CNN?",
           "options": [
-            "Reduce size",
-            "Inject position info since attention has no inherent order",
-            "Normalize inputs",
-            "Prevent overfitting"
+            "Increases the spatial dimensions of feature maps",
+            "Takes the maximum value in each pooling region",
+            "Applies the ReLU activation function",
+            "Computes the average of all pixels"
           ],
           "correct": 1,
-          "explanation": "Self-attention is permutation-invariant, so positional encodings add sequential information.",
-          "xp": 15
+          "explanation": "Max pooling selects the maximum activation value within each pooling window, providing downsampling and translation invariance while preserving the strongest features.",
+          "xp": 10
         },
         {
-          "id": "ai-i4",
+          "id": "cnn-q3",
           "type": "multiple-choice",
-          "question": "What is a GAN?",
+          "question": "In a typical CNN, what do early convolutional layers tend to learn?",
           "options": [
-            "Type of CNN",
-            "Generator and discriminator competing: generator creates fake data, discriminator detects it",
-            "Reinforcement learning",
-            "Attention mechanism"
+            "Complete object representations",
+            "Simple features like edges and corners",
+            "Semantic relationships",
+            "Color histograms"
           ],
           "correct": 1,
-          "explanation": "GANs train through adversarial competition: generator learns to fool discriminator.",
-          "xp": 15
+          "explanation": "Early layers in CNNs learn low-level features such as edges, corners, and simple textures. Deeper layers combine these into more complex patterns and object parts.",
+          "xp": 10
         },
         {
-          "id": "ai-i5",
+          "id": "cnn-q4",
           "type": "multiple-choice",
-          "question": "What is attention computing?",
+          "question": "What is a receptive field in a CNN?",
           "options": [
-            "Random weights",
-            "Weighted sums of values based on query-key similarity",
-            "Convolutional filters",
-            "Gradient magnitudes"
+            "The size of the convolutional kernel",
+            "The region of the input image that influences a particular neuron's activation",
+            "The total number of parameters in a layer",
+            "The pooling window size"
           ],
           "correct": 1,
-          "explanation": "Attention computes relevance (query·key), softmax, then weights values for dynamic focus.",
-          "xp": 15
+          "explanation": "The receptive field is the area of the input that affects a neuron's output. It grows with network depth, allowing deeper neurons to capture more global context.",
+          "xp": 10
         },
         {
-          "id": "ai-i6",
+          "id": "cnn-q5",
           "type": "multiple-choice",
-          "question": "ResNets key contribution?",
+          "question": "For a 3×3 RGB convolutional filter, how many parameters does it have?",
           "options": [
-            "Using attention",
-            "Skip connections enabling very deep networks",
-            "Removing pooling",
-            "Only linear activations"
+            "9 parameters",
+            "27 parameters (plus 1 bias)",
+            "3 parameters",
+            "81 parameters"
           ],
           "correct": 1,
-          "explanation": "ResNet skip connections allow gradients to flow directly, solving degradation in deep networks.",
-          "xp": 15
+          "explanation": "A 3×3 filter operating on RGB images has 3×3×3 = 27 weight parameters (one per position per color channel), plus typically 1 bias parameter.",
+          "xp": 10
+        }
+      ],
+      "resources": [
+        {
+          "title": "CS231n: CNNs for Visual Recognition",
+          "url": "http://cs231n.stanford.edu/"
         },
         {
-          "id": "ai-i7",
-          "type": "multiple-choice",
-          "question": "Vanishing gradient in RNNs?",
-          "options": [
-            "Gradients become zero",
-            "Gradients decay exponentially over many time steps, preventing long-term learning",
-            "Gradients explode",
-            "Gradients oscillate"
-          ],
-          "correct": 1,
-          "explanation": "In long sequences, gradients shrink exponentially, making RNNs forget long-term dependencies.",
-          "xp": 15
-        },
-        {
-          "id": "ai-i8",
-          "type": "multiple-choice",
-          "question": "What do LSTMs add?",
-          "options": [
-            "Convolutional layers",
-            "Gating mechanisms (forget, input, output gates) to control information flow",
-            "Attention heads",
-            "Residual connections"
-          ],
-          "correct": 1,
-          "explanation": "LSTM gates selectively remember/forget, enabling long-term dependency learning.",
-          "xp": 15
-        },
-        {
-          "id": "ai-i9",
-          "type": "multiple-choice",
-          "question": "Transfer learning in LLMs?",
-          "options": [
-            "Copying weights exactly",
-            "Pre-training on large corpus, then fine-tuning on specific task",
-            "Training multiple models",
-            "Transferring data"
-          ],
-          "correct": 1,
-          "explanation": "LLMs learn general language from massive pre-training, then adapt with little task data.",
-          "xp": 15
-        },
-        {
-          "id": "ai-i10",
-          "type": "multiple-choice",
-          "question": "Purpose of layer normalization?",
-          "options": [
-            "Normalizing across batch",
-            "Normalizing across features for each sample independently",
-            "Removing layers",
-            "Adding noise"
-          ],
-          "correct": 1,
-          "explanation": "Layer norm normalizes activations across features per sample, stabilizing RNNs/Transformers.",
-          "xp": 15
-        },
-        {
-          "id": "ai-i11",
-          "type": "multiple-choice",
-          "question": "Key idea behind autoencoders?",
-          "options": [
-            "Supervised classification",
-            "Unsupervised learning by compressing into latent representation then reconstructing",
-            "Adversarial training",
-            "Reinforcement learning"
-          ],
-          "correct": 1,
-          "explanation": "Autoencoders learn efficient representations through bottleneck, minimizing reconstruction error.",
-          "xp": 15
-        },
-        {
-          "id": "ai-i12",
-          "type": "multiple-choice",
-          "question": "What does GPT stand for?",
-          "options": [
-            "General Pre-trained Transformer",
-            "Generative Pre-trained Transformer",
-            "Gradient Propagation Technique",
-            "Gated Positional Transformer"
-          ],
-          "correct": 1,
-          "explanation": "GPT models are autoregressive, trained to predict next token, enabling generation and few-shot learning.",
-          "xp": 15
-        },
-        {
-          "id": "ai-i13",
-          "type": "multiple-choice",
-          "question": "Purpose of softmax temperature?",
-          "options": [
-            "Training speed",
-            "Controlling randomness of probability distributions (higher = more random)",
-            "Adjusting learning rate",
-            "Setting batch size"
-          ],
-          "correct": 1,
-          "explanation": "Temperature scales logits: T>1 flattens (random), T<1 sharpens (confident).",
-          "xp": 15
-        },
-        {
-          "id": "ai-i14",
-          "type": "multiple-choice",
-          "question": "What is knowledge distillation?",
-          "options": [
-            "Removing knowledge",
-            "Training smaller student model to mimic larger teacher outputs",
-            "Extracting facts",
-            "Compressing weights"
-          ],
-          "correct": 1,
-          "explanation": "Distillation transfers knowledge from complex to simple models via soft predictions.",
-          "xp": 15
-        },
-        {
-          "id": "ai-i15",
-          "type": "multiple-choice",
-          "question": "Purpose of multi-head attention?",
-          "options": [
-            "Training multiple models",
-            "Learning different representation subspaces by running multiple attention in parallel",
-            "Multiple datasets",
-            "Stacking layers"
-          ],
-          "correct": 1,
-          "explanation": "Multi-head attention attends to different aspects simultaneously, capturing richer relationships.",
-          "xp": 15
-        },
-        {
-          "id": "ai-i16",
-          "type": "multiple-choice",
-          "question": "What is curriculum learning?",
-          "options": [
-            "Teaching multiple subjects",
-            "Training on progressively harder examples, starting with easier ones",
-            "Fixed training order",
-            "Random sampling"
-          ],
-          "correct": 1,
-          "explanation": "Curriculum learning presents simpler examples first, often improving convergence and generalization.",
-          "xp": 15
-        },
-        {
-          "id": "ai-i17",
-          "type": "multiple-choice",
-          "question": "What is contrastive learning?",
-          "options": [
-            "Comparing brightness",
-            "Learning representations by pulling similar examples together, pushing dissimilar apart",
-            "Training adversarially",
-            "Using negative weights"
-          ],
-          "correct": 1,
-          "explanation": "Contrastive learning (SimCLR) makes augmented views of same image close, different images far.",
-          "xp": 15
-        },
-        {
-          "id": "ai-i18",
-          "type": "multiple-choice",
-          "question": "What is CLIP?",
-          "options": [
-            "Video editing tool",
-            "Vision-language model trained to align image and text embeddings",
-            "Text-only model",
-            "Audio model"
-          ],
-          "correct": 1,
-          "explanation": "CLIP learns joint embeddings via contrastive learning, enabling zero-shot classification.",
-          "xp": 15
-        },
-        {
-          "id": "ai-i19",
-          "type": "multiple-choice",
-          "question": "What is LoRA (parameter-efficient fine-tuning)?",
-          "options": [
-            "Training fewer epochs",
-            "Updating only small number of additional parameters while freezing base model",
-            "Using smaller batches",
-            "Reducing model size"
-          ],
-          "correct": 1,
-          "explanation": "LoRA adds trainable low-rank matrices to frozen weights, enabling efficient adaptation.",
-          "xp": 15
-        },
-        {
-          "id": "ai-i20",
-          "type": "multiple-choice",
-          "question": "Difference: encoder-only, decoder-only, encoder-decoder?",
-          "options": [
-            "Number of layers",
-            "Encoder-only (BERT) for understanding, decoder-only (GPT) for generation, encoder-decoder (T5) for seq2seq",
-            "Training time",
-            "Model size"
-          ],
-          "correct": 1,
-          "explanation": "Architecture depends on task: encoders for classification, decoders for generation, both for translation.",
-          "xp": 15
+          "title": "Understanding CNNs - Distill.pub",
+          "url": "https://distill.pub/2017/feature-visualization/"
         }
       ]
     },
-    "advanced": {
-      "name": "Advanced",
-      "description": "Research-level understanding",
+    {
+      "id": "transformers-attention",
+      "title": "Transformers & Attention Mechanisms",
+      "chapter": 3,
+      "difficulty": "intermediate",
+      "study": {
+        "content": "**Transformers** revolutionized deep learning by replacing recurrence with **attention mechanisms**, enabling parallel processing of sequences and capturing long-range dependencies. Introduced in \"Attention Is All You Need\" (2017), they now power models like GPT, BERT, and DALL-E.\n\nThe core innovation is **scaled dot-product attention**: $$\\text{Attention}(Q, K, V) = \\text{softmax}\\left(\\frac{QK^T}{\\sqrt{d_k}}\\right)V$$ Here, queries ($Q$), keys ($K$), and values ($V$) are learned projections of the input. The mechanism computes similarity between queries and keys (via dot products), scales by $\\sqrt{d_k}$ to prevent gradient vanishing, applies softmax to get attention weights, then aggregates values accordingly.\n\n**Multi-head attention** runs multiple attention operations in parallel: $$\\text{MultiHead}(Q,K,V) = \\text{Concat}(\\text{head}_1, ..., \\text{head}_h)W^O$$ where each head learns different aspects of relationships. Combined with **positional encodings** (since attention is permutation-invariant), transformers process entire sequences simultaneously.\n\nThe architecture consists of encoder-decoder stacks with **residual connections** and **layer normalization**: `Embed → [Multi-Head Attention → Add & Norm → FFN → Add & Norm] × N → Output`. The **feed-forward network** applies: $$\\text{FFN}(x) = \\max(0, xW_1 + b_1)W_2 + b_2$$ Self-attention's $O(n^2)$ complexity limits context length, but enables modeling complex dependencies that RNNs struggle with. Transformers achieve state-of-the-art results across NLP, vision (ViT), and multi-modal tasks by learning rich contextual representations where each token attends to all others.",
+        "keyPoints": [
+          "Attention mechanisms compute weighted combinations based on learned query-key similarities",
+          "Multi-head attention captures different types of relationships in parallel",
+          "Transformers eliminate recurrence, enabling parallel training and better long-range dependency modeling"
+        ],
+        "readingTimeMin": 6
+      },
+      "mindmap": "mindmap\n  root((Transformers))\n    Attention\n      Scaled Dot-Product\n      Multi-Head\n      Self-Attention\n    Architecture\n      Encoder Stack\n      Decoder Stack\n      Positional Encoding\n    Components\n      Layer Normalization\n      Residual Connections\n      Feed-Forward Networks\n    Applications\n      NLP (BERT, GPT)\n      Vision (ViT)\n      Multi-modal",
+      "slides": [
+        {
+          "title": "Attention Mechanism",
+          "content": "Attention computes similarity between queries and keys, then aggregates values weighted by these similarities. Scaling prevents vanishing gradients.",
+          "visual": "equation",
+          "visualData": "Attention(Q,K,V) = softmax\\left(\\frac{QK^T}{\\sqrt{d_k}}\\right)V",
+          "narration": "The attention mechanism computes how much focus each element should receive. It calculates query-key similarity, scales it, applies softmax for weights, then aggregates values."
+        },
+        {
+          "title": "Multi-Head Attention",
+          "content": "Running multiple attention heads in parallel allows the model to capture different types of relationships and attend to information from different representation subspaces.",
+          "visual": "text",
+          "visualData": "head₁: syntactic relationships\\nhead₂: semantic similarity\\nhead₃: positional patterns\\n...\\nConcatenate all heads",
+          "narration": "Multi-head attention runs several attention operations simultaneously. Each head can specialize in different aspects—some capture syntax, others semantics, creating richer representations."
+        },
+        {
+          "title": "Transformer Architecture",
+          "content": "Transformers stack encoder and decoder layers with residual connections and layer normalization, processing entire sequences in parallel unlike RNNs.",
+          "visual": "text",
+          "visualData": "Input Embedding\n+ Positional Encoding\n↓\n[Multi-Head Attention\n→ Add & Norm\n→ Feed-Forward\n→ Add & Norm] ×N\n↓\nOutput",
+          "narration": "The transformer architecture stacks multiple layers of multi-head attention and feed-forward networks, with residual connections and normalization at each step, enabling parallel sequence processing."
+        }
+      ],
       "questions": [
         {
-          "id": "ai-a1",
+          "id": "trans-q1",
           "type": "multiple-choice",
-          "question": "Key innovation in diffusion models?",
+          "question": "Why is the dot product divided by √dk in scaled dot-product attention?",
           "options": [
-            "Using GANs",
-            "Learning to reverse gradual noising by predicting noise at each step",
-            "Using RL",
-            "Adversarial training"
+            "To prevent gradients from vanishing when dk is large",
+            "To speed up computation",
+            "To reduce memory usage",
+            "To ensure the output sums to 1"
           ],
-          "correct": 1,
-          "explanation": "Diffusion models denoise step-by-step, reversing Markov chain of Gaussian noise.",
-          "xp": 20
+          "correct": 0,
+          "explanation": "For large dk, dot products grow large in magnitude, pushing softmax into regions with extremely small gradients. Scaling by √dk keeps values in a reasonable range.",
+          "xp": 10
         },
         {
-          "id": "ai-a2",
+          "id": "trans-q2",
           "type": "multiple-choice",
-          "question": "Reparameterization trick in VAEs?",
+          "question": "What is the computational complexity of self-attention with respect to sequence length n?",
           "options": [
-            "Changing activations",
-            "Sampling via z=μ+σ⊙ε where ε~N(0,1), making sampling differentiable",
-            "Adjusting LR",
-            "Modifying architecture"
+            "O(n)",
+            "O(n log n)",
+            "O(n²)",
+            "O(2ⁿ)"
           ],
-          "correct": 1,
-          "explanation": "Reparameterization moves randomness outside learned parameters, allowing gradient flow.",
-          "xp": 20
+          "correct": 2,
+          "explanation": "Self-attention computes pairwise interactions between all tokens, resulting in O(n²) complexity. This limits context length but enables modeling all relationships.",
+          "xp": 10
         },
         {
-          "id": "ai-a3",
+          "id": "trans-q3",
           "type": "multiple-choice",
-          "question": "What is ELBO in VAEs?",
+          "question": "Why do transformers need positional encodings?",
           "options": [
-            "Regularization term",
-            "Objective: reconstruction loss + KL divergence, lower-bounding log-likelihood",
-            "Sampling strategy",
-            "Activation function"
+            "To reduce the number of parameters",
+            "Because attention is permutation-invariant and doesn't inherently encode position",
+            "To speed up training",
+            "To enable multi-head attention"
           ],
           "correct": 1,
-          "explanation": "ELBO balances reconstruction with regularization (KL to prior), tractable VAE training.",
-          "xp": 20
+          "explanation": "Attention operations treat the input as a set, ignoring order. Positional encodings add information about token positions so the model can utilize sequence order.",
+          "xp": 10
         },
         {
-          "id": "ai-a4",
+          "id": "trans-q4",
           "type": "multiple-choice",
-          "question": "What is Mixture of Experts?",
+          "question": "What is the purpose of multi-head attention compared to single-head attention?",
           "options": [
-            "Training multiple models",
-            "Layer with sub-networks where gating routes inputs to specific experts",
-            "Ensemble learning",
-            "Multi-task learning"
+            "To reduce computational cost",
+            "To allow the model to attend to different representation subspaces simultaneously",
+            "To eliminate the need for feed-forward layers",
+            "To simplify the architecture"
           ],
           "correct": 1,
-          "explanation": "MoE increases capacity efficiently by activating subset of parameters per token.",
-          "xp": 20
+          "explanation": "Multiple heads allow the model to capture different types of relationships (syntactic, semantic, positional) in parallel, creating richer representations than a single attention mechanism.",
+          "xp": 10
         },
         {
-          "id": "ai-a5",
+          "id": "trans-q5",
           "type": "multiple-choice",
-          "question": "AlphaGos key insight?",
+          "question": "In the transformer, what connects Q, K, and V to the input?",
           "options": [
-            "Pure brute force",
-            "Combining neural network value/policy evaluation with MCTS for strategic planning",
-            "Only supervised learning",
-            "Random play"
+            "They are the raw input tokens",
+            "They are fixed lookup tables",
+            "They are learned linear projections of the input",
+            "They are outputs from the previous layer only"
+          ],
+          "correct": 2,
+          "explanation": "Q, K, and V are created by multiplying the input with learned weight matrices WQ, WK, and WV. This allows the model to learn what queries, keys, and values are useful.",
+          "xp": 10
+        }
+      ],
+      "resources": [
+        {
+          "title": "Attention Is All You Need (Original Paper)",
+          "url": "https://arxiv.org/abs/1706.03762"
+        },
+        {
+          "title": "The Illustrated Transformer",
+          "url": "http://jalammar.github.io/illustrated-transformer/"
+        }
+      ]
+    },
+    {
+      "id": "gans",
+      "title": "Generative Adversarial Networks",
+      "chapter": 4,
+      "difficulty": "intermediate",
+      "study": {
+        "content": "**Generative Adversarial Networks (GANs)** pit two neural networks against each other in a game-theoretic framework. The **generator** $G$ creates fake samples from random noise, while the **discriminator** $D$ tries to distinguish real from generated samples. This adversarial training produces remarkably realistic synthetic data.\n\nThe GAN objective is a minimax game: $$\\min_G \\max_D V(D,G) = \\mathbb{E}_{x\\sim p_{data}}[\\log D(x)] + \\mathbb{E}_{z\\sim p_z}[\\log(1-D(G(z)))]$$ The discriminator maximizes its ability to classify real vs. fake (first term for real data, second for generated), while the generator minimizes $\\log(1-D(G(z)))$—equivalently trying to maximize $D(G(z))$, making discriminator classify fakes as real.\n\nTraining alternates between updating $D$ and $G$. For discriminator training, we maximize: $$\\nabla_{\\theta_d} \\frac{1}{m}\\sum_{i=1}^m[\\log D(x^{(i)}) + \\log(1-D(G(z^{(i)})))]$$ For generator training, we update using: $$\\nabla_{\\theta_g} \\frac{1}{m}\\sum_{i=1}^m \\log(1-D(G(z^{(i)})))$$ or equivalently maximize $\\log D(G(z))$ for better gradients.\n\n**Training challenges** include mode collapse (generator produces limited variety), vanishing gradients (when discriminator becomes too strong), and instability. Modern variants address these: **WGAN** uses Wasserstein distance, **StyleGAN** introduces style-based generation with unprecedented quality, and **conditional GANs** enable controlled generation. Despite difficulties, GANs excel at high-quality image synthesis, data augmentation, domain transfer (CycleGAN), and creative applications, pushing the boundaries of generative modeling.",
+        "keyPoints": [
+          "GANs train generator and discriminator networks in adversarial competition",
+          "The minimax objective drives the generator to produce increasingly realistic samples",
+          "Training instability and mode collapse are key challenges addressed by modern variants"
+        ],
+        "readingTimeMin": 6
+      },
+      "mindmap": "mindmap\n  root((GANs))\n    Components\n      Generator\n      Discriminator\n      Latent Space\n    Training\n      Minimax Game\n      Alternating Updates\n      Nash Equilibrium\n    Challenges\n      Mode Collapse\n      Vanishing Gradients\n      Training Instability\n    Variants\n      DCGAN\n      WGAN\n      StyleGAN\n      Conditional GAN",
+      "slides": [
+        {
+          "title": "Adversarial Framework",
+          "content": "GANs consist of two networks: a generator creating fake samples and a discriminator distinguishing real from fake. They train in opposition, improving each other.",
+          "visual": "text",
+          "visualData": "Generator: noise → fake image\nDiscriminator: image → real/fake\n\nG tries to fool D\nD tries to catch G's fakes",
+          "narration": "The GAN framework is like a counterfeiter versus detective game. The generator creates fake data while the discriminator learns to spot fakes, pushing both to improve."
+        },
+        {
+          "title": "Minimax Objective",
+          "content": "The GAN objective is a minimax game where the discriminator maximizes classification accuracy while the generator minimizes the discriminator's ability to detect fakes.",
+          "visual": "equation",
+          "visualData": "\\min_G \\max_D \\mathbb{E}_x[\\log D(x)] + \\mathbb{E}_z[\\log(1-D(G(z)))]",
+          "narration": "This equation captures the adversarial game. The discriminator wants to maximize the value function by correctly classifying real and fake. The generator wants to minimize it by fooling the discriminator."
+        },
+        {
+          "title": "Training Dynamics",
+          "content": "Training alternates between updating the discriminator (to better classify) and generator (to better fool). At equilibrium, the generator produces realistic samples the discriminator cannot distinguish.",
+          "visual": "text",
+          "visualData": "Repeat:\n1. Train D on real + fake batch\n2. Train G to maximize D(G(z))\n\nEquilibrium: D(G(z)) = 0.5\n(discriminator can't tell)",
+          "narration": "GAN training alternates between strengthening the discriminator's detection and improving the generator's fakes. At Nash equilibrium, generated samples are indistinguishable from real data."
+        }
+      ],
+      "questions": [
+        {
+          "id": "gan-q1",
+          "type": "multiple-choice",
+          "question": "What is the role of the generator in a GAN?",
+          "options": [
+            "To create synthetic samples that fool the discriminator",
+            "To classify images as real or fake",
+            "To compute the loss function",
+            "To validate the training data"
+          ],
+          "correct": 0,
+          "explanation": "The generator's role is to produce fake samples from random noise that are realistic enough to deceive the discriminator into classifying them as real.",
+          "xp": 10
+        },
+        {
+          "id": "gan-q2",
+          "type": "multiple-choice",
+          "question": "What is mode collapse in GAN training?",
+          "options": [
+            "When the discriminator becomes too powerful",
+            "When the generator produces limited variety in outputs",
+            "When training diverges completely",
+            "When the loss function reaches zero"
           ],
           "correct": 1,
-          "explanation": "AlphaGo uses policy/value networks to guide MCTS for superhuman Go.",
-          "xp": 20
+          "explanation": "Mode collapse occurs when the generator learns to produce only a limited set of outputs (often a single mode of the data distribution) rather than capturing the full diversity of real data.",
+          "xp": 10
         },
         {
-          "id": "ai-a6",
+          "id": "gan-q3",
           "type": "multiple-choice",
-          "question": "Purpose of reward modeling in RLHF?",
+          "question": "At Nash equilibrium in a perfectly trained GAN, what should D(G(z)) equal?",
           "options": [
-            "Replacing humans",
-            "Learning reward function from human preferences to guide RL fine-tuning",
-            "Generating random rewards",
-            "Maximizing speed"
+            "0",
+            "0.5",
+            "1",
+            "It varies randomly"
           ],
           "correct": 1,
-          "explanation": "RLHF trains reward model on human comparisons, uses it for PPO fine-tuning to align LLMs.",
-          "xp": 20
+          "explanation": "At equilibrium, the discriminator cannot distinguish generated from real samples, outputting 0.5 (50% confidence either way) for generated samples.",
+          "xp": 10
         },
         {
-          "id": "ai-a7",
+          "id": "gan-q4",
           "type": "multiple-choice",
-          "question": "Catastrophic forgetting?",
+          "question": "Why might training the generator with max log(D(G(z))) be preferred over min log(1-D(G(z)))?",
           "options": [
-            "Forgetting hyperparameters",
-            "Network forgets previous tasks when learning new ones",
-            "Data corruption",
-            "Gradient explosion"
+            "It provides stronger gradients early in training when D(G(z)) is small",
+            "It reduces computational cost",
+            "It prevents mode collapse",
+            "It eliminates the need for a discriminator"
+          ],
+          "correct": 0,
+          "explanation": "When the generator is poor early on, D(G(z)) is near 0. The gradient of log(1-D(G(z))) saturates, while log(D(G(z))) provides stronger signals for improvement.",
+          "xp": 10
+        },
+        {
+          "id": "gan-q5",
+          "type": "multiple-choice",
+          "question": "What improvement does Wasserstein GAN (WGAN) introduce?",
+          "options": [
+            "Eliminates the discriminator entirely",
+            "Uses Wasserstein distance for more stable training",
+            "Requires no hyperparameter tuning",
+            "Trains 10x faster than standard GANs"
           ],
           "correct": 1,
-          "explanation": "Networks overwrite previous knowledge. Solutions: EWC, replay buffers, progressive networks.",
-          "xp": 20
+          "explanation": "WGAN uses the Wasserstein (Earth Mover's) distance instead of Jensen-Shannon divergence, providing more meaningful gradients and improving training stability.",
+          "xp": 10
+        }
+      ],
+      "resources": [
+        {
+          "title": "GAN Original Paper (Goodfellow et al.)",
+          "url": "https://arxiv.org/abs/1406.2661"
         },
         {
-          "id": "ai-a8",
+          "title": "GAN Lab - Interactive Visualization",
+          "url": "https://poloclub.github.io/ganlab/"
+        }
+      ]
+    },
+    {
+      "id": "diffusion-models",
+      "title": "Diffusion Models",
+      "chapter": 5,
+      "difficulty": "advanced",
+      "study": {
+        "content": "**Diffusion models** generate data by learning to reverse a gradual noising process, achieving state-of-the-art results in image synthesis (DALL-E 2, Stable Diffusion, Imagen). Unlike GANs' adversarial training, diffusion models use a more stable process based on non-equilibrium thermodynamics.\n\nThe framework consists of two processes. The **forward process** gradually adds Gaussian noise over $T$ steps: $$q(x_t|x_{t-1}) = \\mathcal{N}(x_t; \\sqrt{1-\\beta_t}x_{t-1}, \\beta_t I)$$ where $\\beta_t$ is a variance schedule. Using the reparameterization trick, we can sample at any timestep directly: $$x_t = \\sqrt{\\bar{\\alpha}_t}x_0 + \\sqrt{1-\\bar{\\alpha}_t}\\epsilon$$ where $\\bar{\\alpha}_t = \\prod_{s=1}^t(1-\\beta_s)$ and $\\epsilon \\sim \\mathcal{N}(0,I)$.\n\nThe **reverse process** learns to denoise: $$p_\\theta(x_{t-1}|x_t) = \\mathcal{N}(x_{t-1}; \\mu_\\theta(x_t, t), \\Sigma_\\theta(x_t, t))$$ We train a neural network to predict the noise $\\epsilon_\\theta(x_t, t)$ added at each step. The simplified training objective is: $$L_{\\text{simple}} = \\mathbb{E}_{t,x_0,\\epsilon}[\\|\\epsilon - \\epsilon_\\theta(x_t, t)\\|^2]$$ This is equivalent to score matching and denoising score matching.\n\n**DDPM (Denoising Diffusion Probabilistic Models)** requires many sampling steps (often 1000+), but **DDIM (Denoising Diffusion Implicit Models)** enables faster sampling through deterministic, non-Markovian processes. **Classifier-free guidance** controls generation by training on conditional and unconditional objectives: $$\\tilde{\\epsilon}_\\theta(x_t, c) = \\epsilon_\\theta(x_t, \\emptyset) + s \\cdot (\\epsilon_\\theta(x_t, c) - \\epsilon_\\theta(x_t, \\emptyset))$$ where $s$ is guidance scale. Modern diffusion models achieve photorealistic synthesis, controllable generation, and excel at tasks requiring high sample quality and diversity.",
+        "keyPoints": [
+          "Diffusion models learn to reverse a gradual noising process through denoising score matching",
+          "The forward process adds Gaussian noise; the reverse process is learned by predicting added noise",
+          "Classifier-free guidance and DDIM sampling enable controllable, efficient generation"
+        ],
+        "readingTimeMin": 7
+      },
+      "mindmap": "mindmap\n  root((Diffusion Models))\n    Forward Process\n      Gradual Noising\n      Variance Schedule\n      Markov Chain\n    Reverse Process\n      Learned Denoising\n      Score Matching\n      Sampling\n    Training\n      Noise Prediction\n      Simplified Objective\n      Timestep Conditioning\n    Techniques\n      DDPM\n      DDIM\n      Classifier-Free Guidance\n      Latent Diffusion",
+      "slides": [
+        {
+          "title": "Forward Diffusion Process",
+          "content": "The forward process gradually corrupts data by adding Gaussian noise over many timesteps, eventually producing pure noise. This process is fixed and doesn't require learning.",
+          "visual": "equation",
+          "visualData": "x_t = \\sqrt{\\bar{\\alpha}_t}x_0 + \\sqrt{1-\\bar{\\alpha}_t}\\epsilon\n\nx_0 → x_1 → ... → x_T ≈ \\mathcal{N}(0,I)",
+          "narration": "The forward process systematically adds noise to data over many steps. Starting from a clean image, we progressively corrupt it until it becomes indistinguishable from random Gaussian noise."
+        },
+        {
+          "title": "Learning to Reverse",
+          "content": "A neural network learns to predict and remove the noise added at each timestep. Training minimizes the difference between predicted and actual noise.",
+          "visual": "equation",
+          "visualData": "L = \\mathbb{E}_{t,x_0,\\epsilon}[\\|\\epsilon - \\epsilon_\\theta(x_t, t)\\|^2]",
+          "narration": "We train a neural network to predict what noise was added at each step. By learning this, the model can reverse the diffusion process, gradually denoising pure noise into realistic samples."
+        },
+        {
+          "title": "Controlled Generation",
+          "content": "Classifier-free guidance steers generation toward desired conditions by interpolating between conditional and unconditional predictions with a guidance scale.",
+          "visual": "equation",
+          "visualData": "\\tilde{\\epsilon} = \\epsilon_{uncond} + s \\cdot (\\epsilon_{cond} - \\epsilon_{uncond})\n\ns = 1: normal\ns > 1: stronger condition\ns = 0: ignore condition",
+          "narration": "Classifier-free guidance controls generation by combining conditional and unconditional predictions. Higher guidance scales produce samples that more strongly match the condition, like a text prompt."
+        }
+      ],
+      "questions": [
+        {
+          "id": "diff-q1",
           "type": "multiple-choice",
-          "question": "Advantage of sparse attention?",
+          "question": "What does the neural network in a diffusion model learn to predict?",
           "options": [
-            "Higher accuracy",
-            "Reducing O(n²) to O(n√n) or O(n log n) for long sequences",
+            "The final generated image directly",
+            "The noise that was added at each timestep",
+            "The probability distribution of the data",
+            "The variance schedule parameters"
+          ],
+          "correct": 1,
+          "explanation": "The network learns to predict ε (epsilon), the noise added at each timestep. By predicting and subtracting this noise, the model can iteratively denoise random noise into realistic samples.",
+          "xp": 10
+        },
+        {
+          "id": "diff-q2",
+          "type": "multiple-choice",
+          "question": "What is the main advantage of DDIM over DDPM sampling?",
+          "options": [
+            "Better image quality",
+            "Faster sampling with fewer steps",
             "Easier training",
-            "Better gradients"
+            "Smaller model size"
           ],
           "correct": 1,
-          "explanation": "Sparse attention (Longformer) computes over relevant subsets, enabling long sequences.",
-          "xp": 20
+          "explanation": "DDIM uses a deterministic, non-Markovian sampling process that can skip many timesteps, generating samples in 10-50 steps instead of 1000+ required by DDPM while maintaining quality.",
+          "xp": 10
         },
         {
-          "id": "ai-a9",
+          "id": "diff-q3",
           "type": "multiple-choice",
-          "question": "Neural Architecture Search (NAS)?",
+          "question": "In classifier-free guidance, what does a guidance scale s > 1 accomplish?",
           "options": [
-            "Manual design",
-            "Automatically discovering optimal architectures using search algorithms or RL",
-            "Random architectures",
-            "Fixed templates"
+            "Speeds up sampling",
+            "Reduces model size",
+            "Strengthens adherence to the conditioning signal",
+            "Eliminates the need for conditioning"
           ],
-          "correct": 1,
-          "explanation": "NAS automates architecture design as optimization, though computationally expensive.",
-          "xp": 20
+          "correct": 2,
+          "explanation": "A guidance scale greater than 1 amplifies the difference between conditional and unconditional predictions, making generated samples more strongly aligned with the condition (e.g., text prompt).",
+          "xp": 10
         },
         {
-          "id": "ai-a10",
+          "id": "diff-q4",
           "type": "multiple-choice",
-          "question": "Gumbel-Softmax trick?",
+          "question": "What is the forward process in diffusion models?",
           "options": [
-            "Image generation",
-            "Making discrete sampling differentiable via continuous relaxation",
-            "Text preprocessing",
-            "Activation function"
+            "Training the neural network",
+            "A fixed process that gradually adds noise to data",
+            "Generating samples from noise",
+            "Computing the loss function"
           ],
           "correct": 1,
-          "explanation": "Gumbel-Softmax approximates discrete sampling with continuous differentiable operation.",
-          "xp": 20
+          "explanation": "The forward process is a fixed, predefined Markov chain that progressively adds Gaussian noise to data over T timesteps. It requires no learning and defines the corruption process to reverse.",
+          "xp": 10
         },
         {
-          "id": "ai-a11",
+          "id": "diff-q5",
           "type": "multiple-choice",
-          "question": "Meta-learning?",
+          "question": "How does the diffusion model training objective relate to denoising?",
           "options": [
-            "Learning metadata",
-            "Training models to quickly adapt to new tasks with few examples",
-            "Analyzing logs",
-            "Learning hyperparameters only"
+            "It minimizes classification error",
+            "It minimizes the difference between predicted and actual noise",
+            "It maximizes likelihood directly",
+            "It minimizes adversarial loss"
           ],
           "correct": 1,
-          "explanation": "Meta-learning (MAML) learns initialization for quick task adaptation (few-shot).",
-          "xp": 20
+          "explanation": "The simplified training objective ||ε - ε_θ(x_t, t)||² trains the model to accurately predict the noise added at each timestep, which is equivalent to denoising score matching.",
+          "xp": 10
+        }
+      ],
+      "resources": [
+        {
+          "title": "Denoising Diffusion Probabilistic Models (DDPM Paper)",
+          "url": "https://arxiv.org/abs/2006.11239"
         },
         {
-          "id": "ai-a12",
-          "type": "multiple-choice",
-          "question": "Diffusion models vs GANs challenge?",
-          "options": [
-            "Speed",
-            "Training stability and mode coverage - no mode collapse",
-            "Model size",
-            "Data requirements"
-          ],
-          "correct": 1,
-          "explanation": "Diffusion models: stable training, better coverage than GANs, but slower sampling.",
-          "xp": 20
+          "title": "Understanding Diffusion Models (Tutorial)",
+          "url": "https://arxiv.org/abs/2208.11970"
+        }
+      ]
+    },
+    {
+      "id": "llms",
+      "title": "Large Language Models",
+      "chapter": 6,
+      "difficulty": "advanced",
+      "study": {
+        "content": "**Large Language Models (LLMs)** like GPT-4, PaLM, and Claude demonstrate emergent abilities in reasoning, generation, and comprehension through massive scale. Built on transformer architecture, they're trained on trillions of tokens to predict next tokens, developing sophisticated language understanding.\n\nThe foundational training objective is **next-token prediction**: $$\\mathcal{L} = -\\sum_{t=1}^T \\log P(x_t | x_{<t}; \\theta)$$ where $x_{<t}$ represents all previous tokens. At scale, this simple objective leads to emergent capabilities. The model learns contextual representations through self-attention: $$h_t = \\text{Attention}(Q_t, K_{\\leq t}, V_{\\leq t})$$ with causal masking ensuring $h_t$ depends only on previous tokens.\n\n**Scaling laws** (Kaplan et al.) show performance improves predictably with model size $N$, dataset size $D$, and compute $C$: $$L(N) \\propto N^{-\\alpha}$$ Doubling model parameters yields consistent improvements, driving models from GPT-2 (1.5B parameters) to GPT-3 (175B) to GPT-4 (estimated 1T+).\n\nModern LLMs use **instruction tuning** and **RLHF (Reinforcement Learning from Human Feedback)**. Instruction tuning fine-tunes on task demonstrations. RLHF trains a reward model from human preferences, then optimizes the LLM using **PPO (Proximal Policy Optimization)**: $$\\mathcal{L}^{\\text{RLHF}} = \\mathbb{E}[r_\\phi(x,y)] - \\beta \\cdot D_{KL}[\\pi_\\theta \\| \\pi_{\\text{ref}}]$$ balancing reward maximization with staying close to the reference policy.\n\n**In-context learning** enables few-shot adaptation without parameter updates—models learn from examples in the prompt. **Chain-of-thought prompting** elicits reasoning by encouraging step-by-step explanations. Techniques like **retrieval-augmented generation (RAG)** ground responses in external knowledge. LLMs exhibit capabilities beyond simple text completion: mathematical reasoning, code generation, tool use, and multi-step planning, making them foundation models for diverse AI applications.",
+        "keyPoints": [
+          "LLMs use transformer architecture trained on next-token prediction at massive scale",
+          "Scaling laws show predictable improvement with model size, data, and compute",
+          "RLHF and instruction tuning align models with human preferences and task formats"
+        ],
+        "readingTimeMin": 7
+      },
+      "mindmap": "mindmap\n  root((LLMs))\n    Architecture\n      Transformer\n      Causal Masking\n      Positional Encoding\n    Training\n      Next-Token Prediction\n      Scaling Laws\n      Pretraining Corpus\n    Alignment\n      Instruction Tuning\n      RLHF\n      Human Feedback\n    Capabilities\n      In-Context Learning\n      Chain-of-Thought\n      Tool Use\n      Code Generation",
+      "slides": [
+        {
+          "title": "Next-Token Prediction",
+          "content": "LLMs are trained to predict the next token given all previous tokens. This simple objective, when applied at scale, leads to sophisticated language understanding and generation.",
+          "visual": "equation",
+          "visualData": "\\mathcal{L} = -\\sum_{t=1}^T \\log P(x_t | x_{<t})\n\n\"The cat sat on the ___\" → mat",
+          "narration": "The core training objective is predicting the next token. By learning patterns across trillions of tokens, models develop deep understanding of language structure, facts, and reasoning."
         },
         {
-          "id": "ai-a13",
-          "type": "multiple-choice",
-          "question": "Classifier-free guidance in diffusion?",
-          "options": [
-            "Removing classifiers",
-            "Controlling generation by training single model to be conditional and unconditional",
-            "Speeding inference",
-            "Data augmentation"
-          ],
-          "correct": 1,
-          "explanation": "Classifier-free guidance interpolates conditional/unconditional predictions for quality.",
-          "xp": 20
+          "title": "Scaling Laws",
+          "content": "Model performance improves predictably with scale. Doubling parameters, data, or compute yields consistent gains, motivating the trend toward ever-larger models.",
+          "visual": "equation",
+          "visualData": "Loss ∝ N^{-α}\n\nGPT-2: 1.5B params\nGPT-3: 175B params\nGPT-4: 1T+ params\n\nEach step: better performance",
+          "narration": "Scaling laws reveal that larger models consistently perform better. This predictable relationship has driven the evolution from billion to trillion parameter models, each showing improved capabilities."
         },
         {
-          "id": "ai-a14",
+          "title": "RLHF Alignment",
+          "content": "Reinforcement Learning from Human Feedback trains models to generate outputs humans prefer, balancing reward maximization with staying close to the base model.",
+          "visual": "equation",
+          "visualData": "\\mathcal{L} = \\mathbb{E}[r(x,y)] - \\beta \\cdot D_{KL}[\\pi_{\\theta} \\| \\pi_{ref}]\n\nreward - KL penalty",
+          "narration": "RLHF aligns model outputs with human values. A reward model learns from human preferences, then policy optimization improves responses while preventing deviation from the original model."
+        }
+      ],
+      "questions": [
+        {
+          "id": "llm-q1",
           "type": "multiple-choice",
-          "question": "Double descent phenomenon?",
+          "question": "What is the primary training objective for large language models?",
           "options": [
-            "Loss going up twice",
-            "Test error decreases, increases (classical), then decreases in overparameterized regime",
-            "Two-stage training",
-            "Gradient descent twice"
+            "Sentiment classification",
+            "Next-token prediction given previous context",
+            "Machine translation",
+            "Question answering"
           ],
           "correct": 1,
-          "explanation": "Double descent shows overparameterized models generalize well, challenging bias-variance tradeoff.",
-          "xp": 20
+          "explanation": "LLMs are trained using next-token prediction: given previous tokens, predict the next one. This self-supervised objective enables learning from massive unlabeled text corpora.",
+          "xp": 10
         },
         {
-          "id": "ai-a15",
+          "id": "llm-q2",
           "type": "multiple-choice",
-          "question": "Lottery ticket hypothesis?",
+          "question": "What do scaling laws suggest about LLM performance?",
           "options": [
-            "Random initialization works",
-            "Dense networks contain sparse subnetworks that can train to comparable accuracy",
-            "Pruning hurts",
-            "Larger is better"
+            "Performance plateaus after 1B parameters",
+            "Performance improves predictably with model size, data, and compute",
+            "Smaller models always outperform larger ones",
+            "Scaling has no consistent effect"
           ],
           "correct": 1,
-          "explanation": "Lottery ticket: successful training finds sparse subnetwork with favorable initialization.",
-          "xp": 20
+          "explanation": "Scaling laws show that loss decreases as a power law with model parameters, dataset size, and compute. This predictable relationship motivates training increasingly large models.",
+          "xp": 10
         },
         {
-          "id": "ai-a16",
+          "id": "llm-q3",
           "type": "multiple-choice",
-          "question": "Main innovation in ViT?",
+          "question": "What is the purpose of the KL divergence term in RLHF?",
           "options": [
-            "Using CNNs",
-            "Treating images as patch sequences and applying pure transformer",
-            "Using RNNs",
-            "Removing attention"
+            "To maximize reward",
+            "To prevent the model from deviating too far from the original policy",
+            "To speed up training",
+            "To reduce model size"
           ],
           "correct": 1,
-          "explanation": "ViT processes image patches with transformers, showing CNNs arent necessary for vision.",
-          "xp": 20
+          "explanation": "The KL divergence penalty D_KL[π_θ || π_ref] keeps the optimized policy close to the reference model, preventing over-optimization on the reward model which could lead to mode collapse or nonsensical outputs.",
+          "xp": 10
         },
         {
-          "id": "ai-a17",
+          "id": "llm-q4",
           "type": "multiple-choice",
-          "question": "Scaling laws in LLMs?",
+          "question": "What is in-context learning in LLMs?",
           "options": [
-            "Performance is random",
-            "Performance improves predictably with model/data/compute size following power laws",
-            "Bigger is worse",
-            "Size doesnt matter"
+            "Fine-tuning on new tasks",
+            "Learning from examples provided in the prompt without parameter updates",
+            "Training on larger datasets",
+            "Using external memory"
           ],
           "correct": 1,
-          "explanation": "Scaling laws show loss decreases predictably with scale, guiding size trade-offs.",
-          "xp": 20
+          "explanation": "In-context learning is the ability to adapt to new tasks from examples in the prompt alone, without gradient updates. The model learns patterns from the context window.",
+          "xp": 10
         },
         {
-          "id": "ai-a18",
+          "id": "llm-q5",
           "type": "multiple-choice",
-          "question": "Emergent behavior in large models?",
+          "question": "What does chain-of-thought prompting encourage?",
           "options": [
-            "Bugs",
-            "Abilities appearing suddenly at certain scales (few-shot, reasoning) not in smaller models",
-            "Training errors",
-            "Data leakage"
+            "Faster inference",
+            "Step-by-step reasoning in model outputs",
+            "Shorter responses",
+            "Higher temperature sampling"
           ],
           "correct": 1,
-          "explanation": "Emergent abilities like chain-of-thought appear unpredictably at scale, suggesting phase transitions.",
-          "xp": 20
+          "explanation": "Chain-of-thought prompting asks models to show their reasoning process step-by-step. This intermediate reasoning improves performance on complex tasks like math and logical reasoning.",
+          "xp": 10
+        }
+      ],
+      "resources": [
+        {
+          "title": "GPT-3 Paper (Brown et al.)",
+          "url": "https://arxiv.org/abs/2005.14165"
         },
         {
-          "id": "ai-a19",
-          "type": "multiple-choice",
-          "question": "Purpose of Flash Attention?",
-          "options": [
-            "Making lights blink",
-            "IO-aware attention reducing memory reads/writes, enabling longer contexts",
-            "Faster GPUs",
-            "New hardware"
-          ],
-          "correct": 1,
-          "explanation": "Flash Attention optimizes at hardware level by fusing operations, minimizing HBM access.",
-          "xp": 20
+          "title": "Scaling Laws for Neural Language Models",
+          "url": "https://arxiv.org/abs/2001.08361"
         },
         {
-          "id": "ai-a20",
-          "type": "multiple-choice",
-          "question": "Key principle behind World Models in RL?",
-          "options": [
-            "Model-free only",
-            "Learning internal model of environment dynamics to enable planning in latent space",
-            "Random exploration",
-            "Supervised only"
-          ],
-          "correct": 1,
-          "explanation": "World Models learn compressed environment dynamics, enabling policy training in imagination.",
-          "xp": 20
+          "title": "Training language models to follow instructions with human feedback",
+          "url": "https://arxiv.org/abs/2203.02155"
         }
       ]
     }
-  }
+  ]
 }

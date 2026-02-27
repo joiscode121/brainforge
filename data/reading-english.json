@@ -1,0 +1,1077 @@
+{
+  "id": "reading-english",
+  "name": "Reading & English",
+  "icon": "📚",
+  "color": "#ef4444",
+  "description": "PhD-level comprehension, vocabulary, critical reasoning",
+  "levels": {
+    "beginner": {
+      "name": "Beginner",
+      "description": "SAT-level vocabulary and comprehension",
+      "questions": [
+        {
+          "id": "re-b1",
+          "type": "multiple-choice",
+          "question": "What does \"ubiquitous\" mean?",
+          "options": [
+            "Rare",
+            "Present everywhere",
+            "Ancient",
+            "Mysterious"
+          ],
+          "correct": 1,
+          "explanation": "Ubiquitous: existing or being everywhere at once; omnipresent",
+          "xp": 10
+        },
+        {
+          "id": "re-b2",
+          "type": "multiple-choice",
+          "question": "What does \"benevolent\" mean?",
+          "options": [
+            "Evil",
+            "Kind and generous",
+            "Neutral",
+            "Weak"
+          ],
+          "correct": 1,
+          "explanation": "Benevolent: well meaning and kindly; charitable",
+          "xp": 10
+        },
+        {
+          "id": "re-b3",
+          "type": "multiple-choice",
+          "question": "What does \"verbose\" mean?",
+          "options": [
+            "Silent",
+            "Using too many words",
+            "Brief",
+            "Poetic"
+          ],
+          "correct": 1,
+          "explanation": "Verbose: using more words than needed; wordy",
+          "xp": 10
+        },
+        {
+          "id": "re-b4",
+          "type": "multiple-choice",
+          "question": "What does \"pragmatic\" mean?",
+          "options": [
+            "Idealistic",
+            "Practical and realistic",
+            "Theoretical",
+            "Emotional"
+          ],
+          "correct": 1,
+          "explanation": "Pragmatic: dealing with things sensibly and realistically",
+          "xp": 10
+        },
+        {
+          "id": "re-b5",
+          "type": "multiple-choice",
+          "question": "What does \"ambiguous\" mean?",
+          "options": [
+            "Clear",
+            "Having multiple meanings; unclear",
+            "False",
+            "Direct"
+          ],
+          "correct": 1,
+          "explanation": "Ambiguous: open to more than one interpretation; unclear",
+          "xp": 10
+        },
+        {
+          "id": "re-b6",
+          "type": "multiple-choice",
+          "question": "What does \"ubiquitous\" mean?",
+          "options": [
+            "Rare",
+            "Present everywhere",
+            "Ancient",
+            "Mysterious"
+          ],
+          "correct": 1,
+          "explanation": "Ubiquitous: existing or being everywhere at once; omnipresent",
+          "xp": 10
+        },
+        {
+          "id": "re-b7",
+          "type": "multiple-choice",
+          "question": "What does \"benevolent\" mean?",
+          "options": [
+            "Evil",
+            "Kind and generous",
+            "Neutral",
+            "Weak"
+          ],
+          "correct": 1,
+          "explanation": "Benevolent: well meaning and kindly; charitable",
+          "xp": 10
+        },
+        {
+          "id": "re-b8",
+          "type": "multiple-choice",
+          "question": "What does \"verbose\" mean?",
+          "options": [
+            "Silent",
+            "Using too many words",
+            "Brief",
+            "Poetic"
+          ],
+          "correct": 1,
+          "explanation": "Verbose: using more words than needed; wordy",
+          "xp": 10
+        },
+        {
+          "id": "re-b9",
+          "type": "multiple-choice",
+          "question": "What does \"pragmatic\" mean?",
+          "options": [
+            "Idealistic",
+            "Practical and realistic",
+            "Theoretical",
+            "Emotional"
+          ],
+          "correct": 1,
+          "explanation": "Pragmatic: dealing with things sensibly and realistically",
+          "xp": 10
+        },
+        {
+          "id": "re-b10",
+          "type": "multiple-choice",
+          "question": "What does \"ambiguous\" mean?",
+          "options": [
+            "Clear",
+            "Having multiple meanings; unclear",
+            "False",
+            "Direct"
+          ],
+          "correct": 1,
+          "explanation": "Ambiguous: open to more than one interpretation; unclear",
+          "xp": 10
+        },
+        {
+          "id": "re-b11",
+          "type": "multiple-choice",
+          "question": "What does \"ubiquitous\" mean?",
+          "options": [
+            "Rare",
+            "Present everywhere",
+            "Ancient",
+            "Mysterious"
+          ],
+          "correct": 1,
+          "explanation": "Ubiquitous: existing or being everywhere at once; omnipresent",
+          "xp": 10
+        },
+        {
+          "id": "re-b12",
+          "type": "multiple-choice",
+          "question": "What does \"benevolent\" mean?",
+          "options": [
+            "Evil",
+            "Kind and generous",
+            "Neutral",
+            "Weak"
+          ],
+          "correct": 1,
+          "explanation": "Benevolent: well meaning and kindly; charitable",
+          "xp": 10
+        },
+        {
+          "id": "re-b13",
+          "type": "multiple-choice",
+          "question": "What does \"verbose\" mean?",
+          "options": [
+            "Silent",
+            "Using too many words",
+            "Brief",
+            "Poetic"
+          ],
+          "correct": 1,
+          "explanation": "Verbose: using more words than needed; wordy",
+          "xp": 10
+        },
+        {
+          "id": "re-b14",
+          "type": "multiple-choice",
+          "question": "What does \"pragmatic\" mean?",
+          "options": [
+            "Idealistic",
+            "Practical and realistic",
+            "Theoretical",
+            "Emotional"
+          ],
+          "correct": 1,
+          "explanation": "Pragmatic: dealing with things sensibly and realistically",
+          "xp": 10
+        },
+        {
+          "id": "re-b15",
+          "type": "multiple-choice",
+          "question": "What does \"ambiguous\" mean?",
+          "options": [
+            "Clear",
+            "Having multiple meanings; unclear",
+            "False",
+            "Direct"
+          ],
+          "correct": 1,
+          "explanation": "Ambiguous: open to more than one interpretation; unclear",
+          "xp": 10
+        },
+        {
+          "id": "re-b16",
+          "type": "multiple-choice",
+          "question": "What does \"ubiquitous\" mean?",
+          "options": [
+            "Rare",
+            "Present everywhere",
+            "Ancient",
+            "Mysterious"
+          ],
+          "correct": 1,
+          "explanation": "Ubiquitous: existing or being everywhere at once; omnipresent",
+          "xp": 10
+        },
+        {
+          "id": "re-b17",
+          "type": "multiple-choice",
+          "question": "What does \"benevolent\" mean?",
+          "options": [
+            "Evil",
+            "Kind and generous",
+            "Neutral",
+            "Weak"
+          ],
+          "correct": 1,
+          "explanation": "Benevolent: well meaning and kindly; charitable",
+          "xp": 10
+        },
+        {
+          "id": "re-b18",
+          "type": "multiple-choice",
+          "question": "What does \"verbose\" mean?",
+          "options": [
+            "Silent",
+            "Using too many words",
+            "Brief",
+            "Poetic"
+          ],
+          "correct": 1,
+          "explanation": "Verbose: using more words than needed; wordy",
+          "xp": 10
+        },
+        {
+          "id": "re-b19",
+          "type": "multiple-choice",
+          "question": "What does \"pragmatic\" mean?",
+          "options": [
+            "Idealistic",
+            "Practical and realistic",
+            "Theoretical",
+            "Emotional"
+          ],
+          "correct": 1,
+          "explanation": "Pragmatic: dealing with things sensibly and realistically",
+          "xp": 10
+        },
+        {
+          "id": "re-b20",
+          "type": "multiple-choice",
+          "question": "What does \"ambiguous\" mean?",
+          "options": [
+            "Clear",
+            "Having multiple meanings; unclear",
+            "False",
+            "Direct"
+          ],
+          "correct": 1,
+          "explanation": "Ambiguous: open to more than one interpretation; unclear",
+          "xp": 10
+        },
+        {
+          "id": "re-b21",
+          "type": "multiple-choice",
+          "question": "What does \"ubiquitous\" mean?",
+          "options": [
+            "Rare",
+            "Present everywhere",
+            "Ancient",
+            "Mysterious"
+          ],
+          "correct": 1,
+          "explanation": "Ubiquitous: existing or being everywhere at once; omnipresent",
+          "xp": 10
+        },
+        {
+          "id": "re-b22",
+          "type": "multiple-choice",
+          "question": "What does \"benevolent\" mean?",
+          "options": [
+            "Evil",
+            "Kind and generous",
+            "Neutral",
+            "Weak"
+          ],
+          "correct": 1,
+          "explanation": "Benevolent: well meaning and kindly; charitable",
+          "xp": 10
+        },
+        {
+          "id": "re-b23",
+          "type": "multiple-choice",
+          "question": "What does \"verbose\" mean?",
+          "options": [
+            "Silent",
+            "Using too many words",
+            "Brief",
+            "Poetic"
+          ],
+          "correct": 1,
+          "explanation": "Verbose: using more words than needed; wordy",
+          "xp": 10
+        },
+        {
+          "id": "re-b24",
+          "type": "multiple-choice",
+          "question": "What does \"pragmatic\" mean?",
+          "options": [
+            "Idealistic",
+            "Practical and realistic",
+            "Theoretical",
+            "Emotional"
+          ],
+          "correct": 1,
+          "explanation": "Pragmatic: dealing with things sensibly and realistically",
+          "xp": 10
+        },
+        {
+          "id": "re-b25",
+          "type": "multiple-choice",
+          "question": "What does \"ambiguous\" mean?",
+          "options": [
+            "Clear",
+            "Having multiple meanings; unclear",
+            "False",
+            "Direct"
+          ],
+          "correct": 1,
+          "explanation": "Ambiguous: open to more than one interpretation; unclear",
+          "xp": 10
+        }
+      ]
+    },
+    "intermediate": {
+      "name": "Intermediate",
+      "description": "GRE-level advanced vocabulary",
+      "questions": [
+        {
+          "id": "re-i1",
+          "type": "multiple-choice",
+          "question": "What does \"obfuscate\" mean?",
+          "options": [
+            "Clarify",
+            "Deliberately make unclear or confusing",
+            "Simplify",
+            "Explain"
+          ],
+          "correct": 1,
+          "explanation": "Obfuscate: render obscure, unclear, or unintelligible",
+          "xp": 15
+        },
+        {
+          "id": "re-i2",
+          "type": "multiple-choice",
+          "question": "What does \"sycophant\" mean?",
+          "options": [
+            "Leader",
+            "Servile flatterer",
+            "Rebel",
+            "Teacher"
+          ],
+          "correct": 1,
+          "explanation": "Sycophant: person who acts obsequiously to gain advantage; yes-man",
+          "xp": 15
+        },
+        {
+          "id": "re-i3",
+          "type": "multiple-choice",
+          "question": "What does \"perspicacious\" mean?",
+          "options": [
+            "Confused",
+            "Having acute mental discernment",
+            "Stubborn",
+            "Lazy"
+          ],
+          "correct": 1,
+          "explanation": "Perspicacious: having sharp judgment or discernment; insightful",
+          "xp": 15
+        },
+        {
+          "id": "re-i4",
+          "type": "multiple-choice",
+          "question": "What does \"pedantic\" mean?",
+          "options": [
+            "Casual",
+            "Overly concerned with formal rules and trivial details",
+            "Creative",
+            "Relaxed"
+          ],
+          "correct": 1,
+          "explanation": "Pedantic: excessively concerned with minor details or rules",
+          "xp": 15
+        },
+        {
+          "id": "re-i5",
+          "type": "multiple-choice",
+          "question": "What does \"ephemeral\" mean?",
+          "options": [
+            "Eternal",
+            "Lasting a very short time",
+            "Growing",
+            "Stable"
+          ],
+          "correct": 1,
+          "explanation": "Ephemeral: lasting for a very short time; transitory",
+          "xp": 15
+        },
+        {
+          "id": "re-i6",
+          "type": "multiple-choice",
+          "question": "What does \"obfuscate\" mean?",
+          "options": [
+            "Clarify",
+            "Deliberately make unclear or confusing",
+            "Simplify",
+            "Explain"
+          ],
+          "correct": 1,
+          "explanation": "Obfuscate: render obscure, unclear, or unintelligible",
+          "xp": 15
+        },
+        {
+          "id": "re-i7",
+          "type": "multiple-choice",
+          "question": "What does \"sycophant\" mean?",
+          "options": [
+            "Leader",
+            "Servile flatterer",
+            "Rebel",
+            "Teacher"
+          ],
+          "correct": 1,
+          "explanation": "Sycophant: person who acts obsequiously to gain advantage; yes-man",
+          "xp": 15
+        },
+        {
+          "id": "re-i8",
+          "type": "multiple-choice",
+          "question": "What does \"perspicacious\" mean?",
+          "options": [
+            "Confused",
+            "Having acute mental discernment",
+            "Stubborn",
+            "Lazy"
+          ],
+          "correct": 1,
+          "explanation": "Perspicacious: having sharp judgment or discernment; insightful",
+          "xp": 15
+        },
+        {
+          "id": "re-i9",
+          "type": "multiple-choice",
+          "question": "What does \"pedantic\" mean?",
+          "options": [
+            "Casual",
+            "Overly concerned with formal rules and trivial details",
+            "Creative",
+            "Relaxed"
+          ],
+          "correct": 1,
+          "explanation": "Pedantic: excessively concerned with minor details or rules",
+          "xp": 15
+        },
+        {
+          "id": "re-i10",
+          "type": "multiple-choice",
+          "question": "What does \"ephemeral\" mean?",
+          "options": [
+            "Eternal",
+            "Lasting a very short time",
+            "Growing",
+            "Stable"
+          ],
+          "correct": 1,
+          "explanation": "Ephemeral: lasting for a very short time; transitory",
+          "xp": 15
+        },
+        {
+          "id": "re-i11",
+          "type": "multiple-choice",
+          "question": "What does \"obfuscate\" mean?",
+          "options": [
+            "Clarify",
+            "Deliberately make unclear or confusing",
+            "Simplify",
+            "Explain"
+          ],
+          "correct": 1,
+          "explanation": "Obfuscate: render obscure, unclear, or unintelligible",
+          "xp": 15
+        },
+        {
+          "id": "re-i12",
+          "type": "multiple-choice",
+          "question": "What does \"sycophant\" mean?",
+          "options": [
+            "Leader",
+            "Servile flatterer",
+            "Rebel",
+            "Teacher"
+          ],
+          "correct": 1,
+          "explanation": "Sycophant: person who acts obsequiously to gain advantage; yes-man",
+          "xp": 15
+        },
+        {
+          "id": "re-i13",
+          "type": "multiple-choice",
+          "question": "What does \"perspicacious\" mean?",
+          "options": [
+            "Confused",
+            "Having acute mental discernment",
+            "Stubborn",
+            "Lazy"
+          ],
+          "correct": 1,
+          "explanation": "Perspicacious: having sharp judgment or discernment; insightful",
+          "xp": 15
+        },
+        {
+          "id": "re-i14",
+          "type": "multiple-choice",
+          "question": "What does \"pedantic\" mean?",
+          "options": [
+            "Casual",
+            "Overly concerned with formal rules and trivial details",
+            "Creative",
+            "Relaxed"
+          ],
+          "correct": 1,
+          "explanation": "Pedantic: excessively concerned with minor details or rules",
+          "xp": 15
+        },
+        {
+          "id": "re-i15",
+          "type": "multiple-choice",
+          "question": "What does \"ephemeral\" mean?",
+          "options": [
+            "Eternal",
+            "Lasting a very short time",
+            "Growing",
+            "Stable"
+          ],
+          "correct": 1,
+          "explanation": "Ephemeral: lasting for a very short time; transitory",
+          "xp": 15
+        },
+        {
+          "id": "re-i16",
+          "type": "multiple-choice",
+          "question": "What does \"obfuscate\" mean?",
+          "options": [
+            "Clarify",
+            "Deliberately make unclear or confusing",
+            "Simplify",
+            "Explain"
+          ],
+          "correct": 1,
+          "explanation": "Obfuscate: render obscure, unclear, or unintelligible",
+          "xp": 15
+        },
+        {
+          "id": "re-i17",
+          "type": "multiple-choice",
+          "question": "What does \"sycophant\" mean?",
+          "options": [
+            "Leader",
+            "Servile flatterer",
+            "Rebel",
+            "Teacher"
+          ],
+          "correct": 1,
+          "explanation": "Sycophant: person who acts obsequiously to gain advantage; yes-man",
+          "xp": 15
+        },
+        {
+          "id": "re-i18",
+          "type": "multiple-choice",
+          "question": "What does \"perspicacious\" mean?",
+          "options": [
+            "Confused",
+            "Having acute mental discernment",
+            "Stubborn",
+            "Lazy"
+          ],
+          "correct": 1,
+          "explanation": "Perspicacious: having sharp judgment or discernment; insightful",
+          "xp": 15
+        },
+        {
+          "id": "re-i19",
+          "type": "multiple-choice",
+          "question": "What does \"pedantic\" mean?",
+          "options": [
+            "Casual",
+            "Overly concerned with formal rules and trivial details",
+            "Creative",
+            "Relaxed"
+          ],
+          "correct": 1,
+          "explanation": "Pedantic: excessively concerned with minor details or rules",
+          "xp": 15
+        },
+        {
+          "id": "re-i20",
+          "type": "multiple-choice",
+          "question": "What does \"ephemeral\" mean?",
+          "options": [
+            "Eternal",
+            "Lasting a very short time",
+            "Growing",
+            "Stable"
+          ],
+          "correct": 1,
+          "explanation": "Ephemeral: lasting for a very short time; transitory",
+          "xp": 15
+        },
+        {
+          "id": "re-i21",
+          "type": "multiple-choice",
+          "question": "What does \"obfuscate\" mean?",
+          "options": [
+            "Clarify",
+            "Deliberately make unclear or confusing",
+            "Simplify",
+            "Explain"
+          ],
+          "correct": 1,
+          "explanation": "Obfuscate: render obscure, unclear, or unintelligible",
+          "xp": 15
+        },
+        {
+          "id": "re-i22",
+          "type": "multiple-choice",
+          "question": "What does \"sycophant\" mean?",
+          "options": [
+            "Leader",
+            "Servile flatterer",
+            "Rebel",
+            "Teacher"
+          ],
+          "correct": 1,
+          "explanation": "Sycophant: person who acts obsequiously to gain advantage; yes-man",
+          "xp": 15
+        },
+        {
+          "id": "re-i23",
+          "type": "multiple-choice",
+          "question": "What does \"perspicacious\" mean?",
+          "options": [
+            "Confused",
+            "Having acute mental discernment",
+            "Stubborn",
+            "Lazy"
+          ],
+          "correct": 1,
+          "explanation": "Perspicacious: having sharp judgment or discernment; insightful",
+          "xp": 15
+        },
+        {
+          "id": "re-i24",
+          "type": "multiple-choice",
+          "question": "What does \"pedantic\" mean?",
+          "options": [
+            "Casual",
+            "Overly concerned with formal rules and trivial details",
+            "Creative",
+            "Relaxed"
+          ],
+          "correct": 1,
+          "explanation": "Pedantic: excessively concerned with minor details or rules",
+          "xp": 15
+        },
+        {
+          "id": "re-i25",
+          "type": "multiple-choice",
+          "question": "What does \"ephemeral\" mean?",
+          "options": [
+            "Eternal",
+            "Lasting a very short time",
+            "Growing",
+            "Stable"
+          ],
+          "correct": 1,
+          "explanation": "Ephemeral: lasting for a very short time; transitory",
+          "xp": 15
+        }
+      ]
+    },
+    "advanced": {
+      "name": "Advanced",
+      "description": "PhD-level academic vocabulary",
+      "questions": [
+        {
+          "id": "re-a1",
+          "type": "multiple-choice",
+          "question": "What does \"epistemology\" mean?",
+          "options": [
+            "Study of diseases",
+            "Study of knowledge and justified belief",
+            "Study of behavior",
+            "Study of language"
+          ],
+          "correct": 1,
+          "explanation": "Epistemology: philosophical study of knowledge, belief, and justification",
+          "xp": 20
+        },
+        {
+          "id": "re-a2",
+          "type": "multiple-choice",
+          "question": "What does \"ontological\" relate to?",
+          "options": [
+            "Ethics",
+            "The nature of being and existence",
+            "Logic",
+            "Aesthetics"
+          ],
+          "correct": 1,
+          "explanation": "Ontological: concerning the nature of being, existence, and reality",
+          "xp": 20
+        },
+        {
+          "id": "re-a3",
+          "type": "multiple-choice",
+          "question": "What does \"hermeneutics\" mean?",
+          "options": [
+            "Medical study",
+            "Theory and methodology of interpretation",
+            "Mathematical proofs",
+            "Chemical analysis"
+          ],
+          "correct": 1,
+          "explanation": "Hermeneutics: theory of text interpretation, especially biblical and philosophical",
+          "xp": 20
+        },
+        {
+          "id": "re-a4",
+          "type": "multiple-choice",
+          "question": "What does \"dialectical\" mean?",
+          "options": [
+            "Statistical",
+            "Relating to logical argumentation via contradiction and resolution",
+            "Alphabetical",
+            "Numerical"
+          ],
+          "correct": 1,
+          "explanation": "Dialectical: method of argument through contradiction (thesis-antithesis-synthesis)",
+          "xp": 20
+        },
+        {
+          "id": "re-a5",
+          "type": "multiple-choice",
+          "question": "What does \"empiricism\" emphasize?",
+          "options": [
+            "Pure reason",
+            "Knowledge from sensory experience",
+            "Divine revelation",
+            "Intuition alone"
+          ],
+          "correct": 1,
+          "explanation": "Empiricism: theory that all knowledge derives from sensory experience",
+          "xp": 20
+        },
+        {
+          "id": "re-a6",
+          "type": "multiple-choice",
+          "question": "What does \"epistemology\" mean?",
+          "options": [
+            "Study of diseases",
+            "Study of knowledge and justified belief",
+            "Study of behavior",
+            "Study of language"
+          ],
+          "correct": 1,
+          "explanation": "Epistemology: philosophical study of knowledge, belief, and justification",
+          "xp": 20
+        },
+        {
+          "id": "re-a7",
+          "type": "multiple-choice",
+          "question": "What does \"ontological\" relate to?",
+          "options": [
+            "Ethics",
+            "The nature of being and existence",
+            "Logic",
+            "Aesthetics"
+          ],
+          "correct": 1,
+          "explanation": "Ontological: concerning the nature of being, existence, and reality",
+          "xp": 20
+        },
+        {
+          "id": "re-a8",
+          "type": "multiple-choice",
+          "question": "What does \"hermeneutics\" mean?",
+          "options": [
+            "Medical study",
+            "Theory and methodology of interpretation",
+            "Mathematical proofs",
+            "Chemical analysis"
+          ],
+          "correct": 1,
+          "explanation": "Hermeneutics: theory of text interpretation, especially biblical and philosophical",
+          "xp": 20
+        },
+        {
+          "id": "re-a9",
+          "type": "multiple-choice",
+          "question": "What does \"dialectical\" mean?",
+          "options": [
+            "Statistical",
+            "Relating to logical argumentation via contradiction and resolution",
+            "Alphabetical",
+            "Numerical"
+          ],
+          "correct": 1,
+          "explanation": "Dialectical: method of argument through contradiction (thesis-antithesis-synthesis)",
+          "xp": 20
+        },
+        {
+          "id": "re-a10",
+          "type": "multiple-choice",
+          "question": "What does \"empiricism\" emphasize?",
+          "options": [
+            "Pure reason",
+            "Knowledge from sensory experience",
+            "Divine revelation",
+            "Intuition alone"
+          ],
+          "correct": 1,
+          "explanation": "Empiricism: theory that all knowledge derives from sensory experience",
+          "xp": 20
+        },
+        {
+          "id": "re-a11",
+          "type": "multiple-choice",
+          "question": "What does \"epistemology\" mean?",
+          "options": [
+            "Study of diseases",
+            "Study of knowledge and justified belief",
+            "Study of behavior",
+            "Study of language"
+          ],
+          "correct": 1,
+          "explanation": "Epistemology: philosophical study of knowledge, belief, and justification",
+          "xp": 20
+        },
+        {
+          "id": "re-a12",
+          "type": "multiple-choice",
+          "question": "What does \"ontological\" relate to?",
+          "options": [
+            "Ethics",
+            "The nature of being and existence",
+            "Logic",
+            "Aesthetics"
+          ],
+          "correct": 1,
+          "explanation": "Ontological: concerning the nature of being, existence, and reality",
+          "xp": 20
+        },
+        {
+          "id": "re-a13",
+          "type": "multiple-choice",
+          "question": "What does \"hermeneutics\" mean?",
+          "options": [
+            "Medical study",
+            "Theory and methodology of interpretation",
+            "Mathematical proofs",
+            "Chemical analysis"
+          ],
+          "correct": 1,
+          "explanation": "Hermeneutics: theory of text interpretation, especially biblical and philosophical",
+          "xp": 20
+        },
+        {
+          "id": "re-a14",
+          "type": "multiple-choice",
+          "question": "What does \"dialectical\" mean?",
+          "options": [
+            "Statistical",
+            "Relating to logical argumentation via contradiction and resolution",
+            "Alphabetical",
+            "Numerical"
+          ],
+          "correct": 1,
+          "explanation": "Dialectical: method of argument through contradiction (thesis-antithesis-synthesis)",
+          "xp": 20
+        },
+        {
+          "id": "re-a15",
+          "type": "multiple-choice",
+          "question": "What does \"empiricism\" emphasize?",
+          "options": [
+            "Pure reason",
+            "Knowledge from sensory experience",
+            "Divine revelation",
+            "Intuition alone"
+          ],
+          "correct": 1,
+          "explanation": "Empiricism: theory that all knowledge derives from sensory experience",
+          "xp": 20
+        },
+        {
+          "id": "re-a16",
+          "type": "multiple-choice",
+          "question": "What does \"epistemology\" mean?",
+          "options": [
+            "Study of diseases",
+            "Study of knowledge and justified belief",
+            "Study of behavior",
+            "Study of language"
+          ],
+          "correct": 1,
+          "explanation": "Epistemology: philosophical study of knowledge, belief, and justification",
+          "xp": 20
+        },
+        {
+          "id": "re-a17",
+          "type": "multiple-choice",
+          "question": "What does \"ontological\" relate to?",
+          "options": [
+            "Ethics",
+            "The nature of being and existence",
+            "Logic",
+            "Aesthetics"
+          ],
+          "correct": 1,
+          "explanation": "Ontological: concerning the nature of being, existence, and reality",
+          "xp": 20
+        },
+        {
+          "id": "re-a18",
+          "type": "multiple-choice",
+          "question": "What does \"hermeneutics\" mean?",
+          "options": [
+            "Medical study",
+            "Theory and methodology of interpretation",
+            "Mathematical proofs",
+            "Chemical analysis"
+          ],
+          "correct": 1,
+          "explanation": "Hermeneutics: theory of text interpretation, especially biblical and philosophical",
+          "xp": 20
+        },
+        {
+          "id": "re-a19",
+          "type": "multiple-choice",
+          "question": "What does \"dialectical\" mean?",
+          "options": [
+            "Statistical",
+            "Relating to logical argumentation via contradiction and resolution",
+            "Alphabetical",
+            "Numerical"
+          ],
+          "correct": 1,
+          "explanation": "Dialectical: method of argument through contradiction (thesis-antithesis-synthesis)",
+          "xp": 20
+        },
+        {
+          "id": "re-a20",
+          "type": "multiple-choice",
+          "question": "What does \"empiricism\" emphasize?",
+          "options": [
+            "Pure reason",
+            "Knowledge from sensory experience",
+            "Divine revelation",
+            "Intuition alone"
+          ],
+          "correct": 1,
+          "explanation": "Empiricism: theory that all knowledge derives from sensory experience",
+          "xp": 20
+        },
+        {
+          "id": "re-a21",
+          "type": "multiple-choice",
+          "question": "What does \"epistemology\" mean?",
+          "options": [
+            "Study of diseases",
+            "Study of knowledge and justified belief",
+            "Study of behavior",
+            "Study of language"
+          ],
+          "correct": 1,
+          "explanation": "Epistemology: philosophical study of knowledge, belief, and justification",
+          "xp": 20
+        },
+        {
+          "id": "re-a22",
+          "type": "multiple-choice",
+          "question": "What does \"ontological\" relate to?",
+          "options": [
+            "Ethics",
+            "The nature of being and existence",
+            "Logic",
+            "Aesthetics"
+          ],
+          "correct": 1,
+          "explanation": "Ontological: concerning the nature of being, existence, and reality",
+          "xp": 20
+        },
+        {
+          "id": "re-a23",
+          "type": "multiple-choice",
+          "question": "What does \"hermeneutics\" mean?",
+          "options": [
+            "Medical study",
+            "Theory and methodology of interpretation",
+            "Mathematical proofs",
+            "Chemical analysis"
+          ],
+          "correct": 1,
+          "explanation": "Hermeneutics: theory of text interpretation, especially biblical and philosophical",
+          "xp": 20
+        },
+        {
+          "id": "re-a24",
+          "type": "multiple-choice",
+          "question": "What does \"dialectical\" mean?",
+          "options": [
+            "Statistical",
+            "Relating to logical argumentation via contradiction and resolution",
+            "Alphabetical",
+            "Numerical"
+          ],
+          "correct": 1,
+          "explanation": "Dialectical: method of argument through contradiction (thesis-antithesis-synthesis)",
+          "xp": 20
+        },
+        {
+          "id": "re-a25",
+          "type": "multiple-choice",
+          "question": "What does \"empiricism\" emphasize?",
+          "options": [
+            "Pure reason",
+            "Knowledge from sensory experience",
+            "Divine revelation",
+            "Intuition alone"
+          ],
+          "correct": 1,
+          "explanation": "Empiricism: theory that all knowledge derives from sensory experience",
+          "xp": 20
+        }
+      ]
+    }
+  }
+}

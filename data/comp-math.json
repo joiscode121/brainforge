@@ -1,0 +1,567 @@
+{
+  "id": "comp-math",
+  "name": "Competitive Math",
+  "icon": "⚡",
+  "color": "#f59e0b",
+  "description": "TMSCA, Number Sense, speed drills, mental math shortcuts",
+  "levels": {
+    "beginner": {
+      "name": "Beginner",
+      "description": "Basic arithmetic and speed drills",
+      "questions": [
+        {
+          "id": "cm-b1",
+          "type": "text-input",
+          "question": "What is 17 × 13?",
+          "answer": "221",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b2",
+          "type": "text-input",
+          "question": "What is 23 + 47 + 19?",
+          "answer": "89",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b3",
+          "type": "text-input",
+          "question": "What is 144 ÷ 12?",
+          "answer": "12",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b4",
+          "type": "text-input",
+          "question": "What is 15²?",
+          "answer": "225",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b5",
+          "type": "text-input",
+          "question": "What is 200 - 87?",
+          "answer": "113",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b6",
+          "type": "text-input",
+          "question": "What is 17 × 13?",
+          "answer": "221",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b7",
+          "type": "text-input",
+          "question": "What is 23 + 47 + 19?",
+          "answer": "89",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b8",
+          "type": "text-input",
+          "question": "What is 144 ÷ 12?",
+          "answer": "12",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b9",
+          "type": "text-input",
+          "question": "What is 15²?",
+          "answer": "225",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b10",
+          "type": "text-input",
+          "question": "What is 200 - 87?",
+          "answer": "113",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b11",
+          "type": "text-input",
+          "question": "What is 17 × 13?",
+          "answer": "221",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b12",
+          "type": "text-input",
+          "question": "What is 23 + 47 + 19?",
+          "answer": "89",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b13",
+          "type": "text-input",
+          "question": "What is 144 ÷ 12?",
+          "answer": "12",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b14",
+          "type": "text-input",
+          "question": "What is 15²?",
+          "answer": "225",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b15",
+          "type": "text-input",
+          "question": "What is 200 - 87?",
+          "answer": "113",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b16",
+          "type": "text-input",
+          "question": "What is 17 × 13?",
+          "answer": "221",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b17",
+          "type": "text-input",
+          "question": "What is 23 + 47 + 19?",
+          "answer": "89",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b18",
+          "type": "text-input",
+          "question": "What is 144 ÷ 12?",
+          "answer": "12",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b19",
+          "type": "text-input",
+          "question": "What is 15²?",
+          "answer": "225",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        },
+        {
+          "id": "cm-b20",
+          "type": "text-input",
+          "question": "What is 200 - 87?",
+          "answer": "113",
+          "explanation": "Practice mental math speed for Number Sense competitions.",
+          "xp": 10,
+          "timeLimit": 15
+        }
+      ]
+    },
+    "intermediate": {
+      "name": "Intermediate",
+      "description": "Multi-digit speed calculations",
+      "questions": [
+        {
+          "id": "cm-i1",
+          "type": "text-input",
+          "question": "What is 47 × 53?",
+          "answer": "2491",
+          "explanation": "Use (50-3)(50+3) = 2500 - 9 = 2491",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i2",
+          "type": "text-input",
+          "question": "What is √(1296)?",
+          "answer": "36",
+          "explanation": "Perfect square: 36 × 36 = 1296",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i3",
+          "type": "text-input",
+          "question": "What is 2⁸?",
+          "answer": "256",
+          "explanation": "Powers of 2: double repeatedly",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i4",
+          "type": "text-input",
+          "question": "What is 35²?",
+          "answer": "1225",
+          "explanation": "Use (30+5)² = 900 + 300 + 25 = 1225",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i5",
+          "type": "text-input",
+          "question": "What is 47 × 53?",
+          "answer": "2491",
+          "explanation": "Use (50-3)(50+3) = 2500 - 9 = 2491",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i6",
+          "type": "text-input",
+          "question": "What is √(1296)?",
+          "answer": "36",
+          "explanation": "Perfect square: 36 × 36 = 1296",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i7",
+          "type": "text-input",
+          "question": "What is 2⁸?",
+          "answer": "256",
+          "explanation": "Powers of 2: double repeatedly",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i8",
+          "type": "text-input",
+          "question": "What is 35²?",
+          "answer": "1225",
+          "explanation": "Use (30+5)² = 900 + 300 + 25 = 1225",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i9",
+          "type": "text-input",
+          "question": "What is 47 × 53?",
+          "answer": "2491",
+          "explanation": "Use (50-3)(50+3) = 2500 - 9 = 2491",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i10",
+          "type": "text-input",
+          "question": "What is √(1296)?",
+          "answer": "36",
+          "explanation": "Perfect square: 36 × 36 = 1296",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i11",
+          "type": "text-input",
+          "question": "What is 2⁸?",
+          "answer": "256",
+          "explanation": "Powers of 2: double repeatedly",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i12",
+          "type": "text-input",
+          "question": "What is 35²?",
+          "answer": "1225",
+          "explanation": "Use (30+5)² = 900 + 300 + 25 = 1225",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i13",
+          "type": "text-input",
+          "question": "What is 47 × 53?",
+          "answer": "2491",
+          "explanation": "Use (50-3)(50+3) = 2500 - 9 = 2491",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i14",
+          "type": "text-input",
+          "question": "What is √(1296)?",
+          "answer": "36",
+          "explanation": "Perfect square: 36 × 36 = 1296",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i15",
+          "type": "text-input",
+          "question": "What is 2⁸?",
+          "answer": "256",
+          "explanation": "Powers of 2: double repeatedly",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i16",
+          "type": "text-input",
+          "question": "What is 35²?",
+          "answer": "1225",
+          "explanation": "Use (30+5)² = 900 + 300 + 25 = 1225",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i17",
+          "type": "text-input",
+          "question": "What is 47 × 53?",
+          "answer": "2491",
+          "explanation": "Use (50-3)(50+3) = 2500 - 9 = 2491",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i18",
+          "type": "text-input",
+          "question": "What is √(1296)?",
+          "answer": "36",
+          "explanation": "Perfect square: 36 × 36 = 1296",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i19",
+          "type": "text-input",
+          "question": "What is 2⁸?",
+          "answer": "256",
+          "explanation": "Powers of 2: double repeatedly",
+          "xp": 15,
+          "timeLimit": 20
+        },
+        {
+          "id": "cm-i20",
+          "type": "text-input",
+          "question": "What is 35²?",
+          "answer": "1225",
+          "explanation": "Use (30+5)² = 900 + 300 + 25 = 1225",
+          "xp": 15,
+          "timeLimit": 20
+        }
+      ]
+    },
+    "advanced": {
+      "name": "Advanced",
+      "description": "Competition-level tricks and shortcuts",
+      "questions": [
+        {
+          "id": "cm-a1",
+          "type": "text-input",
+          "question": "What is 125 × 88?",
+          "answer": "11000",
+          "explanation": "125 × 88 = 125 × 8 × 11 = 1000 × 11",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a2",
+          "type": "text-input",
+          "question": "What is 1/7 as decimal (first 6 digits)?",
+          "answer": "0.142857",
+          "explanation": "1/7 = 0.142857... (repeating)",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a3",
+          "type": "text-input",
+          "question": "Find GCD(252, 198)",
+          "answer": "18",
+          "explanation": "Use Euclidean algorithm",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a4",
+          "type": "text-input",
+          "question": "What is 999²?",
+          "answer": "998001",
+          "explanation": "999² = (1000-1)² = 1000000 - 2000 + 1 = 998001",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a5",
+          "type": "text-input",
+          "question": "What is 125 × 88?",
+          "answer": "11000",
+          "explanation": "125 × 88 = 125 × 8 × 11 = 1000 × 11",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a6",
+          "type": "text-input",
+          "question": "What is 1/7 as decimal (first 6 digits)?",
+          "answer": "0.142857",
+          "explanation": "1/7 = 0.142857... (repeating)",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a7",
+          "type": "text-input",
+          "question": "Find GCD(252, 198)",
+          "answer": "18",
+          "explanation": "Use Euclidean algorithm",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a8",
+          "type": "text-input",
+          "question": "What is 999²?",
+          "answer": "998001",
+          "explanation": "999² = (1000-1)² = 1000000 - 2000 + 1 = 998001",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a9",
+          "type": "text-input",
+          "question": "What is 125 × 88?",
+          "answer": "11000",
+          "explanation": "125 × 88 = 125 × 8 × 11 = 1000 × 11",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a10",
+          "type": "text-input",
+          "question": "What is 1/7 as decimal (first 6 digits)?",
+          "answer": "0.142857",
+          "explanation": "1/7 = 0.142857... (repeating)",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a11",
+          "type": "text-input",
+          "question": "Find GCD(252, 198)",
+          "answer": "18",
+          "explanation": "Use Euclidean algorithm",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a12",
+          "type": "text-input",
+          "question": "What is 999²?",
+          "answer": "998001",
+          "explanation": "999² = (1000-1)² = 1000000 - 2000 + 1 = 998001",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a13",
+          "type": "text-input",
+          "question": "What is 125 × 88?",
+          "answer": "11000",
+          "explanation": "125 × 88 = 125 × 8 × 11 = 1000 × 11",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a14",
+          "type": "text-input",
+          "question": "What is 1/7 as decimal (first 6 digits)?",
+          "answer": "0.142857",
+          "explanation": "1/7 = 0.142857... (repeating)",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a15",
+          "type": "text-input",
+          "question": "Find GCD(252, 198)",
+          "answer": "18",
+          "explanation": "Use Euclidean algorithm",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a16",
+          "type": "text-input",
+          "question": "What is 999²?",
+          "answer": "998001",
+          "explanation": "999² = (1000-1)² = 1000000 - 2000 + 1 = 998001",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a17",
+          "type": "text-input",
+          "question": "What is 125 × 88?",
+          "answer": "11000",
+          "explanation": "125 × 88 = 125 × 8 × 11 = 1000 × 11",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a18",
+          "type": "text-input",
+          "question": "What is 1/7 as decimal (first 6 digits)?",
+          "answer": "0.142857",
+          "explanation": "1/7 = 0.142857... (repeating)",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a19",
+          "type": "text-input",
+          "question": "Find GCD(252, 198)",
+          "answer": "18",
+          "explanation": "Use Euclidean algorithm",
+          "xp": 20,
+          "timeLimit": 30
+        },
+        {
+          "id": "cm-a20",
+          "type": "text-input",
+          "question": "What is 999²?",
+          "answer": "998001",
+          "explanation": "999² = (1000-1)² = 1000000 - 2000 + 1 = 998001",
+          "xp": 20,
+          "timeLimit": 30
+        }
+      ]
+    }
+  }
+}

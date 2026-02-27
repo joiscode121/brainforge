@@ -1,0 +1,867 @@
+{
+  "id": "stem",
+  "name": "STEM Foundations",
+  "icon": "🔬",
+  "color": "#10b981",
+  "description": "Physics, engineering, chemistry, applied mathematics",
+  "levels": {
+    "beginner": {
+      "name": "Beginner",
+      "description": "Basic physics and engineering concepts",
+      "questions": [
+        {
+          "id": "st-b1",
+          "type": "multiple-choice",
+          "question": "What is Newtons First Law?",
+          "options": [
+            "F=ma",
+            "Object in motion stays in motion unless acted upon by force",
+            "Every action has equal opposite reaction",
+            "Gravity"
+          ],
+          "correct": 1,
+          "explanation": "Law of inertia: objects resist changes in motion.",
+          "xp": 10
+        },
+        {
+          "id": "st-b2",
+          "type": "multiple-choice",
+          "question": "What is kinetic energy formula?",
+          "options": [
+            "mgh",
+            "½mv²",
+            "mv",
+            "F×d"
+          ],
+          "correct": 1,
+          "explanation": "KE = ½mv²: energy of motion.",
+          "xp": 10
+        },
+        {
+          "id": "st-b3",
+          "type": "multiple-choice",
+          "question": "What is Ohms Law?",
+          "options": [
+            "E=mc²",
+            "V=IR",
+            "P=IV",
+            "F=ma"
+          ],
+          "correct": 1,
+          "explanation": "Ohms Law: voltage = current × resistance.",
+          "xp": 10
+        },
+        {
+          "id": "st-b4",
+          "type": "multiple-choice",
+          "question": "What is acceleration?",
+          "options": [
+            "Speed",
+            "Rate of change of velocity",
+            "Distance traveled",
+            "Force applied"
+          ],
+          "correct": 1,
+          "explanation": "Acceleration: how quickly velocity changes.",
+          "xp": 10
+        },
+        {
+          "id": "st-b5",
+          "type": "multiple-choice",
+          "question": "What is potential energy?",
+          "options": [
+            "Energy of motion",
+            "Stored energy based on position (mgh for gravity)",
+            "Heat energy",
+            "Light energy"
+          ],
+          "correct": 1,
+          "explanation": "Gravitational PE = mgh.",
+          "xp": 10
+        },
+        {
+          "id": "st-b6",
+          "type": "multiple-choice",
+          "question": "What is Newtons First Law?",
+          "options": [
+            "F=ma",
+            "Object in motion stays in motion unless acted upon by force",
+            "Every action has equal opposite reaction",
+            "Gravity"
+          ],
+          "correct": 1,
+          "explanation": "Law of inertia: objects resist changes in motion.",
+          "xp": 10
+        },
+        {
+          "id": "st-b7",
+          "type": "multiple-choice",
+          "question": "What is kinetic energy formula?",
+          "options": [
+            "mgh",
+            "½mv²",
+            "mv",
+            "F×d"
+          ],
+          "correct": 1,
+          "explanation": "KE = ½mv²: energy of motion.",
+          "xp": 10
+        },
+        {
+          "id": "st-b8",
+          "type": "multiple-choice",
+          "question": "What is Ohms Law?",
+          "options": [
+            "E=mc²",
+            "V=IR",
+            "P=IV",
+            "F=ma"
+          ],
+          "correct": 1,
+          "explanation": "Ohms Law: voltage = current × resistance.",
+          "xp": 10
+        },
+        {
+          "id": "st-b9",
+          "type": "multiple-choice",
+          "question": "What is acceleration?",
+          "options": [
+            "Speed",
+            "Rate of change of velocity",
+            "Distance traveled",
+            "Force applied"
+          ],
+          "correct": 1,
+          "explanation": "Acceleration: how quickly velocity changes.",
+          "xp": 10
+        },
+        {
+          "id": "st-b10",
+          "type": "multiple-choice",
+          "question": "What is potential energy?",
+          "options": [
+            "Energy of motion",
+            "Stored energy based on position (mgh for gravity)",
+            "Heat energy",
+            "Light energy"
+          ],
+          "correct": 1,
+          "explanation": "Gravitational PE = mgh.",
+          "xp": 10
+        },
+        {
+          "id": "st-b11",
+          "type": "multiple-choice",
+          "question": "What is Newtons First Law?",
+          "options": [
+            "F=ma",
+            "Object in motion stays in motion unless acted upon by force",
+            "Every action has equal opposite reaction",
+            "Gravity"
+          ],
+          "correct": 1,
+          "explanation": "Law of inertia: objects resist changes in motion.",
+          "xp": 10
+        },
+        {
+          "id": "st-b12",
+          "type": "multiple-choice",
+          "question": "What is kinetic energy formula?",
+          "options": [
+            "mgh",
+            "½mv²",
+            "mv",
+            "F×d"
+          ],
+          "correct": 1,
+          "explanation": "KE = ½mv²: energy of motion.",
+          "xp": 10
+        },
+        {
+          "id": "st-b13",
+          "type": "multiple-choice",
+          "question": "What is Ohms Law?",
+          "options": [
+            "E=mc²",
+            "V=IR",
+            "P=IV",
+            "F=ma"
+          ],
+          "correct": 1,
+          "explanation": "Ohms Law: voltage = current × resistance.",
+          "xp": 10
+        },
+        {
+          "id": "st-b14",
+          "type": "multiple-choice",
+          "question": "What is acceleration?",
+          "options": [
+            "Speed",
+            "Rate of change of velocity",
+            "Distance traveled",
+            "Force applied"
+          ],
+          "correct": 1,
+          "explanation": "Acceleration: how quickly velocity changes.",
+          "xp": 10
+        },
+        {
+          "id": "st-b15",
+          "type": "multiple-choice",
+          "question": "What is potential energy?",
+          "options": [
+            "Energy of motion",
+            "Stored energy based on position (mgh for gravity)",
+            "Heat energy",
+            "Light energy"
+          ],
+          "correct": 1,
+          "explanation": "Gravitational PE = mgh.",
+          "xp": 10
+        },
+        {
+          "id": "st-b16",
+          "type": "multiple-choice",
+          "question": "What is Newtons First Law?",
+          "options": [
+            "F=ma",
+            "Object in motion stays in motion unless acted upon by force",
+            "Every action has equal opposite reaction",
+            "Gravity"
+          ],
+          "correct": 1,
+          "explanation": "Law of inertia: objects resist changes in motion.",
+          "xp": 10
+        },
+        {
+          "id": "st-b17",
+          "type": "multiple-choice",
+          "question": "What is kinetic energy formula?",
+          "options": [
+            "mgh",
+            "½mv²",
+            "mv",
+            "F×d"
+          ],
+          "correct": 1,
+          "explanation": "KE = ½mv²: energy of motion.",
+          "xp": 10
+        },
+        {
+          "id": "st-b18",
+          "type": "multiple-choice",
+          "question": "What is Ohms Law?",
+          "options": [
+            "E=mc²",
+            "V=IR",
+            "P=IV",
+            "F=ma"
+          ],
+          "correct": 1,
+          "explanation": "Ohms Law: voltage = current × resistance.",
+          "xp": 10
+        },
+        {
+          "id": "st-b19",
+          "type": "multiple-choice",
+          "question": "What is acceleration?",
+          "options": [
+            "Speed",
+            "Rate of change of velocity",
+            "Distance traveled",
+            "Force applied"
+          ],
+          "correct": 1,
+          "explanation": "Acceleration: how quickly velocity changes.",
+          "xp": 10
+        },
+        {
+          "id": "st-b20",
+          "type": "multiple-choice",
+          "question": "What is potential energy?",
+          "options": [
+            "Energy of motion",
+            "Stored energy based on position (mgh for gravity)",
+            "Heat energy",
+            "Light energy"
+          ],
+          "correct": 1,
+          "explanation": "Gravitational PE = mgh.",
+          "xp": 10
+        }
+      ]
+    },
+    "intermediate": {
+      "name": "Intermediate",
+      "description": "Thermodynamics, electromagnetism, waves",
+      "questions": [
+        {
+          "id": "st-i1",
+          "type": "multiple-choice",
+          "question": "What is the First Law of Thermodynamics?",
+          "options": [
+            "Entropy increases",
+            "Energy is conserved: ΔU = Q - W",
+            "Heat flows hot to cold",
+            "Absolute zero"
+          ],
+          "correct": 1,
+          "explanation": "ΔU = Q - W: energy conservation.",
+          "xp": 15
+        },
+        {
+          "id": "st-i2",
+          "type": "multiple-choice",
+          "question": "What is Maxwells equations describe?",
+          "options": [
+            "Gravity",
+            "All classical electromagnetism",
+            "Quantum mechanics",
+            "Thermodynamics"
+          ],
+          "correct": 1,
+          "explanation": "Maxwells equations unify electricity and magnetism.",
+          "xp": 15
+        },
+        {
+          "id": "st-i3",
+          "type": "multiple-choice",
+          "question": "What is entropy?",
+          "options": [
+            "Energy",
+            "Measure of disorder/randomness",
+            "Temperature",
+            "Pressure"
+          ],
+          "correct": 1,
+          "explanation": "Entropy: Second Law says it increases.",
+          "xp": 15
+        },
+        {
+          "id": "st-i4",
+          "type": "multiple-choice",
+          "question": "What is Faradays Law?",
+          "options": [
+            "V=IR",
+            "Changing magnetic flux induces EMF",
+            "F=ma",
+            "E=mc²"
+          ],
+          "correct": 1,
+          "explanation": "Faraday: changing magnetic field induces electric field.",
+          "xp": 15
+        },
+        {
+          "id": "st-i5",
+          "type": "multiple-choice",
+          "question": "What is the First Law of Thermodynamics?",
+          "options": [
+            "Entropy increases",
+            "Energy is conserved: ΔU = Q - W",
+            "Heat flows hot to cold",
+            "Absolute zero"
+          ],
+          "correct": 1,
+          "explanation": "ΔU = Q - W: energy conservation.",
+          "xp": 15
+        },
+        {
+          "id": "st-i6",
+          "type": "multiple-choice",
+          "question": "What is Maxwells equations describe?",
+          "options": [
+            "Gravity",
+            "All classical electromagnetism",
+            "Quantum mechanics",
+            "Thermodynamics"
+          ],
+          "correct": 1,
+          "explanation": "Maxwells equations unify electricity and magnetism.",
+          "xp": 15
+        },
+        {
+          "id": "st-i7",
+          "type": "multiple-choice",
+          "question": "What is entropy?",
+          "options": [
+            "Energy",
+            "Measure of disorder/randomness",
+            "Temperature",
+            "Pressure"
+          ],
+          "correct": 1,
+          "explanation": "Entropy: Second Law says it increases.",
+          "xp": 15
+        },
+        {
+          "id": "st-i8",
+          "type": "multiple-choice",
+          "question": "What is Faradays Law?",
+          "options": [
+            "V=IR",
+            "Changing magnetic flux induces EMF",
+            "F=ma",
+            "E=mc²"
+          ],
+          "correct": 1,
+          "explanation": "Faraday: changing magnetic field induces electric field.",
+          "xp": 15
+        },
+        {
+          "id": "st-i9",
+          "type": "multiple-choice",
+          "question": "What is the First Law of Thermodynamics?",
+          "options": [
+            "Entropy increases",
+            "Energy is conserved: ΔU = Q - W",
+            "Heat flows hot to cold",
+            "Absolute zero"
+          ],
+          "correct": 1,
+          "explanation": "ΔU = Q - W: energy conservation.",
+          "xp": 15
+        },
+        {
+          "id": "st-i10",
+          "type": "multiple-choice",
+          "question": "What is Maxwells equations describe?",
+          "options": [
+            "Gravity",
+            "All classical electromagnetism",
+            "Quantum mechanics",
+            "Thermodynamics"
+          ],
+          "correct": 1,
+          "explanation": "Maxwells equations unify electricity and magnetism.",
+          "xp": 15
+        },
+        {
+          "id": "st-i11",
+          "type": "multiple-choice",
+          "question": "What is entropy?",
+          "options": [
+            "Energy",
+            "Measure of disorder/randomness",
+            "Temperature",
+            "Pressure"
+          ],
+          "correct": 1,
+          "explanation": "Entropy: Second Law says it increases.",
+          "xp": 15
+        },
+        {
+          "id": "st-i12",
+          "type": "multiple-choice",
+          "question": "What is Faradays Law?",
+          "options": [
+            "V=IR",
+            "Changing magnetic flux induces EMF",
+            "F=ma",
+            "E=mc²"
+          ],
+          "correct": 1,
+          "explanation": "Faraday: changing magnetic field induces electric field.",
+          "xp": 15
+        },
+        {
+          "id": "st-i13",
+          "type": "multiple-choice",
+          "question": "What is the First Law of Thermodynamics?",
+          "options": [
+            "Entropy increases",
+            "Energy is conserved: ΔU = Q - W",
+            "Heat flows hot to cold",
+            "Absolute zero"
+          ],
+          "correct": 1,
+          "explanation": "ΔU = Q - W: energy conservation.",
+          "xp": 15
+        },
+        {
+          "id": "st-i14",
+          "type": "multiple-choice",
+          "question": "What is Maxwells equations describe?",
+          "options": [
+            "Gravity",
+            "All classical electromagnetism",
+            "Quantum mechanics",
+            "Thermodynamics"
+          ],
+          "correct": 1,
+          "explanation": "Maxwells equations unify electricity and magnetism.",
+          "xp": 15
+        },
+        {
+          "id": "st-i15",
+          "type": "multiple-choice",
+          "question": "What is entropy?",
+          "options": [
+            "Energy",
+            "Measure of disorder/randomness",
+            "Temperature",
+            "Pressure"
+          ],
+          "correct": 1,
+          "explanation": "Entropy: Second Law says it increases.",
+          "xp": 15
+        },
+        {
+          "id": "st-i16",
+          "type": "multiple-choice",
+          "question": "What is Faradays Law?",
+          "options": [
+            "V=IR",
+            "Changing magnetic flux induces EMF",
+            "F=ma",
+            "E=mc²"
+          ],
+          "correct": 1,
+          "explanation": "Faraday: changing magnetic field induces electric field.",
+          "xp": 15
+        },
+        {
+          "id": "st-i17",
+          "type": "multiple-choice",
+          "question": "What is the First Law of Thermodynamics?",
+          "options": [
+            "Entropy increases",
+            "Energy is conserved: ΔU = Q - W",
+            "Heat flows hot to cold",
+            "Absolute zero"
+          ],
+          "correct": 1,
+          "explanation": "ΔU = Q - W: energy conservation.",
+          "xp": 15
+        },
+        {
+          "id": "st-i18",
+          "type": "multiple-choice",
+          "question": "What is Maxwells equations describe?",
+          "options": [
+            "Gravity",
+            "All classical electromagnetism",
+            "Quantum mechanics",
+            "Thermodynamics"
+          ],
+          "correct": 1,
+          "explanation": "Maxwells equations unify electricity and magnetism.",
+          "xp": 15
+        },
+        {
+          "id": "st-i19",
+          "type": "multiple-choice",
+          "question": "What is entropy?",
+          "options": [
+            "Energy",
+            "Measure of disorder/randomness",
+            "Temperature",
+            "Pressure"
+          ],
+          "correct": 1,
+          "explanation": "Entropy: Second Law says it increases.",
+          "xp": 15
+        },
+        {
+          "id": "st-i20",
+          "type": "multiple-choice",
+          "question": "What is Faradays Law?",
+          "options": [
+            "V=IR",
+            "Changing magnetic flux induces EMF",
+            "F=ma",
+            "E=mc²"
+          ],
+          "correct": 1,
+          "explanation": "Faraday: changing magnetic field induces electric field.",
+          "xp": 15
+        }
+      ]
+    },
+    "advanced": {
+      "name": "Advanced",
+      "description": "Quantum mechanics and advanced physics",
+      "questions": [
+        {
+          "id": "st-a1",
+          "type": "multiple-choice",
+          "question": "What is the Schrödinger equation?",
+          "options": [
+            "Classical mechanics",
+            "Fundamental equation of quantum mechanics: iℏ∂ψ/∂t = Ĥψ",
+            "Relativity",
+            "Thermodynamics"
+          ],
+          "correct": 1,
+          "explanation": "Schrödinger: describes quantum state evolution.",
+          "xp": 20
+        },
+        {
+          "id": "st-a2",
+          "type": "multiple-choice",
+          "question": "What is the Heisenberg uncertainty principle?",
+          "options": [
+            "Everything uncertain",
+            "Δx·Δp ≥ ℏ/2: cannot know position and momentum exactly",
+            "Measurement errors",
+            "Random motion"
+          ],
+          "correct": 1,
+          "explanation": "Uncertainty: fundamental limit, not measurement error.",
+          "xp": 20
+        },
+        {
+          "id": "st-a3",
+          "type": "multiple-choice",
+          "question": "What is quantum superposition?",
+          "options": [
+            "Adding forces",
+            "System exists in multiple states simultaneously until measured",
+            "Superposition",
+            "Stacking"
+          ],
+          "correct": 1,
+          "explanation": "Superposition: |ψ⟩ = α|0⟩ + β|1⟩.",
+          "xp": 20
+        },
+        {
+          "id": "st-a4",
+          "type": "multiple-choice",
+          "question": "What is quantum entanglement?",
+          "options": [
+            "Tangling",
+            "Correlated particles where measuring one affects other",
+            "Confusion",
+            "Complexity"
+          ],
+          "correct": 1,
+          "explanation": "Entanglement: \"spooky action at a distance\".",
+          "xp": 20
+        },
+        {
+          "id": "st-a5",
+          "type": "multiple-choice",
+          "question": "What is the Pauli exclusion principle?",
+          "options": [
+            "Exclusivity",
+            "No two fermions can occupy same quantum state",
+            "Repulsion",
+            "Separation"
+          ],
+          "correct": 1,
+          "explanation": "Pauli: explains atomic structure and periodic table.",
+          "xp": 20
+        },
+        {
+          "id": "st-a6",
+          "type": "multiple-choice",
+          "question": "What is the Schrödinger equation?",
+          "options": [
+            "Classical mechanics",
+            "Fundamental equation of quantum mechanics: iℏ∂ψ/∂t = Ĥψ",
+            "Relativity",
+            "Thermodynamics"
+          ],
+          "correct": 1,
+          "explanation": "Schrödinger: describes quantum state evolution.",
+          "xp": 20
+        },
+        {
+          "id": "st-a7",
+          "type": "multiple-choice",
+          "question": "What is the Heisenberg uncertainty principle?",
+          "options": [
+            "Everything uncertain",
+            "Δx·Δp ≥ ℏ/2: cannot know position and momentum exactly",
+            "Measurement errors",
+            "Random motion"
+          ],
+          "correct": 1,
+          "explanation": "Uncertainty: fundamental limit, not measurement error.",
+          "xp": 20
+        },
+        {
+          "id": "st-a8",
+          "type": "multiple-choice",
+          "question": "What is quantum superposition?",
+          "options": [
+            "Adding forces",
+            "System exists in multiple states simultaneously until measured",
+            "Superposition",
+            "Stacking"
+          ],
+          "correct": 1,
+          "explanation": "Superposition: |ψ⟩ = α|0⟩ + β|1⟩.",
+          "xp": 20
+        },
+        {
+          "id": "st-a9",
+          "type": "multiple-choice",
+          "question": "What is quantum entanglement?",
+          "options": [
+            "Tangling",
+            "Correlated particles where measuring one affects other",
+            "Confusion",
+            "Complexity"
+          ],
+          "correct": 1,
+          "explanation": "Entanglement: \"spooky action at a distance\".",
+          "xp": 20
+        },
+        {
+          "id": "st-a10",
+          "type": "multiple-choice",
+          "question": "What is the Pauli exclusion principle?",
+          "options": [
+            "Exclusivity",
+            "No two fermions can occupy same quantum state",
+            "Repulsion",
+            "Separation"
+          ],
+          "correct": 1,
+          "explanation": "Pauli: explains atomic structure and periodic table.",
+          "xp": 20
+        },
+        {
+          "id": "st-a11",
+          "type": "multiple-choice",
+          "question": "What is the Schrödinger equation?",
+          "options": [
+            "Classical mechanics",
+            "Fundamental equation of quantum mechanics: iℏ∂ψ/∂t = Ĥψ",
+            "Relativity",
+            "Thermodynamics"
+          ],
+          "correct": 1,
+          "explanation": "Schrödinger: describes quantum state evolution.",
+          "xp": 20
+        },
+        {
+          "id": "st-a12",
+          "type": "multiple-choice",
+          "question": "What is the Heisenberg uncertainty principle?",
+          "options": [
+            "Everything uncertain",
+            "Δx·Δp ≥ ℏ/2: cannot know position and momentum exactly",
+            "Measurement errors",
+            "Random motion"
+          ],
+          "correct": 1,
+          "explanation": "Uncertainty: fundamental limit, not measurement error.",
+          "xp": 20
+        },
+        {
+          "id": "st-a13",
+          "type": "multiple-choice",
+          "question": "What is quantum superposition?",
+          "options": [
+            "Adding forces",
+            "System exists in multiple states simultaneously until measured",
+            "Superposition",
+            "Stacking"
+          ],
+          "correct": 1,
+          "explanation": "Superposition: |ψ⟩ = α|0⟩ + β|1⟩.",
+          "xp": 20
+        },
+        {
+          "id": "st-a14",
+          "type": "multiple-choice",
+          "question": "What is quantum entanglement?",
+          "options": [
+            "Tangling",
+            "Correlated particles where measuring one affects other",
+            "Confusion",
+            "Complexity"
+          ],
+          "correct": 1,
+          "explanation": "Entanglement: \"spooky action at a distance\".",
+          "xp": 20
+        },
+        {
+          "id": "st-a15",
+          "type": "multiple-choice",
+          "question": "What is the Pauli exclusion principle?",
+          "options": [
+            "Exclusivity",
+            "No two fermions can occupy same quantum state",
+            "Repulsion",
+            "Separation"
+          ],
+          "correct": 1,
+          "explanation": "Pauli: explains atomic structure and periodic table.",
+          "xp": 20
+        },
+        {
+          "id": "st-a16",
+          "type": "multiple-choice",
+          "question": "What is the Schrödinger equation?",
+          "options": [
+            "Classical mechanics",
+            "Fundamental equation of quantum mechanics: iℏ∂ψ/∂t = Ĥψ",
+            "Relativity",
+            "Thermodynamics"
+          ],
+          "correct": 1,
+          "explanation": "Schrödinger: describes quantum state evolution.",
+          "xp": 20
+        },
+        {
+          "id": "st-a17",
+          "type": "multiple-choice",
+          "question": "What is the Heisenberg uncertainty principle?",
+          "options": [
+            "Everything uncertain",
+            "Δx·Δp ≥ ℏ/2: cannot know position and momentum exactly",
+            "Measurement errors",
+            "Random motion"
+          ],
+          "correct": 1,
+          "explanation": "Uncertainty: fundamental limit, not measurement error.",
+          "xp": 20
+        },
+        {
+          "id": "st-a18",
+          "type": "multiple-choice",
+          "question": "What is quantum superposition?",
+          "options": [
+            "Adding forces",
+            "System exists in multiple states simultaneously until measured",
+            "Superposition",
+            "Stacking"
+          ],
+          "correct": 1,
+          "explanation": "Superposition: |ψ⟩ = α|0⟩ + β|1⟩.",
+          "xp": 20
+        },
+        {
+          "id": "st-a19",
+          "type": "multiple-choice",
+          "question": "What is quantum entanglement?",
+          "options": [
+            "Tangling",
+            "Correlated particles where measuring one affects other",
+            "Confusion",
+            "Complexity"
+          ],
+          "correct": 1,
+          "explanation": "Entanglement: \"spooky action at a distance\".",
+          "xp": 20
+        },
+        {
+          "id": "st-a20",
+          "type": "multiple-choice",
+          "question": "What is the Pauli exclusion principle?",
+          "options": [
+            "Exclusivity",
+            "No two fermions can occupy same quantum state",
+            "Repulsion",
+            "Separation"
+          ],
+          "correct": 1,
+          "explanation": "Pauli: explains atomic structure and periodic table.",
+          "xp": 20
+        }
+      ]
+    }
+  }
+}

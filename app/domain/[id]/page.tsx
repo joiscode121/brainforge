@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import ClientLayout from '@/components/ClientLayout';
 import { loadDomain, Domain } from '@/lib/domains';
 import { loadProgress } from '@/lib/storage';
@@ -13,17 +13,19 @@ const levelIcons = {
   advanced: '⚡'
 };
 
-export default function DomainPage({ params }: { params: { id: string } }) {
+export default function DomainPage() {
   const router = useRouter();
+  const params = useParams();
+  const id = params?.id as string;
   const [domain, setDomain] = useState<Domain | null>(null);
   const [progress, setProgress] = useState(loadProgress());
 
   useEffect(() => {
-    loadDomain(params.id).then(setDomain);
-  }, [params.id]);
+    if (id) loadDomain(id).then(setDomain).catch(() => {});
+  }, [id]);
 
   if (!domain) {
-    return <ClientLayout><div className="p-6">Loading...</div></ClientLayout>;
+    return <ClientLayout><div className="p-6 text-center text-white/60">Loading domain...</div></ClientLayout>;
   }
 
   const domainProgress = progress.domains[domain.id];
@@ -36,7 +38,6 @@ export default function DomainPage({ params }: { params: { id: string } }) {
   return (
     <ClientLayout>
       <div className="max-w-2xl mx-auto p-6 space-y-6">
-        {/* Header */}
         <div className="glass-card p-6">
           <div className="flex items-center gap-4 mb-4">
             <div
@@ -70,13 +71,12 @@ export default function DomainPage({ params }: { params: { id: string } }) {
               <Target className="text-purple-400" size={20} />
               <div>
                 <div className="text-xs text-white/60">Completed</div>
-                <div className="font-bold">{domainProgress?.completedQuestions.length || 0}</div>
+                <div className="font-bold">{domainProgress?.completedQuestions?.length || 0}</div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Levels */}
         <div className="space-y-4">
           <h2 className="text-xl font-bold">Choose Your Level</h2>
 
@@ -89,7 +89,7 @@ export default function DomainPage({ params }: { params: { id: string } }) {
               <div
                 key={levelKey}
                 onClick={() => startQuiz(levelKey)}
-                className="glass-card p-6 hover:bg-white/10 cursor-pointer group"
+                className="glass-card p-6 hover:bg-white/10 cursor-pointer group active:scale-[0.98] transition-all"
               >
                 <div className="flex items-center gap-4">
                   <div className="text-4xl">{levelIcons[levelKey as keyof typeof levelIcons]}</div>
@@ -97,16 +97,15 @@ export default function DomainPage({ params }: { params: { id: string } }) {
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       <h3 className="font-bold text-lg capitalize">{levelData.name}</h3>
-                      <span className="text-xs text-white/60">
+                      <span className="text-xs text-white/60 bg-white/10 px-2 py-0.5 rounded-full">
                         {completed}/{total}
                       </span>
                     </div>
                     <p className="text-sm text-white/60 mb-3">{levelData.description}</p>
                     
-                    {/* Progress bar */}
                     <div className="h-2 bg-white/10 rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-gradient-to-r transition-all duration-500"
+                        className="h-full transition-all duration-500"
                         style={{
                           width: `${progressPercent}%`,
                           background: `linear-gradient(90deg, ${domain.color}, ${domain.color}CC)`

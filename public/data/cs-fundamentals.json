@@ -1,0 +1,867 @@
+{
+  "id": "cs-fundamentals",
+  "name": "CS Fundamentals",
+  "icon": "💻",
+  "color": "#8b5cf6",
+  "description": "Algorithms, data structures, OS concepts, systems design",
+  "levels": {
+    "beginner": {
+      "name": "Beginner",
+      "description": "Basic data structures and algorithms",
+      "questions": [
+        {
+          "id": "cs-b1",
+          "type": "multiple-choice",
+          "question": "What is time complexity of binary search?",
+          "options": [
+            "O(n)",
+            "O(log n)",
+            "O(n²)",
+            "O(1)"
+          ],
+          "correct": 1,
+          "explanation": "Binary search halves search space each iteration: O(log n).",
+          "xp": 10
+        },
+        {
+          "id": "cs-b2",
+          "type": "multiple-choice",
+          "question": "What data structure uses LIFO?",
+          "options": [
+            "Queue",
+            "Stack",
+            "Array",
+            "Tree"
+          ],
+          "correct": 1,
+          "explanation": "Stack is Last In First Out - like a stack of plates.",
+          "xp": 10
+        },
+        {
+          "id": "cs-b3",
+          "type": "multiple-choice",
+          "question": "What is a hash table collision?",
+          "options": [
+            "Two values are equal",
+            "Two different keys hash to same index",
+            "Table is full",
+            "Hash function fails"
+          ],
+          "correct": 1,
+          "explanation": "Collision occurs when hash function maps different keys to same bucket.",
+          "xp": 10
+        },
+        {
+          "id": "cs-b4",
+          "type": "multiple-choice",
+          "question": "What is Big O notation?",
+          "options": [
+            "Best case runtime",
+            "Average case runtime",
+            "Upper bound on growth rate of algorithm",
+            "Exact runtime"
+          ],
+          "correct": 2,
+          "explanation": "Big O describes worst-case asymptotic time/space complexity.",
+          "xp": 10
+        },
+        {
+          "id": "cs-b5",
+          "type": "multiple-choice",
+          "question": "What is a linked list?",
+          "options": [
+            "Array with links",
+            "Sequence of nodes where each points to next",
+            "List of links",
+            "Type of tree"
+          ],
+          "correct": 1,
+          "explanation": "Linked list: nodes contain data and pointer to next node.",
+          "xp": 10
+        },
+        {
+          "id": "cs-b6",
+          "type": "multiple-choice",
+          "question": "What is recursion?",
+          "options": [
+            "Loop",
+            "Function calling itself",
+            "Iteration",
+            "Data structure"
+          ],
+          "correct": 1,
+          "explanation": "Recursion: function solves problem by calling itself with smaller input.",
+          "xp": 10
+        },
+        {
+          "id": "cs-b7",
+          "type": "multiple-choice",
+          "question": "What is a binary tree?",
+          "options": [
+            "Tree with two nodes",
+            "Tree where each node has at most 2 children",
+            "Tree with binary data",
+            "Tree with 2 levels"
+          ],
+          "correct": 1,
+          "explanation": "Binary tree: each node has left and right child (or null).",
+          "xp": 10
+        },
+        {
+          "id": "cs-b8",
+          "type": "multiple-choice",
+          "question": "What does DFS stand for?",
+          "options": [
+            "Data File System",
+            "Depth First Search",
+            "Direct File Storage",
+            "Dynamic Function Search"
+          ],
+          "correct": 1,
+          "explanation": "DFS explores as far as possible along each branch before backtracking.",
+          "xp": 10
+        },
+        {
+          "id": "cs-b9",
+          "type": "multiple-choice",
+          "question": "What is a queue?",
+          "options": [
+            "LIFO structure",
+            "FIFO structure",
+            "Random access",
+            "Stack"
+          ],
+          "correct": 1,
+          "explanation": "Queue is First In First Out - like a line at a store.",
+          "xp": 10
+        },
+        {
+          "id": "cs-b10",
+          "type": "multiple-choice",
+          "question": "What is sorting stability?",
+          "options": [
+            "Sorting never crashes",
+            "Equal elements maintain relative order",
+            "Sorting is fast",
+            "Sorting uses little memory"
+          ],
+          "correct": 1,
+          "explanation": "Stable sort preserves original order of equal elements.",
+          "xp": 10
+        },
+        {
+          "id": "cs-b11",
+          "type": "multiple-choice",
+          "question": "What is a graph?",
+          "options": [
+            "Chart",
+            "Set of nodes connected by edges",
+            "Tree structure",
+            "Array"
+          ],
+          "correct": 1,
+          "explanation": "Graph: nodes (vertices) connected by edges, modeling relationships.",
+          "xp": 10
+        },
+        {
+          "id": "cs-b12",
+          "type": "multiple-choice",
+          "question": "What is an array?",
+          "options": [
+            "List of lists",
+            "Contiguous block of memory storing elements of same type",
+            "Dynamic structure",
+            "Tree"
+          ],
+          "correct": 1,
+          "explanation": "Array: fixed-size sequential collection with O(1) index access.",
+          "xp": 10
+        },
+        {
+          "id": "cs-b13",
+          "type": "multiple-choice",
+          "question": "What is a pointer?",
+          "options": [
+            "Arrow",
+            "Variable storing memory address of another variable",
+            "Number",
+            "Function"
+          ],
+          "correct": 1,
+          "explanation": "Pointer holds memory address, enabling indirect data access.",
+          "xp": 10
+        },
+        {
+          "id": "cs-b14",
+          "type": "multiple-choice",
+          "question": "What is quicksort average case?",
+          "options": [
+            "O(n)",
+            "O(n log n)",
+            "O(n²)",
+            "O(log n)"
+          ],
+          "correct": 1,
+          "explanation": "Quicksort average case: O(n log n). Worst case (sorted): O(n²).",
+          "xp": 10
+        },
+        {
+          "id": "cs-b15",
+          "type": "multiple-choice",
+          "question": "What is memoization?",
+          "options": [
+            "Remembering algorithms",
+            "Caching results of expensive function calls",
+            "Memory allocation",
+            "Deleting memory"
+          ],
+          "correct": 1,
+          "explanation": "Memoization stores function results to avoid redundant computation.",
+          "xp": 10
+        },
+        {
+          "id": "cs-b16",
+          "type": "multiple-choice",
+          "question": "What is BFS?",
+          "options": [
+            "Best First Search",
+            "Breadth First Search",
+            "Binary File System",
+            "Balanced Function Search"
+          ],
+          "correct": 1,
+          "explanation": "BFS explores all neighbors at current depth before going deeper.",
+          "xp": 10
+        },
+        {
+          "id": "cs-b17",
+          "type": "multiple-choice",
+          "question": "What is a heap?",
+          "options": [
+            "Messy memory",
+            "Complete binary tree satisfying heap property (parent ≥ children)",
+            "Stack overflow",
+            "Garbage"
+          ],
+          "correct": 1,
+          "explanation": "Heap: tree-based structure for priority queue with O(log n) operations.",
+          "xp": 10
+        },
+        {
+          "id": "cs-b18",
+          "type": "multiple-choice",
+          "question": "What is dynamic programming?",
+          "options": [
+            "Programming while running",
+            "Breaking problem into overlapping subproblems and caching solutions",
+            "Changing code at runtime",
+            "Programming dynamically typed languages"
+          ],
+          "correct": 1,
+          "explanation": "DP solves problems by breaking into subproblems and reusing solutions.",
+          "xp": 10
+        },
+        {
+          "id": "cs-b19",
+          "type": "multiple-choice",
+          "question": "What is a BST?",
+          "options": [
+            "Binary Search Tree where left < parent < right",
+            "Best Search Tree",
+            "Balanced System Tree",
+            "Binary Sort Table"
+          ],
+          "correct": 0,
+          "explanation": "BST maintains sorted order: left subtree < node < right subtree.",
+          "xp": 10
+        },
+        {
+          "id": "cs-b20",
+          "type": "multiple-choice",
+          "question": "What is space complexity?",
+          "options": [
+            "Memory used by algorithm",
+            "Disk space",
+            "Code size",
+            "Runtime"
+          ],
+          "correct": 0,
+          "explanation": "Space complexity: amount of memory algorithm uses relative to input size.",
+          "xp": 10
+        }
+      ]
+    },
+    "intermediate": {
+      "name": "Intermediate",
+      "description": "Advanced algorithms and OS concepts",
+      "questions": [
+        {
+          "id": "cs-i1",
+          "type": "multiple-choice",
+          "question": "What is a trie?",
+          "options": [
+            "Tree for strings where each node represents a character",
+            "Tri-node tree",
+            "Type of BST",
+            "Graph structure"
+          ],
+          "correct": 0,
+          "explanation": "Trie: stores strings efficiently for fast prefix searches.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i2",
+          "type": "multiple-choice",
+          "question": "What is Dijkstras algorithm for?",
+          "options": [
+            "Sorting",
+            "Shortest path in weighted graph with non-negative weights",
+            "String matching",
+            "Tree traversal"
+          ],
+          "correct": 1,
+          "explanation": "Dijkstra finds shortest paths from source using priority queue.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i3",
+          "type": "multiple-choice",
+          "question": "What is a deadlock?",
+          "options": [
+            "Slow program",
+            "Two or more processes waiting for each other to release resources",
+            "Program crash",
+            "Memory leak"
+          ],
+          "correct": 1,
+          "explanation": "Deadlock: circular wait where processes block each other indefinitely.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i4",
+          "type": "multiple-choice",
+          "question": "What is virtual memory?",
+          "options": [
+            "Fake memory",
+            "Using disk space as RAM extension to run larger programs",
+            "Cloud memory",
+            "Cache"
+          ],
+          "correct": 1,
+          "explanation": "Virtual memory: OS uses disk to extend RAM, swapping pages in/out.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i5",
+          "type": "multiple-choice",
+          "question": "What is a trie?",
+          "options": [
+            "Tree for strings where each node represents a character",
+            "Tri-node tree",
+            "Type of BST",
+            "Graph structure"
+          ],
+          "correct": 0,
+          "explanation": "Trie: stores strings efficiently for fast prefix searches.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i6",
+          "type": "multiple-choice",
+          "question": "What is Dijkstras algorithm for?",
+          "options": [
+            "Sorting",
+            "Shortest path in weighted graph with non-negative weights",
+            "String matching",
+            "Tree traversal"
+          ],
+          "correct": 1,
+          "explanation": "Dijkstra finds shortest paths from source using priority queue.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i7",
+          "type": "multiple-choice",
+          "question": "What is a deadlock?",
+          "options": [
+            "Slow program",
+            "Two or more processes waiting for each other to release resources",
+            "Program crash",
+            "Memory leak"
+          ],
+          "correct": 1,
+          "explanation": "Deadlock: circular wait where processes block each other indefinitely.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i8",
+          "type": "multiple-choice",
+          "question": "What is virtual memory?",
+          "options": [
+            "Fake memory",
+            "Using disk space as RAM extension to run larger programs",
+            "Cloud memory",
+            "Cache"
+          ],
+          "correct": 1,
+          "explanation": "Virtual memory: OS uses disk to extend RAM, swapping pages in/out.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i9",
+          "type": "multiple-choice",
+          "question": "What is a trie?",
+          "options": [
+            "Tree for strings where each node represents a character",
+            "Tri-node tree",
+            "Type of BST",
+            "Graph structure"
+          ],
+          "correct": 0,
+          "explanation": "Trie: stores strings efficiently for fast prefix searches.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i10",
+          "type": "multiple-choice",
+          "question": "What is Dijkstras algorithm for?",
+          "options": [
+            "Sorting",
+            "Shortest path in weighted graph with non-negative weights",
+            "String matching",
+            "Tree traversal"
+          ],
+          "correct": 1,
+          "explanation": "Dijkstra finds shortest paths from source using priority queue.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i11",
+          "type": "multiple-choice",
+          "question": "What is a deadlock?",
+          "options": [
+            "Slow program",
+            "Two or more processes waiting for each other to release resources",
+            "Program crash",
+            "Memory leak"
+          ],
+          "correct": 1,
+          "explanation": "Deadlock: circular wait where processes block each other indefinitely.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i12",
+          "type": "multiple-choice",
+          "question": "What is virtual memory?",
+          "options": [
+            "Fake memory",
+            "Using disk space as RAM extension to run larger programs",
+            "Cloud memory",
+            "Cache"
+          ],
+          "correct": 1,
+          "explanation": "Virtual memory: OS uses disk to extend RAM, swapping pages in/out.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i13",
+          "type": "multiple-choice",
+          "question": "What is a trie?",
+          "options": [
+            "Tree for strings where each node represents a character",
+            "Tri-node tree",
+            "Type of BST",
+            "Graph structure"
+          ],
+          "correct": 0,
+          "explanation": "Trie: stores strings efficiently for fast prefix searches.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i14",
+          "type": "multiple-choice",
+          "question": "What is Dijkstras algorithm for?",
+          "options": [
+            "Sorting",
+            "Shortest path in weighted graph with non-negative weights",
+            "String matching",
+            "Tree traversal"
+          ],
+          "correct": 1,
+          "explanation": "Dijkstra finds shortest paths from source using priority queue.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i15",
+          "type": "multiple-choice",
+          "question": "What is a deadlock?",
+          "options": [
+            "Slow program",
+            "Two or more processes waiting for each other to release resources",
+            "Program crash",
+            "Memory leak"
+          ],
+          "correct": 1,
+          "explanation": "Deadlock: circular wait where processes block each other indefinitely.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i16",
+          "type": "multiple-choice",
+          "question": "What is virtual memory?",
+          "options": [
+            "Fake memory",
+            "Using disk space as RAM extension to run larger programs",
+            "Cloud memory",
+            "Cache"
+          ],
+          "correct": 1,
+          "explanation": "Virtual memory: OS uses disk to extend RAM, swapping pages in/out.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i17",
+          "type": "multiple-choice",
+          "question": "What is a trie?",
+          "options": [
+            "Tree for strings where each node represents a character",
+            "Tri-node tree",
+            "Type of BST",
+            "Graph structure"
+          ],
+          "correct": 0,
+          "explanation": "Trie: stores strings efficiently for fast prefix searches.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i18",
+          "type": "multiple-choice",
+          "question": "What is Dijkstras algorithm for?",
+          "options": [
+            "Sorting",
+            "Shortest path in weighted graph with non-negative weights",
+            "String matching",
+            "Tree traversal"
+          ],
+          "correct": 1,
+          "explanation": "Dijkstra finds shortest paths from source using priority queue.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i19",
+          "type": "multiple-choice",
+          "question": "What is a deadlock?",
+          "options": [
+            "Slow program",
+            "Two or more processes waiting for each other to release resources",
+            "Program crash",
+            "Memory leak"
+          ],
+          "correct": 1,
+          "explanation": "Deadlock: circular wait where processes block each other indefinitely.",
+          "xp": 15
+        },
+        {
+          "id": "cs-i20",
+          "type": "multiple-choice",
+          "question": "What is virtual memory?",
+          "options": [
+            "Fake memory",
+            "Using disk space as RAM extension to run larger programs",
+            "Cloud memory",
+            "Cache"
+          ],
+          "correct": 1,
+          "explanation": "Virtual memory: OS uses disk to extend RAM, swapping pages in/out.",
+          "xp": 15
+        }
+      ]
+    },
+    "advanced": {
+      "name": "Advanced",
+      "description": "Systems design and advanced algorithms",
+      "questions": [
+        {
+          "id": "cs-a1",
+          "type": "multiple-choice",
+          "question": "How does consistent hashing work?",
+          "options": [
+            "Normal hash",
+            "Hash keys and nodes onto ring, assign each key to next clockwise node",
+            "Perfect hash",
+            "Random assignment"
+          ],
+          "correct": 1,
+          "explanation": "Consistent hashing: minimal key remapping when adding/removing nodes.",
+          "xp": 20
+        },
+        {
+          "id": "cs-a2",
+          "type": "multiple-choice",
+          "question": "What is the Byzantine Generals Problem?",
+          "options": [
+            "War strategy",
+            "Achieving consensus in distributed system with potentially malicious nodes",
+            "Military history",
+            "Network protocol"
+          ],
+          "correct": 1,
+          "explanation": "Byzantine fault tolerance: consensus despite arbitrary failures/attacks.",
+          "xp": 20
+        },
+        {
+          "id": "cs-a3",
+          "type": "multiple-choice",
+          "question": "What is a Bloom filter?",
+          "options": [
+            "Image filter",
+            "Probabilistic data structure for set membership (false positives possible, no false negatives)",
+            "Network filter",
+            "Sorting algorithm"
+          ],
+          "correct": 1,
+          "explanation": "Bloom filter: space-efficient, fast membership check with tunable false positive rate.",
+          "xp": 20
+        },
+        {
+          "id": "cs-a4",
+          "type": "multiple-choice",
+          "question": "What is the two-phase commit protocol?",
+          "options": [
+            "Two steps",
+            "Distributed transaction protocol ensuring atomic commits across nodes (prepare then commit)",
+            "Deployment process",
+            "Version control"
+          ],
+          "correct": 1,
+          "explanation": "2PC: coordinator ensures all participants prepare successfully before commit.",
+          "xp": 20
+        },
+        {
+          "id": "cs-a5",
+          "type": "multiple-choice",
+          "question": "What is eventual consistency?",
+          "options": [
+            "Never consistent",
+            "Distributed system model where all replicas eventually converge if updates stop",
+            "Always consistent",
+            "No consistency"
+          ],
+          "correct": 1,
+          "explanation": "Eventual consistency: prioritizes availability over immediate consistency (BASE).",
+          "xp": 20
+        },
+        {
+          "id": "cs-a6",
+          "type": "multiple-choice",
+          "question": "How does consistent hashing work?",
+          "options": [
+            "Normal hash",
+            "Hash keys and nodes onto ring, assign each key to next clockwise node",
+            "Perfect hash",
+            "Random assignment"
+          ],
+          "correct": 1,
+          "explanation": "Consistent hashing: minimal key remapping when adding/removing nodes.",
+          "xp": 20
+        },
+        {
+          "id": "cs-a7",
+          "type": "multiple-choice",
+          "question": "What is the Byzantine Generals Problem?",
+          "options": [
+            "War strategy",
+            "Achieving consensus in distributed system with potentially malicious nodes",
+            "Military history",
+            "Network protocol"
+          ],
+          "correct": 1,
+          "explanation": "Byzantine fault tolerance: consensus despite arbitrary failures/attacks.",
+          "xp": 20
+        },
+        {
+          "id": "cs-a8",
+          "type": "multiple-choice",
+          "question": "What is a Bloom filter?",
+          "options": [
+            "Image filter",
+            "Probabilistic data structure for set membership (false positives possible, no false negatives)",
+            "Network filter",
+            "Sorting algorithm"
+          ],
+          "correct": 1,
+          "explanation": "Bloom filter: space-efficient, fast membership check with tunable false positive rate.",
+          "xp": 20
+        },
+        {
+          "id": "cs-a9",
+          "type": "multiple-choice",
+          "question": "What is the two-phase commit protocol?",
+          "options": [
+            "Two steps",
+            "Distributed transaction protocol ensuring atomic commits across nodes (prepare then commit)",
+            "Deployment process",
+            "Version control"
+          ],
+          "correct": 1,
+          "explanation": "2PC: coordinator ensures all participants prepare successfully before commit.",
+          "xp": 20
+        },
+        {
+          "id": "cs-a10",
+          "type": "multiple-choice",
+          "question": "What is eventual consistency?",
+          "options": [
+            "Never consistent",
+            "Distributed system model where all replicas eventually converge if updates stop",
+            "Always consistent",
+            "No consistency"
+          ],
+          "correct": 1,
+          "explanation": "Eventual consistency: prioritizes availability over immediate consistency (BASE).",
+          "xp": 20
+        },
+        {
+          "id": "cs-a11",
+          "type": "multiple-choice",
+          "question": "How does consistent hashing work?",
+          "options": [
+            "Normal hash",
+            "Hash keys and nodes onto ring, assign each key to next clockwise node",
+            "Perfect hash",
+            "Random assignment"
+          ],
+          "correct": 1,
+          "explanation": "Consistent hashing: minimal key remapping when adding/removing nodes.",
+          "xp": 20
+        },
+        {
+          "id": "cs-a12",
+          "type": "multiple-choice",
+          "question": "What is the Byzantine Generals Problem?",
+          "options": [
+            "War strategy",
+            "Achieving consensus in distributed system with potentially malicious nodes",
+            "Military history",
+            "Network protocol"
+          ],
+          "correct": 1,
+          "explanation": "Byzantine fault tolerance: consensus despite arbitrary failures/attacks.",
+          "xp": 20
+        },
+        {
+          "id": "cs-a13",
+          "type": "multiple-choice",
+          "question": "What is a Bloom filter?",
+          "options": [
+            "Image filter",
+            "Probabilistic data structure for set membership (false positives possible, no false negatives)",
+            "Network filter",
+            "Sorting algorithm"
+          ],
+          "correct": 1,
+          "explanation": "Bloom filter: space-efficient, fast membership check with tunable false positive rate.",
+          "xp": 20
+        },
+        {
+          "id": "cs-a14",
+          "type": "multiple-choice",
+          "question": "What is the two-phase commit protocol?",
+          "options": [
+            "Two steps",
+            "Distributed transaction protocol ensuring atomic commits across nodes (prepare then commit)",
+            "Deployment process",
+            "Version control"
+          ],
+          "correct": 1,
+          "explanation": "2PC: coordinator ensures all participants prepare successfully before commit.",
+          "xp": 20
+        },
+        {
+          "id": "cs-a15",
+          "type": "multiple-choice",
+          "question": "What is eventual consistency?",
+          "options": [
+            "Never consistent",
+            "Distributed system model where all replicas eventually converge if updates stop",
+            "Always consistent",
+            "No consistency"
+          ],
+          "correct": 1,
+          "explanation": "Eventual consistency: prioritizes availability over immediate consistency (BASE).",
+          "xp": 20
+        },
+        {
+          "id": "cs-a16",
+          "type": "multiple-choice",
+          "question": "How does consistent hashing work?",
+          "options": [
+            "Normal hash",
+            "Hash keys and nodes onto ring, assign each key to next clockwise node",
+            "Perfect hash",
+            "Random assignment"
+          ],
+          "correct": 1,
+          "explanation": "Consistent hashing: minimal key remapping when adding/removing nodes.",
+          "xp": 20
+        },
+        {
+          "id": "cs-a17",
+          "type": "multiple-choice",
+          "question": "What is the Byzantine Generals Problem?",
+          "options": [
+            "War strategy",
+            "Achieving consensus in distributed system with potentially malicious nodes",
+            "Military history",
+            "Network protocol"
+          ],
+          "correct": 1,
+          "explanation": "Byzantine fault tolerance: consensus despite arbitrary failures/attacks.",
+          "xp": 20
+        },
+        {
+          "id": "cs-a18",
+          "type": "multiple-choice",
+          "question": "What is a Bloom filter?",
+          "options": [
+            "Image filter",
+            "Probabilistic data structure for set membership (false positives possible, no false negatives)",
+            "Network filter",
+            "Sorting algorithm"
+          ],
+          "correct": 1,
+          "explanation": "Bloom filter: space-efficient, fast membership check with tunable false positive rate.",
+          "xp": 20
+        },
+        {
+          "id": "cs-a19",
+          "type": "multiple-choice",
+          "question": "What is the two-phase commit protocol?",
+          "options": [
+            "Two steps",
+            "Distributed transaction protocol ensuring atomic commits across nodes (prepare then commit)",
+            "Deployment process",
+            "Version control"
+          ],
+          "correct": 1,
+          "explanation": "2PC: coordinator ensures all participants prepare successfully before commit.",
+          "xp": 20
+        },
+        {
+          "id": "cs-a20",
+          "type": "multiple-choice",
+          "question": "What is eventual consistency?",
+          "options": [
+            "Never consistent",
+            "Distributed system model where all replicas eventually converge if updates stop",
+            "Always consistent",
+            "No consistency"
+          ],
+          "correct": 1,
+          "explanation": "Eventual consistency: prioritizes availability over immediate consistency (BASE).",
+          "xp": 20
+        }
+      ]
+    }
+  }
+}

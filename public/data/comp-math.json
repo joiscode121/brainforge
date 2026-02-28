@@ -121,6 +121,591 @@
           "url": "https://artofproblemsolving.com/wiki/index.php/Mental_math"
         }
       ]
+    },
+    {
+      "id": "divisibility-rules",
+      "title": "Divisibility Rules",
+      "chapter": 2,
+      "difficulty": "beginner",
+      "study": {
+        "content": "**Divisibility rules** enable instant recognition of factors without division. These patterns emerge from modular arithmetic and place-value systems.\n\n**Divisibility by 2**: Last digit is even (0,2,4,6,8). Example: $1,234$ ends in $4$ → divisible by $2$.\n\n**Divisibility by 3**: Sum of digits is divisible by $3$. For $12,345$: $1+2+3+4+5=15$, and $15 \\div 3 = 5$ → yes. This works because $10 \\equiv 1 \\pmod{3}$, so $abc = 100a + 10b + c \\equiv a+b+c \\pmod{3}$.\n\n**Divisibility by 4**: Last two digits form a number divisible by $4$. For $3,416$: check if $16 \\div 4 = 4$ → yes. Since $100 \\equiv 0 \\pmod{4}$, only the last two digits matter.\n\n**Divisibility by 5**: Last digit is $0$ or $5$. Trivial since $10 \\equiv 0 \\pmod{5}$.\n\n**Divisibility by 6**: Must be divisible by both $2$ and $3$ (since $6 = 2 \\times 3$ and $\\gcd(2,3)=1$).\n\n**Divisibility by 7**: Subtract $2 \\times$ (last digit) from remaining number. For $203$: $20 - 2(3) = 14$, which is $7 \\times 2$ → yes. Or use the pattern: $1, 3, 2, -1, -3, -2$ multipliers from right to left.\n\n**Divisibility by 9**: Sum of digits divisible by $9$ (similar to $3$ rule). For $7,821$: $7+8+2+1=18 = 2 \\times 9$ → yes.\n\n**Divisibility by 11**: Alternating sum of digits. For $2,728$: $(2+2) - (7+8) = 4 - 15 = -11$ → divisible. This works because $10 \\equiv -1 \\pmod{11}$.\n\nThese rules accelerate fraction simplification, GCD computation, and prime factorization—essential for competitive math.",
+        "keyPoints": [
+          "Divisibility by 3 or 9: sum of digits must be divisible by that number",
+          "Divisibility by 4 or 8: check last 2 or 3 digits respectively",
+          "Divisibility by 11: alternating sum of digits must be divisible by 11"
+        ],
+        "readingTimeMin": 5
+      },
+      "mindmap": "mindmap\n  root((Divisibility))\n    Simple\n      By 2: last digit even\n      By 5: ends 0 or 5\n      By 10: ends in 0\n    Digit Sum\n      By 3: sum÷3\n      By 9: sum÷9\n    Last Digits\n      By 4: last 2 digits\n      By 8: last 3 digits\n    Special\n      By 11: alternating sum\n      By 7: recursive test",
+      "slides": [
+        {
+          "title": "Divisibility by 3 and 9",
+          "content": "A number is divisible by 3 (or 9) if the sum of its digits is divisible by 3 (or 9). This works because 10 ≡ 1 (mod 3).",
+          "visual": "equation",
+          "visualData": "12,345 → 1+2+3+4+5 = 15\n15 ÷ 3 = 5 ✓\n15 ÷ 9 ≠ integer ✗",
+          "narration": "To check divisibility by three or nine, simply add all the digits. If that sum is divisible by three or nine, so is the original number."
+        },
+        {
+          "title": "Divisibility by 11",
+          "content": "Subtract the sum of odd-position digits from the sum of even-position digits. If the result is divisible by 11, so is the number.",
+          "visual": "text",
+          "visualData": "2,728:\n(2+2) - (7+8) = 4 - 15 = -11\n-11 ÷ 11 = -1 ✓",
+          "narration": "For divisibility by eleven, use the alternating sum. Add digits in odd positions, subtract those in even positions. If the result is divisible by eleven, you're done."
+        },
+        {
+          "title": "Last Digit Rules",
+          "content": "Divisibility by powers of 2 and 5 depends only on the last few digits, since higher place values are already divisible.",
+          "visual": "text",
+          "visualData": "By 4: last 2 digits\nBy 8: last 3 digits\n\n3,416: 16÷4=4 ✓\n7,000: 000÷8=0 ✓",
+          "narration": "Powers of two and five have shortcut rules. For four, check the last two digits. For eight, the last three. This works because hundreds and thousands are already divisible."
+        }
+      ],
+      "questions": [
+        {
+          "id": "div-q1",
+          "type": "multiple-choice",
+          "question": "Is 4,578 divisible by 3?",
+          "options": [
+            "Yes",
+            "No",
+            "Cannot determine",
+            "Only if divided by 2 first"
+          ],
+          "correct": 0,
+          "explanation": "Sum of digits: 4+5+7+8 = 24, and 24÷3 = 8, so yes, 4,578 is divisible by 3.",
+          "xp": 10
+        },
+        {
+          "id": "div-q2",
+          "type": "multiple-choice",
+          "question": "Which of these is divisible by 11?",
+          "options": [
+            "132",
+            "253",
+            "374",
+            "495"
+          ],
+          "correct": 0,
+          "explanation": "132: (1+2)-3 = 0, divisible by 11. The others don't pass the alternating sum test.",
+          "xp": 10
+        },
+        {
+          "id": "div-q3",
+          "type": "multiple-choice",
+          "question": "Is 5,624 divisible by 4?",
+          "options": [
+            "Yes",
+            "No",
+            "Only by 2",
+            "Need full division"
+          ],
+          "correct": 0,
+          "explanation": "Last two digits: 24. Since 24÷4 = 6, yes, 5,624 is divisible by 4.",
+          "xp": 10
+        },
+        {
+          "id": "div-q4",
+          "type": "multiple-choice",
+          "question": "A number is divisible by 6 if and only if:",
+          "options": [
+            "It ends in 6",
+            "It's divisible by both 2 and 3",
+            "Its digit sum is 6",
+            "It's even and greater than 6"
+          ],
+          "correct": 1,
+          "explanation": "Since 6 = 2×3 and gcd(2,3)=1, a number is divisible by 6 iff it's divisible by both 2 and 3.",
+          "xp": 10
+        },
+        {
+          "id": "div-q5",
+          "type": "multiple-choice",
+          "question": "Is 8,991 divisible by 9?",
+          "options": [
+            "Yes",
+            "No",
+            "Only by 3",
+            "Cannot tell"
+          ],
+          "correct": 0,
+          "explanation": "Sum: 8+9+9+1 = 27 = 3×9, so yes, 8,991 is divisible by 9.",
+          "xp": 10
+        }
+      ],
+      "resources": [
+        {
+          "title": "Divisibility Rules - Math is Fun",
+          "url": "https://www.mathsisfun.com/divisibility-rules.html"
+        }
+      ]
+    },
+    {
+      "id": "number-sense",
+      "title": "Number Sense & Speed",
+      "chapter": 3,
+      "difficulty": "intermediate",
+      "study": {
+        "content": "**Number sense** is intuition about quantities, relationships, and estimates. It transforms arithmetic from mechanical calculation into fluid reasoning.\n\n**Estimation mastery**: Round strategically. For $47 \\times 23$, think $50 \\times 20 = 1000$, but we overshot on first and undershot on second, so adjust: actual $\\approx 1080$ (exact: $1081$). The key is **compensating errors**.\n\n**Benchmark numbers**: Memorize key values. $\\sqrt{2} \\approx 1.414$, $\\pi \\approx 3.14159$, $e \\approx 2.718$, $\\phi \\approx 1.618$. Know squares up to $30^2 = 900$ and cubes to $12^3 = 1728$.\n\n**Fraction sense**: Recognize $\\frac{1}{7} \\approx 0.143$, $\\frac{1}{9} \\approx 0.111$, $\\frac{1}{11} \\approx 0.091$. Convert mentally: $\\frac{3}{8} = 0.375$ (half of $\\frac{3}{4}$).\n\n**Percentage shortcuts**: $1\\% = \\frac{1}{100}$, so move decimal two left. $15\\%$ of $80 = 10\\% + 5\\% = 8 + 4 = 12$. Or use symmetry: $15\\%$ of $80 = 80\\%$ of $15 = 12$.\n\n**Ratio scaling**: If $\\frac{a}{b} = \\frac{c}{d}$, then $ad = bc$ (cross-multiply). For $\\frac{x}{12} = \\frac{5}{8}$: $8x = 60$, so $x = 7.5$.\n\n**Order-of-magnitude checks**: Before detailed calculation, estimate scale. Is the answer tens, hundreds, thousands? This catches errors. For $(3.2 \\times 10^4)(5.1 \\times 10^{-6})$, expect $\\sim 15 \\times 10^{-2} = 0.15$.\n\nDeveloping number sense requires deliberate practice: estimate first, calculate second, reflect on accuracy. Over time, intuition replaces rote calculation.",
+        "keyPoints": [
+          "Estimate before calculating using rounded numbers and order-of-magnitude reasoning",
+          "Memorize benchmark values (key fractions, squares, roots) for quick reference",
+          "Use compensating errors when rounding—adjust when you overshot or undershot"
+        ],
+        "readingTimeMin": 5
+      },
+      "mindmap": "mindmap\n  root((Number Sense))\n    Estimation\n      Rounding\n      Compensating Errors\n      Order of Magnitude\n    Benchmarks\n      Squares\n      Roots\n      Constants\n    Conversions\n      Fractions↔Decimals\n      Percentages\n      Ratios\n    Speed Techniques\n      Pattern Recognition\n      Chunking\n      Working Memory",
+      "slides": [
+        {
+          "title": "Strategic Estimation",
+          "content": "Round numbers intelligently and use compensating errors. If you round one number up and another down, they partly cancel.",
+          "visual": "text",
+          "visualData": "47 × 23:\n50 × 20 = 1,000\nBut 50>47 (+3) and 20<23 (-3)\nAdjust: ≈ 1,080\nExact: 1,081",
+          "narration": "Estimation isn't guessing—it's strategic rounding with error correction. Round one up, another down, then adjust mentally for a close approximation."
+        },
+        {
+          "title": "Percentage Symmetry",
+          "content": "Use the commutative property: A% of B = B% of A. This often makes mental math easier.",
+          "visual": "equation",
+          "visualData": "15% of 80 = 80% of 15\n80% of 15 = \\frac{4}{5} × 15 = 12",
+          "narration": "Here's a beautiful shortcut: fifteen percent of eighty equals eighty percent of fifteen. Choose whichever direction is easier to calculate mentally."
+        },
+        {
+          "title": "Order of Magnitude",
+          "content": "Before detailed calculation, estimate the scale. This catches errors and builds intuition about reasonable answers.",
+          "visual": "equation",
+          "visualData": "(3.2 × 10⁴)(5.1 × 10⁻⁶)\n≈ (3)(5) × 10⁴⁺⁽⁻⁶⁾\n≈ 15 × 10⁻²\n= 0.15",
+          "narration": "Always check order of magnitude first. Multiply the rough numbers and add exponents. This prevents errors like placing a decimal point incorrectly."
+        }
+      ],
+      "questions": [
+        {
+          "id": "num-q1",
+          "type": "multiple-choice",
+          "question": "What is a good estimate for 48 × 31?",
+          "options": [
+            "1,200",
+            "1,500",
+            "1,800",
+            "2,100"
+          ],
+          "correct": 1,
+          "explanation": "50 × 30 = 1,500. The exact answer is 1,488, so 1,500 is the closest estimate.",
+          "xp": 10
+        },
+        {
+          "id": "num-q2",
+          "type": "multiple-choice",
+          "question": "Using symmetry, what is 25% of 84?",
+          "options": [
+            "19",
+            "21",
+            "23",
+            "25"
+          ],
+          "correct": 1,
+          "explanation": "25% of 84 = 84% of 25 = (80% + 4%) of 25 = 20 + 1 = 21. Or directly: 25% = ¼, so 84÷4 = 21.",
+          "xp": 10
+        },
+        {
+          "id": "num-q3",
+          "type": "multiple-choice",
+          "question": "What is 12² (mental calculation)?",
+          "options": [
+            "124",
+            "134",
+            "144",
+            "154"
+          ],
+          "correct": 2,
+          "explanation": "12² = (10+2)² = 100 + 40 + 4 = 144. Or memorize: 12² = 144.",
+          "xp": 10
+        },
+        {
+          "id": "num-q4",
+          "type": "multiple-choice",
+          "question": "Approximately how many seconds in a day?",
+          "options": [
+            "86,400",
+            "100,000",
+            "75,000",
+            "90,000"
+          ],
+          "correct": 0,
+          "explanation": "24 hrs × 60 min × 60 sec = 24 × 3,600 ≈ 24 × 3,600 = 86,400 exactly.",
+          "xp": 10
+        },
+        {
+          "id": "num-q5",
+          "type": "multiple-choice",
+          "question": "What is ⅜ as a decimal?",
+          "options": [
+            "0.325",
+            "0.375",
+            "0.425",
+            "0.475"
+          ],
+          "correct": 1,
+          "explanation": "⅜ = 3/8 = (3×125)/(8×125) = 375/1000 = 0.375. Or: 1/8 = 0.125, so 3/8 = 0.375.",
+          "xp": 10
+        }
+      ],
+      "resources": [
+        {
+          "title": "Number Sense Routines",
+          "url": "https://www.youcubed.org/resources/number-sense/"
+        }
+      ]
+    },
+    {
+      "id": "algebraic-tricks",
+      "title": "Algebraic Tricks",
+      "chapter": 4,
+      "difficulty": "intermediate",
+      "study": {
+        "content": "**Algebraic manipulation** shortcuts accelerate equation solving and simplification. Master these patterns to transform complex expressions instantly.\n\n**Difference of squares**: $a^2 - b^2 = (a+b)(a-b)$. For $99^2 - 1 = (99+1)(99-1) = 100 \\times 98 = 9800$. Instantly factor without expansion.\n\n**Perfect square trinomials**: $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$. Recognize $x^2 + 6x + 9 = (x+3)^2$ immediately.\n\n**Sum and product patterns**: For $x^2 + bx + c$, find numbers that sum to $b$ and multiply to $c$. Example: $x^2 + 7x + 12 = (x+3)(x+4)$ since $3+4=7$ and $3 \\times 4 = 12$.\n\n**Completing the square**: Transform $ax^2 + bx + c$ into $a(x-h)^2 + k$ form. For $x^2 + 6x + 5$: take half of $6$ to get $3$, so $(x+3)^2 - 9 + 5 = (x+3)^2 - 4$.\n\n**Vieta's formulas**: For $x^2 + px + q = 0$ with roots $r,s$: sum $r+s = -p$ and product $rs = q$. Quickly find root relationships without solving.\n\n**Simon's Favorite Factoring Trick (SFFT)**: Add and subtract the same term to enable factoring. For $x^4 + x^2 + 1$, add/subtract $x^2$: $x^4 + 2x^2 + 1 - x^2 = (x^2+1)^2 - x^2 = (x^2+x+1)(x^2-x+1)$.\n\n**Substitution**: Let $y = x^2$ to simplify $x^4 - 5x^2 + 4 = 0$ into $y^2 - 5y + 4 = 0$, giving $y=1$ or $y=4$, so $x = \\pm 1$ or $x = \\pm 2$.\n\nThese tricks don't replace understanding—they enhance it, revealing structure that brute force obscures.",
+        "keyPoints": [
+          "Difference of squares and perfect square patterns enable instant factoring",
+          "Completing the square converts quadratics to vertex form",
+          "Simon's Favorite Factoring Trick: add/subtract terms to create factorable expressions"
+        ],
+        "readingTimeMin": 5
+      },
+      "mindmap": "mindmap\n  root((Algebraic Tricks))\n    Factoring\n      Difference of Squares\n      Perfect Squares\n      Sum/Product\n    Equations\n      Completing Square\n      Quadratic Formula\n      Vieta's Formulas\n    Advanced\n      SFFT\n      Substitution\n      Symmetric Sums",
+      "slides": [
+        {
+          "title": "Difference of Squares",
+          "content": "The pattern a²-b² = (a+b)(a-b) enables instant factoring and mental calculation of special products.",
+          "visual": "equation",
+          "visualData": "99² - 1² = (99+1)(99-1)\n= 100 × 98 = 9,800",
+          "narration": "Difference of squares is one of algebra's most useful patterns. Factor immediately into sum times difference, perfect for mental math."
+        },
+        {
+          "title": "Completing the Square",
+          "content": "Transform any quadratic into vertex form by taking half the linear coefficient, squaring it, then adjusting.",
+          "visual": "equation",
+          "visualData": "x² + 6x + 5\n= (x + 3)² - 9 + 5\n= (x + 3)² - 4",
+          "narration": "Completing the square reveals the vertex form. Take half of the x coefficient, square it, then balance the equation. This is foundational for calculus and optimization."
+        },
+        {
+          "title": "Simon's Favorite Factoring Trick",
+          "content": "Add and subtract the same term to create a factorable expression, especially useful for symmetric polynomials.",
+          "visual": "equation",
+          "visualData": "x⁴ + x² + 1\n= x⁴ + 2x² + 1 - x²\n= (x²+1)² - x²\n= (x²+x+1)(x²-x+1)",
+          "narration": "SFFT is a competition math secret weapon. Add and subtract a strategic term to create a difference of squares or other factorable pattern."
+        }
+      ],
+      "questions": [
+        {
+          "id": "alg-q1",
+          "type": "multiple-choice",
+          "question": "Factor x² - 49 using difference of squares:",
+          "options": [
+            "(x-7)(x-7)",
+            "(x+7)(x+7)",
+            "(x+7)(x-7)",
+            "Cannot factor"
+          ],
+          "correct": 2,
+          "explanation": "x² - 49 = x² - 7² = (x+7)(x-7) by difference of squares pattern.",
+          "xp": 10
+        },
+        {
+          "id": "alg-q2",
+          "type": "multiple-choice",
+          "question": "Complete the square for x² + 10x:",
+          "options": [
+            "(x+5)² - 25",
+            "(x+5)² + 25",
+            "(x+10)² - 100",
+            "(x+5)²"
+          ],
+          "correct": 0,
+          "explanation": "Take half of 10 to get 5, then (x+5)² = x² + 10x + 25, so x² + 10x = (x+5)² - 25.",
+          "xp": 10
+        },
+        {
+          "id": "alg-q3",
+          "type": "multiple-choice",
+          "question": "For x² - 7x + 12 = 0, what is the sum of the roots (using Vieta)?",
+          "options": [
+            "5",
+            "6",
+            "7",
+            "12"
+          ],
+          "correct": 2,
+          "explanation": "By Vieta's formulas, sum of roots = -b/a = -(-7)/1 = 7.",
+          "xp": 10
+        },
+        {
+          "id": "alg-q4",
+          "type": "multiple-choice",
+          "question": "Factor x² + 8x + 16:",
+          "options": [
+            "(x+4)²",
+            "(x+2)²",
+            "(x+4)(x+4)",
+            "Both A and C"
+          ],
+          "correct": 3,
+          "explanation": "x² + 8x + 16 is a perfect square trinomial: (x+4)². Both A and C represent the same factorization.",
+          "xp": 10
+        },
+        {
+          "id": "alg-q5",
+          "type": "multiple-choice",
+          "question": "Using substitution y = x², solve x⁴ - 13x² + 36 = 0. What are the real solutions?",
+          "options": [
+            "±2, ±3",
+            "±3, ±4",
+            "±2, ±6",
+            "±1, ±6"
+          ],
+          "correct": 0,
+          "explanation": "y² - 13y + 36 = 0 gives (y-4)(y-9) = 0, so y = 4 or 9. Thus x² = 4 or x² = 9, giving x = ±2 or ±3.",
+          "xp": 10
+        }
+      ],
+      "resources": [
+        {
+          "title": "AOPS Algebraic Manipulations",
+          "url": "https://artofproblemsolving.com/wiki/index.php/Algebraic_manipulation"
+        }
+      ]
+    },
+    {
+      "id": "trig-identities",
+      "title": "Trigonometric Identities",
+      "chapter": 5,
+      "difficulty": "advanced",
+      "study": {
+        "content": "**Trigonometric identities** are the backbone of advanced mathematics, from calculus to differential equations. Mastery enables elegant problem-solving.\n\n**Pythagorean identities**: The fundamental $\\sin^2\\theta + \\cos^2\\theta = 1$ spawns $1 + \\tan^2\\theta = \\sec^2\\theta$ (divide by $\\cos^2\\theta$) and $1 + \\cot^2\\theta = \\csc^2\\theta$ (divide by $\\sin^2\\theta$).\n\n**Angle sum formulas**: $$\\sin(\\alpha \\pm \\beta) = \\sin\\alpha\\cos\\beta \\pm \\cos\\alpha\\sin\\beta$$ $$\\cos(\\alpha \\pm \\beta) = \\cos\\alpha\\cos\\beta \\mp \\sin\\alpha\\sin\\beta$$ These derive all other identities. For $\\tan$: $$\\tan(\\alpha \\pm \\beta) = \\frac{\\tan\\alpha \\pm \\tan\\beta}{1 \\mp \\tan\\alpha\\tan\\beta}$$\n\n**Double angle formulas**: From sum formulas with $\\alpha = \\beta$: $$\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta$$ $$\\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta$$ The three forms of $\\cos(2\\theta)$ offer strategic choices.\n\n**Half-angle formulas**: Rearrange double-angle: $$\\sin^2\\theta = \\frac{1-\\cos(2\\theta)}{2}, \\quad \\cos^2\\theta = \\frac{1+\\cos(2\\theta)}{2}$$\n\n**Product-to-sum**: $$\\sin\\alpha\\sin\\beta = \\frac{1}{2}[\\cos(\\alpha-\\beta) - \\cos(\\alpha+\\beta)]$$ Crucial for integral evaluation and Fourier analysis.\n\n**Euler's formula**: The deepest identity links trig to exponentials: $$e^{i\\theta} = \\cos\\theta + i\\sin\\theta$$ This yields $\\cos\\theta = \\frac{e^{i\\theta}+e^{-i\\theta}}{2}$ and $\\sin\\theta = \\frac{e^{i\\theta}-e^{-i\\theta}}{2i}$, connecting trigonometry, complex analysis, and differential equations.\n\nPractice recognizing which identity simplifies an expression. Trig is pattern matching—build your library.",
+        "keyPoints": [
+          "Pythagorean identities relate sin, cos, tan, and their reciprocals",
+          "Angle sum/difference formulas generate all other trig identities",
+          "Euler's formula connects trigonometry to complex exponentials"
+        ],
+        "readingTimeMin": 6
+      },
+      "mindmap": "mindmap\n  root((Trig Identities))\n    Fundamental\n      Pythagorean\n      Reciprocal\n      Quotient\n    Angle Formulas\n      Sum/Difference\n      Double Angle\n      Half Angle\n    Product/Sum\n      Product-to-Sum\n      Sum-to-Product\n    Advanced\n      Euler's Formula\n      De Moivre's Theorem",
+      "slides": [
+        {
+          "title": "Pythagorean Identity",
+          "content": "The fundamental identity sin²θ + cos²θ = 1 derives from the unit circle and generates other forms.",
+          "visual": "equation",
+          "visualData": "\\sin^2\\theta + \\cos^2\\theta = 1\n\n÷\\cos^2\\theta: \\tan^2\\theta + 1 = \\sec^2\\theta\n÷\\sin^2\\theta: 1 + \\cot^2\\theta = \\csc^2\\theta",
+          "narration": "All Pythagorean identities stem from the unit circle. Dividing by cos squared or sin squared gives the tan-sec and cot-csc forms."
+        },
+        {
+          "title": "Angle Sum Formulas",
+          "content": "Sum and difference formulas enable calculation of trig values for any angle using known values.",
+          "visual": "equation",
+          "visualData": "\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta\n\n\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta",
+          "narration": "Angle sum formulas are foundational. They let you find sine and cosine of any angle combination, and every other identity derives from them."
+        },
+        {
+          "title": "Euler's Formula",
+          "content": "Euler's formula elegantly connects trigonometry with complex exponentials, revealing deep mathematical unity.",
+          "visual": "equation",
+          "visualData": "e^{i\\theta} = \\cos\\theta + i\\sin\\theta\n\ne^{i\\pi} + 1 = 0",
+          "narration": "Euler's formula is mathematics' most beautiful equation, linking five fundamental constants. It shows trig functions are just the real and imaginary parts of complex exponentials."
+        }
+      ],
+      "questions": [
+        {
+          "id": "trig-q1",
+          "type": "multiple-choice",
+          "question": "What is sin²θ in terms of cos(2θ)?",
+          "options": [
+            "[1 + cos(2θ)]/2",
+            "[1 - cos(2θ)]/2",
+            "[1 + sin(2θ)]/2",
+            "2sin(θ)cos(θ)"
+          ],
+          "correct": 1,
+          "explanation": "From cos(2θ) = 1 - 2sin²θ, rearrange: sin²θ = [1 - cos(2θ)]/2.",
+          "xp": 10
+        },
+        {
+          "id": "trig-q2",
+          "type": "multiple-choice",
+          "question": "Using angle sum, what is sin(75°)?",
+          "options": [
+            "(√6 + √2)/4",
+            "(√6 - √2)/4",
+            "(√3 + 1)/(2√2)",
+            "1/2"
+          ],
+          "correct": 0,
+          "explanation": "sin(75°) = sin(45° + 30°) = sin45°cos30° + cos45°sin30° = (√2/2)(√3/2) + (√2/2)(1/2) = (√6 + √2)/4.",
+          "xp": 10
+        },
+        {
+          "id": "trig-q3",
+          "type": "multiple-choice",
+          "question": "Simplify: 1 + tan²θ",
+          "options": [
+            "sec²θ",
+            "csc²θ",
+            "cos²θ",
+            "sin²θ"
+          ],
+          "correct": 0,
+          "explanation": "Pythagorean identity: 1 + tan²θ = sec²θ.",
+          "xp": 10
+        },
+        {
+          "id": "trig-q4",
+          "type": "multiple-choice",
+          "question": "What is sin(2θ) in terms of sin(θ) and cos(θ)?",
+          "options": [
+            "sin²θ + cos²θ",
+            "2sin(θ)cos(θ)",
+            "sin²θ - cos²θ",
+            "sin(θ) + cos(θ)"
+          ],
+          "correct": 1,
+          "explanation": "Double angle formula: sin(2θ) = 2sin(θ)cos(θ).",
+          "xp": 10
+        },
+        {
+          "id": "trig-q5",
+          "type": "multiple-choice",
+          "question": "According to Euler's formula, what is e^(iπ)?",
+          "options": [
+            "1",
+            "-1",
+            "i",
+            "-i"
+          ],
+          "correct": 1,
+          "explanation": "e^(iπ) = cos(π) + i·sin(π) = -1 + 0i = -1. This gives Euler's identity: e^(iπ) + 1 = 0.",
+          "xp": 10
+        }
+      ],
+      "resources": [
+        {
+          "title": "Trigonometric Identities - Paul's Online Notes",
+          "url": "https://tutorial.math.lamar.edu/classes/calci/TrigFormulas.aspx"
+        }
+      ]
+    },
+    {
+      "id": "calculus-shortcuts",
+      "title": "Calculus Shortcuts",
+      "chapter": 6,
+      "difficulty": "advanced",
+      "study": {
+        "content": "**Calculus shortcuts** transform tedious derivations into instant insights. These aren't tricks—they're deep patterns worth internalizing.\n\n**Power rule mastery**: $\\frac{d}{dx}[x^n] = nx^{n-1}$ extends beyond integers. For $\\sqrt{x} = x^{1/2}$: derivative is $\\frac{1}{2}x^{-1/2} = \\frac{1}{2\\sqrt{x}}$. For $\\frac{1}{x^2} = x^{-2}$: derivative is $-2x^{-3} = -\\frac{2}{x^3}$.\n\n**Chain rule pattern recognition**: $\\frac{d}{dx}[f(g(x))] = f'(g(x)) \\cdot g'(x)$. For $\\sin(x^2)$: outer is $\\sin$, inner is $x^2$, so $\\cos(x^2) \\cdot 2x = 2x\\cos(x^2)$. Spot the layers instantly.\n\n**Integration by pattern**: Recognize derivatives backwards. $\\int x^n dx = \\frac{x^{n+1}}{n+1} + C$ (except $n=-1$). For $\\int \\frac{1}{x}dx = \\ln|x| + C$ (special case). For $\\int e^x dx = e^x + C$ (unchanged!).\n\n**U-substitution shortcuts**: When you see $f'(x) \\cdot g(f(x))$, let $u = f(x)$. For $\\int 2x\\cos(x^2)dx$, spot $2x = \\frac{d}{dx}[x^2]$, so $u = x^2$ gives $\\int \\cos(u)du = \\sin(u) + C = \\sin(x^2) + C$.\n\n**Symmetry in definite integrals**: If $f(-x) = f(x)$ (even), $\\int_{-a}^{a}f(x)dx = 2\\int_0^a f(x)dx$. If $f(-x) = -f(x)$ (odd), $\\int_{-a}^{a}f(x)dx = 0$. Exploit symmetry ruthlessly.\n\n**Leibniz rule** (differentiating under integral): $$\\frac{d}{dx}\\int_{a(x)}^{b(x)} f(t,x)dt = \\int_{a(x)}^{b(x)}\\frac{\\partial f}{\\partial x}dt + f(b,x)b'(x) - f(a,x)a'(x)$$ Powerful for parameter-dependent integrals.\n\n**L'Hôpital's rule**: For $\\frac{0}{0}$ or $\\frac{\\infty}{\\infty}$ limits: $$\\lim_{x \\to c}\\frac{f(x)}{g(x)} = \\lim_{x \\to c}\\frac{f'(x)}{g'(x)}$$ For $\\lim_{x\\to 0}\\frac{\\sin x}{x}$: apply once to get $\\lim_{x\\to 0}\\frac{\\cos x}{1} = 1$.\n\nThese patterns accelerate problem-solving once you recognize the structure.",
+        "keyPoints": [
+          "Power rule works for all real exponents, including fractions and negatives",
+          "Chain rule: derivative of outer at inner times derivative of inner",
+          "U-substitution: look for a function's derivative multiplying something dependent on that function"
+        ],
+        "readingTimeMin": 6
+      },
+      "mindmap": "mindmap\n  root((Calculus Shortcuts))\n    Differentiation\n      Power Rule\n      Chain Rule\n      Product/Quotient\n    Integration\n      Power Rule Reverse\n      U-Substitution\n      By Parts\n    Special Techniques\n      Symmetry\n      L'Hôpital's Rule\n      Leibniz Rule\n    Optimization\n      Critical Points\n      Second Derivative Test",
+      "slides": [
+        {
+          "title": "Power Rule for All Exponents",
+          "content": "The power rule d/dx[x^n] = nx^(n-1) works for any real number n, not just positive integers.",
+          "visual": "equation",
+          "visualData": "\\frac{d}{dx}[\\sqrt{x}] = \\frac{d}{dx}[x^{1/2}] = \\frac{1}{2}x^{-1/2}\n\n\\frac{d}{dx}[\\frac{1}{x^3}] = \\frac{d}{dx}[x^{-3}] = -3x^{-4}",
+          "narration": "The power rule extends beautifully. Fractional exponents? Negative exponents? No problem. Bring down the exponent and subtract one—it always works."
+        },
+        {
+          "title": "Chain Rule Pattern",
+          "content": "Chain rule is just composition awareness: derivative of outer function at inner times derivative of inner.",
+          "visual": "equation",
+          "visualData": "\\frac{d}{dx}[\\sin(x^2)] = \\cos(x^2) \\cdot 2x\n\nouter: sin → cos\ninner: x² → 2x\nmultiply!",
+          "narration": "Chain rule becomes automatic with practice. Identify the outer layer, take its derivative, evaluate at the inner layer, then multiply by the inner's derivative."
+        },
+        {
+          "title": "L'Hôpital's Rule",
+          "content": "For indeterminate forms 0/0 or ∞/∞, differentiate numerator and denominator separately until the limit resolves.",
+          "visual": "equation",
+          "visualData": "\\lim_{x \\to 0} \\frac{\\sin x}{x} = \\lim_{x \\to 0} \\frac{\\cos x}{1} = 1\n\n\\lim_{x \\to \\infty} \\frac{\\ln x}{x} = \\lim_{x \\to \\infty} \\frac{1/x}{1} = 0",
+          "narration": "L'Hôpital's rule is your escape hatch for tricky limits. When you get zero over zero or infinity over infinity, differentiate top and bottom separately."
+        }
+      ],
+      "questions": [
+        {
+          "id": "calc-q1",
+          "type": "multiple-choice",
+          "question": "What is d/dx[x^(-2)]?",
+          "options": [
+            "-2x^(-3)",
+            "2x^(-3)",
+            "-2x^(-1)",
+            "-x^(-3)"
+          ],
+          "correct": 0,
+          "explanation": "Power rule: d/dx[x^(-2)] = -2x^(-3) = -2/x³.",
+          "xp": 10
+        },
+        {
+          "id": "calc-q2",
+          "type": "multiple-choice",
+          "question": "What is d/dx[cos(3x)] using chain rule?",
+          "options": [
+            "-sin(3x)",
+            "-3sin(3x)",
+            "3cos(3x)",
+            "sin(3x)"
+          ],
+          "correct": 1,
+          "explanation": "Outer: d/dx[cos(u)] = -sin(u). Inner: d/dx[3x] = 3. Result: -sin(3x)·3 = -3sin(3x).",
+          "xp": 10
+        },
+        {
+          "id": "calc-q3",
+          "type": "multiple-choice",
+          "question": "What is ∫x³ dx?",
+          "options": [
+            "x⁴/4 + C",
+            "3x² + C",
+            "x⁴ + C",
+            "4x⁴ + C"
+          ],
+          "correct": 0,
+          "explanation": "Power rule for integration: ∫x^n dx = x^(n+1)/(n+1) + C. So ∫x³ dx = x⁴/4 + C.",
+          "xp": 10
+        },
+        {
+          "id": "calc-q4",
+          "type": "multiple-choice",
+          "question": "For ∫₋₂² x³ dx, what shortcut applies?",
+          "options": [
+            "Even function: double the positive half",
+            "Odd function: integral equals zero",
+            "U-substitution needed",
+            "Integration by parts"
+          ],
+          "correct": 1,
+          "explanation": "x³ is an odd function (f(-x) = -f(x)), so the integral over a symmetric interval is zero.",
+          "xp": 10
+        },
+        {
+          "id": "calc-q5",
+          "type": "multiple-choice",
+          "question": "Using L'Hôpital's, what is lim(x→∞) [x/e^x]?",
+          "options": [
+            "0",
+            "1",
+            "∞",
+            "Does not exist"
+          ],
+          "correct": 0,
+          "explanation": "∞/∞ form. Apply L'Hôpital's: lim(x→∞)[1/e^x] = 0 since e^x grows much faster than x.",
+          "xp": 10
+        }
+      ],
+      "resources": [
+        {
+          "title": "Calculus Cheat Sheet - Paul's Notes",
+          "url": "https://tutorial.math.lamar.edu/pdf/Calculus_Cheat_Sheet_All.pdf"
+        }
+      ]
     }
   ]
 }

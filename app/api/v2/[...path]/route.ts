@@ -13,12 +13,7 @@ export async function GET(req: Request) {
     clearTimeout(timeout);
     const data = await resp.json();
     return NextResponse.json(data);
-  } catch (e: any) {
-    return NextResponse.json({ 
-      error: 'API unavailable', 
-      detail: e?.message || 'unknown',
-      apiBase: API_BASE,
-      url: proxyUrl 
-    }, { status: 503 });
+  } catch {
+    return NextResponse.json({ error: 'API unavailable' }, { status: 503 });
   }
 }

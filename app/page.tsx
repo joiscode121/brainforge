@@ -47,7 +47,7 @@ export default function Home() {
 
   return (
     <ClientLayout>
-      <div className="max-w-2xl mx-auto p-6 space-y-6">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -161,7 +161,7 @@ export default function Home() {
           {totalPapers > 0 && (
             <p className="text-xs text-white/40 mb-3">{totalPapers} papers · {totalQuestions} AI questions across all domains</p>
           )}
-          <div className="space-y-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {domains.map((domain, i) => {
               const dp = progress.domains[domain.id];
               const v2 = getV2Stats(domain.id);

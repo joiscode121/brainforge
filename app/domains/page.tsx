@@ -25,7 +25,7 @@ export default function DomainsPage() {
 
   return (
     <ClientLayout>
-      <div className="max-w-2xl mx-auto p-4 sm:p-6 space-y-4 sm:space-y-6">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-6 space-y-4 sm:space-y-6">
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">All Domains</h1>
           <p className="text-white/60 text-sm sm:text-base">
@@ -34,7 +34,7 @@ export default function DomainsPage() {
         </div>
 
         {/* Course Domains (with structured topics/levels) */}
-        <div className="space-y-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {domains.map((domain) => {
             const domainProgress = progress.domains[domain.id];
             const level = domainProgress?.level || 1;
@@ -87,7 +87,7 @@ export default function DomainsPage() {
               <h2 className="text-lg sm:text-xl font-bold mb-1">Research Domains</h2>
               <p className="text-white/40 text-xs sm:text-sm">AI-scraped papers with auto-generated quizzes</p>
             </div>
-            <div className="space-y-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {v2OnlyDomains.map((d: any) => (
                 <Link key={d.slug} href={`/domain/${d.slug}`}>
                   <div className="glass-card p-4 sm:p-6 hover:bg-white/10 cursor-pointer group active:scale-[0.98] transition-all">

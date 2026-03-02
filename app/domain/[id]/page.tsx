@@ -103,7 +103,7 @@ export default function DomainPage() {
 
   return (
     <ClientLayout>
-      <div className="max-w-2xl mx-auto p-4 sm:p-6 space-y-4 sm:space-y-6">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-6 space-y-4 sm:space-y-6">
         {/* Back */}
         <button onClick={() => router.push('/domains')} className="flex items-center gap-2 text-white/60 hover:text-white">
           <ArrowLeft size={18} /> All Domains

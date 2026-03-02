@@ -18,9 +18,10 @@ export default function DomainPage() {
   const [progress, setProgress] = useState(loadProgress());
   const [filter, setFilter] = useState<string>('all');
 
-  // V2: Paper feed & generation
+  // V2: Paper feed, generation, domain-specific stats
   const [v2Feed, setV2Feed] = useState<any[]>([]);
   const [v2Stats, setV2Stats] = useState<any>(null);
+  const [v2Domain, setV2Domain] = useState<any>(null);
   const [showFeed, setShowFeed] = useState(false);
   const [showGenerate, setShowGenerate] = useState(false);
   const [genCount, setGenCount] = useState(10);
@@ -42,6 +43,10 @@ export default function DomainPage() {
     if (id) {
       fetch(`/api/v2/feed?domain=${id}&limit=10`).then(r => r.json()).then(d => setV2Feed(d.digests || [])).catch(() => {});
       fetch(`/api/v2/stats`).then(r => r.json()).then(setV2Stats).catch(() => {});
+      fetch(`/api/v2/domains`).then(r => r.json()).then(d => {
+        const match = (d.domains || []).find((x: any) => x.slug === id);
+        if (match) setV2Domain(match);
+      }).catch(() => {});
     }
   }, [id]);
 
@@ -81,37 +86,50 @@ export default function DomainPage() {
     : topics.filter((t: any) => t.difficulty === filter);
 
   const completedCount = domainProgress?.completedQuestions?.length || 0;
-  const totalQuestions = topics.reduce((sum: number, t: any) => sum + (t.questions?.length || 0), 0);
+  
+  // Count questions from both topics AND levels format
+  const topicQuestions = topics.reduce((sum: number, t: any) => sum + (t.questions?.length || 0), 0);
+  const levelQuestions = domain.levels 
+    ? Object.values(domain.levels).reduce((sum: number, l: any) => sum + (l.questions?.length || 0), 0) 
+    : 0;
+  const localQuestions = topicQuestions + levelQuestions;
+  
+  // Merge with V2 API data for real counts
+  const v2Papers = v2Domain?.paper_count || 0;
+  const v2Questions = v2Domain?.question_count || 0;
+  const v2Flashcards = v2Domain?.flashcard_count || 0;
+  const totalQuestions = localQuestions + v2Questions;
+  const totalTopics = hasTopics ? topics.length : (domain.levels ? Object.keys(domain.levels).length : 0);
 
   return (
     <ClientLayout>
-      <div className="max-w-2xl mx-auto p-6 space-y-6">
+      <div className="max-w-2xl mx-auto p-4 sm:p-6 space-y-4 sm:space-y-6">
         {/* Back */}
         <button onClick={() => router.push('/domains')} className="flex items-center gap-2 text-white/60 hover:text-white">
           <ArrowLeft size={18} /> All Domains
         </button>
 
         {/* Header */}
-        <div className="glass-card p-6">
-          <div className="flex items-center gap-4 mb-4">
+        <div className="glass-card p-4 sm:p-6">
+          <div className="flex items-center gap-3 sm:gap-4 mb-4">
             <div
-              className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl"
+              className="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center text-2xl sm:text-4xl shrink-0"
               style={{ background: `${domain.color}20`, border: `2px solid ${domain.color}` }}
             >
               {domain.icon}
             </div>
-            <div className="flex-1">
-              <h1 className="text-2xl font-bold">{domain.name}</h1>
-              <p className="text-white/60 text-sm">{domain.description}</p>
+            <div className="flex-1 min-w-0">
+              <h1 className="text-xl sm:text-2xl font-bold truncate">{domain.name}</h1>
+              <p className="text-white/60 text-xs sm:text-sm line-clamp-2">{domain.description}</p>
             </div>
           </div>
 
-          <div className="flex gap-6 pt-4 border-t border-white/10">
+          <div className="grid grid-cols-2 sm:flex sm:gap-6 gap-3 pt-4 border-t border-white/10">
             <div className="flex items-center gap-2">
               <BookOpen className="text-cyan-400" size={18} />
               <div>
-                <div className="text-xs text-white/60">Topics</div>
-                <div className="font-bold">{topics.length}</div>
+                <div className="text-xs text-white/60">{hasTopics ? 'Topics' : 'Levels'}</div>
+                <div className="font-bold">{totalTopics}</div>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -121,6 +139,24 @@ export default function DomainPage() {
                 <div className="font-bold">{totalQuestions}</div>
               </div>
             </div>
+            {v2Papers > 0 && (
+              <div className="flex items-center gap-2">
+                <Newspaper className="text-amber-400" size={18} />
+                <div>
+                  <div className="text-xs text-white/60">Papers</div>
+                  <div className="font-bold">{v2Papers}</div>
+                </div>
+              </div>
+            )}
+            {v2Flashcards > 0 && (
+              <div className="flex items-center gap-2">
+                <Zap className="text-yellow-400" size={18} />
+                <div>
+                  <div className="text-xs text-white/60">Flashcards</div>
+                  <div className="font-bold">{v2Flashcards}</div>
+                </div>
+              </div>
+            )}
             <div className="flex items-center gap-2">
               <Target className="text-green-400" size={18} />
               <div>
@@ -214,23 +250,23 @@ export default function DomainPage() {
         )}
         {/* ═══ V2: Research Feed & AI Question Generator ═══ */}
         
-        {/* V2 Action Buttons */}
-        {v2Feed.length > 0 && (
-          <div className="flex gap-2 sm:gap-3 pt-4 border-t border-white/10 flex-wrap">
+        {/* V2 Action Buttons - always show Generate, show Feed if data exists */}
+        <div className="flex gap-2 sm:gap-3 pt-4 border-t border-white/10 flex-wrap">
+          {v2Feed.length > 0 && (
             <button onClick={() => { setShowFeed(!showFeed); setShowGenerate(false); }}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
                 showFeed ? 'bg-white/10 text-white border border-white/20' : 'glass-card text-white/60 hover:text-white'
               }`}>
               <Newspaper size={16} /> Research Feed ({v2Feed.length})
             </button>
-            <button onClick={() => { setShowGenerate(!showGenerate); setShowFeed(false); setGenQuizMode(false); }}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                showGenerate ? 'bg-white/10 text-white border border-white/20' : 'glass-card text-white/60 hover:text-white'
-              }`}>
-              <Sparkles size={16} /> Generate Questions
-            </button>
-          </div>
-        )}
+          )}
+          <button onClick={() => { setShowGenerate(!showGenerate); setShowFeed(false); setGenQuizMode(false); }}
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
+              showGenerate ? 'bg-white/10 text-white border border-white/20' : 'glass-card text-white/60 hover:text-white'
+            }`}>
+            <Sparkles size={16} /> Generate Questions
+          </button>
+        </div>
 
         {/* Research Feed */}
         {showFeed && (

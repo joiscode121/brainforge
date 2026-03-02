@@ -60,101 +60,73 @@ export default function Home() {
           <p className="text-white/60 text-sm">Master everything, one topic at a time</p>
         </motion.div>
 
-        {/* Top Row: Streak + Quick Actions side by side on desktop */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-
-        {/* Streak + XP Card */}
+        {/* Dashboard Row: Streak | Today's Lesson | Quick Actions */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="glass-card p-6 lg:col-span-2"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3"
         >
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <Flame className="text-orange-500" size={24} />
-                <span className="text-3xl font-bold">{progress.streak}</span>
-                <span className="text-white/60">day streak</span>
+          {/* Streak */}
+          <div className="glass-card p-4 col-span-2">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Flame className="text-orange-500" size={20} />
+                <span className="text-2xl font-bold">{progress.streak}</span>
+                <span className="text-white/60 text-sm">day streak</span>
               </div>
-              <div className="text-sm text-white/60">
-                Level {progress.level} | {progress.xp} XP
+              <div className="text-right">
+                <div className="text-sm text-white/60">Lvl {progress.level} · {progress.xp} XP</div>
               </div>
             </div>
-            <div className="text-right">
-              <div className="text-2xl font-bold text-cyan-400">
-                {progress.xp % 100}
-              </div>
-              <div className="text-xs text-white/60">/ 100 to Level {progress.level + 1}</div>
+            <div className="mt-3 h-1.5 bg-white/10 rounded-full overflow-hidden">
+              <motion.div
+                className="h-full bg-gradient-to-r from-cyan-400 to-purple-500"
+                initial={{ width: 0 }}
+                animate={{ width: `${(progress.xp % 100)}%` }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              />
             </div>
           </div>
-          
-          <div className="mt-4 h-2 bg-white/10 rounded-full overflow-hidden">
-            <motion.div
-              className="h-full bg-gradient-to-r from-cyan-400 to-purple-500"
-              initial={{ width: 0 }}
-              animate={{ width: `${(progress.xp % 100)}%` }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            />
-          </div>
-        </motion.div>
 
-        {/* Today's Lesson */}
-        {todaysTopic && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <Link href={`/learn/${todaysTopic.domain.id}/${todaysTopic.topic.id}`}>
-              <div className="glass-card p-6 hover:bg-white/10 cursor-pointer group border border-cyan-500/20">
-                <div className="text-xs text-cyan-400 uppercase tracking-wider mb-3 font-medium">
-                  Today's Lesson
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <BookOpen className="text-white" size={28} />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-lg">{todaysTopic.topic.title}</h3>
-                    <p className="text-sm text-white/60">{todaysTopic.domain.name} | {todaysTopic.topic.difficulty}</p>
-                  </div>
+          {/* Today's Lesson */}
+          {todaysTopic ? (
+            <Link href={`/learn/${todaysTopic.domain.id}/${todaysTopic.topic.id}`} className="col-span-2 lg:col-span-1">
+              <div className="glass-card p-4 hover:bg-white/10 cursor-pointer group border border-cyan-500/20 h-full">
+                <div className="text-[10px] text-cyan-400 uppercase tracking-wider mb-2 font-medium">Today's Lesson</div>
+                <div className="font-bold text-sm truncate">{todaysTopic.topic.title}</div>
+                <div className="text-xs text-white/40 truncate">{todaysTopic.domain.name} · {todaysTopic.topic.difficulty}</div>
+              </div>
+            </Link>
+          ) : (
+            <div className="glass-card p-4 col-span-2 lg:col-span-1 flex items-center justify-center text-white/20 text-sm">No lesson today</div>
+          )}
+
+          {/* Quick Actions */}
+          <div className="col-span-2 lg:col-span-1 grid grid-cols-2 lg:grid-cols-1 gap-3">
+            <Link href="/domains">
+              <div className="glass-card p-3 hover:bg-white/10 cursor-pointer group flex items-center gap-3 h-full">
+                <Brain className="text-purple-400 shrink-0" size={20} />
+                <div>
+                  <div className="font-bold text-sm">Explore</div>
+                  <div className="text-[10px] text-white/40">{totalDomainCount} domains</div>
                 </div>
               </div>
             </Link>
-          </motion.div>
-        )}
-
-        {/* Quick Actions */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="flex flex-col gap-3"
-        >
-          <Link href="/domains" className="flex-1">
-            <div className="glass-card p-5 hover:bg-white/10 cursor-pointer text-center group h-full flex flex-col items-center justify-center">
-              <Brain className="text-purple-400 mb-2 group-hover:scale-110 transition-transform" size={28} />
-              <div className="font-bold text-sm">Explore</div>
-              <div className="text-xs text-white/40">{totalDomainCount} domains</div>
-            </div>
-          </Link>
-          
-          <Link href="/review" className="flex-1">
-            <div className="glass-card p-5 hover:bg-white/10 cursor-pointer text-center group relative h-full flex flex-col items-center justify-center">
-              <RotateCcw className="text-cyan-400 mb-2 group-hover:scale-110 transition-transform" size={28} />
-              <div className="font-bold text-sm">Review</div>
-              <div className="text-xs text-white/40">{reviewCount} due</div>
-              {reviewCount > 0 && (
-                <div className="absolute top-3 right-3 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center font-bold">
-                  {reviewCount}
+            <Link href="/review">
+              <div className="glass-card p-3 hover:bg-white/10 cursor-pointer group flex items-center gap-3 relative h-full">
+                <RotateCcw className="text-cyan-400 shrink-0" size={20} />
+                <div>
+                  <div className="font-bold text-sm">Review</div>
+                  <div className="text-[10px] text-white/40">{reviewCount} due</div>
                 </div>
-              )}
-            </div>
-          </Link>
+                {reviewCount > 0 && (
+                  <div className="absolute top-2 right-2 w-4 h-4 bg-red-500 rounded-full text-[9px] flex items-center justify-center font-bold">{reviewCount}</div>
+                )}
+              </div>
+            </Link>
+          </div>
         </motion.div>
-
-        </div>{/* end top row */}
 
         {/* Domain Progress */}
         <motion.div
@@ -166,75 +138,44 @@ export default function Home() {
           {totalPapers > 0 && (
             <p className="text-xs text-white/40 mb-3">{totalPapers} papers · {totalQuestions} AI questions across all domains</p>
           )}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {domains.map((domain, i) => {
-              const dp = progress.domains[domain.id];
-              const v2 = getV2Stats(domain.id);
-              const localQ = domain.topics 
-                ? domain.topics.reduce((s: number, t: any) => s + (t.questions?.length || 0), 0)
-                : domain.levels 
-                  ? Object.values(domain.levels).reduce((s: number, l: any) => s + (l as any).questions.length, 0)
-                  : 0;
-              const totalQ = localQ + (v2?.question_count || 0);
-              const completed = dp?.completedQuestions?.length || 0;
-              const pct = totalQ > 0 ? Math.round((completed / totalQ) * 100) : 0;
-
-              return (
-                <Link key={domain.id} href={`/domain/${domain.id}`}>
-                  <motion.div
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 + i * 0.05 }}
-                    className="glass-card p-4 hover:bg-white/10 cursor-pointer group active:scale-[0.98] flex items-center gap-3 sm:gap-4"
-                  >
-                    <div
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-xl sm:text-2xl flex-shrink-0"
-                      style={{ background: `${domain.color}15`, border: `1.5px solid ${domain.color}30` }}
-                    >
-                      {domain.icon}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="font-semibold text-sm truncate">{domain.name}</div>
-                      <div className="flex items-center gap-2 mt-1">
-                        <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
-                          <div
-                            className="h-full rounded-full transition-all"
-                            style={{ width: `${pct}%`, background: domain.color }}
-                          />
-                        </div>
-                        <span className="text-xs text-white/40 w-8 text-right">{pct}%</span>
-                      </div>
-                      {(v2?.paper_count > 0 || v2?.question_count > 0) && (
-                        <div className="text-[10px] text-white/30 mt-1">
-                          {v2.paper_count > 0 && `${v2.paper_count} papers`}{v2.paper_count > 0 && v2.question_count > 0 && ' · '}{v2.question_count > 0 && `${v2.question_count} AI questions`}
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                </Link>
-              );
-            })}
-
-            {/* V2-only Research Domains */}
-            {v2OnlyDomains.map((d: any, i: number) => (
-              <Link key={d.slug} href={`/domain/${d.slug}`}>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            {/* Merge all domains into one unified list */}
+            {[
+              ...domains.map(d => ({
+                id: d.id, name: d.name, icon: d.icon, color: d.color,
+                papers: getV2Stats(d.id)?.paper_count || 0,
+                questions: (d.topics ? d.topics.reduce((s: number, t: any) => s + (t.questions?.length || 0), 0) : d.levels ? Object.values(d.levels).reduce((s: number, l: any) => s + (l as any).questions.length, 0) : 0) + (getV2Stats(d.id)?.question_count || 0),
+                pct: (() => { const dp = progress.domains[d.id]; const localQ = d.topics ? d.topics.reduce((s: number, t: any) => s + (t.questions?.length || 0), 0) : d.levels ? Object.values(d.levels).reduce((s: number, l: any) => s + (l as any).questions.length, 0) : 0; const totalQ = localQ + (getV2Stats(d.id)?.question_count || 0); const completed = dp?.completedQuestions?.length || 0; return totalQ > 0 ? Math.round((completed / totalQ) * 100) : 0; })()
+              })),
+              ...v2OnlyDomains.map((d: any) => ({
+                id: d.slug, name: d.name, icon: d.icon || '📚', color: d.color || '#6366f1',
+                papers: d.paper_count, questions: d.question_count, pct: 0
+              }))
+            ].map((d, i) => (
+              <Link key={d.id} href={`/domain/${d.id}`}>
                 <motion.div
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4 + (domains.length + i) * 0.05 }}
-                  className="glass-card p-4 hover:bg-white/10 cursor-pointer group active:scale-[0.98] flex items-center gap-3 sm:gap-4"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15 + i * 0.03 }}
+                  className="glass-card p-3 hover:bg-white/10 cursor-pointer group active:scale-[0.98] h-full"
                 >
-                  <div
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-xl sm:text-2xl flex-shrink-0"
-                    style={{ background: `${d.color || '#6366f1'}15`, border: `1.5px solid ${d.color || '#6366f1'}30` }}
-                  >
-                    {d.icon || '📚'}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="font-semibold text-sm truncate">{d.name}</div>
-                    <div className="text-[10px] text-white/30 mt-1">
-                      {d.paper_count > 0 && `${d.paper_count} papers`}{d.paper_count > 0 && d.question_count > 0 && ' · '}{d.question_count > 0 && `${d.question_count} AI questions`}{d.flashcard_count > 0 && ` · ${d.flashcard_count} flashcards`}
+                  <div className="flex items-center gap-2 mb-2">
+                    <div
+                      className="w-8 h-8 rounded-lg flex items-center justify-center text-lg shrink-0"
+                      style={{ background: `${d.color}15` }}
+                    >
+                      {d.icon}
                     </div>
+                    <div className="font-semibold text-xs truncate flex-1">{d.name}</div>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="flex-1 h-1 bg-white/10 rounded-full overflow-hidden">
+                      <div className="h-full rounded-full" style={{ width: `${d.pct}%`, background: d.color }} />
+                    </div>
+                    <span className="text-[10px] text-white/40 w-6 text-right">{d.pct}%</span>
+                  </div>
+                  <div className="text-[10px] text-white/25 mt-1 truncate">
+                    {d.papers > 0 && `${d.papers} papers`}{d.papers > 0 && d.questions > 0 && ' · '}{d.questions > 0 && `${d.questions} Qs`}
                   </div>
                 </motion.div>
               </Link>

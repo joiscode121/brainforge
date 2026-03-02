@@ -2,195 +2,105 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import ClientLayout from '@/components/ClientLayout';
-import { loadProgress, updateStreak, saveProgress } from '@/lib/storage';
-import { loadAllDomains, Domain } from '@/lib/domains';
-import { getReviewCount } from '@/lib/spaced-repetition';
-import { Flame, Play, Target, BookOpen, Brain, RotateCcw } from 'lucide-react';
+
+const categoryLabels: Record<string, string> = {
+  science: 'Science & Biology',
+  tech: 'Technology',
+  math: 'Mathematics',
+  language: 'Language & Reading',
+};
+
+const categoryOrder = ['science', 'tech', 'math', 'language'];
 
 export default function Home() {
-  const [progress, setProgress] = useState(loadProgress());
-  const [domains, setDomains] = useState<Domain[]>([]);
-  const [reviewCount, setReviewCount] = useState(0);
+  const [domains, setDomains] = useState<any[]>([]);
+  const [stats, setStats] = useState<any>(null);
 
   useEffect(() => {
-    const updatedProgress = updateStreak(progress);
-    if (updatedProgress.streak !== progress.streak) {
-      setProgress(updatedProgress);
-      saveProgress(updatedProgress);
-    }
-
-    loadAllDomains().then(setDomains);
-    setReviewCount(getReviewCount(progress.reviewQueue));
+    fetch('/api/v2/domains').then(r => r.json()).then(d => setDomains(d.domains || []));
+    fetch('/api/v2/stats').then(r => r.json()).then(setStats);
   }, []);
 
-  // Pick a random topic for "Today's Lesson"
-  const todaysTopic = domains.length > 0 ? (() => {
-    const withTopics = domains.filter(d => d.topics && d.topics.length > 0);
-    if (withTopics.length === 0) return null;
-    const domain = withTopics[Math.floor(Math.random() * withTopics.length)];
-    const topic = domain.topics![Math.floor(Math.random() * domain.topics!.length)];
-    return { domain, topic };
-  })() : null;
+  const grouped = categoryOrder.map(cat => ({
+    category: cat,
+    label: categoryLabels[cat],
+    domains: domains.filter(d => d.category === cat),
+  })).filter(g => g.domains.length > 0);
 
   return (
-    <ClientLayout>
-      <div className="max-w-2xl mx-auto p-6 space-y-6">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center space-y-2"
-        >
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-            BrainForge
-          </h1>
-          <p className="text-white/60 text-sm">Master everything, one topic at a time</p>
-        </motion.div>
-
-        {/* Streak + XP Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="glass-card p-6"
-        >
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <Flame className="text-orange-500" size={24} />
-                <span className="text-3xl font-bold">{progress.streak}</span>
-                <span className="text-white/60">day streak</span>
-              </div>
-              <div className="text-sm text-white/60">
-                Level {progress.level} | {progress.xp} XP
-              </div>
-            </div>
-            <div className="text-right">
-              <div className="text-2xl font-bold text-cyan-400">
-                {progress.xp % 100}
-              </div>
-              <div className="text-xs text-white/60">/ 100 to Level {progress.level + 1}</div>
-            </div>
-          </div>
-          
-          <div className="mt-4 h-2 bg-white/10 rounded-full overflow-hidden">
-            <motion.div
-              className="h-full bg-gradient-to-r from-cyan-400 to-purple-500"
-              initial={{ width: 0 }}
-              animate={{ width: `${(progress.xp % 100)}%` }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            />
-          </div>
-        </motion.div>
-
-        {/* Today's Lesson */}
-        {todaysTopic && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <Link href={`/learn/${todaysTopic.domain.id}/${todaysTopic.topic.id}`}>
-              <div className="glass-card p-6 hover:bg-white/10 cursor-pointer group border border-cyan-500/20">
-                <div className="text-xs text-cyan-400 uppercase tracking-wider mb-3 font-medium">
-                  Today's Lesson
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <BookOpen className="text-white" size={28} />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-lg">{todaysTopic.topic.title}</h3>
-                    <p className="text-sm text-white/60">{todaysTopic.domain.name} | {todaysTopic.topic.difficulty}</p>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </motion.div>
-        )}
-
-        {/* Quick Actions */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="grid grid-cols-2 gap-4"
-        >
-          <Link href="/domains">
-            <div className="glass-card p-5 hover:bg-white/10 cursor-pointer text-center group">
-              <Brain className="text-purple-400 mx-auto mb-2 group-hover:scale-110 transition-transform" size={28} />
-              <div className="font-bold text-sm">Explore</div>
-              <div className="text-xs text-white/40">{domains.length} domains</div>
-            </div>
-          </Link>
-          
-          <Link href="/review">
-            <div className="glass-card p-5 hover:bg-white/10 cursor-pointer text-center group relative">
-              <RotateCcw className="text-cyan-400 mx-auto mb-2 group-hover:scale-110 transition-transform" size={28} />
-              <div className="font-bold text-sm">Review</div>
-              <div className="text-xs text-white/40">{reviewCount} due</div>
-              {reviewCount > 0 && (
-                <div className="absolute top-3 right-3 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center font-bold">
-                  {reviewCount}
-                </div>
-              )}
-            </div>
-          </Link>
-        </motion.div>
-
-        {/* Domain Progress */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-        >
-          <h2 className="text-lg font-bold mb-3">Your Domains</h2>
-          <div className="space-y-3">
-            {domains.map((domain, i) => {
-              const dp = progress.domains[domain.id];
-              const totalQ = domain.topics 
-                ? domain.topics.reduce((s, t) => s + (t.questions?.length || 0), 0)
-                : domain.levels 
-                  ? Object.values(domain.levels).reduce((s, l) => s + l.questions.length, 0)
-                  : 0;
-              const completed = dp?.completedQuestions?.length || 0;
-              const pct = totalQ > 0 ? Math.round((completed / totalQ) * 100) : 0;
-
-              return (
-                <Link key={domain.id} href={`/domain/${domain.id}`}>
-                  <motion.div
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 + i * 0.05 }}
-                    className="glass-card p-4 hover:bg-white/10 cursor-pointer group flex items-center gap-4"
-                  >
-                    <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
-                      style={{ background: `${domain.color}15`, border: `1.5px solid ${domain.color}30` }}
-                    >
-                      {domain.icon}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="font-semibold text-sm truncate">{domain.name}</div>
-                      <div className="flex items-center gap-2 mt-1">
-                        <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
-                          <div
-                            className="h-full rounded-full transition-all"
-                            style={{ width: `${pct}%`, background: domain.color }}
-                          />
-                        </div>
-                        <span className="text-xs text-white/40 w-8 text-right">{pct}%</span>
-                      </div>
-                    </div>
-                  </motion.div>
-                </Link>
-              );
-            })}
-          </div>
-        </motion.div>
+    <div className="min-h-screen pb-24" style={{ background: '#0a0908' }}>
+      {/* Header */}
+      <div className="px-5 pt-8 pb-6">
+        <h1 className="text-3xl font-bold text-white">BrainForge</h1>
+        <p className="text-white/40 text-sm mt-1">Universal Mastery Engine</p>
       </div>
-    </ClientLayout>
+
+      {/* Stats bar */}
+      {stats && (
+        <div className="px-5 mb-6">
+          <div className="grid grid-cols-4 gap-3">
+            {[
+              { label: 'Papers', value: stats.papers },
+              { label: 'Questions', value: stats.questions },
+              { label: 'Flashcards', value: stats.flashcards },
+              { label: 'Domains', value: stats.domains },
+            ].map((s, i) => (
+              <div key={i} className="bg-white/[0.04] rounded-xl p-3 border border-white/[0.06] text-center">
+                <div className="text-lg font-bold text-white">{s.value}</div>
+                <div className="text-[10px] text-white/40">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Daily Mix CTA */}
+      <div className="px-5 mb-8">
+        <Link href="/quiz?mode=daily" className="block bg-gradient-to-r from-amber-500/20 to-orange-500/20 rounded-2xl p-5 border border-amber-400/20">
+          <div className="text-lg font-bold text-amber-400">Daily Mix</div>
+          <div className="text-sm text-white/50 mt-1">15 questions from across all domains</div>
+        </Link>
+      </div>
+
+      {/* Domain grid by category */}
+      {grouped.map(group => (
+        <div key={group.category} className="mb-8">
+          <div className="px-5 mb-3">
+            <h2 className="text-sm font-semibold text-white/50 uppercase tracking-wider">{group.label}</h2>
+          </div>
+          <div className="px-5 grid grid-cols-2 gap-3">
+            {group.domains.map(d => (
+              <Link key={d.slug} href={`/domain/${d.slug}`}
+                className="bg-white/[0.03] rounded-xl p-4 border border-white/[0.05] hover:border-white/[0.12] transition-all active:scale-[0.98]">
+                <div className="w-8 h-8 rounded-lg mb-3 flex items-center justify-center text-lg"
+                  style={{ background: `${d.color}20` }}>
+                  <div className="w-3 h-3 rounded-full" style={{ background: d.color }}></div>
+                </div>
+                <div className="text-[13px] font-medium text-white/90 mb-1">{d.name}</div>
+                <div className="text-[11px] text-white/30 mb-2 line-clamp-2">{d.description}</div>
+                <div className="flex gap-3 text-[10px]">
+                  <span className="text-white/40">{d.paper_count} papers</span>
+                  <span style={{ color: d.color }}>{d.question_count} questions</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      {/* Bottom nav */}
+      <nav className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-lg border-t border-white/[0.06] px-6 py-3 flex justify-around z-50">
+        {[
+          { label: 'Home', href: '/', active: true },
+          { label: 'Domains', href: '/domains' },
+          { label: 'Review', href: '/review' },
+          { label: 'Progress', href: '/progress' },
+        ].map(n => (
+          <Link key={n.href} href={n.href} className={`text-[11px] ${n.active ? 'text-amber-400' : 'text-white/40'}`}>
+            {n.label}
+          </Link>
+        ))}
+      </nav>
+    </div>
   );
 }

@@ -7,10 +7,18 @@ export async function GET(req: Request) {
   const url = new URL(req.url);
   const proxyUrl = `${API_BASE}${url.pathname}${url.search}`;
   try {
-    const resp = await fetch(proxyUrl, { cache: 'no-store' });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+    const resp = await fetch(proxyUrl, { cache: 'no-store', signal: controller.signal });
+    clearTimeout(timeout);
     const data = await resp.json();
     return NextResponse.json(data);
-  } catch {
-    return NextResponse.json({ error: 'API unavailable' }, { status: 503 });
+  } catch (e: any) {
+    return NextResponse.json({ 
+      error: 'API unavailable', 
+      detail: e?.message || 'unknown',
+      apiBase: API_BASE,
+      url: proxyUrl 
+    }, { status: 503 });
   }
 }

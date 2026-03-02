@@ -38,31 +38,39 @@ export default function DomainPage() {
   useEffect(() => {
     if (!id) return;
     
-    // Try loading local JSON first, fall back to V2 API
-    loadDomain(id).then(setDomain).catch(() => {
-      // No local JSON - create domain from V2 API data
-      fetch(`/api/v2/domains`).then(r => r.json()).then(d => {
-        const match = (d.domains || []).find((x: any) => x.slug === id);
-        if (match) {
-          setDomain({
-            id: match.slug,
-            name: match.name,
-            icon: match.icon || '📚',
-            color: match.color || '#6366f1',
-            description: match.description || '',
-          } as Domain);
-          setV2Domain(match);
-        }
-      }).catch(() => {});
-    });
+    // Load everything in parallel
+    const loadAll = async () => {
+      // Always fetch V2 data
+      const [v2DomainsRes, feedRes, statsRes] = await Promise.all([
+        fetch(`/api/v2/domains`).then(r => r.json()).catch(() => ({ domains: [] })),
+        fetch(`/api/v2/feed?domain=${id}&limit=10`).then(r => r.json()).catch(() => ({ digests: [] })),
+        fetch(`/api/v2/stats`).then(r => r.json()).catch(() => null),
+      ]);
 
-    // Load V2 data
-    fetch(`/api/v2/feed?domain=${id}&limit=10`).then(r => r.json()).then(d => setV2Feed(d.digests || [])).catch(() => {});
-    fetch(`/api/v2/stats`).then(r => r.json()).then(setV2Stats).catch(() => {});
-    fetch(`/api/v2/domains`).then(r => r.json()).then(d => {
-      const match = (d.domains || []).find((x: any) => x.slug === id);
-      if (match) setV2Domain(match);
-    }).catch(() => {});
+      const v2Match = (v2DomainsRes.domains || []).find((x: any) => x.slug === id);
+      if (v2Match) setV2Domain(v2Match);
+      setV2Feed(feedRes.digests || []);
+      if (statsRes) setV2Stats(statsRes);
+
+      // Try local JSON
+      try {
+        const localDomain = await loadDomain(id);
+        setDomain(localDomain);
+      } catch {
+        // No local JSON - use V2 API data
+        if (v2Match) {
+          setDomain({
+            id: v2Match.slug,
+            name: v2Match.name,
+            icon: v2Match.icon || '📚',
+            color: v2Match.color || '#6366f1',
+            description: v2Match.description || '',
+          } as Domain);
+        }
+      }
+    };
+
+    loadAll();
   }, [id]);
 
   // Auto-show feed for V2-only domains (no local content)
@@ -255,20 +263,59 @@ export default function DomainPage() {
               </motion.div>
             ))}
           </div>
-        ) : (
-          /* Fallback for old levels format */
-          <div className="space-y-4">
-            {domain.levels && Object.entries(domain.levels).map(([levelKey, levelData]: [string, any]) => (
+        ) : domain.levels ? (
+          /* Levels format (beginner/intermediate/advanced) */
+          <div className="space-y-3">
+            {Object.entries(domain.levels).map(([levelKey, levelData]: [string, any]) => (
               <div
                 key={levelKey}
                 onClick={() => router.push(`/quiz?domain=${domain.id}&level=${levelKey}`)}
-                className="glass-card p-6 hover:bg-white/10 cursor-pointer"
+                className="glass-card p-4 sm:p-5 hover:bg-white/10 cursor-pointer active:scale-[0.98] transition-all"
               >
-                <h3 className="font-bold text-lg capitalize">{levelData.name}</h3>
-                <p className="text-sm text-white/60">{levelData.description}</p>
-                <p className="text-xs text-white/40 mt-2">{levelData.questions?.length || 0} questions</p>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="font-bold text-base capitalize">{levelData.name}</h3>
+                    <p className="text-xs text-white/50 mt-1">{levelData.description}</p>
+                  </div>
+                  <div className="text-right shrink-0 ml-3">
+                    <div className="text-lg font-bold" style={{ color: domain.color }}>{levelData.questions?.length || 0}</div>
+                    <div className="text-[10px] text-white/40">questions</div>
+                  </div>
+                </div>
               </div>
             ))}
+          </div>
+        ) : (
+          /* V2-only domain - no local topics or levels, show quick actions */
+          <div className="space-y-3">
+            {v2Questions > 0 && (
+              <div className="glass-card p-4 sm:p-5 border border-white/10">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="font-bold text-base">Quick Quiz</h3>
+                    <p className="text-xs text-white/50 mt-1">Test yourself on AI-generated questions from scraped papers</p>
+                  </div>
+                  <div className="text-right shrink-0 ml-3">
+                    <div className="text-lg font-bold" style={{ color: domain.color }}>{v2Questions}</div>
+                    <div className="text-[10px] text-white/40">questions</div>
+                  </div>
+                </div>
+              </div>
+            )}
+            {v2Flashcards > 0 && (
+              <div className="glass-card p-4 sm:p-5 border border-white/10">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="font-bold text-base">Flashcards</h3>
+                    <p className="text-xs text-white/50 mt-1">Review key concepts from latest research</p>
+                  </div>
+                  <div className="text-right shrink-0 ml-3">
+                    <div className="text-lg font-bold" style={{ color: domain.color }}>{v2Flashcards}</div>
+                    <div className="text-[10px] text-white/40">cards</div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         )}
         {/* ═══ V2: Research Feed & AI Question Generator ═══ */}

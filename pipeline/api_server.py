@@ -1,25 +1,99 @@
 #!/usr/bin/env python3
-"""BrainForge API Server - serves data from SQLite to frontend"""
+"""BrainForge API Server - serves data from SQLite + on-demand generation"""
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import sqlite3
 import json
 import os
 import urllib.parse
+import threading
+import requests
+import time
 
 DB_PATH = os.path.expanduser("~/clawd/db/brainforge.db")
 PORT = 3099
+GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
 
 def get_db():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
 
+def generate_questions(domain_slug, count=10, difficulty="intermediate", topic=""):
+    """Generate fresh questions using Groq"""
+    conn = get_db()
+    domain = conn.execute("SELECT * FROM domains WHERE slug = ?", (domain_slug,)).fetchone()
+    domain_name = dict(domain)["name"] if domain else domain_slug
+    
+    # Get some existing papers for context
+    papers = conn.execute(
+        "SELECT title, abstract FROM papers WHERE domain_slug = ? AND abstract IS NOT NULL ORDER BY RANDOM() LIMIT 5",
+        (domain_slug,)
+    ).fetchall()
+    conn.close()
+    
+    context = "\n".join(f"- {p['title']}: {p['abstract'][:200]}" for p in papers)
+    topic_str = f" specifically about {topic}" if topic else ""
+    
+    prompt = f"""Generate exactly {count} multiple-choice quiz questions about {domain_name}{topic_str}.
+Difficulty: {difficulty}
+
+Context from recent papers in this domain:
+{context}
+
+Return ONLY valid JSON array, no markdown:
+[
+  {{
+    "question": "Clear, specific question",
+    "options": ["A) ...", "B) ...", "C) ...", "D) ..."],
+    "correct": 0,
+    "explanation": "Brief explanation of why",
+    "difficulty": "{difficulty}"
+  }}
+]
+
+Make questions diverse, educational, and test real understanding. For {difficulty} level:
+- beginner: basic definitions and concepts
+- intermediate: application and analysis
+- advanced: synthesis, edge cases, recent developments
+- expert: research-level, cutting-edge, requires deep domain knowledge"""
+
+    resp = requests.post("https://api.groq.com/openai/v1/chat/completions", headers={
+        "Authorization": f"Bearer {GROQ_KEY}",
+        "Content-Type": "application/json",
+    }, json={
+        "model": "llama-3.3-70b-versatile",
+        "messages": [{"role": "user", "content": prompt}],
+        "max_tokens": 4000,
+        "temperature": 0.7,
+    }, timeout=60)
+    resp.raise_for_status()
+    
+    text = resp.json()["choices"][0]["message"]["content"].strip()
+    if "```json" in text: text = text.split("```json")[1].split("```")[0]
+    elif "```" in text: text = text.split("```")[1].split("```")[0]
+    
+    questions = json.loads(text)
+    
+    # Save to DB
+    conn = sqlite3.connect(DB_PATH)
+    for q in questions:
+        conn.execute("""
+            INSERT INTO questions (domain_slug, question, options, correct_answer, explanation, difficulty)
+            VALUES (?, ?, ?, ?, ?, ?)
+        """, (domain_slug, q["question"], json.dumps(q["options"]), q["correct"],
+              q.get("explanation", ""), q.get("difficulty", difficulty)))
+    conn.commit()
+    saved = len(questions)
+    total = conn.execute("SELECT COUNT(*) FROM questions WHERE domain_slug = ?", (domain_slug,)).fetchone()[0]
+    conn.close()
+    
+    return questions, saved, total
+
 class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path
         params = dict(urllib.parse.parse_qs(parsed.query))
-        # Flatten single-value params
         params = {k: v[0] if len(v) == 1 else v for k, v in params.items()}
         
         try:
@@ -44,6 +118,9 @@ class Handler(BaseHTTPRequestHandler):
                 if domain: q += ' WHERE p.domain_slug = ?'; args.append(domain)
                 q += ' ORDER BY d.created_at DESC LIMIT ?'; args.append(limit)
                 data = [dict(r) for r in conn.execute(q, args).fetchall()]
+                for d in data:
+                    if d.get('key_concepts'): d['key_concepts'] = json.loads(d['key_concepts'])
+                    if d.get('prerequisites'): d['prerequisites'] = json.loads(d['prerequisites'])
                 self.respond({"digests": data})
             
             elif path == '/api/v2/quiz':
@@ -58,6 +135,31 @@ class Handler(BaseHTTPRequestHandler):
                 data = [dict(r) for r in conn.execute(q, args).fetchall()]
                 for d in data: d['options'] = json.loads(d['options'])
                 self.respond({"questions": data})
+            
+            elif path == '/api/v2/generate':
+                domain = params.get('domain', '')
+                count = int(params.get('count', '10'))
+                difficulty = params.get('difficulty', 'intermediate')
+                topic = params.get('topic', '')
+                
+                if not domain:
+                    self.respond({"error": "domain parameter required"}, 400)
+                    conn.close()
+                    return
+                
+                count = min(count, 30)  # Cap at 30
+                
+                try:
+                    questions, saved, total = generate_questions(domain, count, difficulty, topic)
+                    self.respond({
+                        "questions": questions,
+                        "generated": saved,
+                        "totalInDomain": total,
+                        "domain": domain,
+                        "difficulty": difficulty,
+                    })
+                except Exception as e:
+                    self.respond({"error": f"Generation failed: {str(e)}"}, 500)
             
             elif path == '/api/v2/flashcards':
                 domain = params.get('domain', '')
@@ -98,7 +200,12 @@ class Handler(BaseHTTPRequestHandler):
             
             elif path.startswith('/api/v2/paper/'):
                 pid = path.split('/')[-1]
-                paper = dict(conn.execute('SELECT * FROM papers WHERE id = ?', (pid,)).fetchone() or {})
+                paper = conn.execute('SELECT * FROM papers WHERE id = ?', (pid,)).fetchone()
+                if not paper:
+                    self.respond({"error": "Not found"}, 404)
+                    conn.close()
+                    return
+                paper = dict(paper)
                 digest_row = conn.execute('SELECT * FROM digests WHERE paper_id = ?', (pid,)).fetchone()
                 digest = dict(digest_row) if digest_row else None
                 if digest:
@@ -122,7 +229,7 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(json.dumps(data).encode())
     
-    def log_message(self, format, *args): pass  # Silence logs
+    def log_message(self, format, *args): pass
 
 if __name__ == '__main__':
     print(f"BrainForge API running on port {PORT}")

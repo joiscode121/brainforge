@@ -24,6 +24,7 @@ export default function DomainPage() {
   const [v2Domain, setV2Domain] = useState<any>(null);
   const [showFeed, setShowFeed] = useState(false);
   const [showGenerate, setShowGenerate] = useState(false);
+  const [autoShown, setAutoShown] = useState(false);
   const [genCount, setGenCount] = useState(10);
   const [genDifficulty, setGenDifficulty] = useState('intermediate');
   const [genTopic, setGenTopic] = useState('');
@@ -35,20 +36,42 @@ export default function DomainPage() {
   const [genScore, setGenScore] = useState(0);
 
   useEffect(() => {
-    if (id) loadDomain(id).then(setDomain).catch(() => {});
-  }, [id]);
-
-  // Load V2 data for this domain
-  useEffect(() => {
-    if (id) {
-      fetch(`/api/v2/feed?domain=${id}&limit=10`).then(r => r.json()).then(d => setV2Feed(d.digests || [])).catch(() => {});
-      fetch(`/api/v2/stats`).then(r => r.json()).then(setV2Stats).catch(() => {});
+    if (!id) return;
+    
+    // Try loading local JSON first, fall back to V2 API
+    loadDomain(id).then(setDomain).catch(() => {
+      // No local JSON - create domain from V2 API data
       fetch(`/api/v2/domains`).then(r => r.json()).then(d => {
         const match = (d.domains || []).find((x: any) => x.slug === id);
-        if (match) setV2Domain(match);
+        if (match) {
+          setDomain({
+            id: match.slug,
+            name: match.name,
+            icon: match.icon || '📚',
+            color: match.color || '#6366f1',
+            description: match.description || '',
+          } as Domain);
+          setV2Domain(match);
+        }
       }).catch(() => {});
-    }
+    });
+
+    // Load V2 data
+    fetch(`/api/v2/feed?domain=${id}&limit=10`).then(r => r.json()).then(d => setV2Feed(d.digests || [])).catch(() => {});
+    fetch(`/api/v2/stats`).then(r => r.json()).then(setV2Stats).catch(() => {});
+    fetch(`/api/v2/domains`).then(r => r.json()).then(d => {
+      const match = (d.domains || []).find((x: any) => x.slug === id);
+      if (match) setV2Domain(match);
+    }).catch(() => {});
   }, [id]);
+
+  // Auto-show feed for V2-only domains (no local content)
+  useEffect(() => {
+    if (domain && !autoShown && !domain.topics?.length && !domain.levels && v2Feed.length > 0) {
+      setShowFeed(true);
+      setAutoShown(true);
+    }
+  }, [domain, v2Feed, autoShown]);
 
   const handleGenerate = async () => {
     setGenerating(true); setGenResult(null);
@@ -250,7 +273,7 @@ export default function DomainPage() {
         )}
         {/* ═══ V2: Research Feed & AI Question Generator ═══ */}
         
-        {/* V2 Action Buttons - always show Generate, show Feed if data exists */}
+        {/* V2 Action Buttons */}
         <div className="flex gap-2 sm:gap-3 pt-4 border-t border-white/10 flex-wrap">
           {v2Feed.length > 0 && (
             <button onClick={() => { setShowFeed(!showFeed); setShowGenerate(false); }}

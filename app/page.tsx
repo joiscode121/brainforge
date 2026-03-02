@@ -47,7 +47,7 @@ export default function Home() {
 
   return (
     <ClientLayout>
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-6 space-y-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -60,12 +60,15 @@ export default function Home() {
           <p className="text-white/60 text-sm">Master everything, one topic at a time</p>
         </motion.div>
 
+        {/* Top Row: Streak + Quick Actions side by side on desktop */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+
         {/* Streak + XP Card */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="glass-card p-6"
+          className="glass-card p-6 lg:col-span-2"
         >
           <div className="flex items-center justify-between">
             <div>
@@ -127,19 +130,19 @@ export default function Home() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="grid grid-cols-2 gap-4"
+          className="flex flex-col gap-3"
         >
-          <Link href="/domains">
-            <div className="glass-card p-5 hover:bg-white/10 cursor-pointer text-center group">
-              <Brain className="text-purple-400 mx-auto mb-2 group-hover:scale-110 transition-transform" size={28} />
+          <Link href="/domains" className="flex-1">
+            <div className="glass-card p-5 hover:bg-white/10 cursor-pointer text-center group h-full flex flex-col items-center justify-center">
+              <Brain className="text-purple-400 mb-2 group-hover:scale-110 transition-transform" size={28} />
               <div className="font-bold text-sm">Explore</div>
               <div className="text-xs text-white/40">{totalDomainCount} domains</div>
             </div>
           </Link>
           
-          <Link href="/review">
-            <div className="glass-card p-5 hover:bg-white/10 cursor-pointer text-center group relative">
-              <RotateCcw className="text-cyan-400 mx-auto mb-2 group-hover:scale-110 transition-transform" size={28} />
+          <Link href="/review" className="flex-1">
+            <div className="glass-card p-5 hover:bg-white/10 cursor-pointer text-center group relative h-full flex flex-col items-center justify-center">
+              <RotateCcw className="text-cyan-400 mb-2 group-hover:scale-110 transition-transform" size={28} />
               <div className="font-bold text-sm">Review</div>
               <div className="text-xs text-white/40">{reviewCount} due</div>
               {reviewCount > 0 && (
@@ -151,6 +154,8 @@ export default function Home() {
           </Link>
         </motion.div>
 
+        </div>{/* end top row */}
+
         {/* Domain Progress */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -161,7 +166,7 @@ export default function Home() {
           {totalPapers > 0 && (
             <p className="text-xs text-white/40 mb-3">{totalPapers} papers · {totalQuestions} AI questions across all domains</p>
           )}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {domains.map((domain, i) => {
               const dp = progress.domains[domain.id];
               const v2 = getV2Stats(domain.id);

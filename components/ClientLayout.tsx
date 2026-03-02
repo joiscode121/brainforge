@@ -30,7 +30,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       
       {/* Bottom navigation */}
       <nav className="fixed bottom-0 left-0 right-0 z-50 pb-safe">
-        <div className="glass-card mx-4 mb-4 p-2 max-w-2xl sm:mx-auto">
+        <div className="glass-card mx-4 mb-4 p-2 max-w-lg sm:mx-auto">
           <div className="flex justify-around items-center">
             {navItems.map(({ href, icon: Icon, label }) => {
               const isActive = pathname === href || (href !== '/' && pathname?.startsWith(href));

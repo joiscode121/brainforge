@@ -7,11 +7,12 @@ import ClientLayout from '@/components/ClientLayout';
 import { loadProgress, updateStreak, saveProgress } from '@/lib/storage';
 import { loadAllDomains, Domain } from '@/lib/domains';
 import { getReviewCount } from '@/lib/spaced-repetition';
-import { Flame, Play, Target, BookOpen, Brain, RotateCcw } from 'lucide-react';
+import { Flame, Play, Target, BookOpen, Brain, RotateCcw, Newspaper } from 'lucide-react';
 
 export default function Home() {
   const [progress, setProgress] = useState(loadProgress());
   const [domains, setDomains] = useState<Domain[]>([]);
+  const [v2Domains, setV2Domains] = useState<any[]>([]);
   const [reviewCount, setReviewCount] = useState(0);
 
   useEffect(() => {
@@ -23,7 +24,17 @@ export default function Home() {
 
     loadAllDomains().then(setDomains);
     setReviewCount(getReviewCount(progress.reviewQueue));
+    fetch('/api/v2/domains').then(r => r.json()).then(d => setV2Domains(d.domains || [])).catch(() => {});
   }, []);
+
+  // V2-only domains (not in local JSON)
+  const localIds = new Set(domains.map(d => d.id));
+  const v2OnlyDomains = v2Domains.filter(d => !localIds.has(d.slug) && (d.paper_count > 0 || d.question_count > 0));
+  const totalDomainCount = domains.length + v2OnlyDomains.length;
+  const totalPapers = v2Domains.reduce((s, d) => s + d.paper_count, 0);
+  const totalQuestions = v2Domains.reduce((s, d) => s + d.question_count, 0);
+
+  const getV2Stats = (id: string) => v2Domains.find(d => d.slug === id);
 
   // Pick a random topic for "Today's Lesson"
   const todaysTopic = domains.length > 0 ? (() => {
@@ -122,7 +133,7 @@ export default function Home() {
             <div className="glass-card p-5 hover:bg-white/10 cursor-pointer text-center group">
               <Brain className="text-purple-400 mx-auto mb-2 group-hover:scale-110 transition-transform" size={28} />
               <div className="font-bold text-sm">Explore</div>
-              <div className="text-xs text-white/40">{domains.length} domains</div>
+              <div className="text-xs text-white/40">{totalDomainCount} domains</div>
             </div>
           </Link>
           
@@ -146,15 +157,20 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
-          <h2 className="text-lg font-bold mb-3">Your Domains</h2>
+          <h2 className="text-lg font-bold mb-1">Your Domains</h2>
+          {totalPapers > 0 && (
+            <p className="text-xs text-white/40 mb-3">{totalPapers} papers · {totalQuestions} AI questions across all domains</p>
+          )}
           <div className="space-y-3">
             {domains.map((domain, i) => {
               const dp = progress.domains[domain.id];
-              const totalQ = domain.topics 
-                ? domain.topics.reduce((s, t) => s + (t.questions?.length || 0), 0)
+              const v2 = getV2Stats(domain.id);
+              const localQ = domain.topics 
+                ? domain.topics.reduce((s: number, t: any) => s + (t.questions?.length || 0), 0)
                 : domain.levels 
-                  ? Object.values(domain.levels).reduce((s, l) => s + l.questions.length, 0)
+                  ? Object.values(domain.levels).reduce((s: number, l: any) => s + (l as any).questions.length, 0)
                   : 0;
+              const totalQ = localQ + (v2?.question_count || 0);
               const completed = dp?.completedQuestions?.length || 0;
               const pct = totalQ > 0 ? Math.round((completed / totalQ) * 100) : 0;
 
@@ -164,10 +180,10 @@ export default function Home() {
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.4 + i * 0.05 }}
-                    className="glass-card p-4 hover:bg-white/10 cursor-pointer group flex items-center gap-4"
+                    className="glass-card p-4 hover:bg-white/10 cursor-pointer group active:scale-[0.98] flex items-center gap-3 sm:gap-4"
                   >
                     <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-xl sm:text-2xl flex-shrink-0"
                       style={{ background: `${domain.color}15`, border: `1.5px solid ${domain.color}30` }}
                     >
                       {domain.icon}
@@ -183,11 +199,41 @@ export default function Home() {
                         </div>
                         <span className="text-xs text-white/40 w-8 text-right">{pct}%</span>
                       </div>
+                      {(v2?.paper_count > 0 || v2?.question_count > 0) && (
+                        <div className="text-[10px] text-white/30 mt-1">
+                          {v2.paper_count > 0 && `${v2.paper_count} papers`}{v2.paper_count > 0 && v2.question_count > 0 && ' · '}{v2.question_count > 0 && `${v2.question_count} AI questions`}
+                        </div>
+                      )}
                     </div>
                   </motion.div>
                 </Link>
               );
             })}
+
+            {/* V2-only Research Domains */}
+            {v2OnlyDomains.map((d: any, i: number) => (
+              <Link key={d.slug} href={`/domain/${d.slug}`}>
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 + (domains.length + i) * 0.05 }}
+                  className="glass-card p-4 hover:bg-white/10 cursor-pointer group active:scale-[0.98] flex items-center gap-3 sm:gap-4"
+                >
+                  <div
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-xl sm:text-2xl flex-shrink-0"
+                    style={{ background: `${d.color || '#6366f1'}15`, border: `1.5px solid ${d.color || '#6366f1'}30` }}
+                  >
+                    {d.icon || '📚'}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="font-semibold text-sm truncate">{d.name}</div>
+                    <div className="text-[10px] text-white/30 mt-1">
+                      {d.paper_count > 0 && `${d.paper_count} papers`}{d.paper_count > 0 && d.question_count > 0 && ' · '}{d.question_count > 0 && `${d.question_count} AI questions`}{d.flashcard_count > 0 && ` · ${d.flashcard_count} flashcards`}
+                    </div>
+                  </div>
+                </motion.div>
+              </Link>
+            ))}
           </div>
         </motion.div>
       </div>

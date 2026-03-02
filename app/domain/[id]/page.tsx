@@ -6,7 +6,7 @@ import Link from 'next/link';
 import ClientLayout from '@/components/ClientLayout';
 import { loadDomain, Domain } from '@/lib/domains';
 import { loadProgress } from '@/lib/storage';
-import { Trophy, Zap, Target, BookOpen, HelpCircle, ChevronRight, ArrowLeft } from 'lucide-react';
+import { Trophy, Zap, Target, BookOpen, HelpCircle, ChevronRight, ArrowLeft, Newspaper, Sparkles, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function DomainPage() {
@@ -17,9 +17,53 @@ export default function DomainPage() {
   const [progress, setProgress] = useState(loadProgress());
   const [filter, setFilter] = useState<string>('all');
 
+  // V2: Paper feed & generation
+  const [v2Feed, setV2Feed] = useState<any[]>([]);
+  const [v2Stats, setV2Stats] = useState<any>(null);
+  const [showFeed, setShowFeed] = useState(false);
+  const [showGenerate, setShowGenerate] = useState(false);
+  const [genCount, setGenCount] = useState(10);
+  const [genDifficulty, setGenDifficulty] = useState('intermediate');
+  const [genTopic, setGenTopic] = useState('');
+  const [generating, setGenerating] = useState(false);
+  const [genResult, setGenResult] = useState<any>(null);
+  const [genQuizMode, setGenQuizMode] = useState(false);
+  const [genCurrentQ, setGenCurrentQ] = useState(0);
+  const [genSelected, setGenSelected] = useState<number | null>(null);
+  const [genScore, setGenScore] = useState(0);
+
   useEffect(() => {
     if (id) loadDomain(id).then(setDomain).catch(() => {});
   }, [id]);
+
+  // Load V2 data for this domain
+  useEffect(() => {
+    if (id) {
+      fetch(`/api/v2/feed?domain=${id}&limit=10`).then(r => r.json()).then(d => setV2Feed(d.digests || [])).catch(() => {});
+      fetch(`/api/v2/stats`).then(r => r.json()).then(setV2Stats).catch(() => {});
+    }
+  }, [id]);
+
+  const handleGenerate = async () => {
+    setGenerating(true); setGenResult(null);
+    try {
+      const res = await fetch(`/api/v2/generate?domain=${id}&count=${genCount}&difficulty=${genDifficulty}&topic=${encodeURIComponent(genTopic)}`);
+      setGenResult(await res.json());
+    } catch { setGenResult({ error: 'Generation failed' }); }
+    setGenerating(false);
+  };
+
+  const startGenQuiz = () => {
+    if (genResult?.questions) {
+      setGenQuizMode(true); setGenCurrentQ(0); setGenSelected(null); setGenScore(0);
+    }
+  };
+
+  const handleGenAnswer = (idx: number) => {
+    if (genSelected !== null) return;
+    setGenSelected(idx);
+    if (idx === genResult.questions[genCurrentQ]?.correct) setGenScore(s => s + 1);
+  };
 
   if (!domain) {
     return <ClientLayout><div className="p-6 text-center text-white/60">Loading domain...</div></ClientLayout>;
@@ -167,6 +211,186 @@ export default function DomainPage() {
             ))}
           </div>
         )}
+        {/* ═══ V2: Research Feed & AI Question Generator ═══ */}
+        
+        {/* V2 Action Buttons */}
+        {v2Feed.length > 0 && (
+          <div className="flex gap-3 pt-4 border-t border-white/10">
+            <button onClick={() => { setShowFeed(!showFeed); setShowGenerate(false); }}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                showFeed ? 'bg-white/10 text-white border border-white/20' : 'glass-card text-white/60 hover:text-white'
+              }`}>
+              <Newspaper size={16} /> Research Feed ({v2Feed.length})
+            </button>
+            <button onClick={() => { setShowGenerate(!showGenerate); setShowFeed(false); setGenQuizMode(false); }}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                showGenerate ? 'bg-white/10 text-white border border-white/20' : 'glass-card text-white/60 hover:text-white'
+              }`}>
+              <Sparkles size={16} /> Generate Questions
+            </button>
+          </div>
+        )}
+
+        {/* Research Feed */}
+        {showFeed && (
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-3">
+            <h3 className="text-white/80 font-bold text-lg">Latest Research</h3>
+            {v2Feed.map((d: any, i: number) => (
+              <div key={i} className="glass-card p-5">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-white/10 text-white/50">{d.source}</span>
+                  <span className="text-xs text-white/30">{d.published_date}</span>
+                  {d.difficulty && (
+                    <span className={`text-xs px-2 py-0.5 rounded-full ${
+                      d.difficulty === 'expert' ? 'bg-red-500/20 text-red-400' :
+                      d.difficulty === 'advanced' ? 'bg-purple-500/20 text-purple-400' :
+                      d.difficulty === 'intermediate' ? 'bg-yellow-500/20 text-yellow-400' :
+                      'bg-green-500/20 text-green-400'
+                    }`}>{d.difficulty}</span>
+                  )}
+                </div>
+                <h4 className="font-bold text-sm text-white/90 mb-1">{d.title}</h4>
+                {d.summary && <p className="text-xs text-white/50 mb-2">{d.summary}</p>}
+                {d.why_it_matters && <p className="text-xs italic" style={{ color: domain?.color || '#C4843B' }}>{d.why_it_matters}</p>}
+                {d.url && <a href={d.url} target="_blank" rel="noopener" className="text-xs text-white/30 hover:text-white/60 mt-2 inline-block">View paper →</a>}
+              </div>
+            ))}
+          </motion.div>
+        )}
+
+        {/* Generate Questions */}
+        {showGenerate && !genQuizMode && (
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+            <div className="glass-card p-6 space-y-5">
+              <h3 className="text-white/90 font-bold text-lg flex items-center gap-2">
+                <Sparkles size={20} style={{ color: domain?.color }} /> Generate Custom Questions
+              </h3>
+              
+              <div>
+                <label className="text-white/40 text-xs block mb-2">Number of questions</label>
+                <div className="flex gap-2">
+                  {[5, 10, 20, 30].map(n => (
+                    <button key={n} onClick={() => setGenCount(n)}
+                      className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                        genCount === n ? 'bg-white/10 text-white border border-white/20' : 'text-white/50 hover:text-white/80'
+                      }`}>{n}</button>
+                  ))}
+                </div>
+              </div>
+              
+              <div>
+                <label className="text-white/40 text-xs block mb-2">Difficulty</label>
+                <div className="flex gap-2 flex-wrap">
+                  {['beginner', 'intermediate', 'advanced', 'expert'].map(d => (
+                    <button key={d} onClick={() => setGenDifficulty(d)}
+                      className={`px-4 py-2 rounded-xl text-sm font-medium capitalize transition-all ${
+                        genDifficulty === d ? 'bg-white/10 text-white border border-white/20' : 'text-white/50 hover:text-white/80'
+                      }`}>{d}</button>
+                  ))}
+                </div>
+              </div>
+              
+              <div>
+                <label className="text-white/40 text-xs block mb-2">Custom topic (optional)</label>
+                <input type="text" value={genTopic} onChange={e => setGenTopic(e.target.value)}
+                  placeholder="e.g. transformers, CRISPR, orbital mechanics..."
+                  className="w-full bg-white/5 rounded-xl px-4 py-3 text-sm text-white/80 outline-none border border-white/10 placeholder:text-white/20 focus:border-white/30 transition-colors" />
+              </div>
+              
+              <button onClick={handleGenerate} disabled={generating}
+                className={`w-full py-3 rounded-xl font-medium text-sm transition-all ${
+                  generating ? 'bg-white/5 text-white/30' : 'bg-white/10 text-white hover:bg-white/15 border border-white/10'
+                }`}>
+                {generating ? (
+                  <span className="flex items-center justify-center gap-2"><Loader2 size={16} className="animate-spin" /> Generating...</span>
+                ) : `Generate ${genCount} Questions`}
+              </button>
+            </div>
+            
+            {genResult && !genResult.error && (
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-6 mt-3">
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-white/90 font-bold">{genResult.generated} questions generated</span>
+                  <span className="text-white/40 text-xs">{genResult.totalInDomain} total in domain</span>
+                </div>
+                <button onClick={startGenQuiz}
+                  className="w-full py-3 rounded-xl font-medium text-sm transition-all border border-white/10 hover:bg-white/10"
+                  style={{ color: domain?.color }}>
+                  Start Quiz with Generated Questions
+                </button>
+                <div className="mt-4 space-y-2 max-h-[240px] overflow-y-auto">
+                  {genResult.questions.map((q: any, i: number) => (
+                    <div key={i} className="bg-white/[0.03] rounded-lg p-3 border border-white/[0.05]">
+                      <p className="text-xs text-white/60">{q.question}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+            
+            {genResult?.error && (
+              <div className="glass-card p-4 mt-3 border border-red-500/20">
+                <p className="text-red-400 text-sm">{genResult.error}</p>
+              </div>
+            )}
+          </motion.div>
+        )}
+
+        {/* Generated Quiz Mode */}
+        {showGenerate && genQuizMode && genResult?.questions && (
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+            {genCurrentQ < genResult.questions.length ? (
+              <div className="glass-card p-6">
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-white/40 text-sm">{genCurrentQ + 1} / {genResult.questions.length}</span>
+                  <span className="font-bold text-sm" style={{ color: domain?.color }}>Score: {genScore}</span>
+                </div>
+                <p className="text-white/90 text-base mb-5 leading-relaxed">{genResult.questions[genCurrentQ].question}</p>
+                <div className="space-y-2">
+                  {genResult.questions[genCurrentQ].options.map((opt: string, idx: number) => {
+                    const isCorrect = idx === genResult.questions[genCurrentQ].correct;
+                    const isSelected = idx === genSelected;
+                    let cls = 'bg-white/[0.04] border-white/[0.08] hover:bg-white/[0.08]';
+                    if (genSelected !== null) {
+                      if (isCorrect) cls = 'bg-green-500/20 border-green-400/30';
+                      else if (isSelected) cls = 'bg-red-500/20 border-red-400/30';
+                      else cls = 'bg-white/[0.02] border-white/[0.04]';
+                    }
+                    return (
+                      <button key={idx} onClick={() => handleGenAnswer(idx)}
+                        className={`w-full text-left p-3.5 rounded-xl border transition-all ${cls}`}>
+                        <span className="text-sm text-white/80">{opt}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+                {genSelected !== null && (
+                  <div className="mt-4">
+                    <p className="text-xs text-white/50 mb-3">{genResult.questions[genCurrentQ].explanation}</p>
+                    <button onClick={() => { setGenSelected(null); setGenCurrentQ(c => c + 1); }}
+                      className="w-full py-3 rounded-xl font-medium text-sm border border-white/10 hover:bg-white/10 transition-all"
+                      style={{ color: domain?.color }}>
+                      {genCurrentQ + 1 < genResult.questions.length ? 'Next Question' : 'See Results'}
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="glass-card p-6 text-center">
+                <div className="text-4xl font-bold mb-2" style={{ color: domain?.color }}>{genScore}/{genResult.questions.length}</div>
+                <div className="text-white/50 text-sm mb-4">{Math.round(genScore/genResult.questions.length*100)}% correct</div>
+                <div className="flex gap-3">
+                  <button onClick={() => { setGenCurrentQ(0); setGenSelected(null); setGenScore(0); }}
+                    className="flex-1 py-3 rounded-xl font-medium text-sm border border-white/10 hover:bg-white/10 text-white/70">Retry</button>
+                  <button onClick={() => { setGenQuizMode(false); setGenResult(null); }}
+                    className="flex-1 py-3 rounded-xl font-medium text-sm border border-white/10 hover:bg-white/10"
+                    style={{ color: domain?.color }}>Generate More</button>
+                </div>
+              </div>
+            )}
+          </motion.div>
+        )}
+
       </div>
     </ClientLayout>
   );

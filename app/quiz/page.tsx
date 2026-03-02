@@ -8,6 +8,7 @@ import { loadDomain, Domain, Question, getTopicQuestions, getAllQuestions } from
 import { loadProgress, saveProgress, addXP, updateStreak } from '@/lib/storage';
 import { scheduleReview, ReviewRating } from '@/lib/spaced-repetition';
 import { Timer, CheckCircle, XCircle, Zap, Trophy } from 'lucide-react';
+import AudioMode from '@/components/AudioMode';
 
 function QuizContent() {
   const router = useRouter();
@@ -216,7 +217,16 @@ function QuizContent() {
             exit={{ opacity: 0, x: -30 }}
             className="glass-card p-6 space-y-6"
           >
-            <h2 className="text-xl font-semibold leading-relaxed">{currentQuestion.question}</h2>
+            <div className="flex items-start justify-between gap-3 mb-1">
+              <h2 className="text-lg sm:text-xl font-semibold leading-relaxed flex-1">{currentQuestion.question}</h2>
+              <AudioMode 
+                content="" 
+                question={currentQuestion.question}
+                options={currentQuestion.options?.map((o: any) => typeof o === 'string' ? o : o.text || '')}
+                explanation={currentQuestion.explanation}
+                showExplanation={showFeedback}
+              />
+            </div>
 
             {currentQuestion.type === 'multiple-choice' && currentQuestion.options && (
               <div className="space-y-3">

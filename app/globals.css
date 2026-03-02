@@ -123,3 +123,44 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3);
 }
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .gradient-bg::before,
+  .gradient-bg::after,
+  .gradient-orb-1,
+  .gradient-orb-2 {
+    filter: blur(60px);
+    opacity: 0.2;
+  }
+  
+  .gradient-bg::before { width: 300px; height: 300px; }
+  .gradient-bg::after { width: 250px; height: 250px; }
+  .gradient-orb-1 { width: 280px; height: 280px; }
+  .gradient-orb-2 { width: 200px; height: 200px; }
+}
+
+/* Touch-friendly targets */
+@media (pointer: coarse) {
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Safe area padding for notched phones */
+.pb-safe {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+/* Prevent text selection during quiz */
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Smooth momentum scrolling */
+.scroll-smooth {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}

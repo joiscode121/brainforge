@@ -8,6 +8,7 @@ import { loadDomain, Domain } from '@/lib/domains';
 import { loadProgress } from '@/lib/storage';
 import { Trophy, Zap, Target, BookOpen, HelpCircle, ChevronRight, ArrowLeft, Newspaper, Sparkles, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import AudioMode from '@/components/AudioMode';
 
 export default function DomainPage() {
   const router = useRouter();
@@ -215,7 +216,7 @@ export default function DomainPage() {
         
         {/* V2 Action Buttons */}
         {v2Feed.length > 0 && (
-          <div className="flex gap-3 pt-4 border-t border-white/10">
+          <div className="flex gap-2 sm:gap-3 pt-4 border-t border-white/10 flex-wrap">
             <button onClick={() => { setShowFeed(!showFeed); setShowGenerate(false); }}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
                 showFeed ? 'bg-white/10 text-white border border-white/20' : 'glass-card text-white/60 hover:text-white'
@@ -236,8 +237,8 @@ export default function DomainPage() {
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-3">
             <h3 className="text-white/80 font-bold text-lg">Latest Research</h3>
             {v2Feed.map((d: any, i: number) => (
-              <div key={i} className="glass-card p-5">
-                <div className="flex items-center gap-2 mb-2">
+              <div key={i} className="glass-card p-4 sm:p-5">
+                <div className="flex items-center gap-2 mb-2 flex-wrap">
                   <span className="text-xs px-2 py-0.5 rounded-full bg-white/10 text-white/50">{d.source}</span>
                   <span className="text-xs text-white/30">{d.published_date}</span>
                   {d.difficulty && (
@@ -252,7 +253,10 @@ export default function DomainPage() {
                 <h4 className="font-bold text-sm text-white/90 mb-1">{d.title}</h4>
                 {d.summary && <p className="text-xs text-white/50 mb-2">{d.summary}</p>}
                 {d.why_it_matters && <p className="text-xs italic" style={{ color: domain?.color || '#C4843B' }}>{d.why_it_matters}</p>}
-                {d.url && <a href={d.url} target="_blank" rel="noopener" className="text-xs text-white/30 hover:text-white/60 mt-2 inline-block">View paper →</a>}
+                <div className="flex items-center justify-between mt-2">
+                  {d.url && <a href={d.url} target="_blank" rel="noopener" className="text-xs text-white/30 hover:text-white/60">View paper →</a>}
+                  <AudioMode content={`${d.title}. ${d.summary || ''}. ${d.why_it_matters || ''}`} autoPlay={false} />
+                </div>
               </div>
             ))}
           </motion.div>
@@ -261,8 +265,8 @@ export default function DomainPage() {
         {/* Generate Questions */}
         {showGenerate && !genQuizMode && (
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-            <div className="glass-card p-6 space-y-5">
-              <h3 className="text-white/90 font-bold text-lg flex items-center gap-2">
+            <div className="glass-card p-4 sm:p-6 space-y-4 sm:space-y-5">
+              <h3 className="text-white/90 font-bold text-base sm:text-lg flex items-center gap-2">
                 <Sparkles size={20} style={{ color: domain?.color }} /> Generate Custom Questions
               </h3>
               
@@ -340,10 +344,19 @@ export default function DomainPage() {
         {showGenerate && genQuizMode && genResult?.questions && (
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
             {genCurrentQ < genResult.questions.length ? (
-              <div className="glass-card p-6">
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-white/40 text-sm">{genCurrentQ + 1} / {genResult.questions.length}</span>
-                  <span className="font-bold text-sm" style={{ color: domain?.color }}>Score: {genScore}</span>
+              <div className="glass-card p-4 sm:p-6">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-4">
+                  <div className="flex items-center gap-3 w-full sm:w-auto justify-between">
+                    <span className="text-white/40 text-sm">{genCurrentQ + 1} / {genResult.questions.length}</span>
+                    <span className="font-bold text-sm" style={{ color: domain?.color }}>Score: {genScore}</span>
+                  </div>
+                  <AudioMode 
+                    content="" 
+                    question={genResult.questions[genCurrentQ].question}
+                    options={genResult.questions[genCurrentQ].options}
+                    explanation={genResult.questions[genCurrentQ].explanation}
+                    showExplanation={genSelected !== null}
+                  />
                 </div>
                 <p className="text-white/90 text-base mb-5 leading-relaxed">{genResult.questions[genCurrentQ].question}</p>
                 <div className="space-y-2">

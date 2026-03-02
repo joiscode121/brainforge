@@ -16,14 +16,14 @@ export default function ProgressPage() {
 
   return (
     <ClientLayout>
-      <div className="max-w-2xl mx-auto p-6 space-y-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         <div>
           <h1 className="text-3xl font-bold mb-2">Your Progress</h1>
           <p className="text-white/60">Track your mastery journey</p>
         </div>
 
         {/* Overall Stats */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="glass-card p-6">
             <div className="flex items-center gap-3 mb-2">
               <Award className="text-yellow-500" size={24} />
@@ -60,6 +60,7 @@ export default function ProgressPage() {
         {/* Domain Breakdown */}
         <div className="space-y-4">
           <h2 className="text-xl font-bold">Domain Mastery</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {domains.map((domain) => {
             const domainProg = progress.domains[domain.id];
             const xp = domainProg?.xp || 0;
@@ -87,6 +88,7 @@ export default function ProgressPage() {
               </div>
             );
           })}
+          </div>
         </div>
       </div>
     </ClientLayout>

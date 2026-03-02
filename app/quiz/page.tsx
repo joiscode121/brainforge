@@ -127,7 +127,7 @@ function QuizContent() {
     const percentage = Math.round((correctCount / questions.length) * 100);
     return (
       <ClientLayout>
-        <div className="max-w-2xl mx-auto p-6 space-y-6">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -171,7 +171,7 @@ function QuizContent() {
 
   return (
     <ClientLayout>
-      <div className="max-w-2xl mx-auto p-6 space-y-6">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         {/* Progress */}
         <div className="space-y-2">
           <div className="flex items-center justify-between text-sm text-white/60">
@@ -229,7 +229,7 @@ function QuizContent() {
             </div>
 
             {currentQuestion.type === 'multiple-choice' && currentQuestion.options && (
-              <div className="space-y-3">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
                 {currentQuestion.options.map((option, index) => {
                   const isSelected = selectedAnswer === index;
                   const showResult = showFeedback && (isSelected || index === currentQuestion.correct);

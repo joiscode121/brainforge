@@ -133,6 +133,142 @@ async function scrapeNasa() {
 }
 
 // ═══════════════════════════════════════════
+// Semantic Scholar (top CS/bio papers)
+// ═══════════════════════════════════════════
+const SEMSCHOLAR_FIELDS: Record<string, string[]> = {
+  'ai-ml': ['artificial intelligence', 'deep learning', 'large language models'],
+  'cell-bio': ['genomics', 'CRISPR gene editing'],
+  'pharma': ['drug discovery', 'pharmacology'],
+  'bioeng': ['protein engineering', 'synthetic biology'],
+  'physics': ['quantum computing', 'particle physics'],
+  'comp-math': ['combinatorics', 'number theory'],
+  'pure-math': ['algebraic geometry', 'topology'],
+};
+
+async function scrapeSemanticScholar() {
+  const papers: any[] = [];
+  for (const [domain, queries] of Object.entries(SEMSCHOLAR_FIELDS)) {
+    for (const query of queries) {
+      try {
+        const url = `https://api.semanticscholar.org/graph/v1/paper/search?query=${encodeURIComponent(query)}&limit=3&sort=publicationDate:desc&fields=title,url,abstract,authors,publicationDate`;
+        const resp = await fetch(url);
+        const data = await resp.json();
+        for (const p of (data.data || [])) {
+          papers.push({
+            domain_slug: domain,
+            title: (p.title || '').slice(0, 500),
+            url: p.url || `https://api.semanticscholar.org/paper/${p.paperId}`,
+            source: 'semantic-scholar',
+            authors: (p.authors || []).map((a: any) => a.name).join(', ').slice(0, 500),
+            abstract: (p.abstract || '').slice(0, 2000),
+            published_date: p.publicationDate || '',
+          });
+        }
+      } catch (e) { console.error(`SemanticScholar ${domain}/${query}:`, e); }
+      await new Promise(r => setTimeout(r, 500));
+    }
+  }
+  return papers;
+}
+
+// ═══════════════════════════════════════════
+// Nature / Science (via OpenAlex API - free, covers Nature, Science, Cell, etc.)
+// ═══════════════════════════════════════════
+const OPENALEX_SOURCES: Record<string, { venue: string; domain: string }[]> = {
+  'nature': [
+    { venue: 'S137773608', domain: 'cell-bio' },    // Nature
+    { venue: 'S15468489', domain: 'physics' },       // Nature Physics
+    { venue: 'S186955311', domain: 'chemistry' },    // Nature Chemistry
+    { venue: 'S24807848', domain: 'ai-ml' },         // Nature Machine Intelligence
+    { venue: 'S4210200081', domain: 'bioeng' },      // Nature Biomedical Engineering
+  ],
+  'science': [
+    { venue: 'S3880285', domain: 'space' },          // Science
+  ],
+};
+
+async function scrapeOpenAlex() {
+  const papers: any[] = [];
+  const allVenues = Object.values(OPENALEX_SOURCES).flat();
+  
+  for (const { venue, domain } of allVenues) {
+    try {
+      const url = `https://api.openalex.org/works?filter=primary_location.source.id:${venue}&sort=publication_date:desc&per_page=3&select=title,doi,publication_date,authorships,abstract_inverted_index`;
+      const resp = await fetch(url, { headers: { 'User-Agent': 'BrainForge/1.0 (mailto:joiscode121@gmail.com)' } });
+      const data = await resp.json();
+      
+      for (const work of (data.results || [])) {
+        // Reconstruct abstract from inverted index
+        let abstract = '';
+        if (work.abstract_inverted_index) {
+          const words: [string, number][] = [];
+          for (const [word, positions] of Object.entries(work.abstract_inverted_index as Record<string, number[]>)) {
+            for (const pos of positions) {
+              words.push([word, pos]);
+            }
+          }
+          words.sort((a, b) => a[1] - b[1]);
+          abstract = words.map(w => w[0]).join(' ');
+        }
+        
+        const authors = (work.authorships || []).map((a: any) => a.author?.display_name).filter(Boolean).join(', ');
+        const doiUrl = work.doi ? `https://doi.org/${work.doi.replace('https://doi.org/', '')}` : '';
+        
+        if (work.title) {
+          papers.push({
+            domain_slug: domain,
+            title: work.title.slice(0, 500),
+            url: doiUrl || `https://openalex.org/works/${work.id}`,
+            source: 'openalex',
+            authors: authors.slice(0, 500),
+            abstract: abstract.slice(0, 2000),
+            published_date: work.publication_date || '',
+          });
+        }
+      }
+    } catch (e) { console.error(`OpenAlex ${venue}/${domain}:`, e); }
+    await new Promise(r => setTimeout(r, 300));
+  }
+  return papers;
+}
+
+// ═══════════════════════════════════════════
+// DevTo / HackerNews (tech blogs + discussions)
+// ═══════════════════════════════════════════
+async function scrapeDevTo() {
+  const papers: any[] = [];
+  const tags = [
+    { tag: 'machinelearning', domain: 'ai-ml' },
+    { tag: 'gpu', domain: 'gpu-chips' },
+    { tag: 'database', domain: 'systems' },
+    { tag: 'linux', domain: 'kernel-os' },
+    { tag: 'algorithms', domain: 'coding' },
+    { tag: 'math', domain: 'comp-math' },
+  ];
+  
+  for (const { tag, domain } of tags) {
+    try {
+      const url = `https://dev.to/api/articles?tag=${tag}&top=1&per_page=3`;
+      const resp = await fetch(url);
+      const articles = await resp.json();
+      for (const a of (Array.isArray(articles) ? articles : [])) {
+        papers.push({
+          domain_slug: domain,
+          title: (a.title || '').slice(0, 500),
+          url: a.url || '',
+          source: 'devto',
+          authors: a.user?.name || a.user?.username || '',
+          abstract: (a.description || '').slice(0, 2000),
+          published_date: (a.published_at || '').split('T')[0],
+        });
+      }
+    } catch (e) { console.error(`DevTo ${tag}:`, e); }
+    await new Promise(r => setTimeout(r, 200));
+  }
+  return papers;
+}
+
+// ═══════════════════════════════════════════
 // Main Handler
 // ═══════════════════════════════════════════
 export async function GET(req: NextRequest) {
@@ -146,11 +282,12 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const [arxiv, pubmed, github, nasa] = await Promise.all([
+    const [arxiv, pubmed, github, nasa, semscholar, openalex, devto] = await Promise.all([
       scrapeArxiv(), scrapePubmed(), scrapeGithub(), scrapeNasa(),
+      scrapeSemanticScholar(), scrapeOpenAlex(), scrapeDevTo(),
     ]);
 
-    const allPapers = [...arxiv, ...pubmed, ...github, ...nasa];
+    const allPapers = [...arxiv, ...pubmed, ...github, ...nasa, ...semscholar, ...openalex, ...devto];
 
     // Deduplicate by URL
     const { data: existing } = await supabaseAdmin.from('papers').select('url');
@@ -170,7 +307,7 @@ export async function GET(req: NextRequest) {
       scraped: allPapers.length,
       new: newPapers.length,
       inserted,
-      sources: { arxiv: arxiv.length, pubmed: pubmed.length, github: github.length, nasa: nasa.length },
+      sources: { arxiv: arxiv.length, pubmed: pubmed.length, github: github.length, nasa: nasa.length, semanticScholar: semscholar.length, openalex: openalex.length, devto: devto.length },
       timestamp: new Date().toISOString(),
     });
   } catch (error: any) {

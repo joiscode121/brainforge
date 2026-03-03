@@ -3,1073 +3,1072 @@
   "name": "Reading & English",
   "icon": "\ud83d\udcd6",
   "color": "#be185d",
-  "description": "PhD-level comprehension, vocabulary, critical reasoning",
+  "description": "From advanced rhetoric to postdoctoral critical theory",
   "levels": {
     "beginner": {
-      "name": "SAT-level vocabulary and comprehension",
-      "description": "Advanced SAT vocabulary, rhetorical analysis, passage-based reasoning",
+      "name": "Advanced Undergraduate",
+      "description": "Upper-division rhetoric, classical logic, literary theory foundations",
       "questions": [
         {
           "id": "rb1",
           "type": "multiple-choice",
-          "question": "In the sentence 'The senator's meretricious arguments, though superficially compelling, failed to withstand rigorous scrutiny,' what does 'meretricious' mean?",
+          "question": "A passage reads: 'The corporation's proleptic defense of its environmental record - issuing rebuttals before accusations materialized - suggested foreknowledge of the forthcoming expos\u00e9.' The rhetorical term 'prolepsis' here functions as:",
           "options": [
-            "Deserving of merit",
-            "Apparently attractive but lacking real value",
-            "Related to financial gain",
-            "Excessively charitable"
+            "An anachronistic reference to future events",
+            "Anticipatory refutation of objections not yet raised",
+            "A logical fallacy of circular reasoning",
+            "Hyperbolic overstatement for persuasive effect"
           ],
           "correct": 1,
-          "explanation": "Meretricious means apparently attractive but having no real value or integrity. It's a false cognate with 'merit' - a common SAT trap.",
+          "explanation": "Prolepsis in rhetoric means addressing counterarguments before they're raised. Here it implies the corporation's preemptive defense revealed guilty knowledge - they knew accusations were coming because the behavior was real.",
           "xp": 10
         },
         {
           "id": "rb2",
           "type": "multiple-choice",
-          "question": "Which rhetorical strategy does the following employ? 'We shall fight on the beaches, we shall fight on the landing grounds, we shall fight in the fields and in the streets.'",
+          "question": "Consider this argument: 'We should not legalize X because if we do, it will inevitably lead to Y, then Z, then total societal collapse.' This commits the fallacy of:",
           "options": [
-            "Chiasmus",
-            "Anaphora",
-            "Litotes",
-            "Synecdoche"
+            "Post hoc ergo propter hoc",
+            "Tu quoque",
+            "Slippery slope with no demonstrated causal mechanism",
+            "Ignoratio elenchi"
           ],
-          "correct": 1,
-          "explanation": "Anaphora is the repetition of a word or phrase at the beginning of successive clauses. Churchill's speech is the canonical example.",
+          "correct": 2,
+          "explanation": "A slippery slope fallacy occurs when a chain of consequences is asserted without demonstrating the causal necessity of each link. The key flaw is the word 'inevitably' with no evidence for the chain's progression.",
           "xp": 10
         },
         {
           "id": "rb3",
           "type": "multiple-choice",
-          "question": "'The plangent notes of the cello echoed through the cathedral.' What quality does 'plangent' describe?",
+          "question": "In Aristotle's Rhetoric, 'ethos' is distinct from 'phronesis,' 'arete,' and 'eunoia' because:",
           "options": [
-            "Discordant and jarring",
-            "Loud and reverberating",
-            "Resounding with a mournful quality",
-            "Light and ethereal"
+            "Ethos is the umbrella term; phronesis (practical wisdom), arete (virtue), and eunoia (goodwill) are its three constitutive components",
+            "Ethos is emotional while the others are logical",
+            "Ethos applies only to written texts",
+            "They are four independent modes of persuasion"
           ],
-          "correct": 2,
-          "explanation": "Plangent means having a loud, reverberating, and often melancholy sound. From Latin 'plangere' (to beat the breast in grief).",
+          "correct": 0,
+          "explanation": "Aristotle decomposed ethos into three dimensions: phronesis (the speaker seems wise/competent), arete (the speaker seems virtuous/honest), and eunoia (the speaker seems to have goodwill toward the audience). All three must combine for full credibility.",
           "xp": 10
         },
         {
           "id": "rb4",
           "type": "multiple-choice",
-          "question": "A passage argues: 'Democracy fails because voters are rationally ignorant - the cost of becoming informed exceeds any individual's marginal impact on electoral outcomes.' This is an example of:",
+          "question": "'The text operates through a sustained metalepsis, collapsing the boundary between the narrator's frame and the embedded narrative.' In Genette's framework, metalepsis specifically involves:",
           "options": [
-            "Ad hominem fallacy",
-            "Public choice theory reasoning",
-            "Straw man argument",
-            "Appeal to authority"
+            "A shift in temporal sequence",
+            "Transgression of the ontological boundary between narrative levels",
+            "A change from first to third person",
+            "Unreliable narration"
           ],
           "correct": 1,
-          "explanation": "This is a core argument from public choice theory (Downs, Caplan). Rational ignorance is the economic argument that voters lack incentive to become informed because their individual vote has negligible impact.",
+          "explanation": "Genettean metalepsis is the violation of the boundary between diegetic levels - when a narrator 'enters' their story, a character addresses the reader, or frame narrative and embedded narrative collapse into each other. It's an ontological transgression, not merely a stylistic shift.",
           "xp": 10
         },
         {
           "id": "rb5",
           "type": "multiple-choice",
-          "question": "'The author's tendentious interpretation of the data, while ostensibly objective, revealed an underlying ideological commitment.' What does 'tendentious' mean?",
+          "question": "A critic writes: 'The novel's use of parataxis rather than hypotaxis mirrors its protagonist's fragmented consciousness.' What structural difference is being described?",
           "options": [
-            "Careful and thorough",
-            "Expressing a strong opinion or bias",
-            "Tentative and uncertain",
-            "Based on trends"
+            "Short paragraphs vs. long paragraphs",
+            "Coordination of clauses without subordination vs. complex subordinate clause structures",
+            "Active voice vs. passive voice",
+            "Concrete imagery vs. abstract language"
           ],
           "correct": 1,
-          "explanation": "Tendentious means expressing or intending to promote a particular cause or viewpoint. Not related to 'tentative' or 'tendency' in the casual sense.",
+          "explanation": "Parataxis places clauses side by side without subordinating conjunctions ('He came. He saw. He conquered.'). Hypotaxis uses subordination ('After he came and saw, he conquered.'). Parataxis suggests equality, fragmentation, or immediacy; hypotaxis suggests hierarchy and logical connection.",
           "xp": 10
         },
         {
           "id": "rb6",
           "type": "multiple-choice",
-          "question": "Identify the logical structure: 'If P then Q. Not Q. Therefore not P.'",
+          "question": "Identify the enthymematic structure in: 'She graduated from MIT, so she must be brilliant.' The suppressed premise is:",
           "options": [
-            "Modus ponens",
-            "Affirming the consequent",
-            "Modus tollens",
-            "Denying the antecedent"
+            "MIT is an excellent university",
+            "All MIT graduates are brilliant",
+            "Graduation requires intelligence",
+            "Brilliant people attend MIT"
           ],
-          "correct": 2,
-          "explanation": "Modus tollens (denying the consequent) is a valid deductive argument: If P\u2192Q and \u00acQ, then \u00acP. Contrast with the fallacy of denying the antecedent (\u00acP therefore \u00acQ).",
+          "correct": 1,
+          "explanation": "An enthymeme is a syllogism with a suppressed premise. The complete syllogism: Major (suppressed): All MIT graduates are brilliant. Minor (stated): She graduated from MIT. Conclusion (stated): She must be brilliant. The suppressed major premise is the contentious one.",
           "xp": 10
         },
         {
           "id": "rb7",
           "type": "multiple-choice",
-          "question": "In literary criticism, what does 'apophatic' discourse refer to?",
+          "question": "In Jakobson's model of communication, the 'poetic function' is defined by:",
           "options": [
-            "Discourse that defines something by stating what it is not",
-            "Discourse based on prophetic utterances",
-            "Discourse that breaks the fourth wall",
-            "Discourse using extended metaphor"
+            "The beauty of the language used",
+            "Focus on the message itself - the way the message is constructed becomes foregrounded",
+            "The emotional state of the poet",
+            "The reader's aesthetic response"
           ],
-          "correct": 0,
-          "explanation": "Apophatic (from Greek 'apophasis') means defining by negation - saying what something is NOT rather than what it is. Originally from negative theology, now used broadly in literary theory.",
+          "correct": 1,
+          "explanation": "Jakobson's poetic function foregrounds the message qua message - it draws attention to the form of expression itself (sound patterns, rhythm, word choice) rather than purely serving referential, emotive, or conative functions. It's not about 'beauty' but about self-referential linguistic structure.",
           "xp": 10
         },
         {
           "id": "rb8",
           "type": "multiple-choice",
-          "question": "'The committee's exiguous budget precluded any meaningful research initiative.' What does 'exiguous' mean?",
+          "question": "'The author's litotes - \"not unintelligent\" - performs a different rhetorical function than simply saying \"intelligent\" because:",
           "options": [
-            "Excessive and bloated",
-            "Carefully allocated",
-            "Extremely small or scanty",
-            "Recently approved"
+            "It is more concise",
+            "It introduces ironic understatement that simultaneously affirms and qualifies, creating ambiguity about the degree of intelligence",
+            "It is a grammatical error",
+            "It emphasizes the negative"
           ],
-          "correct": 2,
-          "explanation": "Exiguous means very small in size or amount; scanty. From Latin 'exiguus.' A precise word for expressing inadequacy of resources.",
+          "correct": 1,
+          "explanation": "Litotes (affirming by negating the contrary) does not equal the direct assertion. 'Not unintelligent' hedges - it affirms some intelligence while withholding full endorsement. The double negative creates a pragmatic implicature: intelligent, but perhaps only barely or grudgingly acknowledged as such.",
           "xp": 10
         },
         {
           "id": "rb9",
           "type": "multiple-choice",
-          "question": "Which of these sentences contains a dangling modifier?",
+          "question": "What distinguishes 'implicature' from 'entailment' in Gricean pragmatics?",
           "options": [
-            "Running through the park, the dog chased the squirrel.",
-            "Having finished the exam, the students left the room.",
-            "Walking to school, the rain began to fall heavily.",
-            "After eating dinner, she read a book."
+            "Implicature is always false; entailment is always true",
+            "Entailment is a logical necessity that cannot be cancelled; implicature is context-dependent and cancellable",
+            "Implicature is formal; entailment is informal",
+            "They are synonymous terms from different traditions"
           ],
-          "correct": 2,
-          "explanation": "'Walking to school, the rain began to fall' has a dangling modifier - 'walking to school' has no logical subject (rain can't walk). The sentence implies rain was walking.",
+          "correct": 1,
+          "explanation": "Entailment: if 'John killed Bill' is true, 'Bill is dead' is necessarily true (cannot be cancelled). Implicature: 'Some students passed' implicates 'not all passed,' but this can be cancelled ('Some students passed - in fact, all of them did'). The cancellability test is the key diagnostic.",
           "xp": 10
         },
         {
           "id": "rb10",
           "type": "multiple-choice",
-          "question": "A critic writes: 'The novel's diegetic world collapses when the narrator directly addresses the reader.' What does 'diegetic' mean in this context?",
+          "question": "Quintilian's concept of 'vir bonus dicendi peritus' (a good man skilled in speaking) embeds what assumption about rhetoric?",
           "options": [
-            "Related to dietary themes in the text",
-            "The internal fictional world of the narrative",
-            "The author's biographical context",
-            "The critical reception history"
+            "That rhetoric is morally neutral",
+            "That rhetorical skill is inseparable from moral character - true eloquence requires ethical integrity",
+            "That only men can practice rhetoric",
+            "That speaking skill is innate, not learned"
           ],
           "correct": 1,
-          "explanation": "Diegetic refers to the internal world of the narrative - the story-world as experienced by the characters. Breaking diegesis (metalepsis) occurs when the narrator steps outside this frame.",
+          "explanation": "Quintilian's definition ties rhetoric to ethics: the ideal orator must be morally good. This counters the Platonic critique that rhetoric is mere manipulation. For Quintilian, a wicked person cannot be truly eloquent because genuine persuasion requires trustworthy character.",
           "xp": 10
         },
         {
           "id": "rb11",
           "type": "multiple-choice",
-          "question": "'His sardonic wit, far from alienating his audience, served as a vehicle for uncomfortable truths.' 'Sardonic' most precisely means:",
+          "question": "A passage employs 'anadiplosis': 'Fear leads to anger. Anger leads to hate. Hate leads to suffering.' This device creates cohesion by:",
           "options": [
-            "Sarcastic and mocking",
-            "Grimly humorous, often with contempt",
-            "Gentle and self-deprecating",
-            "Absurdist and nonsensical"
+            "Repeating the first word of each clause",
+            "Ending each clause with the word that begins the next, creating a chain",
+            "Using parallel grammatical structures",
+            "Building to a climax through increasingly intense words"
           ],
           "correct": 1,
-          "explanation": "Sardonic implies grim, mocking humor often directed at human folly. Distinguished from 'sarcastic' (which intends to wound) - sardonic humor has a darker, more resigned quality.",
+          "explanation": "Anadiplosis repeats the final word/phrase of one clause at the start of the next, creating a chain of linked ideas. Combined with climax (gradatio) - ascending intensity - it produces a sense of logical inevitability in the progression.",
           "xp": 10
         },
         {
           "id": "rb12",
           "type": "multiple-choice",
-          "question": "What fallacy is committed here? 'Either we ban all social media or we accept the total destruction of democracy. Since banning all social media is impractical, democracy is doomed.'",
+          "question": "In speech act theory (Austin/Searle), saying 'I promise to pay you back' is a performative utterance because:",
           "options": [
-            "Slippery slope",
-            "False dichotomy",
-            "Appeal to emotion",
-            "Begging the question"
+            "It describes a future action",
+            "The utterance itself constitutes the act of promising - saying it IS doing it",
+            "It contains the word 'promise'",
+            "It expresses sincere intention"
           ],
           "correct": 1,
-          "explanation": "False dichotomy (false dilemma) presents only two options when more exist. The argument ignores regulation, reform, media literacy, and other intermediate positions.",
+          "explanation": "Austin's key insight: some utterances don't describe reality but create it. 'I promise' doesn't report a promise - it IS the promise. The locutionary act (saying words) simultaneously performs an illocutionary act (committing oneself). The utterance has performative force.",
           "xp": 10
         },
         {
           "id": "rb13",
           "type": "multiple-choice",
-          "question": "In semiotics, what is the relationship between 'signifier' and 'signified' according to Saussure?",
+          "question": "'The argument exhibits the fallacy of hypostatization.' This means it:",
           "options": [
-            "Natural and inherent",
-            "Arbitrary and conventional",
-            "Hierarchical and fixed",
-            "Temporal and sequential"
+            "Treats an abstract concept as if it were a concrete, real entity with causal power",
+            "Uses hypothetical scenarios as evidence",
+            "Understates the severity of a problem",
+            "Attributes human qualities to animals"
           ],
-          "correct": 1,
-          "explanation": "Saussure's fundamental insight: the relationship between signifier (sound-image) and signified (concept) is arbitrary - there's no natural connection between the word 'tree' and the concept of a tree.",
+          "correct": 0,
+          "explanation": "Hypostatization (reification) treats abstractions as concrete agents: 'Nature abhors a vacuum,' 'History teaches us,' 'The market decided.' These phrases attribute agency to abstract concepts, obscuring the actual causal mechanisms (human decisions, physical laws).",
           "xp": 10
         },
         {
           "id": "rb14",
           "type": "multiple-choice",
-          "question": "'The politician's speech was a masterclass in paralepsis.' Paralepsis is:",
+          "question": "What is the 'cooperative principle' in Grice's theory of conversational implicature?",
           "options": [
-            "Excessive repetition for emphasis",
-            "Drawing attention to something by claiming to pass over it",
-            "Speaking in parallel grammatical structures",
-            "Using paradox to make a point"
+            "Speakers should always agree with each other",
+            "Speakers are expected to make contributions appropriate to the purpose and direction of the conversation, following maxims of quantity, quality, relation, and manner",
+            "Conversations require equal turn-taking",
+            "Listeners must cooperate by not interrupting"
           ],
           "correct": 1,
-          "explanation": "Paralepsis (also apophasis) is mentioning something by saying you won't mention it: 'I won't even bring up my opponent's scandal...' It's a powerful rhetorical device.",
+          "explanation": "Grice's cooperative principle: speakers implicitly follow maxims (be informative, truthful, relevant, clear). When speakers visibly FLOUT a maxim, listeners infer implicatures. Sarcasm, irony, and indirect speech acts all work because listeners assume cooperation and seek meanings consistent with it.",
           "xp": 10
         },
         {
           "id": "rb15",
           "type": "multiple-choice",
-          "question": "What does 'palimpsest' mean when used metaphorically in literary criticism?",
+          "question": "The distinction between 'showing' and 'telling' in narrative theory (Lubbock, Booth) maps onto:",
           "options": [
-            "A text with multiple layers of meaning, where earlier versions show through",
-            "A perfectly preserved original manuscript",
-            "A faithful translation between languages",
-            "A text that resists interpretation"
+            "First person vs. third person",
+            "Mimesis (dramatic presentation) vs. diegesis (narrator-mediated reporting)",
+            "Fiction vs. nonfiction",
+            "Dialogue vs. description"
           ],
-          "correct": 0,
-          "explanation": "A palimpsest literally is a manuscript page reused after scraping off earlier text. Metaphorically, it describes any text/place/thing where traces of earlier versions remain visible beneath the surface.",
+          "correct": 1,
+          "explanation": "'Showing' = mimesis: the narrative presents scenes dramatically, as if unmediated. 'Telling' = diegesis: the narrator summarizes, interprets, or reports. Booth complicated this by showing that all narration is ultimately 'telling' - even 'showing' involves narratorial choices about what to present.",
           "xp": 10
         },
         {
           "id": "rb16",
           "type": "multiple-choice",
-          "question": "'The researcher's proleptic conclusions, stated before presenting evidence, undermined the paper's credibility.' What does 'proleptic' mean?",
+          "question": "A text uses 'syllepsis': 'She lowered her standards and her neckline.' This differs from zeugma because:",
           "options": [
-            "Professionally written",
-            "Anticipatory; occurring before the proper time",
-            "Contradictory to established science",
-            "Excessively detailed"
+            "Syllepsis uses one word in two different senses simultaneously, creating semantic incongruity; zeugma uses one word governing two objects in the same sense",
+            "They are identical terms",
+            "Syllepsis is grammatically incorrect; zeugma is correct",
+            "Syllepsis applies only to verbs; zeugma applies to nouns"
           ],
-          "correct": 1,
-          "explanation": "Proleptic means anticipating future events or conclusions. In rhetoric, prolepsis is addressing counterarguments before they're raised. Here it means jumping to conclusions prematurely.",
+          "correct": 0,
+          "explanation": "Though often conflated, syllepsis specifically involves one word operating in two different senses simultaneously ('lowered' = reduced standards + physically lowered neckline). The humor comes from the semantic friction between literal and figurative meanings yoked together.",
           "xp": 10
         },
         {
           "id": "rb17",
           "type": "multiple-choice",
-          "question": "Which best describes Derrida's concept of 'differance'?",
+          "question": "In Toulmin's model of argumentation, what role does the 'warrant' play?",
           "options": [
-            "The difference between languages in translation",
-            "The way meaning is always deferred through chains of signification",
-            "The disagreement between critics about a text's meaning",
-            "The distinction between fiction and nonfiction"
+            "The evidence supporting the claim",
+            "The bridge principle that connects the data to the claim - the inferential rule that makes the reasoning valid",
+            "The qualification or limitation of the claim",
+            "The rebuttal of opposing views"
           ],
           "correct": 1,
-          "explanation": "Differance (Derrida's neologism combining 'differ' and 'defer') argues that meaning is never present in itself but is always deferred through endless chains of signifiers referencing other signifiers.",
+          "explanation": "Toulmin's model: Data (evidence) + Warrant (inferential principle) = Claim (conclusion). The warrant is the often-unstated reasoning that licenses the move from data to claim. 'She's a citizen (data), so she can vote (claim)' - warrant: 'Citizens have the right to vote.'",
           "xp": 10
         },
         {
           "id": "rb18",
           "type": "multiple-choice",
-          "question": "'Her laconic response - a single raised eyebrow - conveyed more than any speech could.' 'Laconic' derives from:",
+          "question": "What does 'defamiliarization' (ostranenie) accomplish that distinguishes literary language from ordinary language, according to Shklovsky?",
           "options": [
-            "Latin 'lacuna' meaning gap",
-            "Greek 'Lakon' referring to Spartans, known for brevity",
-            "French 'laconer' meaning to condense",
-            "Old English 'lac' meaning lack"
+            "It makes texts more difficult to read",
+            "It disrupts habitualized, automatic perception by presenting familiar objects in unfamiliar ways, forcing prolonged, conscious engagement",
+            "It translates foreign concepts into domestic ones",
+            "It simplifies complex ideas for general audiences"
           ],
           "correct": 1,
-          "explanation": "Laconic comes from Lakonia (Sparta). Spartans were famous for terse speech. When Philip II threatened 'If I invade Lakonia, I shall raze Sparta,' the Spartans replied with one word: 'If.'",
+          "explanation": "Shklovsky (1917): habitual perception is automatic and unconscious - we stop 'seeing' familiar things. Art's purpose is to make perception difficult and prolonged, to restore the sensation of life. The technique of defamiliarization forces us to see the stone as stony again.",
           "xp": 10
         },
         {
           "id": "rb19",
           "type": "multiple-choice",
-          "question": "A passage states: 'The hegemonic discourse naturalizes contingent power relations, rendering them invisible to those within its ambit.' This perspective aligns with:",
+          "question": "The 'pragmatic presupposition' in 'Have you stopped cheating on exams?' is problematic because:",
           "options": [
-            "Formalist literary criticism",
-            "Gramscian cultural theory",
-            "New Criticism's close reading",
-            "Reader-response theory"
+            "The question is too personal",
+            "It presupposes the addressee was cheating, making both 'yes' and 'no' answers self-incriminating",
+            "It uses passive voice",
+            "It contains a logical contradiction"
           ],
           "correct": 1,
-          "explanation": "This is Gramscian hegemony - the idea that dominant groups maintain power not through force alone but by making their worldview seem natural and inevitable, obscuring its constructed nature.",
+          "explanation": "This is the classic 'loaded question' or 'complex question' fallacy. The verb 'stopped' presupposes the activity was occurring. Answering 'yes' confirms past cheating; answering 'no' implies ongoing cheating. The correct response is to reject the presupposition itself.",
           "xp": 10
         },
         {
           "id": "rb20",
           "type": "multiple-choice",
-          "question": "What is the key distinction between 'imply' and 'infer'?",
+          "question": "Bakhtin's concept of 'the chronotope' refers to:",
           "options": [
-            "They are synonyms used interchangeably",
-            "'Imply' is formal, 'infer' is informal",
-            "The speaker implies; the listener infers",
-            "'Imply' is about logic; 'infer' is about emotion"
+            "The timeline of a narrative",
+            "The intrinsic connectedness of temporal and spatial relationships as artistically expressed in literature - how time-space configurations define genre",
+            "A type of narrative voice",
+            "The historical period in which a text was written"
           ],
-          "correct": 2,
-          "explanation": "Imply = to suggest indirectly (speaker's action). Infer = to deduce or conclude from evidence (listener's action). One of the most commonly confused pairs in English.",
+          "correct": 1,
+          "explanation": "The chronotope (literally 'time-space') describes how specific genres organize time and space. The road chronotope (picaresque), the threshold chronotope (crisis/transformation), the salon chronotope (social realism) - each creates different possibilities for narrative meaning and character development.",
           "xp": 10
         },
         {
           "id": "rb21",
           "type": "multiple-choice",
-          "question": "'The essay's peroration built to a crescendo that left the audience in stunned silence.' A 'peroration' is:",
+          "question": "'The text's anaphoric chains create cohesion across paragraphs.' In discourse analysis, 'anaphora' (distinct from rhetorical anaphora) refers to:",
           "options": [
-            "The introduction of a speech",
-            "The concluding part of a speech, typically with emotional force",
-            "A digression from the main argument",
-            "A rebuttal of opposing views"
+            "Repetition at the beginning of clauses",
+            "A linguistic expression that refers back to a previously mentioned entity (e.g., pronouns referring to earlier nouns)",
+            "A type of metaphor",
+            "Forward reference to something not yet introduced"
           ],
           "correct": 1,
-          "explanation": "Peroration is the concluding part of a speech, designed to inspire and move. Classical rhetoric divided speeches into exordium (intro), narratio, confirmatio, refutatio, and peroratio.",
+          "explanation": "Discourse-analytic anaphora (different from rhetorical anaphora/repetition) is backward reference: 'John arrived. HE looked tired.' 'He' is anaphoric, referring back to 'John.' Its opposite is cataphora (forward reference): 'When HE arrived, John looked tired.'",
           "xp": 10
         },
         {
           "id": "rb22",
           "type": "multiple-choice",
-          "question": "Identify the zeugma: ",
+          "question": "Burke's 'pentad' for analyzing motives consists of:",
           "options": [
-            "'She broke his heart and his favorite vase.'",
-            "'The thunder roared and the lightning flashed.'",
-            "'He was tall, dark, and handsome.'",
-            "'She sang beautifully and danced gracefully.'"
+            "Ethos, pathos, logos, kairos, telos",
+            "Act, scene, agent, agency, purpose - and the ratios between them reveal ideological emphasis",
+            "Introduction, body, counterargument, refutation, conclusion",
+            "Character, setting, plot, theme, symbol"
           ],
-          "correct": 0,
-          "explanation": "Zeugma uses one word to govern two others in different senses - 'broke' applies literally to the vase but metaphorically to the heart. It creates wit through semantic incongruity.",
+          "correct": 1,
+          "explanation": "Burke's dramatistic pentad: Act (what was done), Scene (when/where), Agent (who did it), Agency (how/by what means), Purpose (why). The ratios between terms reveal ideology: emphasizing Scene-Act suggests determinism; Agent-Act suggests free will. It's a grammar of motives.",
           "xp": 10
         },
         {
           "id": "rb23",
           "type": "multiple-choice",
-          "question": "In Foucault's framework, what does 'episteme' refer to?",
+          "question": "What is 'ekphrasis' in classical and contemporary literary theory?",
           "options": [
-            "Individual knowledge or expertise",
-            "The underlying framework of assumptions that defines what counts as knowledge in a given era",
-            "A type of logical argument",
-            "The study of epistemology"
+            "The expression of grief in poetry",
+            "The verbal representation of a visual representation - literature that describes or responds to visual art",
+            "The study of biblical interpretation",
+            "The use of euphemism in political speech"
           ],
           "correct": 1,
-          "explanation": "Foucault's 'episteme' is the deep structural framework governing what can be thought, said, and known in a historical period. Different epistemes make different kinds of knowledge possible.",
+          "explanation": "Ekphrasis: verbal representation of visual art. Keats's 'Ode on a Grecian Urn,' Auden's 'Mus\u00e9e des Beaux Arts,' Ashbery's 'Self-Portrait in a Convex Mirror.' It raises questions about the relationship between verbal and visual media, temporal and spatial arts (Lessing's Laocoon).",
           "xp": 10
         },
         {
           "id": "rb24",
           "type": "multiple-choice",
-          "question": "'The critic accused the novel of solipsism.' In this context, solipsism most likely means:",
+          "question": "In relevance theory (Sperber and Wilson), communication succeeds not through encoding/decoding but through:",
           "options": [
-            "Excessive focus on solar imagery",
-            "Self-absorbed perspective that ignores external reality",
-            "Logical contradiction",
-            "Deliberate obscurity"
+            "Empathy between speaker and listener",
+            "Ostensive-inferential communication: the speaker provides evidence of their intention, and the listener infers the most relevant interpretation using minimal cognitive effort",
+            "Shared cultural background",
+            "Grammatical correctness"
           ],
           "correct": 1,
-          "explanation": "Solipsism (from Latin 'solus' alone + 'ipse' self) philosophically holds that only one's own mind is sure to exist. In literary criticism, it describes work excessively focused on the self.",
+          "explanation": "Relevance theory replaces Grice's maxims with a single principle: humans automatically seek maximal relevance (greatest cognitive effect for least processing effort). Communication is ostensive (the speaker makes their intention manifest) and inferential (the listener computes the most relevant interpretation).",
           "xp": 10
         },
         {
           "id": "rb25",
           "type": "multiple-choice",
-          "question": "What distinguishes a 'syntagmatic' relationship from a 'paradigmatic' one in linguistics?",
+          "question": "The concept of 'anxiety of influence' (Harold Bloom) describes:",
           "options": [
-            "Syntagmatic is about word order; paradigmatic is about word choice",
-            "Syntagmatic is about meaning; paradigmatic is about grammar",
-            "Syntagmatic is written; paradigmatic is spoken",
-            "Syntagmatic is modern; paradigmatic is archaic"
+            "Writers' fear of criticism",
+            "The psychological struggle of strong poets against their precursors - creative misreading as a defense against being overwhelmed by tradition",
+            "The influence of anxiety disorders on writing",
+            "Social anxiety about public speaking"
           ],
-          "correct": 0,
-          "explanation": "Syntagmatic = the horizontal chain (how words combine in sequence: 'the cat sat'). Paradigmatic = the vertical axis of substitution (what could replace each word: the/a/my + cat/dog/bird + sat/stood/lay).",
+          "correct": 1,
+          "explanation": "Bloom's theory: strong poets must creatively 'misread' their predecessors to create imaginative space. This isn't passive influence but agonistic struggle. Bloom maps six 'revisionary ratios' (clinamen, tessera, kenosis, etc.) describing how poets swerve from, complete, or empty out their precursors' work.",
           "xp": 10
         }
       ]
     },
     "intermediate": {
-      "name": "GRE-level advanced vocabulary",
-      "description": "Graduate-level vocabulary, complex analogical reasoning, rhetorical analysis",
+      "name": "Graduate Seminar",
+      "description": "Masters/PhD coursework - critical theory, philosophy of language, advanced narratology",
       "questions": [
         {
           "id": "ri1",
           "type": "multiple-choice",
-          "question": "'The author's anodyne prose, devoid of any controversial stance, exemplified the worst tendencies of institutional writing.' 'Anodyne' means:",
+          "question": "In Derrida's reading of Austin's speech act theory, the concept of 'iterability' undermines Austin's exclusion of 'parasitic' uses of language because:",
           "options": [
-            "Painful and difficult",
-            "Inoffensive to the point of being bland",
-            "Highly technical",
-            "Deliberately provocative"
+            "Derrida shows Austin made grammatical errors",
+            "The possibility of quotation, performance, and decontextualization is not accidental but constitutive of all language - every sign must be repeatable in the absence of its original context",
+            "Derrida agrees with Austin's framework",
+            "Iterability only applies to written language"
           ],
           "correct": 1,
-          "explanation": "Anodyne literally means 'pain-relieving' but is used to mean blandly inoffensive, unlikely to cause disagreement or offense. The pejorative sense implies cowardly avoidance of substance.",
+          "explanation": "Derrida ('Signature Event Context') argues that iterability - the structural capacity of any sign to be repeated in radically different contexts - is not a parasitic deviation but the very condition of linguistic functioning. This means Austin cannot rigorously exclude 'non-serious' uses as parasitic.",
           "xp": 15
         },
         {
           "id": "ri2",
           "type": "multiple-choice",
-          "question": "What is the 'hermeneutic circle' in textual interpretation?",
+          "question": "Foucault's concept of the 'author function' differs from the biographical author because:",
           "options": [
-            "The tendency for interpretations to become circular arguments",
-            "The principle that understanding a whole text requires understanding its parts, and vice versa",
-            "A group of scholars who interpret texts together",
-            "The cycle of texts being reinterpreted across generations"
+            "Foucault denies authors exist",
+            "The author function is a discursive construct - a principle of classification, grouping, and limitation that organizes discourse, not a real person behind the text",
+            "It refers to anonymous texts only",
+            "It applies only to scientific writing"
           ],
           "correct": 1,
-          "explanation": "The hermeneutic circle (Schleiermacher, Gadamer) recognizes that comprehending any text requires oscillating between parts and whole - you can't understand a sentence without the paragraph, or the paragraph without sentences.",
+          "explanation": "Foucault ('What Is an Author?') argues 'the author' is not a person but a function of discourse. It classifies texts, establishes relationships between them, determines what counts as a valid interpretation. Different discourses construct author functions differently (literary vs. scientific vs. legal).",
           "xp": 15
         },
         {
           "id": "ri3",
           "type": "multiple-choice",
-          "question": "'The philosopher's sesquipedalian style alienated lay readers.' 'Sesquipedalian' means:",
+          "question": "In Lacan's theory, the distinction between 'need,' 'demand,' and 'desire' is crucial because:",
           "options": [
-            "Sequential and logical",
-            "Characterized by the use of long words",
-            "Skeptical and questioning",
-            "Related to the number six"
+            "They are synonyms in French",
+            "Need is biological, demand is the articulation of need through language (which always adds a dimension of love/recognition), and desire is the irreducible remainder - what demand cannot capture",
+            "Need is psychological while demand and desire are physical",
+            "They correspond to id, ego, and superego"
           ],
           "correct": 1,
-          "explanation": "Sesquipedalian (from Latin 'sesquipedalis' = a foot and a half long) describes the use of excessively long words. The word itself is sesquipedalian - a delicious self-referential irony.",
+          "explanation": "Need: biological (hunger). Demand: need articulated in language, which inevitably becomes a demand for love/recognition (the child asks for milk but also for the mother's presence). Desire: the surplus that demand cannot satisfy - the gap between need and what language can articulate. Desire is structurally unsatisfiable.",
           "xp": 15
         },
         {
           "id": "ri4",
           "type": "multiple-choice",
-          "question": "In narrative theory, what is 'free indirect discourse'?",
+          "question": "Benjamin's distinction between 'Erfahrung' and 'Erlebnis' maps a historical transformation in:",
           "options": [
-            "Dialogue without quotation marks",
-            "A narrator reporting a character's thoughts in third person while adopting their voice and perspective",
-            "Stream of consciousness narration",
-            "An unreliable narrator's contradictions"
+            "German grammar",
+            "The nature of experience itself - from communicable, accumulated, traditional experience (Erfahrung) to isolated, shock-like, individual experience (Erlebnis) characteristic of modernity",
+            "Two types of literary genre",
+            "Scientific method vs. humanistic method"
           ],
           "correct": 1,
-          "explanation": "Free indirect discourse (style indirect libre) blends narrator and character voice: 'She walked to the window. What a horrible day it was!' - whose thought is 'horrible'? This ambiguity is its power. Flaubert and Austen mastered it.",
+          "explanation": "Benjamin argues modernity (warfare, industrial labor, urban shock) destroyed Erfahrung - experience that accumulates over time and can be shared through storytelling. It was replaced by Erlebnis - disconnected, overwhelming individual experiences that resist narrative integration. This explains the decline of storytelling.",
           "xp": 15
         },
         {
           "id": "ri5",
           "type": "multiple-choice",
-          "question": "'The documentary's treatment of the conflict was remarkably evenhanded, though critics detected a subtle tendentiousness beneath its apparent neutrality.' The sentence's internal tension is between:",
+          "question": "What does Judith Butler mean when she says gender is 'citational'?",
           "options": [
-            "Past and present tense",
-            "Abstract and concrete language",
-            "Surface objectivity and underlying bias",
-            "Academic and colloquial registers"
+            "Gender involves citing academic sources",
+            "Each performance of gender cites and repeats prior performances - gender identity is produced through the reiteration of norms, not the expression of an inner essence, and this citational chain has no origin",
+            "Gender is a legal citation",
+            "It refers to city-dwelling gender norms"
           ],
-          "correct": 2,
-          "explanation": "The sentence itself enacts the tension it describes: 'evenhanded' vs 'tendentiousness beneath apparent neutrality.' The critics see bias hidden under objectivity - the sentence mirrors this structural irony.",
+          "correct": 1,
+          "explanation": "Butler draws on Derrida's iterability: gender performances cite prior performances, which cite prior ones, ad infinitum. There is no original gender being copied - the 'original' is itself a copy. Gender is constituted through this citational repetition, which also opens space for subversive resignification.",
           "xp": 15
         },
         {
           "id": "ri6",
           "type": "multiple-choice",
-          "question": "What does Barthes mean by 'the death of the author'?",
+          "question": "Adorno's concept of 'negative dialectics' rejects Hegelian dialectics because:",
           "options": [
-            "Authors should remain anonymous",
-            "The biographical context of an author is irrelevant to textual meaning",
-            "All authors eventually die and their works outlive them",
-            "Ghostwriting is a legitimate practice"
+            "Adorno prefers Platonic dialectics",
+            "Hegel's dialectic resolves contradiction through synthesis, achieving identity of concept and object; Adorno insists that the non-identical always exceeds conceptual capture - there is an irreducible remainder that resists totalization",
+            "Negative dialectics uses subtraction instead of addition",
+            "Adorno rejects all forms of dialectical thinking"
           ],
           "correct": 1,
-          "explanation": "Barthes (1967) argued that a text's meaning comes from the reader, not the author's intentions. The 'Author-God' who fixes meaning is replaced by the reader as the site where meaning is produced. This was revolutionary for literary theory.",
+          "explanation": "Hegel's dialectic: thesis-antithesis-synthesis achieves the identity of thought and being. Adorno: this is ideological - it subsumes the particular under the universal. Negative dialectics insists on the primacy of the object, the non-identical that cannot be absorbed into the concept. Thought must acknowledge its own insufficiency.",
           "xp": 15
         },
         {
           "id": "ri7",
           "type": "multiple-choice",
-          "question": "'Her arguments were characterized by a kind of casuistry that, while logically defensible, felt morally evasive.' 'Casuistry' means:",
+          "question": "In Kristeva's theory of intertextuality, what happens to the concept of individual authorship?",
           "options": [
-            "Casualness in argumentation",
-            "Specious or excessively subtle reasoning, especially about moral issues",
-            "Arguments based on case law",
-            "Cause-and-effect reasoning"
+            "It is strengthened",
+            "Every text is a 'mosaic of quotations' - texts absorb and transform other texts, making the notion of an autonomous, originating author impossible. The text is a productivity, not a product",
+            "Authorship becomes collective",
+            "Only canonical authors practice intertextuality"
           ],
           "correct": 1,
-          "explanation": "Casuistry originally meant case-based moral reasoning (legitimate in ethics), but acquired a pejorative sense of clever but ultimately misleading argumentation designed to justify questionable actions.",
+          "explanation": "Kristeva (drawing on Bakhtin) coined 'intertextuality' to describe how any text is constructed from the intersection of other texts. The author doesn't originate meaning but redistributes and transforms prior textual material. The text is a site of production where multiple discourses intersect.",
           "xp": 15
         },
         {
           "id": "ri8",
           "type": "multiple-choice",
-          "question": "Which best describes 'defamiliarization' (ostranenie) as theorized by Shklovsky?",
+          "question": "Heidegger's analysis of 'das Man' (the They/the One) reveals what about everyday existence?",
           "options": [
-            "Making foreign literature accessible to domestic audiences",
-            "Artistic technique that presents common things in unfamiliar ways to force fresh perception",
-            "The process by which avant-garde art becomes mainstream",
-            "Translating culturally specific references"
+            "That society is fundamentally good",
+            "That Dasein typically exists in a mode of inauthenticity - absorbed in public interpretations, doing what 'one does,' thinking what 'one thinks,' thereby fleeing from its own finitude and possibility",
+            "That collectivism is superior to individualism",
+            "That language is purely referential"
           ],
           "correct": 1,
-          "explanation": "Shklovsky's ostranenie (1917) argues that art's purpose is to make the stone stony - to disrupt habitual, automated perception and force us to see the world anew. It's the foundational concept of Russian Formalism.",
+          "explanation": "Das Man describes how Dasein is 'always already' dispersed into public, average interpretations. 'One says,' 'one does' - this levels down all possibilities to the average. It's not a moral failing but a structural feature of being-in-the-world. Authenticity requires wresting oneself from das Man's grip, especially through confronting death.",
           "xp": 15
         },
         {
           "id": "ri9",
           "type": "multiple-choice",
-          "question": "'The text's aporia - the irresolvable contradiction at its core - is precisely what makes it productive for analysis.' In deconstructive criticism, 'aporia' refers to:",
+          "question": "Derrida's critique of Levi-Strauss in 'Structure, Sign, and Play' centers on:",
           "options": [
-            "A textual error or corruption",
-            "An irresolvable internal contradiction that destabilizes the text's apparent meaning",
-            "The author's stated purpose",
-            "A gap in the historical record"
+            "Levi-Strauss's fieldwork methodology",
+            "The concept of the 'center' of a structure - Derrida shows that any center that organizes a structure must paradoxically be both inside the structure (governing it) and outside it (escaping its play), which is contradictory",
+            "Levi-Strauss's writing style",
+            "The accuracy of structural anthropology's data"
           ],
           "correct": 1,
-          "explanation": "Aporia (Greek: 'without passage') in deconstruction names the moment where a text's logic breaks down, where its claims undermine themselves. For Derrida, these are not flaws but revelations of how meaning works.",
+          "explanation": "Derrida argues that structuralism depends on a 'center' (nature, God, origin) that limits the play of the structure. But this center must be outside the system it organizes (otherwise it's just another element). This paradox means the center is both necessary and impossible - opening the way to post-structuralism.",
           "xp": 15
         },
         {
           "id": "ri10",
           "type": "multiple-choice",
-          "question": "What is the 'intentional fallacy' as defined by Wimsatt and Beardsley?",
+          "question": "In Spivak's 'strategic essentialism,' the paradox is:",
           "options": [
-            "The error of writing with too clear an intention",
-            "The mistake of judging a work by the author's stated or presumed intention rather than the work itself",
-            "Intentionally misleading readers about a text's meaning",
-            "The fallacy of believing all writing is intentional"
+            "Essentialism is always wrong",
+            "While essentialist identity categories are theoretically untenable (there's no essential 'woman' or 'Indian'), marginalized groups may need to temporarily adopt them as political strategy to gain visibility and rights - using what you know is a fiction",
+            "Strategy and essentialism are compatible",
+            "Only Western subjects can be essentialist"
           ],
           "correct": 1,
-          "explanation": "Wimsatt and Beardsley (1946) argued that the author's intention is neither available nor desirable as a standard for judging a literary work. The text must stand on its own. This became a cornerstone of New Criticism.",
+          "explanation": "Spivak acknowledges the deconstructive critique of essential identities but argues that subordinated groups sometimes need to act 'as if' they share an essence to organize politically. The key word is 'strategic' - it's a self-conscious, provisional deployment, not naive belief in fixed identity.",
           "xp": 15
         },
         {
           "id": "ri11",
           "type": "multiple-choice",
-          "question": "'The interlocutor's captious objections derailed every productive line of inquiry.' 'Captious' means:",
+          "question": "What does Ranci\u00e8re mean by 'the part of those who have no part' (la part des sans-part)?",
           "options": [
-            "Captivating and engaging",
-            "Tending to find fault or raise petty objections",
-            "Capable and competent",
-            "Related to capture or imprisonment"
+            "The underclass who receive no welfare",
+            "Those excluded from the political order who, by demanding inclusion, reveal the fundamental wrong of the existing distribution - their claim exposes that the social order is contingent, not natural",
+            "Disabled people without political representation",
+            "The proletariat in Marxist theory"
           ],
           "correct": 1,
-          "explanation": "Captious means disposed to find fault, especially over trivial matters. From Latin 'captiosus' (deceptive). A captious critic nitpicks rather than engaging substantively.",
+          "explanation": "For Ranci\u00e8re, politics proper occurs when those who 'don't count' in the existing order assert their equality. This is not interest-group politics but a fundamental disruption: it reveals that the supposedly natural social order is actually a contingent arrangement that excludes. Their 'part' is the exposure of this wrong.",
           "xp": 15
         },
         {
           "id": "ri12",
           "type": "multiple-choice",
-          "question": "In Bakhtinian theory, 'heteroglossia' refers to:",
+          "question": "Agamben's reading of the 'state of exception' argues that in modern politics:",
           "options": [
-            "The use of multiple languages in a single text",
-            "The coexistence of multiple social voices, perspectives, and registers within any utterance",
-            "Speaking in tongues",
-            "The diversity of literary genres"
+            "Exceptions to the rule are rare",
+            "The exception has become the rule - the suspension of law (state of emergency) is not an aberration but the hidden foundation of sovereign power, making the distinction between democracy and totalitarianism increasingly blurred",
+            "Exceptional leaders transcend ordinary politics",
+            "Legal exceptions prove the rule's validity"
           ],
           "correct": 1,
-          "explanation": "Bakhtin's heteroglossia describes how every utterance contains multiple competing social languages - class, profession, generation, ideology. The novel is the genre that most fully orchestrates this multiplicity.",
+          "explanation": "Agamben (following Carl Schmitt and Benjamin) argues the state of exception - where law is suspended - is not an anomaly but the hidden paradigm of modern governance. Guantanamo, indefinite detention, 'emergency powers' that become permanent - these reveal sovereignty's true structure: the power to decide on the exception.",
           "xp": 15
         },
         {
           "id": "ri13",
           "type": "multiple-choice",
-          "question": "'The researcher's soi-disant expertise crumbled under cross-examination.' 'Soi-disant' means:",
+          "question": "The concept of 'interpellation' (Althusser) and 'performativity' (Butler) share the insight that:",
           "options": [
-            "Highly respected",
-            "Self-proclaimed or so-called",
-            "Quietly confident",
-            "Internationally recognized"
+            "Subjects pre-exist the social processes that name them",
+            "Subjects are constituted through the very processes that seem merely to address or describe them - being 'hailed' as a subject or 'performing' gender actually produces the subject/gender it appears to discover",
+            "Society is purely discursive",
+            "Both reject materialism"
           ],
           "correct": 1,
-          "explanation": "Soi-disant (French: 'self-saying') means self-styled or self-proclaimed. It always carries skepticism about the claim - calling someone a 'soi-disant expert' implies they aren't really one.",
+          "explanation": "Both theorists reverse the common-sense order: it's not that pre-existing subjects are then addressed by ideology or express their gender. Rather, ideological interpellation (Althusser) and gender performance (Butler) constitute the very subjects they appear to recognize. The cause is actually the effect.",
           "xp": 15
         },
         {
           "id": "ri14",
           "type": "multiple-choice",
-          "question": "What does Genette mean by 'focalization' in narrative theory?",
+          "question": "In Gadamer's hermeneutics, 'Wirkungsgeschichte' (effective history / history of effects) means:",
           "options": [
-            "The camera-like focus of a film adaptation",
-            "The perspective through which narrative information is filtered",
-            "The central theme of a literary work",
-            "The process of literary canon formation"
+            "The history of causes and effects",
+            "We can never step outside the tradition that shapes our understanding - every interpretation is already conditioned by the historical effects of the text on the tradition we inhabit, making purely 'objective' interpretation impossible",
+            "The effectiveness of historical research",
+            "The consequences of historical events"
           ],
           "correct": 1,
-          "explanation": "Genette distinguished focalization (who perceives?) from narration (who speaks?). Zero focalization = omniscient; internal = through a character; external = only surface behavior. This replaced the imprecise term 'point of view.'",
+          "explanation": "Gadamer's key insight: we are always inside history, never above it. When we interpret a text, our understanding is already shaped by that text's prior interpretations. We can't bracket this historical conditioning. Understanding is not reconstructing original meaning but a 'fusion of horizons' between past and present.",
           "xp": 15
         },
         {
           "id": "ri15",
           "type": "multiple-choice",
-          "question": "'His magnum opus was an exercise in logomachy - brilliant word-battles that produced more heat than light.' 'Logomachy' means:",
+          "question": "Zizek's concept of 'ideological fantasy' (drawing on Lacan) argues ideology operates at the level of:",
           "options": [
-            "The study of logos and branding",
-            "A dispute about or over words",
-            "Writing in a logical sequence",
-            "The creation of new words"
+            "Conscious belief",
+            "Not belief but practice - 'they know very well, but still they act as if they don't know.' Ideology structures what we DO, not what we THINK; cynical distance from ideology is itself ideological",
+            "Government propaganda",
+            "Religious conviction"
           ],
           "correct": 1,
-          "explanation": "Logomachy (Greek: logos + mache = word + battle) means a dispute about words rather than substance, or an argument based on semantic distinctions rather than real disagreement.",
+          "explanation": "Zizek inverts the Marxist formula: ideology isn't 'they don't know what they do' but 'they know very well what they do, and they do it anyway.' Cynicism is not a position outside ideology but ideology's most sophisticated form. The fantasy structures our social reality at the level of practice, not belief.",
           "xp": 15
         },
         {
           "id": "ri16",
           "type": "multiple-choice",
-          "question": "Which concept does the 'Sapir-Whorf hypothesis' advance?",
+          "question": "Nancy's concept of 'being-with' (Mitsein, \u00eatre-avec) radicalizes Heidegger because:",
           "options": [
-            "All languages share a universal grammar",
-            "Language structure influences thought and perception",
-            "Written language is superior to spoken language",
-            "Languages evolve toward greater complexity"
+            "Nancy adds emotional content to Heidegger's analysis",
+            "For Heidegger, Mitsein is secondary to Dasein's individual existence; Nancy argues co-existence is not added to being but IS being - there is no singular existence that precedes its plurality",
+            "Nancy translates Heidegger into French",
+            "Nancy applies Heidegger to political theory"
           ],
           "correct": 1,
-          "explanation": "The Sapir-Whorf hypothesis (linguistic relativity) proposes that the structure of a language affects the worldview and cognition of its speakers. The strong version (determinism) is largely rejected; the weak version (influence) has empirical support.",
+          "explanation": "Heidegger treats Mitsein as a structural feature of Dasein but subordinates it to individual authenticity. Nancy argues this gets it backwards: being is always already singular plural. The 'with' is not a secondary relation but the originary condition. There is no 'I' before 'we' - existence is constitutively shared.",
           "xp": 15
         },
         {
           "id": "ri17",
           "type": "multiple-choice",
-          "question": "'The scholar's exegesis of the passage revealed layers of meaning invisible to casual readers.' 'Exegesis' is:",
+          "question": "In de Man's reading of Rousseau, the distinction between 'blindness and insight' suggests:",
           "options": [
-            "A digression from the main topic",
-            "Critical interpretation or explanation of a text, especially scripture",
-            "A summary or abstract",
-            "The study of exits and endings"
+            "Rousseau was visually impaired",
+            "Critics' most penetrating insights are made possible precisely by their blindnesses - the error in a reading is not separable from its truth but is the condition of its discovery",
+            "Literary criticism requires both intuition and analysis",
+            "Rousseau's Confessions are unreliable"
           ],
           "correct": 1,
-          "explanation": "Exegesis (Greek: 'to lead out') is detailed, careful interpretation of a text. Originally biblical criticism, now used for any close reading. Its opposite is 'eisegesis' - reading meaning INTO a text.",
+          "explanation": "De Man's paradox: critics gain insight not despite but THROUGH their misreadings. Their theoretical blindness to certain aspects of a text enables them to see other aspects clearly. Blindness and insight are structurally inseparable - you can't have one without the other. This applies to de Man's own readings too.",
           "xp": 15
         },
         {
           "id": "ri18",
           "type": "multiple-choice",
-          "question": "In phenomenological criticism, what does 'Lebenswelt' (lifeworld) refer to?",
+          "question": "Levinas's concept of 'il y a' (the 'there is') describes:",
           "options": [
-            "The fictional world of the text",
-            "The pre-theoretical, lived experience that grounds all knowledge",
-            "The author's biography",
-            "The cultural context of literary production"
+            "Ordinary existence",
+            "The anonymous, impersonal, horrifying murmur of being that remains when all beings are negated - not nothingness but the impossibility of nothingness, the inescapable fact of existing without an existent",
+            "God's existence",
+            "The existence of other people"
           ],
           "correct": 1,
-          "explanation": "Husserl's Lebenswelt is the pre-reflective world of immediate experience before scientific abstraction. In literary criticism, it grounds analysis in how texts emerge from and speak to lived human experience.",
+          "explanation": "The il y a is Levinas's counter to Heidegger's 'nothing.' When you imagine everything removed, what remains isn't nothing but an anonymous, rumbling presence - pure existing without existents. It's closer to insomnia than sleep, horror than anxiety. The ethical relation to the Other is what saves us from the il y a.",
           "xp": 15
         },
         {
           "id": "ri19",
           "type": "multiple-choice",
-          "question": "'The argument proceeded by enthymeme rather than syllogism.' An enthymeme is:",
+          "question": "Lyotard defines postmodernism as 'incredulity toward metanarratives.' A 'metanarrative' is:",
           "options": [
-            "An emotional appeal disguised as logic",
-            "A syllogism with an unstated premise",
-            "An argument from analogy",
-            "A self-contradictory statement"
+            "A very long narrative",
+            "A totalizing narrative that claims to ground and legitimate all knowledge - Enlightenment progress, Hegelian Spirit, Marxist emancipation - providing a universal framework for interpreting history and justifying institutions",
+            "A narrative about narratives in literary theory",
+            "A narrative told by an omniscient narrator"
           ],
           "correct": 1,
-          "explanation": "An enthymeme is a syllogism with one premise left implicit. 'She must be intelligent; she went to MIT.' The unstated premise: 'People who go to MIT are intelligent.' Aristotle considered it the most effective rhetorical device.",
+          "explanation": "Lyotard (The Postmodern Condition): modernity was organized by grand narratives (progress, freedom, rational consensus) that legitimated knowledge and institutions. Postmodernity is the collapse of these totalizing stories. Knowledge is now legitimated locally, pragmatically, through 'language games' rather than universal foundations.",
           "xp": 15
         },
         {
           "id": "ri20",
           "type": "multiple-choice",
-          "question": "What does 'catachresis' mean in rhetoric?",
+          "question": "Deleuze's concept of 'the virtual' is NOT:",
           "options": [
-            "A dramatic reversal of fortune",
-            "The misuse or strained use of a word beyond its proper meaning",
-            "A catastrophic logical error",
-            "Excessive use of rhetorical questions"
+            "The opposite of the real",
+            "Merely possible or potential - the virtual is fully real but not actual; it is the field of differential relations and singularities that conditions actualization without resembling what it produces",
+            "A digital simulation",
+            "An imaginary projection"
           ],
           "correct": 1,
-          "explanation": "Catachresis is the forced extension of a word beyond its normal usage - like 'the leg of a table' or 'I will speak daggers.' In deconstruction, it reveals how all language is ultimately catachrestic - all meaning is metaphorical.",
+          "explanation": "Deleuze distinguishes virtual/actual from possible/real. The possible resembles the real and is realized through limitation; the virtual does NOT resemble the actual and is actualized through differentiation. The virtual is real (a problem is real) but not actual (its solutions don't look like it). Think: DNA (virtual) and organism (actual).",
           "xp": 15
         },
         {
           "id": "ri21",
           "type": "multiple-choice",
-          "question": "'The palilalia of the text - its compulsive repetitions - suggested an underlying anxiety the author could not directly express.' 'Palilalia' literally refers to:",
+          "question": "Blanchot's 'essential solitude' of writing means:",
           "options": [
-            "Palindromic sentence structure",
-            "Involuntary repetition of words or phrases",
-            "Speaking in pale, washed-out language",
-            "Deliberate understatement"
+            "Writers should work alone",
+            "Writing's solitude is not the writer's isolation but the work's own demand - in writing, the author loses mastery as language takes over, approaching an impersonal 'outside' where the writer encounters the impossibility of dying and the impossibility of not writing",
+            "Solitude improves literary quality",
+            "Digital writing eliminates solitude"
           ],
           "correct": 1,
-          "explanation": "Palilalia is a speech disorder involving involuntary repetition. Used metaphorically in criticism, it describes textual repetition that seems compulsive rather than deliberate, suggesting unconscious preoccupation.",
+          "explanation": "For Blanchot, writing is not self-expression but self-effacement. The writer enters a space where they lose sovereignty over language. The work demands completion but can never be completed. The 'essential solitude' is the writer's encounter with the neuter - the impersonal, anonymous murmur of literature's 'outside.'",
           "xp": 15
         },
         {
           "id": "ri22",
           "type": "multiple-choice",
-          "question": "According to Gadamer, what role do 'prejudices' (Vorurteile) play in understanding?",
+          "question": "Foucault's concept of 'biopower' differs from sovereign power because:",
           "options": [
-            "They always distort understanding and must be eliminated",
-            "They are the necessary preconditions for any understanding whatsoever",
-            "They apply only to legal interpretation",
-            "They are unique to non-academic readers"
+            "Biopower is biological; sovereign power is political",
+            "Sovereign power operates through the right to take life or let live; biopower operates through the management, optimization, and regulation of life itself - making live and letting die",
+            "Biopower is weaker than sovereign power",
+            "Biopower only exists in democratic states"
           ],
           "correct": 1,
-          "explanation": "Gadamer rehabilitated 'prejudice' (pre-judgment) arguing that we can only understand from within a tradition. Our pre-understandings aren't obstacles but the very ground of comprehension. Understanding is always historically situated.",
+          "explanation": "Sovereign power: 'I can kill you.' Biopower: 'I will manage your health, reproduction, hygiene, mortality rates.' The shift from spectacular punishment to statistical management of populations. Biopower doesn't forbid but normalizes. It produces 'docile bodies' through discipline and regulates populations through demographics.",
           "xp": 15
         },
         {
           "id": "ri23",
           "type": "multiple-choice",
-          "question": "'The film's mise en abyme - a painting within the film depicting the film's own plot - created a vertiginous recursive effect.' 'Mise en abyme' is:",
+          "question": "In Badiou's philosophy, a 'truth procedure' is triggered by:",
           "options": [
-            "A French filmmaking technique using mirrors",
-            "A self-reflective structure where a work contains a smaller copy of itself",
-            "The arrangement of objects in a scene",
-            "The placement of the camera at a low angle"
+            "Scientific discovery",
+            "An 'event' - a radical rupture in a situation that reveals what was invisible within the existing order, requiring a 'subject' to remain faithful to its consequences through art, science, politics, or love",
+            "Logical deduction",
+            "Democratic deliberation"
           ],
           "correct": 1,
-          "explanation": "Mise en abyme (placed into abyss) is a formal technique where a work contains a miniature replica of itself - like a painting within a painting, or a play within a play (Hamlet). It creates infinite regression.",
+          "explanation": "Badiou's event is an unpredictable eruption that reveals a previously invisible element of a situation (May '68, Schoenberg's atonality, Cantor's set theory). A truth procedure is the faithful work of tracing the event's consequences, which transforms the situation. The subject IS the fidelity to the event.",
           "xp": 15
         },
         {
           "id": "ri24",
           "type": "multiple-choice",
-          "question": "What is 'negative capability' as Keats defined it?",
+          "question": "Arendt's distinction between 'labor,' 'work,' and 'action' maps onto:",
           "options": [
-            "The ability to write effective villains",
-            "Being capable of being in uncertainties, mysteries, and doubts without irritably reaching after fact and reason",
-            "The power of literary works to negate political systems",
-            "A poet's ability to use negative constructions effectively"
+            "Blue collar, white collar, and management",
+            "The biological process of bodily survival (labor), the creation of durable objects and artificial world (work), and the initiation of something genuinely new in the public sphere (action) - only action is properly political",
+            "Past, present, and future",
+            "Individual, social, and political life"
           ],
           "correct": 1,
-          "explanation": "Keats (1817): negative capability is when one 'is capable of being in uncertainties, mysteries, doubts, without any irritable reaching after fact and reason.' It's the capacity to dwell in ambiguity - essential to artistic perception.",
+          "explanation": "Arendt (The Human Condition): Labor (animal laborans) is cyclical biological survival. Work (homo faber) creates the durable world of objects. Action (vita activa) is the capacity to begin something new among others - it's irreversible, unpredictable, and constitutes genuine political freedom. Modernity collapsed these distinctions.",
           "xp": 15
         },
         {
           "id": "ri25",
           "type": "multiple-choice",
-          "question": "'The text's proliferating signifiers resist any attempt at totalization.' This statement reflects:",
+          "question": "In Said's 'Orientalism,' the Orient is:",
           "options": [
-            "Structuralist methodology",
-            "Post-structuralist skepticism about fixed meaning",
-            "Marxist materialist criticism",
-            "Psychoanalytic criticism"
+            "A geographic region",
+            "Not a real place but a discursive construction by the West - a system of knowledge/power that produces 'the Orient' as the West's Other: exotic, irrational, feminine, and inferior, thereby constituting Western identity through opposition",
+            "An academic discipline",
+            "A cultural exchange between East and West"
           ],
           "correct": 1,
-          "explanation": "Post-structuralism (Derrida, Barthes) holds that signifiers endlessly refer to other signifiers, never arriving at a stable signified. 'Totalization' (fixing complete meaning) is impossible because meaning is always in play.",
+          "explanation": "Said (1978): Orientalism is not about the 'real' East but about Western discursive power. The Orient is produced by scholarly, artistic, and political institutions as everything the West is not. This isn't neutral description but productive power - it creates the reality it claims to describe. Knowledge and power are inseparable.",
           "xp": 15
         }
       ]
     },
     "advanced": {
-      "name": "PhD-level academic vocabulary",
-      "description": "Doctoral-level critical theory, advanced rhetoric, philosophical linguistics",
+      "name": "Postdoctoral Theory",
+      "description": "Cutting-edge continental philosophy, advanced deconstruction, contemporary critical theory",
       "questions": [
         {
           "id": "ra1",
           "type": "multiple-choice",
-          "question": "In Deleuze and Guattari's framework, what does 'deterritorialization' describe?",
+          "question": "In Derrida's 'Force of Law,' the distinction between 'justice' and 'law' reveals:",
           "options": [
-            "The loss of national territory",
-            "The process by which established codes, norms, or territories are disrupted and their components freed for new connections",
-            "Removing geographic references from literature",
-            "The decline of territorial governance"
+            "Justice and law are synonymous",
+            "Law is deconstructible (it is a system of norms that can be questioned); justice is not deconstructible because it is the very possibility and demand of deconstruction itself - justice is what drives deconstruction",
+            "Justice is codified in law",
+            "Law is natural while justice is constructed"
           ],
           "correct": 1,
-          "explanation": "Deterritorialization describes how any assemblage (social, linguistic, psychological) has its coding disrupted, freeing components to enter new arrangements. It's paired with reterritorialization - the recapture of freed elements into new structures.",
+          "explanation": "Derrida's paradox: law can and should be deconstructed (it's a historically contingent system). But justice - the unconditional demand to respond to the singularity of the Other - cannot be deconstructed because it IS deconstruction's animating force. 'Deconstruction is justice.' The gap between law and justice is irreducible.",
           "xp": 20
         },
         {
           "id": "ra2",
           "type": "multiple-choice",
-          "question": "What does Spivak mean by the question 'Can the subaltern speak?'",
+          "question": "Agamben's reading of 'bare life' through the figure of the homo sacer reveals a paradox at the foundation of Western politics:",
           "options": [
-            "Whether illiterate people can participate in democracy",
-            "Whether marginalized groups can represent themselves within dominant discourse without having their voice appropriated or distorted",
-            "Whether translation between languages is possible",
-            "Whether children should speak in classroom settings"
+            "Sacred life is protected by law",
+            "The homo sacer is included in the political order precisely through exclusion - sacred/bare life is not simply outside politics but is captured by sovereign power through an 'inclusive exclusion' that constitutes sovereignty itself",
+            "Religious and political authority are separate",
+            "Human rights protect everyone equally"
           ],
           "correct": 1,
-          "explanation": "Spivak (1988) argues the subaltern cannot 'speak' because the structures of knowledge production systematically silence them. Even well-meaning representation by intellectuals can reinscribe the violence of colonialism.",
+          "explanation": "The homo sacer (who can be killed but not sacrificed) is neither inside nor outside the law. This 'inclusive exclusion' (the ban) is the original political relation: sovereignty constitutes itself by producing bare life as its exception. Every citizen potentially occupies this position - the camp, not the city, is the hidden paradigm of modernity.",
           "xp": 20
         },
         {
           "id": "ra3",
           "type": "multiple-choice",
-          "question": "'The pharmakon, as Derrida reads Plato, is simultaneously remedy and poison.' This concept illustrates:",
+          "question": "Deleuze's concept of 'the fold' (le pli) reconceives the relationship between inside and outside as:",
           "options": [
-            "Plato's knowledge of medicine",
-            "The undecidability that haunts binary oppositions",
-            "Ancient Greek pharmacology",
-            "A translation error in Plato's texts"
+            "A simple boundary",
+            "Not an opposition but a topology where the outside folds into the inside and vice versa - subjectivity is a folding of the outside, creating an interiority that is nothing but folded exteriority",
+            "A wall between self and world",
+            "A metaphor for book pages"
           ],
           "correct": 1,
-          "explanation": "Derrida's reading of Plato's Phaedrus shows that 'pharmakon' (writing) is both remedy (aids memory) and poison (destroys it). This undecidability cannot be resolved - it deconstructs the speech/writing hierarchy Plato tries to maintain.",
+          "explanation": "For Deleuze (reading Leibniz and Foucault), the fold dissolves the inside/outside binary. Subjectivity is not an inner essence but a folding of forces: power relations fold to create self-relation, the outside folds to create an 'inside' that remains topologically continuous with the outside. Everything is surface, variously folded.",
           "xp": 20
         },
         {
           "id": "ra4",
           "type": "multiple-choice",
-          "question": "In Agamben's political philosophy, what is 'bare life' (nuda vita)?",
+          "question": "In Badiou's set-theoretical ontology, the 'event' is paradoxical because:",
           "options": [
-            "Life in a state of nature before civilization",
-            "Life stripped of all political qualification, reduced to mere biological existence and thus exposed to sovereign violence",
-            "A simple, minimalist lifestyle",
-            "Life as depicted in naturalist literature"
+            "Events are unpredictable",
+            "An event belongs to the situation from which it emerges yet cannot be recognized by the situation's existing knowledge - it is a self-belonging multiple that violates the axiom of foundation, appearing only to a subject who decides it has occurred",
+            "Events always repeat",
+            "Events are caused by material conditions"
           ],
           "correct": 1,
-          "explanation": "Agamben's 'bare life' (from Homo Sacer) describes life excluded from political community yet captured by sovereign power - the figure who can be killed but not sacrificed. The concentration camp is its paradigmatic space.",
+          "explanation": "Badiou uses Zermelo-Fraenkel set theory: an event is a multiple that includes itself as an element (violating the axiom of foundation). It emerges from the 'void' of a situation - what the situation's encyclopedia cannot count. The event has no objective proof; it requires a subjective 'intervention' that names and affirms it.",
           "xp": 20
         },
         {
           "id": "ra5",
           "type": "multiple-choice",
-          "question": "What is 'haecceity' in Duns Scotus's philosophy, as adopted by Deleuze?",
+          "question": "Derrida's concept of 'autoimmunity' describes:",
           "options": [
-            "The property of being here and now",
-            "The irreducible thisness or individuality of a particular entity",
-            "The tendency toward heresy",
-            "The essence shared by all members of a species"
+            "Biological immune disorders",
+            "A structure in which a system's self-protective mechanisms turn against the system itself - democracy, for instance, can destroy itself democratically by voting away its own conditions of possibility",
+            "Self-referential logical paradoxes",
+            "Vaccine skepticism"
           ],
           "correct": 1,
-          "explanation": "Haecceity (from Latin 'haec' = this) is the unrepeatable thisness that makes something this particular thing and not another. Deleuze uses it for non-personal individuations - a season, a wind, a time of day can have haecceity.",
+          "explanation": "Derrida (Rogues): autoimmunity names the structural necessity by which any self-protecting system harbors self-destructive potential. Democracy must protect free speech, including speech that would abolish democracy. The immune system (sovereignty, borders, identity) necessarily contains the possibility of self-destruction. This is not a contingent risk but a structural feature.",
           "xp": 20
         },
         {
           "id": "ra6",
           "type": "multiple-choice",
-          "question": "Jameson argues that postmodernism is 'the cultural logic of late capitalism.' By this he means:",
+          "question": "Laruelle's 'non-philosophy' critiques standard philosophy's 'decision' because:",
           "options": [
-            "Capitalism has entered its final stage",
-            "Postmodern aesthetics (pastiche, depthlessness, nostalgia) are not autonomous cultural developments but structural expressions of multinational capital's mode of production",
-            "Modern art is superior to postmodern art",
-            "Late capitalism produces logical cultural products"
+            "Philosophy makes too many decisions",
+            "All philosophy presupposes an initial 'philosophical decision' that splits the real into concept and reality, then claims to synthesize them - this circular gesture is philosophy's 'sufficient' structure. Non-philosophy thinks FROM the real without this splitting operation",
+            "Philosophy should be more decisive",
+            "Decisions are always wrong"
           ],
           "correct": 1,
-          "explanation": "Jameson (1991) reads postmodern culture (Warhol, Portman's Bonaventure Hotel) not as a style choice but as the necessary cultural form of a specific economic stage - late/multinational/consumer capitalism.",
+          "explanation": "Laruelle argues every philosophy operates through a 'decision' that divides the real (into Being/beings, noumenon/phenomenon, etc.) then claims privileged access to their unity. This is a circular, self-authorizing gesture. Non-philosophy takes the 'One' (the radically immanent real) as its given, not as something to be philosophically captured.",
           "xp": 20
         },
         {
           "id": "ra7",
           "type": "multiple-choice",
-          "question": "What does Judith Butler mean by 'gender performativity'?",
+          "question": "In Mbembe's 'necropolitics,' the concept extends Foucault's biopower by:",
           "options": [
-            "Gender is a theatrical performance one can freely choose",
-            "Gender identity is constituted through the repeated stylization of the body - acts, gestures, and enactments that produce the illusion of a stable gender core",
-            "Gender is performed differently in different cultures",
-            "Performing gender roles in daily life"
+            "Adding biological data",
+            "Arguing that in postcolonial and late-modern contexts, sovereignty operates fundamentally through the power to dictate who may live and who must die - the creation of 'death-worlds' where populations are subjected to conditions that render them living dead",
+            "Focusing on funeral practices",
+            "Replacing biopower entirely"
           ],
           "correct": 1,
-          "explanation": "Butler (Gender Trouble, 1990) argues there is no pre-existing gender identity that is then expressed. Rather, gender is produced through the repetition of stylized acts. The 'core' is an effect, not a cause, of these performances.",
+          "explanation": "Mbembe argues Foucault's biopower (making live) is inadequate for contexts like slavery, colonialism, and contemporary war zones where sovereignty manifests as the mass production of death. Necropolitics names the power to define who is disposable - creating zones of social death where people exist in a state between life and death.",
           "xp": 20
         },
         {
           "id": "ra8",
           "type": "multiple-choice",
-          "question": "In Lacan's psychoanalysis, what is the 'Real'?",
+          "question": "The 'speculative turn' in continental philosophy (Meillassoux, Harman, Brassier) challenges what fundamental assumption of post-Kantian thought?",
           "options": [
-            "Objective external reality",
-            "That which resists symbolization absolutely - the traumatic kernel that cannot be captured in language or imagery",
-            "The realistic depiction of life in literature",
-            "The opposite of the imaginary"
+            "The existence of the external world",
+            "Correlationism - the assumption that we can only ever access the correlation between thinking and being, never things-in-themselves. Speculative realism insists on the possibility of thinking the absolute, the in-itself, the 'great outdoors' independent of human thought",
+            "The value of speculation",
+            "The importance of empirical science"
           ],
           "correct": 1,
-          "explanation": "Lacan's Real is not 'reality.' It is what remains after the Symbolic (language) and Imaginary (images) have done their work - the impossible, traumatic remainder that resists all representation. It can only be glimpsed in its effects.",
+          "explanation": "Meillassoux (After Finitude) names 'correlationism' as the dominant post-Kantian assumption: we only access the subject-object correlation, never the object itself. Speculative realism breaks this circle. Meillassoux uses the 'ancestral statement' (claims about pre-human reality) to show correlationism cannot coherently handle a world without observers.",
           "xp": 20
         },
         {
           "id": "ra9",
           "type": "multiple-choice",
-          "question": "'The supplement, as Derrida shows, both adds to and replaces that to which it is added.' This logic of supplementarity reveals:",
+          "question": "In Heidegger's later thought, 'Ereignis' (the event of appropriation) names:",
           "options": [
-            "That additions to texts are always improvements",
-            "That the 'original' was never complete or self-sufficient to begin with",
-            "That supplements should be removed to recover original meaning",
-            "That translation always adds meaning"
+            "A historical event",
+            "The mutual appropriation of Being and human being - not a happening in time but the primordial event by which Being and Dasein are given to each other, constituting the clearing (Lichtung) in which beings can appear",
+            "A German cultural tradition",
+            "The origin of language"
           ],
           "correct": 1,
-          "explanation": "Derrida's logic of the supplement (from Of Grammatology): if something needs a supplement, it was already incomplete. Writing 'supplements' speech, masturbation 'supplements' sex - but this means the 'original' was never fully present.",
+          "explanation": "Ereignis is Heidegger's most difficult concept: it names the 'event' by which Being and thinking belong together. It is not something that happens in history but the condition for anything to happen at all. It 'appropriates' (er-eignet) Being and Dasein to each other, opening the clearing where entities can show themselves.",
           "xp": 20
         },
         {
           "id": "ra10",
           "type": "multiple-choice",
-          "question": "What is 'interpellation' in Althusser's theory of ideology?",
+          "question": "Derrida's analysis of the 'gift' reveals an impossible structure:",
           "options": [
-            "Police interrogation techniques",
-            "The process by which ideology constitutes individuals as subjects by 'hailing' them into their social positions",
-            "Interrupting a speaker in Parliament",
-            "The interpolation of texts into new contexts"
+            "Gifts are always reciprocated",
+            "A true gift must not be recognized as a gift - the moment it is identified, acknowledged, or reciprocated, it enters an economy of exchange and debt, annulling itself as gift. The gift must be absolutely surprising, unrecognized, even by the giver",
+            "Gifts require wrapping",
+            "Gift-giving is culturally universal"
           ],
           "correct": 1,
-          "explanation": "Althusser's interpellation: ideology calls out to us ('Hey, you there!') and in recognizing ourselves as addressed, we become subjects of that ideology. We are always-already interpellated - there is no position outside ideology.",
+          "explanation": "Derrida (Given Time): for a gift to be a gift, it cannot appear as one. If the recipient recognizes it, they feel gratitude (debt). If the giver knows they gave, they feel generous (self-satisfaction). Both destroy the gift by reintroducing economy. The gift must erase itself as gift - an impossible but necessary condition.",
           "xp": 20
         },
         {
           "id": "ra11",
           "type": "multiple-choice",
-          "question": "Benjamin's concept of 'aura' describes:",
+          "question": "In Simondon's philosophy of individuation, the key error of Western metaphysics is:",
           "options": [
-            "The glow around sacred objects in religious art",
-            "The unique presence of an artwork embedded in its tradition and history, which mechanical reproduction destroys",
-            "An artist's personal style or signature",
-            "The emotional atmosphere of a literary work"
+            "Ignoring individuals",
+            "Starting from the already-constituted individual and asking what principle (form, matter) explains it, rather than studying the process of individuation itself - the individual is a phase in an ongoing process, not a stable substance",
+            "Focusing too much on processes",
+            "Rejecting Aristotelian categories"
           ],
           "correct": 1,
-          "explanation": "Benjamin (1935) defined aura as a work's unique existence in time and space - its authenticity, its embeddedness in tradition. Photography and film destroy aura by enabling infinite reproduction. This has revolutionary political potential.",
+          "explanation": "Simondon argues the hylomorphic tradition (form imposed on matter) presupposes what it should explain. Individuation is not the application of form to matter but a process of resolution of a metastable, pre-individual field of tensions. The individual is always partial, carrying a 'pre-individual charge' that enables further individuation.",
           "xp": 20
         },
         {
           "id": "ra12",
           "type": "multiple-choice",
-          "question": "What is 'dissemination' in Derrida's sense, as distinct from 'polysemy'?",
+          "question": "Stiegler's concept of 'tertiary retention' extends Husserl's phenomenology of time-consciousness by:",
           "options": [
-            "The spread of ideas through publication",
-            "While polysemy implies multiple but recoverable meanings, dissemination describes an irreducible scattering of meaning that cannot be gathered back into unity",
-            "The distribution of seeds as a metaphor for writing",
-            "The process of peer review"
+            "Adding a third dimension of time",
+            "Identifying technical objects (writing, recording, digital media) as constitutive of memory and consciousness itself - not external aids but the condition of possibility for human temporal experience, making the 'who' (human) always already bound to the 'what' (technics)",
+            "Correcting Husserl's mathematics",
+            "Applying phenomenology to technology"
           ],
           "correct": 1,
-          "explanation": "Polysemy = a word has multiple meanings (dictionary can list them). Dissemination = meaning disperses beyond any recoverable plurality. It's not that meaning is 'many' - it's that it is structurally uncontainable.",
+          "explanation": "Husserl: primary retention (just-past held in present), secondary retention (memory/recall). Stiegler adds tertiary retention: external, technical memory (books, recordings, algorithms). These aren't supplements to natural memory but its condition. Human temporality is always already prosthetic - there is no 'natural' human before technics.",
           "xp": 20
         },
         {
           "id": "ra13",
           "type": "multiple-choice",
-          "question": "Heidegger's 'Dasein' is best understood as:",
+          "question": "Ranci\u00e8re's 'aesthetic regime of art' differs from the 'representative regime' because:",
           "options": [
-            "The German word for existence",
-            "Being-there: the distinctive way humans exist, characterized by being an issue for themselves and having an understanding of Being",
-            "A type of philosophical argument",
-            "The essence of German culture"
+            "It values beauty over truth",
+            "It dissolves the hierarchical distribution of subjects, genres, and styles that governed representation - in the aesthetic regime, anything can be art, any subject is worthy, and the distinction between art and non-art becomes undecidable, redistributing the sensible",
+            "It focuses on visual art only",
+            "It is historically later"
           ],
           "correct": 1,
-          "explanation": "Dasein (being-there) is Heidegger's term for human existence specifically as the entity that questions its own being. Dasein is not a 'what' (essence) but a 'who' - always already in a world, thrown into possibilities, being-toward-death.",
+          "explanation": "Ranci\u00e8re's three regimes: ethical (Plato), representative (Aristotle - hierarchy of genres, decorum, mimesis), aesthetic (emerging ~1800). The aesthetic regime shatters representational hierarchy: a peasant's life can be as artistically valid as a king's. This is political because it redistributes what is visible, sayable, and thinkable.",
           "xp": 20
         },
         {
           "id": "ra14",
           "type": "multiple-choice",
-          "question": "In Ranciere's political aesthetics, what is the 'distribution of the sensible' (partage du sensible)?",
+          "question": "Malabou's concept of 'plasticity' challenges Derrida's 'writing' because:",
           "options": [
-            "How art is distributed to the public",
-            "The system that determines what is visible, sayable, and thinkable in a given social order - who can speak and what counts as speech",
-            "The sensory experience of artworks",
-            "How profits from art are shared"
+            "Plasticity is a biological term",
+            "Where Derrida's differance describes the endless play and deferral of meaning (trace), Malabou argues the brain's plasticity introduces a capacity for form-giving AND form-destruction that is material, not merely textual - including the 'destructive plasticity' that produces entirely new subjects through trauma",
+            "Malabou rejects deconstruction entirely",
+            "Plasticity applies only to neuroscience"
           ],
           "correct": 1,
-          "explanation": "Ranciere's 'distribution of the sensible' describes how a social order implicitly determines what can be perceived, said, and done - who counts as a political subject and whose noise counts as speech. Politics disrupts this distribution.",
+          "explanation": "Malabou argues deconstruction remained too textual. The brain's plasticity (receiving form, giving form, destroying form) shows that transformation is material, not just linguistic. 'Destructive plasticity' (Alzheimer's, brain trauma) produces radically new subjects - a kind of metamorphosis that Derrida's textual model can't capture.",
           "xp": 20
         },
         {
           "id": "ra15",
           "type": "multiple-choice",
-          "question": "What is 'jouissance' in Lacanian/Barthesian theory, and how does it differ from 'plaisir'?",
+          "question": "In Laruelle's framework, the 'philosophical Decision' that non-philosophy identifies and suspends consists of:",
           "options": [
-            "Jouissance is simply the French word for pleasure",
-            "Plaisir is comfortable, confirming pleasure; jouissance is an excessive, destabilizing, almost painful bliss that shatters the subject",
-            "Jouissance is physical; plaisir is intellectual",
-            "They are synonyms used by different theorists"
+            "Making choices between philosophical positions",
+            "A tripartite structure: (1) positing a transcendental/empirical split, (2) claiming to unify this split, (3) thereby constituting philosophy as self-sufficient and authoritative over the real. Non-philosophy sees the real as 'foreclosed' to this operation",
+            "Deciding which texts are canonical",
+            "The decision to become a philosopher"
           ],
           "correct": 1,
-          "explanation": "Barthes (The Pleasure of the Text): plaisir comes from texts that comfort and confirm. Jouissance comes from texts that unsettle, fragment, and push beyond the subject's boundaries. Lacan: jouissance exceeds the pleasure principle into a transgressive beyond.",
+          "explanation": "The Decision: philosophy divides (transcendental/empirical, Being/beings), then claims to synthesize what it divided, making itself appear necessary. This auto-legitimating circle is philosophy's 'sufficient' structure. Laruelle's 'vision-in-One' treats the real as radically immanent and foreclosed to philosophical capture - philosophy becomes material to be used, not truth to be discovered.",
           "xp": 20
         },
         {
           "id": "ra16",
           "type": "multiple-choice",
-          "question": "'The trace, for Derrida, is neither present nor absent.' This paradox is central to:",
+          "question": "Harman's 'object-oriented ontology' argues that objects:",
           "options": [
-            "Forensic linguistics",
-            "The deconstruction of the metaphysics of presence - the Western philosophical assumption that being is fundamentally self-presence",
-            "Historical philology",
-            "Cognitive linguistics"
+            "Are fully accessible to human perception",
+            "Withdraw from all relations, including human knowledge - every object has an inexhaustible depth that is never fully deployed in any relation, and this withdrawal is not a human limitation but an ontological feature of objects themselves",
+            "Are socially constructed",
+            "Only exist when observed"
           ],
           "correct": 1,
-          "explanation": "The 'trace' marks the absence within presence. Every sign carries traces of what it differs from. Meaning depends on absence (what a sign is NOT). This deconstructs the Western metaphysical privileging of presence, speech, and origin.",
+          "explanation": "Harman (drawing on Heidegger's tool-analysis): objects are never exhausted by their relations. A hammer 'withdraws' even while being used. This isn't about human finitude - objects withdraw from EACH OTHER too. Fire encounters cotton differently than water does, but neither exhausts it. Reality is irreducibly withdrawn.",
           "xp": 20
         },
         {
           "id": "ra17",
           "type": "multiple-choice",
-          "question": "In Kristeva's theory, the 'semiotic chora' refers to:",
+          "question": "Derrida's concept of 'hauntology' (hantologie, a pun on ontologie) argues:",
           "options": [
-            "A chorus of voices in a text",
-            "The pre-linguistic realm of drives, rhythms, and pulsions that disrupts symbolic (linguistic) order from within",
-            "A type of Greek dramatic form",
-            "The study of signs and symbols"
+            "Ghosts are real",
+            "The present is always inhabited by specters of the past and the yet-to-come - being is never fully present but structurally haunted, undermining ontology's commitment to presence. The specter is neither present nor absent, neither living nor dead",
+            "Derrida was interested in horror fiction",
+            "Haunting is a metaphor for memory"
           ],
           "correct": 1,
-          "explanation": "Kristeva's 'semiotic' (not Saussure's) names the pre-Oedipal realm of bodily drives and rhythms (the chora). It persists within language as rhythm, musicality, and disruption - especially in poetic language which lets the semiotic breach the symbolic.",
+          "explanation": "Derrida (Specters of Marx): against ontology's privileging of presence, hauntology insists on the spectral - that which is neither present nor absent, neither living nor dead. Every present moment is haunted by what has been and what is to come. Justice itself is a relation to ghosts - to those who are no longer or not yet.",
           "xp": 20
         },
         {
           "id": "ra18",
           "type": "multiple-choice",
-          "question": "What does 'sous rature' (under erasure) mean in Derridean practice?",
+          "question": "In Agamben's 'The Use of Bodies,' the concept of 'form-of-life' overcomes the bare life/political life distinction by:",
           "options": [
-            "Censorship of controversial texts",
-            "Writing a word, then crossing it out but leaving both visible - indicating the term is inadequate but necessary",
-            "A French publishing technique",
-            "Erasing draft versions before publication"
+            "Combining biology and politics",
+            "Proposing a life that cannot be separated from its form - a life inseparable from its living, where there is no bare substrate that power can capture and separate from its qualities. This renders the sovereign exception inoperative",
+            "Creating a new political category",
+            "Returning to Aristotle's zoe/bios distinction"
           ],
           "correct": 1,
-          "explanation": "Sous rature: writing a word and crossing it through (like Heidegger's Being). The crossed-out word remains readable because it is both necessary (we have no better word) and inadequate (it carries metaphysical baggage we want to refuse).",
+          "explanation": "Agamben's solution to the biopolitical problem: if sovereign power operates by separating bare life from political life, the answer is a 'form-of-life' where this separation is impossible. A life that is nothing but its living, where bios and zoe are indistinguishable. This 'renders inoperative' the sovereign apparatus.",
           "xp": 20
         },
         {
           "id": "ra19",
           "type": "multiple-choice",
-          "question": "Adorno's claim that 'to write poetry after Auschwitz is barbaric' has been widely interpreted to mean:",
+          "question": "Meillassoux's 'principle of factiality' states:",
           "options": [
-            "Poetry should be banned",
-            "Aesthetic representation of atrocity risks aestheticizing suffering and making it consumable, raising fundamental questions about art's relationship to historical catastrophe",
-            "Only prose can address the Holocaust",
-            "German literature should cease",
-            "xp"
+            "Only facts matter",
+            "The only absolute necessity is the necessity of contingency itself - it is absolutely necessary that every entity could be otherwise. This is not skepticism but a positive ontological principle: the absence of any ultimate reason is the only non-contingent truth",
+            "Facts are contingent",
+            "Factual analysis is the best method"
           ],
           "correct": 1,
-          "explanation": "Adorno (1949) raised the question of whether aesthetic form inevitably transfigures suffering into something bearable, thereby betraying it. He later revised: it may be necessary to write poetry, but art must acknowledge its own impossibility in the face of such horror.",
+          "explanation": "Meillassoux: there is no 'principle of sufficient reason.' Things are the way they are for no reason. But this absence of reason is itself non-contingent - it is necessarily true that everything is contingent. Factiality is the non-factual (necessary) truth of universal facticity (contingency). Hyper-chaos is the absolute.",
           "xp": 20
         },
         {
           "id": "ra20",
           "type": "multiple-choice",
-          "question": "In de Man's deconstructive reading, 'allegory' differs from 'symbol' because:",
+          "question": "In Butler's later work on 'grievability,' the political question becomes:",
           "options": [
-            "Allegory is simpler than symbol",
-            "Allegory acknowledges the gap between sign and meaning that symbol tries to hide behind an illusion of organic unity",
-            "Symbol is visual; allegory is verbal",
-            "Allegory is medieval; symbol is modern"
+            "How to mourn properly",
+            "Whose lives are recognized as grievable - the differential distribution of grievability determines whose deaths count as losses and whose are invisible, making grievability a precondition for political recognition and a mechanism of war and state violence",
+            "How to overcome grief",
+            "The psychology of bereavement"
           ],
           "correct": 1,
-          "explanation": "De Man (Allegories of Reading) argues the Romantic privileging of symbol (organic unity of form and meaning) over allegory represses the truth that all language is allegorical - meaning is always displaced, never organically present.",
+          "explanation": "Butler (Frames of War, Precarious Life): not all lives are equally grievable. The framing of certain populations as 'ungrievable' (enemy combatants, migrants, racialized others) enables their destruction. Grievability is not a response to death but a precondition for life being recognized as life. The struggle is over the frames that determine whose life counts.",
           "xp": 20
         },
         {
           "id": "ra21",
           "type": "multiple-choice",
-          "question": "What is Levinas's concept of 'the face' (le visage)?",
+          "question": "Brassier's 'nihilism' draws on Laruelle to argue that:",
           "options": [
-            "The human face as depicted in portraiture",
-            "The ethical encounter with the Other's vulnerability, which precedes and grounds all knowledge - an infinite demand that cannot be reduced to comprehension",
-            "Physical appearance as a marker of identity",
-            "The public persona versus private self"
+            "Life is meaningless",
+            "The extinction of meaning is not a catastrophe to be avoided but an enabling condition for thought - by accepting that the universe is indifferent to human significance, thinking is freed from the narcissistic need to find meaning, and can engage the real without philosophical mediation",
+            "Everything should be destroyed",
+            "Philosophy is useless"
           ],
           "correct": 1,
-          "explanation": "For Levinas, the face of the Other is not a physical feature but an ethical event. Before I can know or categorize the Other, I am already called to responsibility by their vulnerability. Ethics precedes ontology.",
+          "explanation": "Brassier (Nihil Unbound): the Enlightenment's disenchantment of the world demands completion. Solar death will erase all meaning retroactively. Rather than mourning this, Brassier argues nihilism liberates thought from the 'pathos of meaning.' Using Laruelle's non-philosophical stance, thinking can engage reality without the consolation of significance.",
           "xp": 20
         },
         {
           "id": "ra22",
           "type": "multiple-choice",
-          "question": "Zizek's reading of ideology through Lacan argues that ideology functions most powerfully:",
+          "question": "The concept of 'accelerationism' (Land, Srnicek/Williams) in its left variant proposes:",
           "options": [
-            "Through explicit propaganda",
-            "Not when people believe false ideas, but when they act AS IF they believe even while knowing better - ideology structures practice, not just belief",
-            "Through censorship of opposing views",
-            "In totalitarian states only"
+            "Slowing down social change",
+            "Rather than resisting capitalism's technological development, repurposing and accelerating it beyond capitalism's own limits - using technology, automation, and universal basic income to overcome scarcity and create post-capitalist abundance",
+            "Destroying technology",
+            "Speeding up consciousness"
           ],
           "correct": 1,
-          "explanation": "Zizek: 'They know very well what they are doing, but they do it anyway' (cf. Sloterdijk's 'cynical reason'). Ideology doesn't need believers - it operates through practices, rituals, and structures even when subjects are cynically aware.",
+          "explanation": "Left accelerationism (Srnicek/Williams, Inventing the Future) argues anti-capitalist movements fail when they embrace folk politics (local, immediate, reactive). Instead: seize technology, automate labor, implement UBI, reduce work. Accelerate THROUGH capitalism's own contradictions rather than retreating from them. Technology is not the enemy but the terrain of struggle.",
           "xp": 20
         },
         {
           "id": "ra23",
           "type": "multiple-choice",
-          "question": "In Blanchot's literary theory, the 'space of literature' is characterized by:",
+          "question": "In Deleuze and Guattari's 'rhizome' model, thought is organized:",
           "options": [
-            "Physical libraries and bookshops",
-            "The dissolution of the author-subject in the impersonal, anonymous murmur of language itself - writing as the experience of dispossession",
-            "The market for literary fiction",
-            "The academic study of literature"
+            "Hierarchically from roots to branches",
+            "Without center, hierarchy, or organizing principle - any point can connect to any other, there is no beginning or end, and the structure grows by variation, expansion, and rupture rather than by reproduction of the same",
+            "In circular patterns",
+            "By dialectical opposition"
           ],
           "correct": 1,
-          "explanation": "Blanchot: writing is not expression of a subject but the subject's effacement. Literature opens onto an 'outside' - the impersonal space of language where the writer encounters their own disappearance. Foucault and Derrida drew heavily on this.",
+          "explanation": "The rhizome (vs. the 'arborescent' tree model): no root, no trunk, no branches - only connections. Principles: connection (any point to any other), heterogeneity (diverse elements linked), multiplicity (no unity), asignifying rupture (can be broken and restart), cartography (mapping not tracing). It's an anti-genealogical, anti-hierarchical model of thought.",
           "xp": 20
         },
         {
           "id": "ra24",
           "type": "multiple-choice",
-          "question": "What is 'metalepsis' in narratology?",
+          "question": "Derrida's reading of 'khora' in Plato's Timaeus reveals:",
           "options": [
-            "A figure of speech using metals as metaphors",
-            "A transgression of the boundary between narrative levels - when a narrator enters their own story or a character addresses the author",
-            "A type of narrative time distortion",
-            "The study of narratives about narratives"
+            "A place in ancient Greece",
+            "A 'third genus' that is neither intelligible nor sensible, neither being nor non-being - the spacing or receptacle that 'gives place' to all things without itself being a thing, resisting every conceptual determination including the mythic and the logical",
+            "Plato's cosmology",
+            "A type of Greek dance"
           ],
           "correct": 1,
-          "explanation": "Metalepsis (Genette) is the violation of narrative boundaries: a character 'stepping out' of the story, an author entering their fictional world, or a frame narrative collapsing into its embedded story. It destabilizes the ontological status of fiction.",
+          "explanation": "Khora (Timaeus) is the 'receptacle' or 'nurse' of becoming. Derrida shows it is neither form nor matter, neither myth nor logos, neither present nor absent. It cannot be named by any concept because it is the condition of conceptuality itself. It is the irreducible 'spacing' that precedes and enables all opposition - perhaps deconstruction's own 'place.'",
           "xp": 20
         },
         {
           "id": "ra25",
           "type": "multiple-choice",
-          "question": "Nancy's concept of 'being singular plural' means:",
+          "question": "In contemporary critical theory, the concept of 'the Anthropocene' is contested because:",
           "options": [
-            "Being unique as an individual",
-            "Existence is always already shared - there is no singular being that precedes its relation to others; being is constitutively co-being",
-            "The pluralism of modern societies",
-            "Having multiple identities"
+            "Scientists disagree on the start date",
+            "The term 'Anthropos' (human) obscures the fact that not all humans contributed equally to ecological catastrophe - alternatives like 'Capitalocene' (Moore), 'Chthulucene' (Haraway), or 'Plantationocene' foreground specific systems of power rather than universal humanity as the causal agent",
+            "It is not scientifically valid",
+            "It only applies to climate change"
           ],
           "correct": 1,
-          "explanation": "Jean-Luc Nancy: being is not first individual then social. Being IS singular plural - every singularity is constituted through its exposure to others. There is no 'I' before 'we.' This ontological co-existence is prior to any community or society.",
+          "explanation": "The Anthropocene debate: while geologically useful, 'Anthropocene' implies humanity as a whole caused the crisis, erasing differentials of power. Moore's 'Capitalocene' names capitalism's commodity frontiers. Haraway's 'Chthulucene' emphasizes multispecies entanglement. 'Plantationocene' highlights slavery and plantation agriculture. The naming matters politically.",
           "xp": 20
         }
       ]

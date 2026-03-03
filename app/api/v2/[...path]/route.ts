@@ -245,13 +245,17 @@ No markdown, no code fences, just the JSON array.`;
           difficulty: q.difficulty || difficulty,
           source: 'ai-generated-ondemand',
         }));
-        await supabaseAdmin.from('questions').insert(rows);
+        const { error: insertError } = await supabaseAdmin.from('questions').insert(rows);
+        if (insertError) {
+          console.error('Failed to save questions:', insertError.message);
+        }
       }
 
       return NextResponse.json({
         questions: questions || [],
         domain: domainName,
         count: questions?.length || 0,
+        saved: true,
       });
     }
 

@@ -107,7 +107,7 @@ export default function ExplainerView({ slides, onClose, topicTitle }: Explainer
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex flex-col"
+      className="fixed inset-0 z-[60] flex flex-col"
       style={{ background: 'var(--bg-base)' }}
     >
       {/* Header */}
@@ -160,7 +160,7 @@ export default function ExplainerView({ slides, onClose, topicTitle }: Explainer
       </div>
 
       {/* Controls */}
-      <div className="p-4" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+      <div className="p-4 pb-safe" style={{ borderTop: '1px solid var(--border-subtle)' }}>
         <div className="max-w-2xl mx-auto flex items-center justify-between">
           <button
             onClick={() => setIsMuted(!isMuted)}

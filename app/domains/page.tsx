@@ -2,10 +2,19 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import ClientLayout from '@/components/ClientLayout';
 import { loadAllDomains, Domain } from '@/lib/domains';
 import { loadProgress } from '@/lib/storage';
 import { ChevronRight, Newspaper, HelpCircle } from 'lucide-react';
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 12 },
+  visible: (i: number) => ({
+    opacity: 1, y: 0,
+    transition: { delay: i * 0.05, duration: 0.5, ease: [0.25, 1, 0.5, 1] as const }
+  })
+};
 
 export default function DomainsPage() {
   const [domains, setDomains] = useState<Domain[]>([]);
@@ -17,64 +26,66 @@ export default function DomainsPage() {
     fetch('/api/v2/domains').then(r => r.json()).then(d => setV2Domains(d.domains || [])).catch(() => {});
   }, []);
 
-  // Merge: local domains get V2 stats enrichment, V2-only domains get added
   const localIds = new Set(domains.map(d => d.id));
   const v2OnlyDomains = v2Domains.filter(d => !localIds.has(d.slug) && (d.paper_count > 0 || d.question_count > 0));
-
   const getV2Stats = (id: string) => v2Domains.find(d => d.slug === id);
 
   return (
     <ClientLayout>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 space-y-4 sm:space-y-6">
-        <div>
-          <h1 className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">All Domains</h1>
-          <p className="text-white/60 text-sm sm:text-base">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-8 pb-6">
+        {/* Header */}
+        <motion.div initial="hidden" animate="visible" custom={0} variants={fadeUp} className="mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold" style={{ fontFamily: 'var(--font-display)' }}>All Domains</h1>
+          <p className="text-sm mt-1" style={{ color: 'var(--text-tertiary)' }}>
             {domains.length + v2OnlyDomains.length} domains · {v2Domains.reduce((s, d) => s + d.paper_count, 0)} papers · {v2Domains.reduce((s, d) => s + d.question_count, 0)} questions
           </p>
-        </div>
+        </motion.div>
 
-        {/* Course Domains (with structured topics/levels) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {domains.map((domain) => {
+        {/* Course Domains */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-10">
+          {domains.map((domain, i) => {
             const domainProgress = progress.domains[domain.id];
             const level = domainProgress?.level || 1;
             const xp = domainProgress?.xp || 0;
             const v2 = getV2Stats(domain.id);
             const topicCount = domain.topics?.length || (domain.levels ? Object.keys(domain.levels).length : 0);
-            const localQ = domain.topics 
+            const localQ = domain.topics
               ? domain.topics.reduce((s: number, t: any) => s + (t.questions?.length || 0), 0)
-              : domain.levels 
-                ? Object.values(domain.levels).reduce((s: number, l: any) => s + (l.questions?.length || 0), 0) 
+              : domain.levels
+                ? Object.values(domain.levels).reduce((s: number, l: any) => s + (l.questions?.length || 0), 0)
                 : 0;
             const totalQ = localQ + (v2?.question_count || 0);
 
             return (
               <Link key={domain.id} href={`/domain/${domain.id}`}>
-                <div className="glass-card p-4 sm:p-6 hover:bg-white/10 cursor-pointer group active:scale-[0.98] transition-all">
+                <motion.div
+                  initial="hidden" animate="visible" custom={1 + i * 0.3} variants={fadeUp}
+                  className="surface-card-interactive p-4 sm:p-5"
+                >
                   <div className="flex items-center gap-3 sm:gap-4">
                     <div
-                      className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl shrink-0"
-                      style={{ background: `${domain.color}20`, border: `2px solid ${domain.color}40` }}
+                      className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-2xl sm:text-3xl shrink-0"
+                      style={{ background: `color-mix(in oklch, ${domain.color} 15%, var(--bg-surface))` }}
                     >
                       {domain.icon}
                     </div>
-                    
+
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-bold text-base sm:text-lg truncate">{domain.name}</h3>
-                      <p className="text-xs sm:text-sm text-white/60 mb-2 line-clamp-1">{domain.description}</p>
-                      <div className="flex items-center gap-2 sm:gap-3 text-xs text-white/60 flex-wrap">
+                      <h3 className="font-bold text-base truncate" style={{ color: 'var(--text-primary)' }}>{domain.name}</h3>
+                      <p className="text-xs line-clamp-1 mt-0.5" style={{ color: 'var(--text-tertiary)' }}>{domain.description}</p>
+                      <div className="flex items-center gap-2 mt-2 text-xs flex-wrap" style={{ color: 'var(--text-muted)' }}>
                         <span>Lvl {level}</span>
-                        <span className="text-white/20">·</span>
+                        <span style={{ color: 'var(--border)' }}>·</span>
                         <span>{xp} XP</span>
-                        {topicCount > 0 && <><span className="text-white/20">·</span><span>{topicCount} {domain.topics?.length ? 'topics' : 'levels'}</span></>}
-                        {totalQ > 0 && <><span className="text-white/20">·</span><span>{totalQ} questions</span></>}
-                        {v2 && v2.paper_count > 0 && <><span className="text-white/20">·</span><span>{v2.paper_count} papers</span></>}
+                        {topicCount > 0 && <><span style={{ color: 'var(--border)' }}>·</span><span>{topicCount} {domain.topics?.length ? 'topics' : 'levels'}</span></>}
+                        {totalQ > 0 && <><span style={{ color: 'var(--border)' }}>·</span><span>{totalQ} questions</span></>}
+                        {v2 && v2.paper_count > 0 && <><span style={{ color: 'var(--border)' }}>·</span><span>{v2.paper_count} papers</span></>}
                       </div>
                     </div>
-                    
-                    <ChevronRight className="text-white/40 group-hover:text-white/80 group-hover:translate-x-1 transition-all shrink-0" size={20} />
+
+                    <ChevronRight size={18} style={{ color: 'var(--text-muted)' }} className="shrink-0" />
                   </div>
-                </div>
+                </motion.div>
               </Link>
             );
           })}
@@ -83,35 +94,38 @@ export default function DomainsPage() {
         {/* V2-only Research Domains */}
         {v2OnlyDomains.length > 0 && (
           <>
-            <div className="pt-2">
-              <h2 className="text-lg sm:text-xl font-bold mb-1">Research Domains</h2>
-              <p className="text-white/40 text-xs sm:text-sm">AI-scraped papers with auto-generated quizzes</p>
-            </div>
+            <motion.div initial="hidden" animate="visible" custom={domains.length * 0.3 + 2} variants={fadeUp} className="mb-4">
+              <h2 className="text-lg sm:text-xl font-bold" style={{ fontFamily: 'var(--font-display)' }}>Research Domains</h2>
+              <p className="text-xs mt-0.5" style={{ color: 'var(--text-muted)' }}>AI-scraped papers with auto-generated quizzes</p>
+            </motion.div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {v2OnlyDomains.map((d: any) => (
+              {v2OnlyDomains.map((d: any, i: number) => (
                 <Link key={d.slug} href={`/domain/${d.slug}`}>
-                  <div className="glass-card p-4 sm:p-6 hover:bg-white/10 cursor-pointer group active:scale-[0.98] transition-all">
+                  <motion.div
+                    initial="hidden" animate="visible" custom={domains.length * 0.3 + 3 + i * 0.3} variants={fadeUp}
+                    className="surface-card-interactive p-4 sm:p-5"
+                  >
                     <div className="flex items-center gap-3 sm:gap-4">
                       <div
-                        className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl shrink-0"
-                        style={{ background: `${d.color || '#6366f1'}20`, border: `2px solid ${d.color || '#6366f1'}40` }}
+                        className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-2xl sm:text-3xl shrink-0"
+                        style={{ background: `color-mix(in oklch, ${d.color || '#6366f1'} 15%, var(--bg-surface))` }}
                       >
                         {d.icon || '📚'}
                       </div>
-                      
+
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-bold text-base sm:text-lg truncate">{d.name}</h3>
-                        <p className="text-xs sm:text-sm text-white/60 mb-2 line-clamp-1">{d.description}</p>
-                        <div className="flex items-center gap-2 sm:gap-3 text-xs text-white/60 flex-wrap">
-                          {d.paper_count > 0 && <span className="flex items-center gap-1"><Newspaper size={12} /> {d.paper_count} papers</span>}
-                          {d.question_count > 0 && <><span className="text-white/20">·</span><span className="flex items-center gap-1"><HelpCircle size={12} /> {d.question_count} questions</span></>}
-                          {d.flashcard_count > 0 && <><span className="text-white/20">·</span><span>{d.flashcard_count} flashcards</span></>}
+                        <h3 className="font-bold text-base truncate" style={{ color: 'var(--text-primary)' }}>{d.name}</h3>
+                        <p className="text-xs line-clamp-1 mt-0.5" style={{ color: 'var(--text-tertiary)' }}>{d.description}</p>
+                        <div className="flex items-center gap-2 mt-2 text-xs flex-wrap" style={{ color: 'var(--text-muted)' }}>
+                          {d.paper_count > 0 && <span className="flex items-center gap-1"><Newspaper size={11} /> {d.paper_count} papers</span>}
+                          {d.question_count > 0 && <><span style={{ color: 'var(--border)' }}>·</span><span className="flex items-center gap-1"><HelpCircle size={11} /> {d.question_count} questions</span></>}
+                          {d.flashcard_count > 0 && <><span style={{ color: 'var(--border)' }}>·</span><span>{d.flashcard_count} flashcards</span></>}
                         </div>
                       </div>
-                      
-                      <ChevronRight className="text-white/40 group-hover:text-white/80 group-hover:translate-x-1 transition-all shrink-0" size={20} />
+
+                      <ChevronRight size={18} style={{ color: 'var(--text-muted)' }} className="shrink-0" />
                     </div>
-                  </div>
+                  </motion.div>
                 </Link>
               ))}
             </div>

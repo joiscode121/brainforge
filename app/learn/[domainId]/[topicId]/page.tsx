@@ -29,7 +29,7 @@ export default function LearnPage() {
   const topic = domain?.topics?.find((t: any) => t.id === topicId);
 
   if (!domain || !topic) {
-    return <ClientLayout><div className="p-6 text-center text-white/60">Loading...</div></ClientLayout>;
+    return <ClientLayout><div className="p-6 text-center" style={{ color: 'var(--text-muted)' }}>Loading...</div></ClientLayout>;
   }
 
   const tabs: { id: Tab; label: string; icon: any }[] = [
@@ -40,43 +40,45 @@ export default function LearnPage() {
 
   return (
     <ClientLayout>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-6 space-y-6">
         {/* Back + Title */}
         <div className="flex items-center gap-3">
-          <button onClick={() => router.back()} className="p-2 hover:bg-white/10 rounded-xl">
-            <ArrowLeft size={20} />
+          <button onClick={() => router.back()} className="p-2 rounded-lg hover:bg-[--bg-surface] transition-colors">
+            <ArrowLeft size={20} style={{ color: 'var(--text-tertiary)' }} />
           </button>
           <div>
-            <div className="text-xs text-white/40">{domain.name}</div>
-            <h1 className="text-xl font-bold">{topic.title}</h1>
+            <div className="text-xs" style={{ color: 'var(--text-muted)' }}>{domain.name}</div>
+            <h1 className="text-xl font-bold" style={{ fontFamily: 'var(--font-display)' }}>{topic.title}</h1>
           </div>
         </div>
 
         {/* Difficulty badge */}
         <div className="flex items-center gap-2">
-          <span className={`text-xs px-3 py-1 rounded-full font-medium ${
-            topic.difficulty === 'beginner' ? 'bg-green-500/20 text-green-400' :
-            topic.difficulty === 'intermediate' ? 'bg-yellow-500/20 text-yellow-400' :
-            'bg-red-500/20 text-red-400'
-          }`}>
+          <span className="text-xs px-3 py-1 rounded-full font-medium"
+            style={
+              topic.difficulty === 'beginner' ? { background: 'var(--success-light)', color: 'var(--success)' } :
+              topic.difficulty === 'intermediate' ? { background: 'var(--warning-light)', color: 'var(--warning)' } :
+              { background: 'var(--error-light)', color: 'var(--error)' }
+            }>
             {topic.difficulty}
           </span>
           {topic.study?.readingTimeMin && (
-            <span className="text-xs text-white/40">{topic.study.readingTimeMin} min read</span>
+            <span className="text-xs" style={{ color: 'var(--text-muted)' }}>{topic.study.readingTimeMin} min read</span>
           )}
         </div>
 
         {/* Tabs */}
-        <div className="glass-card p-1.5 flex gap-1">
+        <div className="surface-card p-1.5 flex gap-1">
           {tabs.map(tab => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium transition-all ${
-                activeTab === tab.id
-                  ? 'bg-white/10 text-white'
-                  : 'text-white/50 hover:text-white/80'
-              }`}
+              className="flex-1 flex items-center justify-center gap-2 py-3 rounded-lg text-sm font-medium transition-all"
+              style={{
+                background: activeTab === tab.id ? 'var(--bg-surface)' : 'transparent',
+                color: activeTab === tab.id ? 'var(--text-primary)' : 'var(--text-muted)',
+                boxShadow: activeTab === tab.id ? 'var(--shadow-sm)' : 'none',
+              }}
             >
               <tab.icon size={16} />
               {tab.label}
@@ -102,15 +104,16 @@ export default function LearnPage() {
         {activeTab === 'quiz' && (
           <div className="space-y-4">
             {!studyComplete && (
-              <div className="glass-card p-4 border border-yellow-500/30 bg-yellow-500/5">
-                <p className="text-sm text-yellow-400">
+              <div className="p-4 rounded-xl" style={{ background: 'var(--warning-light)', border: '1px solid oklch(80% 0.06 80)' }}>
+                <p className="text-sm" style={{ color: 'var(--warning)' }}>
                   Tip: Study the material first for better results!
                 </p>
               </div>
             )}
             <button
               onClick={() => router.push(`/quiz?domain=${domainId}&topic=${topicId}`)}
-              className="w-full py-4 rounded-xl font-bold text-lg bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400"
+              className="w-full py-4 rounded-xl font-bold text-lg text-white transition-all hover:opacity-90"
+              style={{ background: 'var(--accent)' }}
             >
               Start Quiz ({topic.questions?.length || 0} questions)
             </button>
@@ -119,8 +122,8 @@ export default function LearnPage() {
 
         {/* Resources */}
         {topic.resources && topic.resources.length > 0 && (
-          <div className="glass-card p-6">
-            <h3 className="font-bold mb-3 text-sm text-white/60 uppercase tracking-wider">Resources</h3>
+          <div className="surface-card p-6">
+            <h3 className="font-semibold mb-3 text-xs uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>Resources</h3>
             <div className="space-y-2">
               {topic.resources.map((r: any, i: number) => (
                 <a
@@ -128,7 +131,8 @@ export default function LearnPage() {
                   href={r.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-sm text-cyan-400 hover:text-cyan-300 truncate"
+                  className="block text-sm font-medium truncate transition-colors"
+                  style={{ color: 'var(--accent)' }}
                 >
                   {r.title}
                 </a>

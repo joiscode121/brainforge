@@ -19,15 +19,15 @@ export default function MindMap({ diagram, title }: MindMapProps) {
         const mermaid = (await import('mermaid')).default;
         mermaid.initialize({
           startOnLoad: false,
-          theme: 'dark',
+          theme: 'base',
           themeVariables: {
-            primaryColor: '#06b6d4',
-            primaryTextColor: '#fff',
-            primaryBorderColor: '#06b6d4',
-            lineColor: '#a855f7',
-            secondaryColor: '#3b82f6',
-            tertiaryColor: '#1a0a2e',
-            fontFamily: 'Inter, sans-serif',
+            primaryColor: '#c2785c',
+            primaryTextColor: '#3a2e28',
+            primaryBorderColor: '#c2785c',
+            lineColor: '#8b7355',
+            secondaryColor: '#e8dfd5',
+            tertiaryColor: '#f5f0e8',
+            fontFamily: 'DM Sans, system-ui, sans-serif',
             fontSize: '14px'
           },
           mindmap: {
@@ -35,7 +35,7 @@ export default function MindMap({ diagram, title }: MindMapProps) {
             useMaxWidth: true,
           }
         });
-        
+
         const id = `mermaid-${Math.random().toString(36).slice(2)}`;
         const { svg: renderedSvg } = await mermaid.render(id, diagram);
         setSvg(renderedSvg);
@@ -50,7 +50,7 @@ export default function MindMap({ diagram, title }: MindMapProps) {
 
   if (error) {
     return (
-      <div className="glass-card p-6 text-center text-white/40">
+      <div className="surface-card p-6 text-center" style={{ color: 'var(--text-muted)' }}>
         <p>Mind map visualization unavailable</p>
       </div>
     );
@@ -58,14 +58,15 @@ export default function MindMap({ diagram, title }: MindMapProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
+      initial={{ opacity: 0, scale: 0.97 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="glass-card p-4 overflow-x-auto"
+      transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+      className="surface-card p-4 overflow-x-auto"
     >
-      <div className="text-xs text-white/40 uppercase tracking-wider mb-3">{title} - Mind Map</div>
+      <div className="text-xs uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>{title} — Mind Map</div>
       <div
         ref={containerRef}
-        className="min-h-[200px] flex items-center justify-center [&_svg]:max-w-full [&_svg]:h-auto [&_text]:fill-white"
+        className="min-h-[200px] flex items-center justify-center [&_svg]:max-w-full [&_svg]:h-auto"
         dangerouslySetInnerHTML={{ __html: svg }}
       />
     </motion.div>

@@ -2,10 +2,19 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 import ClientLayout from '@/components/ClientLayout';
 import { loadProgress } from '@/lib/storage';
 import { getDueReviews } from '@/lib/spaced-repetition';
 import { RotateCcw, Calendar } from 'lucide-react';
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 12 },
+  visible: (i: number) => ({
+    opacity: 1, y: 0,
+    transition: { delay: i * 0.08, duration: 0.5, ease: [0.25, 1, 0.5, 1] as const }
+  })
+};
 
 export default function ReviewPage() {
   const router = useRouter();
@@ -21,50 +30,60 @@ export default function ReviewPage() {
 
   return (
     <ClientLayout>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold mb-2">Review Queue</h1>
-          <p className="text-white/60">Spaced repetition keeps knowledge fresh</p>
-        </div>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-6">
+        <motion.div initial="hidden" animate="visible" custom={0} variants={fadeUp} className="mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold" style={{ fontFamily: 'var(--font-display)' }}>Review Queue</h1>
+          <p className="text-sm mt-1" style={{ color: 'var(--text-tertiary)' }}>Spaced repetition keeps knowledge fresh</p>
+        </motion.div>
 
         {dueReviews.length > 0 ? (
-          <>
-            <div className="glass-card p-8 text-center">
-              <RotateCcw className="mx-auto text-cyan-400 mb-4" size={48} />
-              <div className="text-5xl font-bold mb-2">{dueReviews.length}</div>
-              <div className="text-white/60 mb-6">cards due for review</div>
+          <div className="space-y-5">
+            <motion.div initial="hidden" animate="visible" custom={1} variants={fadeUp}
+              className="surface-card p-8 text-center">
+              <div className="w-16 h-16 mx-auto rounded-xl flex items-center justify-center mb-4"
+                   style={{ background: 'var(--accent-subtle)' }}>
+                <RotateCcw size={32} style={{ color: 'var(--accent)' }} />
+              </div>
+              <div className="text-5xl font-bold mb-2" style={{ fontFamily: 'var(--font-display)' }}>{dueReviews.length}</div>
+              <div className="mb-6" style={{ color: 'var(--text-tertiary)' }}>cards due for review</div>
               <button
                 onClick={startReview}
-                className="px-8 py-4 rounded-xl font-bold text-lg bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400"
+                className="px-8 py-4 rounded-xl font-bold text-lg text-white transition-all hover:opacity-90"
+                style={{ background: 'var(--accent)' }}
               >
                 Start Review Session
               </button>
-            </div>
+            </motion.div>
 
-            <div className="glass-card p-6">
-              <h3 className="font-bold mb-4">Upcoming Reviews</h3>
-              <div className="space-y-3">
+            <motion.div initial="hidden" animate="visible" custom={2} variants={fadeUp}
+              className="surface-card p-5">
+              <h3 className="font-bold mb-4" style={{ fontFamily: 'var(--font-display)' }}>Upcoming Reviews</h3>
+              <div className="space-y-2">
                 {progress.reviewQueue.slice(0, 5).map((card, i) => (
-                  <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-white/5">
+                  <div key={i} className="flex items-center justify-between p-3 rounded-lg" style={{ background: 'var(--bg-surface)' }}>
                     <div>
-                      <div className="font-semibold">{card.domainId}</div>
-                      <div className="text-xs text-white/60">Interval: {card.interval} days</div>
+                      <div className="font-semibold text-sm">{card.domainId}</div>
+                      <div className="text-xs" style={{ color: 'var(--text-muted)' }}>Interval: {card.interval} days</div>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-white/60">
-                      <Calendar size={16} />
+                    <div className="flex items-center gap-2 text-sm" style={{ color: 'var(--text-tertiary)' }}>
+                      <Calendar size={14} />
                       {new Date(card.nextReview).toLocaleDateString()}
                     </div>
                   </div>
                 ))}
               </div>
-            </div>
-          </>
-        ) : (
-          <div className="glass-card p-12 text-center">
-            <RotateCcw className="mx-auto text-white/40 mb-4" size={64} />
-            <h3 className="text-xl font-bold mb-2">All caught up!</h3>
-            <p className="text-white/60">No reviews due today. Keep learning new material!</p>
+            </motion.div>
           </div>
+        ) : (
+          <motion.div initial="hidden" animate="visible" custom={1} variants={fadeUp}
+            className="surface-card p-12 text-center">
+            <div className="w-16 h-16 mx-auto rounded-xl flex items-center justify-center mb-4"
+                 style={{ background: 'var(--bg-sunken)' }}>
+              <RotateCcw size={32} style={{ color: 'var(--text-muted)' }} />
+            </div>
+            <h3 className="text-xl font-bold mb-2" style={{ fontFamily: 'var(--font-display)' }}>All caught up!</h3>
+            <p style={{ color: 'var(--text-tertiary)' }}>No reviews due today. Keep learning new material!</p>
+          </motion.div>
         )}
       </div>
     </ClientLayout>

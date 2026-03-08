@@ -1,1075 +1,425 @@
 {
   "id": "reading-english",
   "name": "Reading & English",
-  "icon": "📚",
-  "color": "#ef4444",
-  "description": "PhD-level comprehension, vocabulary, critical reasoning",
+  "icon": "📖",
+  "color": "#ec4899",
+  "description": "PhD-level reading comprehension, vocabulary, rhetoric, critical analysis",
   "levels": {
-    "beginner": {
-      "name": "Beginner",
-      "description": "SAT-level vocabulary and comprehension",
-      "questions": [
+    "vocabulary-mastery": {
+      "name": "Vocabulary Mastery",
+      "description": "GRE/PhD-level vocabulary, roots, and word relationships",
+      "order": 1,
+      "topics": [
         {
-          "id": "re-b1",
-          "type": "multiple-choice",
-          "question": "What does \"ubiquitous\" mean?",
-          "options": [
-            "Rare",
-            "Present everywhere",
-            "Ancient",
-            "Mysterious"
-          ],
-          "correct": 1,
-          "explanation": "Ubiquitous: existing or being everywhere at once; omnipresent",
-          "xp": 10
+          "id": "re-greek-latin-roots",
+          "title": "Greek & Latin Root Words",
+          "explainer": "## Greek & Latin Roots\n\n### Why Roots Matter\nKnowing roots lets you decode unfamiliar words. ~60% of English words have Latin/Greek roots.\n\n### Common Latin Roots\n- **bene** (good): benefit, benevolent, benediction\n- **mal** (bad): malevolent, malicious, malcontent\n- **dict** (say): dictate, predict, contradict\n- **scrib/script** (write): inscribe, manuscript, prescription\n- **port** (carry): transport, import, deport\n- **vert/vers** (turn): invert, reverse, controversy\n\n### Common Greek Roots\n- **chron** (time): chronological, synchronize, anachronism\n- **graph** (write): biography, photograph, autograph\n- **logos** (study/word): biology, etymology, dialogue\n- **phil** (love): philosophy, philanthropy, bibliophile\n- **morph** (form): metamorphosis, polymorphic, amorphous\n\n### Prefix Power\n- **anti-** (against), **circum-** (around), **inter-** (between)\n- **mis-** (wrong), **neo-** (new), **pseudo-** (false)\n- **trans-** (across), **omni-** (all), **poly-** (many)",
+          "visual": "  Root Word Tree:\n  ┌────────────────────────────┐\n  │       VERT (to turn)       │\n  │      /    |    \\           │\n  │  inVERT  reVERT  conVERT  │\n  │  diVERT  adVERT  subVERT  │\n  │  reVERSe  conVERSe         │\n  │  introVERT  extroVERT      │\n  └────────────────────────────┘\n\n  PREFIX + ROOT + SUFFIX\n  pre + dict + ion = prediction\n  (before)(say)(noun) = saying before",
+          "questions": [
+            {
+              "id": "re-root-1",
+              "type": "multiple-choice",
+              "question": "The root 'bene' means:",
+              "options": ["Good", "Bad", "Water", "Earth"],
+              "correct": 0,
+              "explanation": "Bene = good (Latin). Benefit, benevolent, benediction all relate to goodness.",
+              "xp": 10
+            },
+            {
+              "id": "re-root-2",
+              "type": "multiple-choice",
+              "question": "'Anachronism' likely means something related to:",
+              "options": ["Being out of proper time", "Ancient writing", "Water flow", "Living things"],
+              "correct": 0,
+              "explanation": "Ana- (against/back) + chron (time) = something out of its proper time period.",
+              "xp": 10
+            },
+            {
+              "id": "re-root-3",
+              "type": "multiple-choice",
+              "question": "If 'poly' means many and 'morph' means form, 'polymorphic' means:",
+              "options": ["Having many forms", "Having one form", "Without form", "Against form"],
+              "correct": 0,
+              "explanation": "Poly (many) + morph (form) = having many forms or shapes.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "re-b2",
-          "type": "multiple-choice",
-          "question": "What does \"benevolent\" mean?",
-          "options": [
-            "Evil",
-            "Kind and generous",
-            "Neutral",
-            "Weak"
-          ],
-          "correct": 1,
-          "explanation": "Benevolent: well meaning and kindly; charitable",
-          "xp": 10
+          "id": "re-advanced-vocab",
+          "title": "Advanced Vocabulary in Context",
+          "explainer": "## Advanced Vocabulary\n\n### Strategy: DECODE in Context\n1. Read the sentence\n2. Identify clues (contrast words, examples, tone)\n3. Predict meaning before looking at answers\n\n### Commonly Tested Words\n- **Ubiquitous:** Present everywhere (\"smartphones are ubiquitous\")\n- **Ephemeral:** Short-lived (\"ephemeral beauty of cherry blossoms\")\n- **Pragmatic:** Practical, realistic (vs idealistic)\n- **Esoteric:** Understood by few, specialized\n- **Recalcitrant:** Stubbornly disobedient\n- **Sycophant:** Flatterer, yes-person\n- **Enervate:** Drain of energy (NOT energize!)\n- **Laconic:** Using few words, terse\n- **Obsequious:** Excessively eager to please\n- **Pellucid:** Transparently clear\n\n### Common Traps\n- Enervate ≠ energize (it means WEAKEN)\n- Noisome ≠ noisy (it means SMELLY/offensive)\n- Nonplussed = confused (NOT calm)\n- Enormity = great evil (NOT just 'big')",
+          "visual": "  Vocabulary Spectrum:\n  ┌────────────────────────────┐\n  │ Positive ←─────→ Negative │\n  │                            │\n  │ Benevolent ←→ Malevolent   │\n  │ Magnanimous ←→ Petty       │\n  │ Sagacious ←→ Obtuse        │\n  │ Laudatory ←→ Censorious    │\n  │ Sanguine ←→ Despondent     │\n  │                            │\n  │ ⚠️ False Friends:          │\n  │ Enervate = WEAKEN          │\n  │ Noisome = SMELLY           │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "re-vocab-1",
+              "type": "multiple-choice",
+              "question": "'The professor's lectures were so esoteric that only specialists could follow them.' Esoteric means:",
+              "options": ["Understood by a small number with specialized knowledge", "Extremely boring", "Very long", "Deliberately confusing"],
+              "correct": 0,
+              "explanation": "Esoteric = intended for a small group with specialized knowledge.",
+              "xp": 10
+            },
+            {
+              "id": "re-vocab-2",
+              "type": "multiple-choice",
+              "question": "'Enervated by the long illness, she could barely walk.' Enervated means:",
+              "options": ["Drained of energy", "Energized", "Frightened", "Annoyed"],
+              "correct": 0,
+              "explanation": "Enervate = weaken, drain. Common trap: it does NOT mean energize!",
+              "xp": 10
+            },
+            {
+              "id": "re-vocab-3",
+              "type": "multiple-choice",
+              "question": "A laconic response is:",
+              "options": ["Brief and concise", "Angry and harsh", "Detailed and thorough", "Sarcastic and witty"],
+              "correct": 0,
+              "explanation": "Laconic = using very few words. From Laconia (Sparta), whose people were famous for brevity.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "re-b3",
-          "type": "multiple-choice",
-          "question": "What does \"verbose\" mean?",
-          "options": [
-            "Silent",
-            "Using too many words",
-            "Brief",
-            "Poetic"
-          ],
-          "correct": 1,
-          "explanation": "Verbose: using more words than needed; wordy",
-          "xp": 10
-        },
-        {
-          "id": "re-b4",
-          "type": "multiple-choice",
-          "question": "What does \"pragmatic\" mean?",
-          "options": [
-            "Idealistic",
-            "Practical and realistic",
-            "Theoretical",
-            "Emotional"
-          ],
-          "correct": 1,
-          "explanation": "Pragmatic: dealing with things sensibly and realistically",
-          "xp": 10
-        },
-        {
-          "id": "re-b5",
-          "type": "multiple-choice",
-          "question": "What does \"ambiguous\" mean?",
-          "options": [
-            "Clear",
-            "Having multiple meanings; unclear",
-            "False",
-            "Direct"
-          ],
-          "correct": 1,
-          "explanation": "Ambiguous: open to more than one interpretation; unclear",
-          "xp": 10
-        },
-        {
-          "id": "re-b6",
-          "type": "multiple-choice",
-          "question": "What does \"ubiquitous\" mean?",
-          "options": [
-            "Rare",
-            "Present everywhere",
-            "Ancient",
-            "Mysterious"
-          ],
-          "correct": 1,
-          "explanation": "Ubiquitous: existing or being everywhere at once; omnipresent",
-          "xp": 10
-        },
-        {
-          "id": "re-b7",
-          "type": "multiple-choice",
-          "question": "What does \"benevolent\" mean?",
-          "options": [
-            "Evil",
-            "Kind and generous",
-            "Neutral",
-            "Weak"
-          ],
-          "correct": 1,
-          "explanation": "Benevolent: well meaning and kindly; charitable",
-          "xp": 10
-        },
-        {
-          "id": "re-b8",
-          "type": "multiple-choice",
-          "question": "What does \"verbose\" mean?",
-          "options": [
-            "Silent",
-            "Using too many words",
-            "Brief",
-            "Poetic"
-          ],
-          "correct": 1,
-          "explanation": "Verbose: using more words than needed; wordy",
-          "xp": 10
-        },
-        {
-          "id": "re-b9",
-          "type": "multiple-choice",
-          "question": "What does \"pragmatic\" mean?",
-          "options": [
-            "Idealistic",
-            "Practical and realistic",
-            "Theoretical",
-            "Emotional"
-          ],
-          "correct": 1,
-          "explanation": "Pragmatic: dealing with things sensibly and realistically",
-          "xp": 10
-        },
-        {
-          "id": "re-b10",
-          "type": "multiple-choice",
-          "question": "What does \"ambiguous\" mean?",
-          "options": [
-            "Clear",
-            "Having multiple meanings; unclear",
-            "False",
-            "Direct"
-          ],
-          "correct": 1,
-          "explanation": "Ambiguous: open to more than one interpretation; unclear",
-          "xp": 10
-        },
-        {
-          "id": "re-b11",
-          "type": "multiple-choice",
-          "question": "What does \"ubiquitous\" mean?",
-          "options": [
-            "Rare",
-            "Present everywhere",
-            "Ancient",
-            "Mysterious"
-          ],
-          "correct": 1,
-          "explanation": "Ubiquitous: existing or being everywhere at once; omnipresent",
-          "xp": 10
-        },
-        {
-          "id": "re-b12",
-          "type": "multiple-choice",
-          "question": "What does \"benevolent\" mean?",
-          "options": [
-            "Evil",
-            "Kind and generous",
-            "Neutral",
-            "Weak"
-          ],
-          "correct": 1,
-          "explanation": "Benevolent: well meaning and kindly; charitable",
-          "xp": 10
-        },
-        {
-          "id": "re-b13",
-          "type": "multiple-choice",
-          "question": "What does \"verbose\" mean?",
-          "options": [
-            "Silent",
-            "Using too many words",
-            "Brief",
-            "Poetic"
-          ],
-          "correct": 1,
-          "explanation": "Verbose: using more words than needed; wordy",
-          "xp": 10
-        },
-        {
-          "id": "re-b14",
-          "type": "multiple-choice",
-          "question": "What does \"pragmatic\" mean?",
-          "options": [
-            "Idealistic",
-            "Practical and realistic",
-            "Theoretical",
-            "Emotional"
-          ],
-          "correct": 1,
-          "explanation": "Pragmatic: dealing with things sensibly and realistically",
-          "xp": 10
-        },
-        {
-          "id": "re-b15",
-          "type": "multiple-choice",
-          "question": "What does \"ambiguous\" mean?",
-          "options": [
-            "Clear",
-            "Having multiple meanings; unclear",
-            "False",
-            "Direct"
-          ],
-          "correct": 1,
-          "explanation": "Ambiguous: open to more than one interpretation; unclear",
-          "xp": 10
-        },
-        {
-          "id": "re-b16",
-          "type": "multiple-choice",
-          "question": "What does \"ubiquitous\" mean?",
-          "options": [
-            "Rare",
-            "Present everywhere",
-            "Ancient",
-            "Mysterious"
-          ],
-          "correct": 1,
-          "explanation": "Ubiquitous: existing or being everywhere at once; omnipresent",
-          "xp": 10
-        },
-        {
-          "id": "re-b17",
-          "type": "multiple-choice",
-          "question": "What does \"benevolent\" mean?",
-          "options": [
-            "Evil",
-            "Kind and generous",
-            "Neutral",
-            "Weak"
-          ],
-          "correct": 1,
-          "explanation": "Benevolent: well meaning and kindly; charitable",
-          "xp": 10
-        },
-        {
-          "id": "re-b18",
-          "type": "multiple-choice",
-          "question": "What does \"verbose\" mean?",
-          "options": [
-            "Silent",
-            "Using too many words",
-            "Brief",
-            "Poetic"
-          ],
-          "correct": 1,
-          "explanation": "Verbose: using more words than needed; wordy",
-          "xp": 10
-        },
-        {
-          "id": "re-b19",
-          "type": "multiple-choice",
-          "question": "What does \"pragmatic\" mean?",
-          "options": [
-            "Idealistic",
-            "Practical and realistic",
-            "Theoretical",
-            "Emotional"
-          ],
-          "correct": 1,
-          "explanation": "Pragmatic: dealing with things sensibly and realistically",
-          "xp": 10
-        },
-        {
-          "id": "re-b20",
-          "type": "multiple-choice",
-          "question": "What does \"ambiguous\" mean?",
-          "options": [
-            "Clear",
-            "Having multiple meanings; unclear",
-            "False",
-            "Direct"
-          ],
-          "correct": 1,
-          "explanation": "Ambiguous: open to more than one interpretation; unclear",
-          "xp": 10
-        },
-        {
-          "id": "re-b21",
-          "type": "multiple-choice",
-          "question": "What does \"ubiquitous\" mean?",
-          "options": [
-            "Rare",
-            "Present everywhere",
-            "Ancient",
-            "Mysterious"
-          ],
-          "correct": 1,
-          "explanation": "Ubiquitous: existing or being everywhere at once; omnipresent",
-          "xp": 10
-        },
-        {
-          "id": "re-b22",
-          "type": "multiple-choice",
-          "question": "What does \"benevolent\" mean?",
-          "options": [
-            "Evil",
-            "Kind and generous",
-            "Neutral",
-            "Weak"
-          ],
-          "correct": 1,
-          "explanation": "Benevolent: well meaning and kindly; charitable",
-          "xp": 10
-        },
-        {
-          "id": "re-b23",
-          "type": "multiple-choice",
-          "question": "What does \"verbose\" mean?",
-          "options": [
-            "Silent",
-            "Using too many words",
-            "Brief",
-            "Poetic"
-          ],
-          "correct": 1,
-          "explanation": "Verbose: using more words than needed; wordy",
-          "xp": 10
-        },
-        {
-          "id": "re-b24",
-          "type": "multiple-choice",
-          "question": "What does \"pragmatic\" mean?",
-          "options": [
-            "Idealistic",
-            "Practical and realistic",
-            "Theoretical",
-            "Emotional"
-          ],
-          "correct": 1,
-          "explanation": "Pragmatic: dealing with things sensibly and realistically",
-          "xp": 10
-        },
-        {
-          "id": "re-b25",
-          "type": "multiple-choice",
-          "question": "What does \"ambiguous\" mean?",
-          "options": [
-            "Clear",
-            "Having multiple meanings; unclear",
-            "False",
-            "Direct"
-          ],
-          "correct": 1,
-          "explanation": "Ambiguous: open to more than one interpretation; unclear",
-          "xp": 10
+          "id": "re-analogies",
+          "title": "Word Analogies & Relationships",
+          "explainer": "## Word Analogies\n\n### Common Relationships\n- **Synonym:** happy : joyful\n- **Antonym:** hot : cold\n- **Degree:** warm : hot : scorching\n- **Part : Whole:** petal : flower\n- **Type : Category:** sonnet : poem\n- **Tool : Function:** scalpel : cut\n- **Worker : Workplace:** teacher : school\n- **Cause : Effect:** drought : famine\n\n### Strategy\n1. Define the relationship between the first pair\n2. Express it as a sentence\n3. Apply same sentence to answer choices\n\n### Example\nBIRD : FLOCK :: WOLF : ?\n→ A bird is part of a flock. A wolf is part of a **pack**.",
+          "visual": "  Analogy Types:\n  ┌────────────────────────────┐\n  │ A : B :: C : D             │\n  │                            │\n  │ Synonym:  big : large      │\n  │ Antonym:  up : down        │\n  │ Degree:   drizzle : deluge │\n  │ Part:     page : book      │\n  │ Tool:     pen : write      │\n  │ Worker:   chef : kitchen   │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "re-ana-1",
+              "type": "multiple-choice",
+              "question": "SCALPEL : SURGEON :: GAVEL : ?",
+              "options": ["Judge", "Lawyer", "Carpenter", "Teacher"],
+              "correct": 0,
+              "explanation": "A scalpel is a tool of a surgeon. A gavel is a tool of a judge.",
+              "xp": 10
+            },
+            {
+              "id": "re-ana-2",
+              "type": "multiple-choice",
+              "question": "WHISPER : SHOUT :: DRIZZLE : ?",
+              "options": ["Downpour", "Rain", "Mist", "Snow"],
+              "correct": 0,
+              "explanation": "Whisper is a quiet version of shout (degree). Drizzle is a light version of downpour.",
+              "xp": 10
+            }
+          ]
         }
       ]
     },
-    "intermediate": {
-      "name": "Intermediate",
-      "description": "GRE-level advanced vocabulary",
-      "questions": [
+    "reading-comprehension": {
+      "name": "Reading Comprehension",
+      "description": "Critical reading strategies for complex texts",
+      "order": 2,
+      "topics": [
         {
-          "id": "re-i1",
-          "type": "multiple-choice",
-          "question": "What does \"obfuscate\" mean?",
-          "options": [
-            "Clarify",
-            "Deliberately make unclear or confusing",
-            "Simplify",
-            "Explain"
-          ],
-          "correct": 1,
-          "explanation": "Obfuscate: render obscure, unclear, or unintelligible",
-          "xp": 15
+          "id": "re-main-idea",
+          "title": "Identifying Main Ideas & Thesis",
+          "explainer": "## Main Ideas & Thesis\n\n### Main Idea vs Details\n- **Main idea:** The central message or argument\n- **Supporting details:** Evidence, examples, data that back it up\n\n### Finding the Thesis\n1. Read the first and last paragraphs carefully\n2. Look for topic sentences (usually first sentence of each paragraph)\n3. Ask: 'What is the author trying to prove/explain?'\n\n### Common Structures\n- **Deductive:** Thesis first → supporting evidence\n- **Inductive:** Evidence first → conclusion/thesis at end\n- **Problem-Solution:** Present problem → propose solution\n- **Compare-Contrast:** Examine similarities and differences\n\n### Distractors to Avoid\n- Too broad (covers more than the passage)\n- Too narrow (only one detail)\n- Contradicts the passage\n- Uses passage words but changes meaning",
+          "visual": "  Essay Structure:\n  ┌────────────────────────────┐\n  │ ¶1: THESIS / Main Claim    │\n  │                            │\n  │ ¶2: Supporting Point 1     │\n  │     Evidence & Examples    │\n  │                            │\n  │ ¶3: Supporting Point 2     │\n  │     Evidence & Examples    │\n  │                            │\n  │ ¶4: Counterargument +      │\n  │     Rebuttal               │\n  │                            │\n  │ ¶5: CONCLUSION (restated)  │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "re-mi-1",
+              "type": "multiple-choice",
+              "question": "A good main idea statement should be:",
+              "options": ["Neither too broad nor too narrow", "As detailed as possible", "The first sentence always", "A direct quote from the text"],
+              "correct": 0,
+              "explanation": "Main idea captures the central point — not too broad (topic), not too narrow (detail).",
+              "xp": 10
+            },
+            {
+              "id": "re-mi-2",
+              "type": "multiple-choice",
+              "question": "In inductive reasoning, the thesis typically appears:",
+              "options": ["At the end, after evidence", "At the beginning", "In every paragraph", "Never explicitly stated"],
+              "correct": 0,
+              "explanation": "Inductive: specific evidence first → general conclusion/thesis at end.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "re-i2",
-          "type": "multiple-choice",
-          "question": "What does \"sycophant\" mean?",
-          "options": [
-            "Leader",
-            "Servile flatterer",
-            "Rebel",
-            "Teacher"
-          ],
-          "correct": 1,
-          "explanation": "Sycophant: person who acts obsequiously to gain advantage; yes-man",
-          "xp": 15
+          "id": "re-inference",
+          "title": "Making Inferences & Drawing Conclusions",
+          "explainer": "## Inference Skills\n\n### What is an Inference?\nA conclusion drawn from evidence + reasoning, not explicitly stated.\n\n### Process\n1. Identify relevant textual evidence\n2. Apply background knowledge\n3. Draw a logical conclusion\n4. Verify: Does the text support this?\n\n### Types of Inference Questions\n- 'The author implies that...'\n- 'It can be inferred from the passage that...'\n- 'The passage suggests...'\n- 'Which conclusion is best supported?'\n\n### Common Mistakes\n- Over-inferring (going beyond what text supports)\n- Confusing inference with opinion\n- Ignoring context clues\n- Bringing in outside knowledge that contradicts the text\n\n### Key Rule\nInferences must be SUPPORTED by the text. If you can't point to specific evidence, it's not a valid inference.",
+          "visual": "  Making an Inference:\n  ┌────────────────────────────┐\n  │  Text Evidence:            │\n  │  \"She grabbed her umbrella │\n  │   and wore her rain boots\" │\n  │           +                │\n  │  Background Knowledge:     │\n  │  People do this when rain  │\n  │  is expected               │\n  │           =                │\n  │  Inference:                │\n  │  It was likely going to    │\n  │  rain (or already raining) │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "re-inf-1",
+              "type": "multiple-choice",
+              "question": "A valid inference must be:",
+              "options": ["Supported by textual evidence", "The author's stated opinion", "The most dramatic conclusion", "Based solely on prior knowledge"],
+              "correct": 0,
+              "explanation": "Inferences must be grounded in specific textual evidence, not just guessing.",
+              "xp": 10
+            },
+            {
+              "id": "re-inf-2",
+              "type": "multiple-choice",
+              "question": "'The streets were empty, shops shuttered, and an eerie silence hung over the city.' We can infer:",
+              "options": ["Something unusual has caused people to stay indoors", "Everyone is sleeping", "The city was always quiet", "A celebration is happening elsewhere"],
+              "correct": 0,
+              "explanation": "Empty streets, shuttered shops, eerie silence all suggest an unusual/alarming event.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "re-i3",
-          "type": "multiple-choice",
-          "question": "What does \"perspicacious\" mean?",
-          "options": [
-            "Confused",
-            "Having acute mental discernment",
-            "Stubborn",
-            "Lazy"
-          ],
-          "correct": 1,
-          "explanation": "Perspicacious: having sharp judgment or discernment; insightful",
-          "xp": 15
-        },
-        {
-          "id": "re-i4",
-          "type": "multiple-choice",
-          "question": "What does \"pedantic\" mean?",
-          "options": [
-            "Casual",
-            "Overly concerned with formal rules and trivial details",
-            "Creative",
-            "Relaxed"
-          ],
-          "correct": 1,
-          "explanation": "Pedantic: excessively concerned with minor details or rules",
-          "xp": 15
-        },
-        {
-          "id": "re-i5",
-          "type": "multiple-choice",
-          "question": "What does \"ephemeral\" mean?",
-          "options": [
-            "Eternal",
-            "Lasting a very short time",
-            "Growing",
-            "Stable"
-          ],
-          "correct": 1,
-          "explanation": "Ephemeral: lasting for a very short time; transitory",
-          "xp": 15
-        },
-        {
-          "id": "re-i6",
-          "type": "multiple-choice",
-          "question": "What does \"obfuscate\" mean?",
-          "options": [
-            "Clarify",
-            "Deliberately make unclear or confusing",
-            "Simplify",
-            "Explain"
-          ],
-          "correct": 1,
-          "explanation": "Obfuscate: render obscure, unclear, or unintelligible",
-          "xp": 15
-        },
-        {
-          "id": "re-i7",
-          "type": "multiple-choice",
-          "question": "What does \"sycophant\" mean?",
-          "options": [
-            "Leader",
-            "Servile flatterer",
-            "Rebel",
-            "Teacher"
-          ],
-          "correct": 1,
-          "explanation": "Sycophant: person who acts obsequiously to gain advantage; yes-man",
-          "xp": 15
-        },
-        {
-          "id": "re-i8",
-          "type": "multiple-choice",
-          "question": "What does \"perspicacious\" mean?",
-          "options": [
-            "Confused",
-            "Having acute mental discernment",
-            "Stubborn",
-            "Lazy"
-          ],
-          "correct": 1,
-          "explanation": "Perspicacious: having sharp judgment or discernment; insightful",
-          "xp": 15
-        },
-        {
-          "id": "re-i9",
-          "type": "multiple-choice",
-          "question": "What does \"pedantic\" mean?",
-          "options": [
-            "Casual",
-            "Overly concerned with formal rules and trivial details",
-            "Creative",
-            "Relaxed"
-          ],
-          "correct": 1,
-          "explanation": "Pedantic: excessively concerned with minor details or rules",
-          "xp": 15
-        },
-        {
-          "id": "re-i10",
-          "type": "multiple-choice",
-          "question": "What does \"ephemeral\" mean?",
-          "options": [
-            "Eternal",
-            "Lasting a very short time",
-            "Growing",
-            "Stable"
-          ],
-          "correct": 1,
-          "explanation": "Ephemeral: lasting for a very short time; transitory",
-          "xp": 15
-        },
-        {
-          "id": "re-i11",
-          "type": "multiple-choice",
-          "question": "What does \"obfuscate\" mean?",
-          "options": [
-            "Clarify",
-            "Deliberately make unclear or confusing",
-            "Simplify",
-            "Explain"
-          ],
-          "correct": 1,
-          "explanation": "Obfuscate: render obscure, unclear, or unintelligible",
-          "xp": 15
-        },
-        {
-          "id": "re-i12",
-          "type": "multiple-choice",
-          "question": "What does \"sycophant\" mean?",
-          "options": [
-            "Leader",
-            "Servile flatterer",
-            "Rebel",
-            "Teacher"
-          ],
-          "correct": 1,
-          "explanation": "Sycophant: person who acts obsequiously to gain advantage; yes-man",
-          "xp": 15
-        },
-        {
-          "id": "re-i13",
-          "type": "multiple-choice",
-          "question": "What does \"perspicacious\" mean?",
-          "options": [
-            "Confused",
-            "Having acute mental discernment",
-            "Stubborn",
-            "Lazy"
-          ],
-          "correct": 1,
-          "explanation": "Perspicacious: having sharp judgment or discernment; insightful",
-          "xp": 15
-        },
-        {
-          "id": "re-i14",
-          "type": "multiple-choice",
-          "question": "What does \"pedantic\" mean?",
-          "options": [
-            "Casual",
-            "Overly concerned with formal rules and trivial details",
-            "Creative",
-            "Relaxed"
-          ],
-          "correct": 1,
-          "explanation": "Pedantic: excessively concerned with minor details or rules",
-          "xp": 15
-        },
-        {
-          "id": "re-i15",
-          "type": "multiple-choice",
-          "question": "What does \"ephemeral\" mean?",
-          "options": [
-            "Eternal",
-            "Lasting a very short time",
-            "Growing",
-            "Stable"
-          ],
-          "correct": 1,
-          "explanation": "Ephemeral: lasting for a very short time; transitory",
-          "xp": 15
-        },
-        {
-          "id": "re-i16",
-          "type": "multiple-choice",
-          "question": "What does \"obfuscate\" mean?",
-          "options": [
-            "Clarify",
-            "Deliberately make unclear or confusing",
-            "Simplify",
-            "Explain"
-          ],
-          "correct": 1,
-          "explanation": "Obfuscate: render obscure, unclear, or unintelligible",
-          "xp": 15
-        },
-        {
-          "id": "re-i17",
-          "type": "multiple-choice",
-          "question": "What does \"sycophant\" mean?",
-          "options": [
-            "Leader",
-            "Servile flatterer",
-            "Rebel",
-            "Teacher"
-          ],
-          "correct": 1,
-          "explanation": "Sycophant: person who acts obsequiously to gain advantage; yes-man",
-          "xp": 15
-        },
-        {
-          "id": "re-i18",
-          "type": "multiple-choice",
-          "question": "What does \"perspicacious\" mean?",
-          "options": [
-            "Confused",
-            "Having acute mental discernment",
-            "Stubborn",
-            "Lazy"
-          ],
-          "correct": 1,
-          "explanation": "Perspicacious: having sharp judgment or discernment; insightful",
-          "xp": 15
-        },
-        {
-          "id": "re-i19",
-          "type": "multiple-choice",
-          "question": "What does \"pedantic\" mean?",
-          "options": [
-            "Casual",
-            "Overly concerned with formal rules and trivial details",
-            "Creative",
-            "Relaxed"
-          ],
-          "correct": 1,
-          "explanation": "Pedantic: excessively concerned with minor details or rules",
-          "xp": 15
-        },
-        {
-          "id": "re-i20",
-          "type": "multiple-choice",
-          "question": "What does \"ephemeral\" mean?",
-          "options": [
-            "Eternal",
-            "Lasting a very short time",
-            "Growing",
-            "Stable"
-          ],
-          "correct": 1,
-          "explanation": "Ephemeral: lasting for a very short time; transitory",
-          "xp": 15
-        },
-        {
-          "id": "re-i21",
-          "type": "multiple-choice",
-          "question": "What does \"obfuscate\" mean?",
-          "options": [
-            "Clarify",
-            "Deliberately make unclear or confusing",
-            "Simplify",
-            "Explain"
-          ],
-          "correct": 1,
-          "explanation": "Obfuscate: render obscure, unclear, or unintelligible",
-          "xp": 15
-        },
-        {
-          "id": "re-i22",
-          "type": "multiple-choice",
-          "question": "What does \"sycophant\" mean?",
-          "options": [
-            "Leader",
-            "Servile flatterer",
-            "Rebel",
-            "Teacher"
-          ],
-          "correct": 1,
-          "explanation": "Sycophant: person who acts obsequiously to gain advantage; yes-man",
-          "xp": 15
-        },
-        {
-          "id": "re-i23",
-          "type": "multiple-choice",
-          "question": "What does \"perspicacious\" mean?",
-          "options": [
-            "Confused",
-            "Having acute mental discernment",
-            "Stubborn",
-            "Lazy"
-          ],
-          "correct": 1,
-          "explanation": "Perspicacious: having sharp judgment or discernment; insightful",
-          "xp": 15
-        },
-        {
-          "id": "re-i24",
-          "type": "multiple-choice",
-          "question": "What does \"pedantic\" mean?",
-          "options": [
-            "Casual",
-            "Overly concerned with formal rules and trivial details",
-            "Creative",
-            "Relaxed"
-          ],
-          "correct": 1,
-          "explanation": "Pedantic: excessively concerned with minor details or rules",
-          "xp": 15
-        },
-        {
-          "id": "re-i25",
-          "type": "multiple-choice",
-          "question": "What does \"ephemeral\" mean?",
-          "options": [
-            "Eternal",
-            "Lasting a very short time",
-            "Growing",
-            "Stable"
-          ],
-          "correct": 1,
-          "explanation": "Ephemeral: lasting for a very short time; transitory",
-          "xp": 15
+          "id": "re-tone-purpose",
+          "title": "Author's Tone & Purpose",
+          "explainer": "## Tone & Purpose\n\n### Author's Purpose (PIE)\n- **Persuade:** Convince reader of a position\n- **Inform:** Present facts objectively\n- **Entertain:** Engage through narrative/humor\n\n### Tone Words\n**Positive:** optimistic, laudatory, reverent, enthusiastic\n**Negative:** sardonic, vitriolic, contemptuous, dismissive\n**Neutral:** objective, dispassionate, clinical, detached\n**Complex:** ambivalent, nostalgic, bittersweet, ironic\n\n### Identifying Tone\n1. Look at word choice (diction)\n2. Note sentence structure\n3. Identify emotional undertones\n4. Consider what's NOT said\n\n### Tone vs Mood\n- **Tone:** Author's attitude toward subject\n- **Mood:** Feeling created in the reader",
+          "visual": "  Tone Spectrum:\n  ┌────────────────────────────┐\n  │ Reverent                   │\n  │  Laudatory                 │\n  │   Optimistic               │\n  │    Objective  ← NEUTRAL    │\n  │     Skeptical              │\n  │      Sardonic              │\n  │       Contemptuous         │\n  │        Vitriolic           │\n  └────────────────────────────┘\n  ↑ Positive        Negative ↓",
+          "questions": [
+            {
+              "id": "re-tone-1",
+              "type": "multiple-choice",
+              "question": "'The senator's proposal, while well-intentioned, fundamentally misunderstands the economic realities facing working families.' The tone is:",
+              "options": ["Respectfully critical", "Vitriolic", "Laudatory", "Indifferent"],
+              "correct": 0,
+              "explanation": "'Well-intentioned' shows respect; 'fundamentally misunderstands' is clearly critical. Combined = respectfully critical.",
+              "xp": 10
+            },
+            {
+              "id": "re-tone-2",
+              "type": "multiple-choice",
+              "question": "Sardonic means:",
+              "options": ["Mockingly cynical", "Extremely sad", "Overly enthusiastic", "Deeply philosophical"],
+              "correct": 0,
+              "explanation": "Sardonic = grimly mocking or cynical. More bitter than mere sarcasm.",
+              "xp": 10
+            }
+          ]
         }
       ]
     },
-    "advanced": {
-      "name": "Advanced",
-      "description": "PhD-level academic vocabulary",
-      "questions": [
+    "rhetoric-argument": {
+      "name": "Rhetoric & Argumentation",
+      "description": "Persuasive techniques, logical fallacies, argument analysis",
+      "order": 3,
+      "topics": [
         {
-          "id": "re-a1",
-          "type": "multiple-choice",
-          "question": "What does \"epistemology\" mean?",
-          "options": [
-            "Study of diseases",
-            "Study of knowledge and justified belief",
-            "Study of behavior",
-            "Study of language"
-          ],
-          "correct": 1,
-          "explanation": "Epistemology: philosophical study of knowledge, belief, and justification",
-          "xp": 20
+          "id": "re-rhetorical-devices",
+          "title": "Rhetorical Devices",
+          "explainer": "## Rhetorical Devices\n\n### Aristotle's Appeals\n- **Ethos:** Credibility (author's authority)\n- **Pathos:** Emotion (appeal to feelings)\n- **Logos:** Logic (appeal to reason/evidence)\n\n### Common Devices\n- **Anaphora:** Repetition at start ('I have a dream...')\n- **Antithesis:** Contrasting ideas ('Ask not what your country can do for you...')\n- **Metaphor:** Implied comparison ('The world is a stage')\n- **Hyperbole:** Deliberate exaggeration\n- **Litotes:** Understatement via negation ('not bad' = good)\n- **Chiasmus:** Reversed structure ('Ask not what...can do for you, but what you...can do')\n- **Juxtaposition:** Placing contrasts side by side\n\n### Effect Analysis\nAlways ask: WHY did the author use this device? What effect on the reader?",
+          "visual": "  Aristotle's Triangle:\n  ┌────────────────────┐\n  │      ETHOS         │\n  │    (credibility)   │\n  │       / \\          │\n  │      /   \\         │\n  │     /     \\        │\n  │  PATHOS  LOGOS     │\n  │ (emotion)(logic)   │\n  └────────────────────┘\n\n  Effective rhetoric uses\n  all three in balance.",
+          "questions": [
+            {
+              "id": "re-rhet-1",
+              "type": "multiple-choice",
+              "question": "'As a doctor with 30 years of experience...' is an appeal to:",
+              "options": ["Ethos (credibility)", "Pathos (emotion)", "Logos (logic)", "Kairos (timing)"],
+              "correct": 0,
+              "explanation": "Establishing professional credentials = ethos (credibility appeal).",
+              "xp": 10
+            },
+            {
+              "id": "re-rhet-2",
+              "type": "multiple-choice",
+              "question": "'It was the best of times, it was the worst of times' is an example of:",
+              "options": ["Antithesis", "Hyperbole", "Litotes", "Metonymy"],
+              "correct": 0,
+              "explanation": "Antithesis places contrasting ideas in parallel structure for emphasis.",
+              "xp": 10
+            },
+            {
+              "id": "re-rhet-3",
+              "type": "multiple-choice",
+              "question": "Anaphora is:",
+              "options": ["Deliberate repetition of a phrase at the start of successive clauses", "Comparison using 'like' or 'as'", "An indirect reference to something", "Addressing an absent person"],
+              "correct": 0,
+              "explanation": "Anaphora: repeated beginning (e.g., MLK's 'I have a dream' repeated at each paragraph start).",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "re-a2",
-          "type": "multiple-choice",
-          "question": "What does \"ontological\" relate to?",
-          "options": [
-            "Ethics",
-            "The nature of being and existence",
-            "Logic",
-            "Aesthetics"
-          ],
-          "correct": 1,
-          "explanation": "Ontological: concerning the nature of being, existence, and reality",
-          "xp": 20
+          "id": "re-logical-fallacies",
+          "title": "Logical Fallacies",
+          "explainer": "## Logical Fallacies\n\n### Fallacies of Relevance\n- **Ad Hominem:** Attack the person, not the argument\n- **Straw Man:** Misrepresent opponent's position, then attack the distortion\n- **Red Herring:** Introduce irrelevant topic to divert\n- **Appeal to Authority:** 'Einstein believed in God, so God exists'\n- **Appeal to Emotion:** Use feelings instead of evidence\n\n### Fallacies of Logic\n- **False Dilemma:** Present only 2 options when more exist\n- **Slippery Slope:** Claim one event inevitably leads to disaster\n- **Circular Reasoning:** Conclusion = premise restated\n- **Hasty Generalization:** Draw broad conclusion from few examples\n- **Post Hoc:** 'After X, therefore because of X'\n\n### Recognizing Fallacies\nAsk: Is the evidence actually relevant to the conclusion? Does the reasoning follow logically?",
+          "visual": "  Common Fallacies:\n  ┌────────────────────────────┐\n  │ Straw Man:                 │\n  │ Real argument: \"We should  │\n  │ regulate emissions\"        │\n  │ Straw man: \"They want to   │\n  │ shut down all factories!\"  │\n  │                            │\n  │ False Dilemma:             │\n  │ \"You're either with us     │\n  │  or against us!\"           │\n  │ (ignores nuanced positions)│\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "re-fall-1",
+              "type": "multiple-choice",
+              "question": "'You can't trust his climate research — he got a parking ticket last year.' This is:",
+              "options": ["Ad hominem", "Straw man", "Red herring", "Slippery slope"],
+              "correct": 0,
+              "explanation": "Ad hominem attacks the person's character rather than addressing their argument.",
+              "xp": 10
+            },
+            {
+              "id": "re-fall-2",
+              "type": "multiple-choice",
+              "question": "'If we allow students to redo one test, soon they'll want to redo every assignment.' This is:",
+              "options": ["Slippery slope", "Ad hominem", "Circular reasoning", "False dilemma"],
+              "correct": 0,
+              "explanation": "Slippery slope assumes one small step inevitably leads to extreme consequences without evidence.",
+              "xp": 10
+            },
+            {
+              "id": "re-fall-3",
+              "type": "multiple-choice",
+              "question": "'The Bible is true because it says so in the Bible.' This is:",
+              "options": ["Circular reasoning", "Appeal to authority", "Straw man", "Red herring"],
+              "correct": 0,
+              "explanation": "Circular reasoning uses the conclusion as a premise — the argument proves nothing.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "re-a3",
-          "type": "multiple-choice",
-          "question": "What does \"hermeneutics\" mean?",
-          "options": [
-            "Medical study",
-            "Theory and methodology of interpretation",
-            "Mathematical proofs",
-            "Chemical analysis"
-          ],
-          "correct": 1,
-          "explanation": "Hermeneutics: theory of text interpretation, especially biblical and philosophical",
-          "xp": 20
+          "id": "re-argument-structure",
+          "title": "Evaluating Argument Structure",
+          "explainer": "## Argument Analysis\n\n### Components\n- **Claim:** The main assertion\n- **Evidence:** Facts, data, examples supporting the claim\n- **Warrant:** The logical connection between evidence and claim\n- **Counterargument:** Opposing view\n- **Rebuttal:** Response to counterargument\n\n### Strong vs Weak Arguments\n**Strong:**\n- Clear, specific claim\n- Multiple types of evidence\n- Addresses counterarguments\n- Logical warrants\n\n**Weak:**\n- Vague claim\n- Anecdotal evidence only\n- Ignores opposition\n- Logical fallacies\n\n### Evaluation Questions\n1. What is the claim?\n2. What evidence is provided?\n3. Is the evidence relevant and sufficient?\n4. Are there logical gaps?\n5. What counterarguments exist?",
+          "visual": "  Argument Structure:\n  ┌────────────────────────────┐\n  │ CLAIM (thesis)             │\n  │    ↑                       │\n  │ WARRANT (connects)         │\n  │    ↑                       │\n  │ EVIDENCE (supports)        │\n  │    ↕                       │\n  │ COUNTER + REBUTTAL         │\n  │                            │\n  │ Toulmin Model:             │\n  │ Data → Warrant → Claim     │\n  │        ↑                   │\n  │     Backing                │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "re-arg-1",
+              "type": "multiple-choice",
+              "question": "The 'warrant' in an argument is:",
+              "options": ["The logical connection between evidence and claim", "The main assertion", "The opposing viewpoint", "The emotional appeal"],
+              "correct": 0,
+              "explanation": "Warrant = the reasoning that connects evidence to claim (often unstated but crucial).",
+              "xp": 10
+            },
+            {
+              "id": "re-arg-2",
+              "type": "multiple-choice",
+              "question": "A strong argument should:",
+              "options": ["Address and rebut counterarguments", "Ignore opposing views", "Use only emotional appeals", "Avoid specific evidence"],
+              "correct": 0,
+              "explanation": "Addressing counterarguments shows intellectual honesty and strengthens the argument.",
+              "xp": 10
+            }
+          ]
+        }
+      ]
+    },
+    "literary-analysis": {
+      "name": "Literary Analysis",
+      "description": "Figurative language, narrative techniques, critical theory",
+      "order": 4,
+      "topics": [
+        {
+          "id": "re-figurative-language",
+          "title": "Figurative Language Deep Dive",
+          "explainer": "## Figurative Language\n\n### Comparisons\n- **Simile:** Explicit comparison using 'like' or 'as' ('Her smile was like sunshine')\n- **Metaphor:** Implicit comparison ('Time is money')\n- **Extended metaphor:** Sustained throughout a passage\n- **Personification:** Giving human traits to non-human ('The wind whispered')\n\n### Sound Devices\n- **Alliteration:** Repeated consonant sounds ('Peter Piper picked')\n- **Assonance:** Repeated vowel sounds ('the rain in Spain')\n- **Onomatopoeia:** Words that sound like their meaning (buzz, crash)\n\n### Meaning Devices\n- **Irony:** Contradiction between expectation and reality\n  - Verbal: saying opposite of what you mean\n  - Situational: opposite of expected outcome\n  - Dramatic: audience knows what characters don't\n- **Symbolism:** Object represents abstract idea\n- **Allegory:** Extended symbolic narrative\n- **Synecdoche:** Part represents whole ('all hands on deck')\n- **Metonymy:** Related term substitutes ('The White House said...')",
+          "visual": "  Types of Irony:\n  ┌────────────────────────────┐\n  │ Verbal: Saying opposite    │\n  │ \"Oh great\" (when bad)      │\n  │                            │\n  │ Situational: Unexpected    │\n  │ Fire station burns down    │\n  │                            │\n  │ Dramatic: Audience knows   │\n  │ Romeo thinks Juliet dead   │\n  │ (audience knows she's not) │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "re-fig-1",
+              "type": "multiple-choice",
+              "question": "'The White House issued a statement' uses:",
+              "options": ["Metonymy", "Metaphor", "Simile", "Hyperbole"],
+              "correct": 0,
+              "explanation": "Metonymy: 'The White House' (building) substitutes for the President/administration (related concept).",
+              "xp": 10
+            },
+            {
+              "id": "re-fig-2",
+              "type": "multiple-choice",
+              "question": "A fire station burning down is an example of:",
+              "options": ["Situational irony", "Verbal irony", "Dramatic irony", "Metaphor"],
+              "correct": 0,
+              "explanation": "Situational irony: the outcome (fire station burning) contradicts expectations.",
+              "xp": 10
+            },
+            {
+              "id": "re-fig-3",
+              "type": "multiple-choice",
+              "question": "'All hands on deck' uses:",
+              "options": ["Synecdoche", "Metonymy", "Personification", "Hyperbole"],
+              "correct": 0,
+              "explanation": "Synecdoche: 'hands' (part) represents whole people/sailors.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "re-a4",
-          "type": "multiple-choice",
-          "question": "What does \"dialectical\" mean?",
-          "options": [
-            "Statistical",
-            "Relating to logical argumentation via contradiction and resolution",
-            "Alphabetical",
-            "Numerical"
-          ],
-          "correct": 1,
-          "explanation": "Dialectical: method of argument through contradiction (thesis-antithesis-synthesis)",
-          "xp": 20
+          "id": "re-narrative-technique",
+          "title": "Narrative Techniques",
+          "explainer": "## Narrative Techniques\n\n### Point of View\n- **1st person:** 'I' narrator (limited, potentially unreliable)\n- **2nd person:** 'You' (rare, immersive)\n- **3rd limited:** Follows one character's perspective\n- **3rd omniscient:** All-knowing narrator\n- **Unreliable narrator:** Narrator's credibility is questionable\n\n### Narrative Structures\n- **Linear/Chronological:** Events in time order\n- **In medias res:** Begins in the middle of action\n- **Flashback/Flashforward:** Non-linear time jumps\n- **Frame narrative:** Story within a story\n- **Stream of consciousness:** Unfiltered thought flow\n\n### Showing vs Telling\n- **Telling:** 'She was angry'\n- **Showing:** 'Her fists clenched, jaw tight, voice barely a whisper'\n\n### Pacing\n- Short sentences → speed, tension\n- Long sentences → reflection, description\n- Dialogue → immediacy, characterization",
+          "visual": "  Point of View Spectrum:\n  ┌────────────────────────────┐\n  │ 1st Person: \"I saw the...\" │\n  │    Most subjective         │\n  │                            │\n  │ 3rd Limited: \"She saw...\"  │\n  │    One perspective         │\n  │                            │\n  │ 3rd Omniscient: \"All knew\" │\n  │    Most objective          │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "re-narr-1",
+              "type": "multiple-choice",
+              "question": "An unreliable narrator is one who:",
+              "options": ["May not be telling the truth or has limited understanding", "Tells the story badly", "Is fictional", "Uses third person"],
+              "correct": 0,
+              "explanation": "Unreliable narrator's account is questionable — they may lie, be naive, or have incomplete information.",
+              "xp": 10
+            },
+            {
+              "id": "re-narr-2",
+              "type": "multiple-choice",
+              "question": "'In medias res' means a story begins:",
+              "options": ["In the middle of the action", "At the very beginning chronologically", "With a flashforward", "With exposition"],
+              "correct": 0,
+              "explanation": "In medias res (Latin: 'in the middle of things') starts mid-action, then fills in background.",
+              "xp": 10
+            }
+          ]
+        }
+      ]
+    },
+    "writing-style": {
+      "name": "Writing & Style",
+      "description": "Grammar, sentence construction, academic writing",
+      "order": 5,
+      "topics": [
+        {
+          "id": "re-sentence-structure",
+          "title": "Sentence Structure & Variety",
+          "explainer": "## Sentence Structure\n\n### Types\n- **Simple:** One independent clause ('The cat sat.')\n- **Compound:** Two independent clauses joined by FANBOYS ('The cat sat, and the dog lay down.')\n- **Complex:** Independent + dependent clause ('Although it rained, we went out.')\n- **Compound-Complex:** Both compound and complex elements\n\n### FANBOYS\nFor, And, Nor, But, Or, Yet, So (coordinating conjunctions)\n\n### Subordinating Conjunctions\nAlthough, because, since, while, if, when, unless, after, before\n\n### Common Errors\n- **Run-on:** Two sentences fused without proper punctuation\n- **Comma splice:** Two sentences joined by just a comma\n- **Fragment:** Incomplete sentence (no subject or verb)\n\n### Parallel Structure\nItems in a list should have the same grammatical form:\n✗ 'She likes reading, to swim, and bikes'\n✓ 'She likes reading, swimming, and biking'",
+          "visual": "  Sentence Types:\n  ┌────────────────────────────┐\n  │ Simple:                    │\n  │ [Independent clause]       │\n  │                            │\n  │ Compound:                  │\n  │ [IC] , FANBOYS [IC]       │\n  │                            │\n  │ Complex:                   │\n  │ [Dependent] , [IC]         │\n  │                            │\n  │ FANBOYS: For And Nor       │\n  │          But Or Yet So     │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "re-sent-1",
+              "type": "multiple-choice",
+              "question": "'Although it was raining, she went for a walk' is a:",
+              "options": ["Complex sentence", "Simple sentence", "Compound sentence", "Fragment"],
+              "correct": 0,
+              "explanation": "Dependent clause ('Although...raining') + independent clause ('she went') = complex.",
+              "xp": 10
+            },
+            {
+              "id": "re-sent-2",
+              "type": "multiple-choice",
+              "question": "Which has correct parallel structure?",
+              "options": ["She enjoys reading, writing, and painting", "She enjoys reading, to write, and painting", "She enjoys to read, writing, and to paint", "She enjoys reading, writes, and to paint"],
+              "correct": 0,
+              "explanation": "All items should match form: reading, writing, painting (all gerunds).",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "re-a5",
-          "type": "multiple-choice",
-          "question": "What does \"empiricism\" emphasize?",
-          "options": [
-            "Pure reason",
-            "Knowledge from sensory experience",
-            "Divine revelation",
-            "Intuition alone"
-          ],
-          "correct": 1,
-          "explanation": "Empiricism: theory that all knowledge derives from sensory experience",
-          "xp": 20
-        },
-        {
-          "id": "re-a6",
-          "type": "multiple-choice",
-          "question": "What does \"epistemology\" mean?",
-          "options": [
-            "Study of diseases",
-            "Study of knowledge and justified belief",
-            "Study of behavior",
-            "Study of language"
-          ],
-          "correct": 1,
-          "explanation": "Epistemology: philosophical study of knowledge, belief, and justification",
-          "xp": 20
-        },
-        {
-          "id": "re-a7",
-          "type": "multiple-choice",
-          "question": "What does \"ontological\" relate to?",
-          "options": [
-            "Ethics",
-            "The nature of being and existence",
-            "Logic",
-            "Aesthetics"
-          ],
-          "correct": 1,
-          "explanation": "Ontological: concerning the nature of being, existence, and reality",
-          "xp": 20
-        },
-        {
-          "id": "re-a8",
-          "type": "multiple-choice",
-          "question": "What does \"hermeneutics\" mean?",
-          "options": [
-            "Medical study",
-            "Theory and methodology of interpretation",
-            "Mathematical proofs",
-            "Chemical analysis"
-          ],
-          "correct": 1,
-          "explanation": "Hermeneutics: theory of text interpretation, especially biblical and philosophical",
-          "xp": 20
-        },
-        {
-          "id": "re-a9",
-          "type": "multiple-choice",
-          "question": "What does \"dialectical\" mean?",
-          "options": [
-            "Statistical",
-            "Relating to logical argumentation via contradiction and resolution",
-            "Alphabetical",
-            "Numerical"
-          ],
-          "correct": 1,
-          "explanation": "Dialectical: method of argument through contradiction (thesis-antithesis-synthesis)",
-          "xp": 20
-        },
-        {
-          "id": "re-a10",
-          "type": "multiple-choice",
-          "question": "What does \"empiricism\" emphasize?",
-          "options": [
-            "Pure reason",
-            "Knowledge from sensory experience",
-            "Divine revelation",
-            "Intuition alone"
-          ],
-          "correct": 1,
-          "explanation": "Empiricism: theory that all knowledge derives from sensory experience",
-          "xp": 20
-        },
-        {
-          "id": "re-a11",
-          "type": "multiple-choice",
-          "question": "What does \"epistemology\" mean?",
-          "options": [
-            "Study of diseases",
-            "Study of knowledge and justified belief",
-            "Study of behavior",
-            "Study of language"
-          ],
-          "correct": 1,
-          "explanation": "Epistemology: philosophical study of knowledge, belief, and justification",
-          "xp": 20
-        },
-        {
-          "id": "re-a12",
-          "type": "multiple-choice",
-          "question": "What does \"ontological\" relate to?",
-          "options": [
-            "Ethics",
-            "The nature of being and existence",
-            "Logic",
-            "Aesthetics"
-          ],
-          "correct": 1,
-          "explanation": "Ontological: concerning the nature of being, existence, and reality",
-          "xp": 20
-        },
-        {
-          "id": "re-a13",
-          "type": "multiple-choice",
-          "question": "What does \"hermeneutics\" mean?",
-          "options": [
-            "Medical study",
-            "Theory and methodology of interpretation",
-            "Mathematical proofs",
-            "Chemical analysis"
-          ],
-          "correct": 1,
-          "explanation": "Hermeneutics: theory of text interpretation, especially biblical and philosophical",
-          "xp": 20
-        },
-        {
-          "id": "re-a14",
-          "type": "multiple-choice",
-          "question": "What does \"dialectical\" mean?",
-          "options": [
-            "Statistical",
-            "Relating to logical argumentation via contradiction and resolution",
-            "Alphabetical",
-            "Numerical"
-          ],
-          "correct": 1,
-          "explanation": "Dialectical: method of argument through contradiction (thesis-antithesis-synthesis)",
-          "xp": 20
-        },
-        {
-          "id": "re-a15",
-          "type": "multiple-choice",
-          "question": "What does \"empiricism\" emphasize?",
-          "options": [
-            "Pure reason",
-            "Knowledge from sensory experience",
-            "Divine revelation",
-            "Intuition alone"
-          ],
-          "correct": 1,
-          "explanation": "Empiricism: theory that all knowledge derives from sensory experience",
-          "xp": 20
-        },
-        {
-          "id": "re-a16",
-          "type": "multiple-choice",
-          "question": "What does \"epistemology\" mean?",
-          "options": [
-            "Study of diseases",
-            "Study of knowledge and justified belief",
-            "Study of behavior",
-            "Study of language"
-          ],
-          "correct": 1,
-          "explanation": "Epistemology: philosophical study of knowledge, belief, and justification",
-          "xp": 20
-        },
-        {
-          "id": "re-a17",
-          "type": "multiple-choice",
-          "question": "What does \"ontological\" relate to?",
-          "options": [
-            "Ethics",
-            "The nature of being and existence",
-            "Logic",
-            "Aesthetics"
-          ],
-          "correct": 1,
-          "explanation": "Ontological: concerning the nature of being, existence, and reality",
-          "xp": 20
-        },
-        {
-          "id": "re-a18",
-          "type": "multiple-choice",
-          "question": "What does \"hermeneutics\" mean?",
-          "options": [
-            "Medical study",
-            "Theory and methodology of interpretation",
-            "Mathematical proofs",
-            "Chemical analysis"
-          ],
-          "correct": 1,
-          "explanation": "Hermeneutics: theory of text interpretation, especially biblical and philosophical",
-          "xp": 20
-        },
-        {
-          "id": "re-a19",
-          "type": "multiple-choice",
-          "question": "What does \"dialectical\" mean?",
-          "options": [
-            "Statistical",
-            "Relating to logical argumentation via contradiction and resolution",
-            "Alphabetical",
-            "Numerical"
-          ],
-          "correct": 1,
-          "explanation": "Dialectical: method of argument through contradiction (thesis-antithesis-synthesis)",
-          "xp": 20
-        },
-        {
-          "id": "re-a20",
-          "type": "multiple-choice",
-          "question": "What does \"empiricism\" emphasize?",
-          "options": [
-            "Pure reason",
-            "Knowledge from sensory experience",
-            "Divine revelation",
-            "Intuition alone"
-          ],
-          "correct": 1,
-          "explanation": "Empiricism: theory that all knowledge derives from sensory experience",
-          "xp": 20
-        },
-        {
-          "id": "re-a21",
-          "type": "multiple-choice",
-          "question": "What does \"epistemology\" mean?",
-          "options": [
-            "Study of diseases",
-            "Study of knowledge and justified belief",
-            "Study of behavior",
-            "Study of language"
-          ],
-          "correct": 1,
-          "explanation": "Epistemology: philosophical study of knowledge, belief, and justification",
-          "xp": 20
-        },
-        {
-          "id": "re-a22",
-          "type": "multiple-choice",
-          "question": "What does \"ontological\" relate to?",
-          "options": [
-            "Ethics",
-            "The nature of being and existence",
-            "Logic",
-            "Aesthetics"
-          ],
-          "correct": 1,
-          "explanation": "Ontological: concerning the nature of being, existence, and reality",
-          "xp": 20
-        },
-        {
-          "id": "re-a23",
-          "type": "multiple-choice",
-          "question": "What does \"hermeneutics\" mean?",
-          "options": [
-            "Medical study",
-            "Theory and methodology of interpretation",
-            "Mathematical proofs",
-            "Chemical analysis"
-          ],
-          "correct": 1,
-          "explanation": "Hermeneutics: theory of text interpretation, especially biblical and philosophical",
-          "xp": 20
-        },
-        {
-          "id": "re-a24",
-          "type": "multiple-choice",
-          "question": "What does \"dialectical\" mean?",
-          "options": [
-            "Statistical",
-            "Relating to logical argumentation via contradiction and resolution",
-            "Alphabetical",
-            "Numerical"
-          ],
-          "correct": 1,
-          "explanation": "Dialectical: method of argument through contradiction (thesis-antithesis-synthesis)",
-          "xp": 20
-        },
-        {
-          "id": "re-a25",
-          "type": "multiple-choice",
-          "question": "What does \"empiricism\" emphasize?",
-          "options": [
-            "Pure reason",
-            "Knowledge from sensory experience",
-            "Divine revelation",
-            "Intuition alone"
-          ],
-          "correct": 1,
-          "explanation": "Empiricism: theory that all knowledge derives from sensory experience",
-          "xp": 20
+          "id": "re-academic-writing",
+          "title": "Academic Writing Conventions",
+          "explainer": "## Academic Writing\n\n### Key Principles\n1. **Clarity:** Say exactly what you mean\n2. **Precision:** Use specific language\n3. **Objectivity:** Avoid personal bias (or acknowledge it)\n4. **Evidence-based:** Support claims with sources\n5. **Formal register:** Avoid contractions, slang, colloquialisms\n\n### Structure\n- **Thesis statement:** Clear, arguable claim\n- **Topic sentences:** Each paragraph's main point\n- **Transitions:** Connect ideas (however, furthermore, consequently)\n- **Evidence integration:** Quote, paraphrase, summarize with citations\n\n### Common Weaknesses\n- Vague thesis ('This essay will discuss...')\n- Unsupported claims\n- Over-quoting (let your voice lead)\n- Informal language\n- Passive voice overuse\n\n### Active vs Passive Voice\n- Active: 'The researcher conducted the experiment' (preferred)\n- Passive: 'The experiment was conducted' (use when actor is unknown/irrelevant)",
+          "visual": "  Academic Paragraph:\n  ┌────────────────────────────┐\n  │ Topic Sentence (claim)     │\n  │      ↓                     │\n  │ Context/Background         │\n  │      ↓                     │\n  │ Evidence (quote/data)      │\n  │      ↓                     │\n  │ Analysis (YOUR reading)    │\n  │      ↓                     │\n  │ Connection to thesis       │\n  └────────────────────────────┘\n  \"Quote sandwich\" = context,\n  quote, analysis",
+          "questions": [
+            {
+              "id": "re-acad-1",
+              "type": "multiple-choice",
+              "question": "Which is the strongest thesis statement?",
+              "options": ["Social media has increased political polarization by creating algorithmic echo chambers", "Social media is bad", "This essay discusses social media", "Many people use social media today"],
+              "correct": 0,
+              "explanation": "Strong thesis: specific, arguable claim with a clear mechanism ('algorithmic echo chambers').",
+              "xp": 10
+            },
+            {
+              "id": "re-acad-2",
+              "type": "multiple-choice",
+              "question": "In academic writing, you should generally prefer:",
+              "options": ["Active voice", "Passive voice", "Second person", "Contractions"],
+              "correct": 0,
+              "explanation": "Active voice is clearer and more direct. Use passive only when the actor is unknown or irrelevant.",
+              "xp": 10
+            }
+          ]
         }
       ]
     }

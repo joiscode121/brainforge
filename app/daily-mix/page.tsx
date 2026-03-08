@@ -26,9 +26,11 @@ export default function DailyMixPage() {
 
   const startDailyMix = () => {
     setIsLoading(true);
+    // Pick a random domain and route to quiz (getAllQuestions handles both formats)
     const randomDomain = domains[Math.floor(Math.random() * domains.length)];
     if (randomDomain) {
-      router.push(`/quiz?domain=${randomDomain.id}&level=beginner`);
+      // Don't specify a level — quiz page will pull random questions from all levels
+      router.push(`/quiz?domain=${randomDomain.id}`);
     }
   };
 

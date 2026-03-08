@@ -1,565 +1,496 @@
 {
   "id": "comp-math",
-  "name": "Competitive Math",
+  "name": "Competition Math",
   "icon": "⚡",
   "color": "#f59e0b",
   "description": "TMSCA, Number Sense, speed drills, mental math shortcuts",
   "levels": {
-    "beginner": {
-      "name": "Beginner",
-      "description": "Basic arithmetic and speed drills",
-      "questions": [
+    "mental-arithmetic": {
+      "name": "Mental Arithmetic",
+      "description": "Speed tricks for addition, subtraction, multiplication",
+      "order": 1,
+      "topics": [
         {
-          "id": "cm-b1",
-          "type": "text-input",
-          "question": "What is 17 × 13?",
-          "answer": "221",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
+          "id": "cm-complement-addition",
+          "title": "Complement Addition & Subtraction",
+          "explainer": "## Complement Addition & Subtraction\n\n### The Core Idea\nInstead of subtracting directly, **add the complement** to make the math easier.\n\n### Complements to 10\n- Complement of 3 → 7 (3 + 7 = 10)\n- Complement of 8 → 2\n- Complement of 6 → 4\n\n### Subtract from Powers of 10\nTo compute **1000 − 637**:\n1. Complement each digit to 9 (except last to 10)\n2. 6→3, 3→6, 7→3\n3. Answer: **363**\n\n### Speed Rule\nFor subtraction from 10^n: complement each digit to 9, last digit to 10.\n\n### TMSCA Tip\nThis lets you subtract from round numbers in under 2 seconds.",
+          "visual": "  Complement Subtraction: 1000 - 637\n  ┌──────────────────────────────────┐\n  │  Each digit's complement to 9:   │\n  │  6 → 3,  3 → 6,  7 → 3          │\n  │  (last digit: complement to 10)  │\n  │                                  │\n  │  1000 - 637 = 363               │\n  │  Check: 363 + 637 = 1000 ✓      │\n  └──────────────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-ca-1",
+              "type": "multiple-choice",
+              "question": "What is 1000 − 456?",
+              "options": ["544", "554", "444", "644"],
+              "correct": 0,
+              "explanation": "Complement: 4→5, 5→4, 6→4. Answer: 544.",
+              "xp": 10
+            },
+            {
+              "id": "cm-ca-2",
+              "type": "multiple-choice",
+              "question": "What is the complement of 73 to 100?",
+              "options": ["37", "27", "17", "33"],
+              "correct": 1,
+              "explanation": "100 − 73 = 27.",
+              "xp": 10
+            },
+            {
+              "id": "cm-ca-3",
+              "type": "multiple-choice",
+              "question": "Compute 10000 − 3782 using complements.",
+              "options": ["7218", "6228", "6218", "6318"],
+              "correct": 2,
+              "explanation": "Complements: 3→6, 7→2, 8→1, 2→8. Answer: 6218.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "cm-b2",
-          "type": "text-input",
-          "question": "What is 23 + 47 + 19?",
-          "answer": "89",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
+          "id": "cm-multiply-11",
+          "title": "Multiplying by 11 and Near-Powers",
+          "explainer": "## Lightning Multiplication by 11\n\n### The 11 Trick\nTo multiply any 2-digit number by 11:\n1. Write the two digits apart: a _ b\n2. Put their sum in the middle: a (a+b) b\n3. If sum > 9, carry the 1\n\n**Example:** 72 × 11 → 7_(7+2)_2 = 7_9_2 = **792**\n\n**Example:** 85 × 11 → 8_(8+5)_5 = 8_13_5 → carry → **935**\n\n### Multiplying by 9, 99, 999\nShortcut: n × 99 = n × 100 − n\n- 47 × 99 = 4700 − 47 = **4653**\n- 63 × 999 = 63000 − 63 = **62937**",
+          "visual": "  72 × 11 = ?\n  ┌───────────────────┐\n  │  Step 1: Split     │\n  │    7 _ 2           │\n  │  Step 2: Add       │\n  │    7 (7+2) 2 = 792 │\n  └───────────────────┘\n\n  85 × 11 = ?\n  ┌───────────────────┐\n  │  8 (13) 5 → carry │\n  │  9  3   5 = 935   │\n  └───────────────────┘",
+          "questions": [
+            {
+              "id": "cm-m11-1",
+              "type": "multiple-choice",
+              "question": "What is 63 × 11?",
+              "options": ["693", "633", "703", "696"],
+              "correct": 0,
+              "explanation": "6_(6+3)_3 = 6_9_3 = 693.",
+              "xp": 10
+            },
+            {
+              "id": "cm-m11-2",
+              "type": "multiple-choice",
+              "question": "What is 78 × 11?",
+              "options": ["848", "858", "868", "838"],
+              "correct": 1,
+              "explanation": "7_(7+8)_8 = 7_15_8 → carry → 858.",
+              "xp": 10
+            },
+            {
+              "id": "cm-m11-3",
+              "type": "multiple-choice",
+              "question": "What is 47 × 99?",
+              "options": ["4553", "4653", "4753", "4647"],
+              "correct": 1,
+              "explanation": "47 × 99 = 4700 − 47 = 4653.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "cm-b3",
-          "type": "text-input",
-          "question": "What is 144 ÷ 12?",
-          "answer": "12",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
-        },
-        {
-          "id": "cm-b4",
-          "type": "text-input",
-          "question": "What is 15²?",
-          "answer": "225",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
-        },
-        {
-          "id": "cm-b5",
-          "type": "text-input",
-          "question": "What is 200 - 87?",
-          "answer": "113",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
-        },
-        {
-          "id": "cm-b6",
-          "type": "text-input",
-          "question": "What is 17 × 13?",
-          "answer": "221",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
-        },
-        {
-          "id": "cm-b7",
-          "type": "text-input",
-          "question": "What is 23 + 47 + 19?",
-          "answer": "89",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
-        },
-        {
-          "id": "cm-b8",
-          "type": "text-input",
-          "question": "What is 144 ÷ 12?",
-          "answer": "12",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
-        },
-        {
-          "id": "cm-b9",
-          "type": "text-input",
-          "question": "What is 15²?",
-          "answer": "225",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
-        },
-        {
-          "id": "cm-b10",
-          "type": "text-input",
-          "question": "What is 200 - 87?",
-          "answer": "113",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
-        },
-        {
-          "id": "cm-b11",
-          "type": "text-input",
-          "question": "What is 17 × 13?",
-          "answer": "221",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
-        },
-        {
-          "id": "cm-b12",
-          "type": "text-input",
-          "question": "What is 23 + 47 + 19?",
-          "answer": "89",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
-        },
-        {
-          "id": "cm-b13",
-          "type": "text-input",
-          "question": "What is 144 ÷ 12?",
-          "answer": "12",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
-        },
-        {
-          "id": "cm-b14",
-          "type": "text-input",
-          "question": "What is 15²?",
-          "answer": "225",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
-        },
-        {
-          "id": "cm-b15",
-          "type": "text-input",
-          "question": "What is 200 - 87?",
-          "answer": "113",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
-        },
-        {
-          "id": "cm-b16",
-          "type": "text-input",
-          "question": "What is 17 × 13?",
-          "answer": "221",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
-        },
-        {
-          "id": "cm-b17",
-          "type": "text-input",
-          "question": "What is 23 + 47 + 19?",
-          "answer": "89",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
-        },
-        {
-          "id": "cm-b18",
-          "type": "text-input",
-          "question": "What is 144 ÷ 12?",
-          "answer": "12",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
-        },
-        {
-          "id": "cm-b19",
-          "type": "text-input",
-          "question": "What is 15²?",
-          "answer": "225",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
-        },
-        {
-          "id": "cm-b20",
-          "type": "text-input",
-          "question": "What is 200 - 87?",
-          "answer": "113",
-          "explanation": "Practice mental math speed for Number Sense competitions.",
-          "xp": 10,
-          "timeLimit": 15
+          "id": "cm-squaring",
+          "title": "Speed Squaring Techniques",
+          "explainer": "## Speed Squaring\n\n### Numbers Ending in 5\n1. Take tens digit, multiply by (itself + 1)\n2. Append 25\n\n**35²:** 3×4 = 12, append 25 → **1225**\n**85²:** 8×9 = 72, append 25 → **7225**\n\n### Near 50: n = 50 ± d\n(50+d)² = (25+d)×100 + d²\n\n**53²:** (25+3)×100 + 9 = 2809\n**47²:** (25−3)×100 + 9 = 2209\n\n### Near 100: n = 100 − d\n(100−d)² = (100−2d)×100 + d²\n\n**97²:** 94×100 + 9 = **9409**\n**96²:** 92×100 + 16 = **9216**",
+          "visual": "  Squaring numbers ending in 5:\n  ┌─────────────────────────┐\n  │  n5² = n×(n+1) | 25     │\n  │  25² = 2×3|25 = 625     │\n  │  35² = 3×4|25 = 1225    │\n  │  65² = 6×7|25 = 4225    │\n  │  95² = 9×10|25 = 9025   │\n  └─────────────────────────┘\n\n  Near-50: (50+d)² = (25+d)×100 + d²\n  ┌─────────────────────────┐\n  │  48² = 23×100+4 = 2304  │\n  │  54² = 29×100+16 = 2916 │\n  └─────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-sq-1",
+              "type": "multiple-choice",
+              "question": "What is 45²?",
+              "options": ["2025", "1925", "2125", "2225"],
+              "correct": 0,
+              "explanation": "4×5 = 20, append 25 → 2025.",
+              "xp": 10
+            },
+            {
+              "id": "cm-sq-2",
+              "type": "multiple-choice",
+              "question": "What is 52² using the near-50 trick?",
+              "options": ["2704", "2604", "2804", "2904"],
+              "correct": 0,
+              "explanation": "d=2: (25+2)×100 + 4 = 2704.",
+              "xp": 10
+            },
+            {
+              "id": "cm-sq-3",
+              "type": "multiple-choice",
+              "question": "What is 95²?",
+              "options": ["9025", "9125", "8925", "9225"],
+              "correct": 0,
+              "explanation": "9×10 = 90, append 25 → 9025.",
+              "xp": 10
+            }
+          ]
         }
       ]
     },
-    "intermediate": {
-      "name": "Intermediate",
-      "description": "Multi-digit speed calculations",
-      "questions": [
+    "algebraic-shortcuts": {
+      "name": "Algebraic Shortcuts",
+      "description": "Difference of squares, factoring tricks, algebraic identities",
+      "order": 2,
+      "topics": [
         {
-          "id": "cm-i1",
-          "type": "text-input",
-          "question": "What is 47 × 53?",
-          "answer": "2491",
-          "explanation": "Use (50-3)(50+3) = 2500 - 9 = 2491",
-          "xp": 15,
-          "timeLimit": 20
+          "id": "cm-diff-squares",
+          "title": "Difference of Squares",
+          "explainer": "## Difference of Squares\n\n### The Identity\n**a² − b² = (a+b)(a−b)**\n\n### Mental Multiplication\nMultiply numbers equidistant from a center:\n- 23 × 17 = (20+3)(20−3) = 400 − 9 = **391**\n- 48 × 52 = (50−2)(50+2) = 2500 − 4 = **2496**\n- 101 × 99 = 10000 − 1 = **9999**\n\n### Recognizing Patterns\n- 31 × 29 = 30² − 1 = 899\n- 64 × 56 = 60² − 4² = 3584\n- 67² − 33² = (67+33)(67−33) = 100 × 34 = 3400",
+          "visual": "  a² - b² = (a+b)(a-b)\n\n  Example: 37 × 43\n  ┌──────────────────────┐\n  │  midpoint = 40       │\n  │  37 = 40-3, 43 = 40+3│\n  │  = 40² - 3²          │\n  │  = 1600 - 9 = 1591   │\n  └──────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-ds-1",
+              "type": "multiple-choice",
+              "question": "Compute 46 × 54 using difference of squares.",
+              "options": ["2484", "2496", "2516", "2504"],
+              "correct": 0,
+              "explanation": "(50−4)(50+4) = 2500 − 16 = 2484.",
+              "xp": 10
+            },
+            {
+              "id": "cm-ds-2",
+              "type": "multiple-choice",
+              "question": "What is 101 × 99?",
+              "options": ["9999", "10001", "9899", "9901"],
+              "correct": 0,
+              "explanation": "(100+1)(100−1) = 10000 − 1 = 9999.",
+              "xp": 10
+            },
+            {
+              "id": "cm-ds-3",
+              "type": "multiple-choice",
+              "question": "67² − 33² equals:",
+              "options": ["3400", "3434", "3366", "3500"],
+              "correct": 0,
+              "explanation": "(67+33)(67−33) = 100 × 34 = 3400.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "cm-i2",
-          "type": "text-input",
-          "question": "What is √(1296)?",
-          "answer": "36",
-          "explanation": "Perfect square: 36 × 36 = 1296",
-          "xp": 15,
-          "timeLimit": 20
+          "id": "cm-modular",
+          "title": "Modular Arithmetic Tricks",
+          "explainer": "## Modular Arithmetic\n\n### What is Mod?\na mod n = remainder when a is divided by n.\n\n### Key Rules\n1. (a + b) mod n = ((a mod n) + (b mod n)) mod n\n2. (a × b) mod n = ((a mod n) × (b mod n)) mod n\n\n### Last Digit Problems\nLast digit = number mod 10\n- 7^100: Pattern 7,9,3,1 repeats every 4. 100 mod 4 = 0 → last digit **1**\n- 3^2024: Pattern 3,9,7,1. 2024 mod 4 = 0 → last digit **1**\n\n### Divisibility Rules\n- **By 3:** sum of digits ÷ 3\n- **By 4:** last 2 digits ÷ 4\n- **By 7:** double last digit, subtract from rest\n- **By 8:** last 3 digits ÷ 8\n- **By 11:** alternating sum ÷ 11",
+          "visual": "  Powers of 7 mod 10 (cycle = 4):\n  ┌──────────────────────────┐\n  │  7¹ mod 10 = 7  ┌→ 7    │\n  │  7² mod 10 = 9  │  ↓    │\n  │  7³ mod 10 = 3  1 ← 9   │\n  │  7⁴ mod 10 = 1  ↑  ↓    │\n  │  repeats!        └─ 3   │\n  └──────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-mod-1",
+              "type": "multiple-choice",
+              "question": "What is the last digit of 3^2024?",
+              "options": ["3", "9", "7", "1"],
+              "correct": 3,
+              "explanation": "Cycle: 3,9,7,1 (length 4). 2024 mod 4 = 0 → same as 3^4 → last digit 1.",
+              "xp": 10
+            },
+            {
+              "id": "cm-mod-2",
+              "type": "multiple-choice",
+              "question": "Is 31415 divisible by 11?",
+              "options": ["Yes", "No"],
+              "correct": 1,
+              "explanation": "Alternating sum: 3−1+4−1+5 = 10. Not divisible by 11.",
+              "xp": 10
+            },
+            {
+              "id": "cm-mod-3",
+              "type": "multiple-choice",
+              "question": "What is 2^10 mod 7?",
+              "options": ["1", "2", "4", "6"],
+              "correct": 1,
+              "explanation": "2^3 = 8 ≡ 1 (mod 7). 10 mod 3 = 1, so 2^10 ≡ 2^1 = 2 (mod 7).",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "cm-i3",
-          "type": "text-input",
-          "question": "What is 2⁸?",
-          "answer": "256",
-          "explanation": "Powers of 2: double repeatedly",
-          "xp": 15,
-          "timeLimit": 20
-        },
-        {
-          "id": "cm-i4",
-          "type": "text-input",
-          "question": "What is 35²?",
-          "answer": "1225",
-          "explanation": "Use (30+5)² = 900 + 300 + 25 = 1225",
-          "xp": 15,
-          "timeLimit": 20
-        },
-        {
-          "id": "cm-i5",
-          "type": "text-input",
-          "question": "What is 47 × 53?",
-          "answer": "2491",
-          "explanation": "Use (50-3)(50+3) = 2500 - 9 = 2491",
-          "xp": 15,
-          "timeLimit": 20
-        },
-        {
-          "id": "cm-i6",
-          "type": "text-input",
-          "question": "What is √(1296)?",
-          "answer": "36",
-          "explanation": "Perfect square: 36 × 36 = 1296",
-          "xp": 15,
-          "timeLimit": 20
-        },
-        {
-          "id": "cm-i7",
-          "type": "text-input",
-          "question": "What is 2⁸?",
-          "answer": "256",
-          "explanation": "Powers of 2: double repeatedly",
-          "xp": 15,
-          "timeLimit": 20
-        },
-        {
-          "id": "cm-i8",
-          "type": "text-input",
-          "question": "What is 35²?",
-          "answer": "1225",
-          "explanation": "Use (30+5)² = 900 + 300 + 25 = 1225",
-          "xp": 15,
-          "timeLimit": 20
-        },
-        {
-          "id": "cm-i9",
-          "type": "text-input",
-          "question": "What is 47 × 53?",
-          "answer": "2491",
-          "explanation": "Use (50-3)(50+3) = 2500 - 9 = 2491",
-          "xp": 15,
-          "timeLimit": 20
-        },
-        {
-          "id": "cm-i10",
-          "type": "text-input",
-          "question": "What is √(1296)?",
-          "answer": "36",
-          "explanation": "Perfect square: 36 × 36 = 1296",
-          "xp": 15,
-          "timeLimit": 20
-        },
-        {
-          "id": "cm-i11",
-          "type": "text-input",
-          "question": "What is 2⁸?",
-          "answer": "256",
-          "explanation": "Powers of 2: double repeatedly",
-          "xp": 15,
-          "timeLimit": 20
-        },
-        {
-          "id": "cm-i12",
-          "type": "text-input",
-          "question": "What is 35²?",
-          "answer": "1225",
-          "explanation": "Use (30+5)² = 900 + 300 + 25 = 1225",
-          "xp": 15,
-          "timeLimit": 20
-        },
-        {
-          "id": "cm-i13",
-          "type": "text-input",
-          "question": "What is 47 × 53?",
-          "answer": "2491",
-          "explanation": "Use (50-3)(50+3) = 2500 - 9 = 2491",
-          "xp": 15,
-          "timeLimit": 20
-        },
-        {
-          "id": "cm-i14",
-          "type": "text-input",
-          "question": "What is √(1296)?",
-          "answer": "36",
-          "explanation": "Perfect square: 36 × 36 = 1296",
-          "xp": 15,
-          "timeLimit": 20
-        },
-        {
-          "id": "cm-i15",
-          "type": "text-input",
-          "question": "What is 2⁸?",
-          "answer": "256",
-          "explanation": "Powers of 2: double repeatedly",
-          "xp": 15,
-          "timeLimit": 20
-        },
-        {
-          "id": "cm-i16",
-          "type": "text-input",
-          "question": "What is 35²?",
-          "answer": "1225",
-          "explanation": "Use (30+5)² = 900 + 300 + 25 = 1225",
-          "xp": 15,
-          "timeLimit": 20
-        },
-        {
-          "id": "cm-i17",
-          "type": "text-input",
-          "question": "What is 47 × 53?",
-          "answer": "2491",
-          "explanation": "Use (50-3)(50+3) = 2500 - 9 = 2491",
-          "xp": 15,
-          "timeLimit": 20
-        },
-        {
-          "id": "cm-i18",
-          "type": "text-input",
-          "question": "What is √(1296)?",
-          "answer": "36",
-          "explanation": "Perfect square: 36 × 36 = 1296",
-          "xp": 15,
-          "timeLimit": 20
-        },
-        {
-          "id": "cm-i19",
-          "type": "text-input",
-          "question": "What is 2⁸?",
-          "answer": "256",
-          "explanation": "Powers of 2: double repeatedly",
-          "xp": 15,
-          "timeLimit": 20
-        },
-        {
-          "id": "cm-i20",
-          "type": "text-input",
-          "question": "What is 35²?",
-          "answer": "1225",
-          "explanation": "Use (30+5)² = 900 + 300 + 25 = 1225",
-          "xp": 15,
-          "timeLimit": 20
+          "id": "cm-factoring",
+          "title": "Rapid Factoring & Prime Testing",
+          "explainer": "## Rapid Factoring\n\n### Trial Division\nTo test if n is prime, check primes up to √n.\n- √100 ≈ 10 → check 2, 3, 5, 7\n- √400 = 20 → check 2, 3, 5, 7, 11, 13, 17, 19\n\n### Quick Factor Recognition\n- Even → factor of 2\n- Ends in 0/5 → factor of 5\n- Digit sum ÷ 3 → factor of 3\n- Alternating digit sum ÷ 11 → factor of 11\n\n### Number of Factors\nIf n = p₁^a × p₂^b × p₃^c, then:\n# factors = (a+1)(b+1)(c+1)\n\n360 = 2³ × 3² × 5¹ → (4)(3)(2) = 24 factors\n\n### GCD/LCM\n- GCD: take minimum power of each prime\n- LCM: take maximum power of each prime\n- LCM(a,b) = ab / GCD(a,b)",
+          "visual": "  Factor Tree: 360\n  ┌─────────────────────────┐\n  │        360              │\n  │       /   \\             │\n  │     36    10            │\n  │    / \\   / \\            │\n  │   4   9  2  5           │\n  │  / \\ / \\               │\n  │ 2  2 3  3              │\n  │                         │\n  │ 360 = 2³ × 3² × 5      │\n  │ # factors = 4×3×2 = 24  │\n  └─────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-fac-1",
+              "type": "multiple-choice",
+              "question": "How many positive factors does 360 have?",
+              "options": ["24", "18", "12", "36"],
+              "correct": 0,
+              "explanation": "360 = 2³×3²×5¹. Factors = (3+1)(2+1)(1+1) = 24.",
+              "xp": 10
+            },
+            {
+              "id": "cm-fac-2",
+              "type": "multiple-choice",
+              "question": "What is GCD(84, 126)?",
+              "options": ["42", "21", "14", "28"],
+              "correct": 0,
+              "explanation": "84 = 2²×3×7, 126 = 2×3²×7. GCD = 2×3×7 = 42.",
+              "xp": 10
+            },
+            {
+              "id": "cm-fac-3",
+              "type": "multiple-choice",
+              "question": "Is 437 prime?",
+              "options": ["Yes", "No — it's 19 × 23", "No — it's 17 × 25", "No — it's 13 × 33"],
+              "correct": 1,
+              "explanation": "√437 ≈ 20.9. Testing: 437/19 = 23. So 437 = 19 × 23.",
+              "xp": 10
+            }
+          ]
         }
       ]
     },
-    "advanced": {
-      "name": "Advanced",
-      "description": "Competition-level tricks and shortcuts",
-      "questions": [
+    "number-theory": {
+      "name": "Number Theory",
+      "description": "Pigeonhole principle, sequences, number bases",
+      "order": 3,
+      "topics": [
         {
-          "id": "cm-a1",
-          "type": "text-input",
-          "question": "What is 125 × 88?",
-          "answer": "11000",
-          "explanation": "125 × 88 = 125 × 8 × 11 = 1000 × 11",
-          "xp": 20,
-          "timeLimit": 30
+          "id": "cm-pigeonhole",
+          "title": "Pigeonhole Principle",
+          "explainer": "## The Pigeonhole Principle\n\n### Statement\nIf n+1 pigeons go into n holes, at least one hole has ≥ 2 pigeons.\n\n### Generalized\nN objects into k boxes → at least one box has ≥ ⌈N/k⌉ objects.\n\n### Classic Problems\n**Problem 1:** Among 13 people, at least 2 share a birth month.\n13 people, 12 months → collision guaranteed.\n\n**Problem 2:** Among any 5 integers, some pair has an even sum.\nRemainders mod 2: {0,1}. 5 numbers, 2 boxes → ≥3 in one → pair with same parity → even sum.\n\n**Problem 3:** Pick 5 points in a 2×2 square. Two are within √2 distance.\nDivide into 4 unit squares → some square has 2 points → max distance in unit square = √2.",
+          "visual": "  Pigeonhole Principle:\n  ┌─────────────────────────────────┐\n  │  5 pigeons → 4 holes            │\n  │  At least one hole has ≥ 2!     │\n  │  🐦🐦 🐦 🐦 🐦                  │\n  │  [🐦🐦][🐦][🐦][🐦]            │\n  └─────────────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-ph-1",
+              "type": "multiple-choice",
+              "question": "In a group of 367 people, what can we guarantee?",
+              "options": ["At least 2 share a birthday", "At least 2 share a birth month", "Everyone has a unique birthday", "At least 3 share a birthday"],
+              "correct": 0,
+              "explanation": "366 possible days (including leap year), 367 people → pigeonhole guarantees shared birthday.",
+              "xp": 10
+            },
+            {
+              "id": "cm-ph-2",
+              "type": "multiple-choice",
+              "question": "How many integers from {1,...,10} must you pick to guarantee two with the same remainder mod 3?",
+              "options": ["3", "4", "5", "2"],
+              "correct": 1,
+              "explanation": "3 possible remainders (0,1,2). Need 3+1=4 picks to guarantee collision.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "cm-a2",
-          "type": "text-input",
-          "question": "What is 1/7 as decimal (first 6 digits)?",
-          "answer": "0.142857",
-          "explanation": "1/7 = 0.142857... (repeating)",
-          "xp": 20,
-          "timeLimit": 30
+          "id": "cm-sequences",
+          "title": "Arithmetic & Geometric Series",
+          "explainer": "## Series Formulas\n\n### Arithmetic Series\nSum = n/2 × (first + last) = n/2 × (2a + (n-1)d)\n\n**Speed tricks:**\n- Sum 1 to n = n(n+1)/2\n- Sum of first n odd numbers = n²\n- Sum of first n even numbers = n(n+1)\n\n### Geometric Series\nFinite: S = a(rⁿ − 1)/(r − 1)\nInfinite (|r| < 1): S = a/(1 − r)\n\n### Telescoping\n1/(1×2) + 1/(2×3) + ... + 1/(n(n+1)) = n/(n+1)",
+          "visual": "  Gauss's Sum: 1+2+3+...+n\n  ┌────────────────────────────┐\n  │  S = 1 + 2 + ... + n      │\n  │  S = n + (n-1) + ... + 1  │\n  │  ─────────────────────     │\n  │  2S = n × (n+1)           │\n  │  S = n(n+1)/2             │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-ss-1",
+              "type": "multiple-choice",
+              "question": "What is 1 + 2 + 3 + ... + 100?",
+              "options": ["5050", "5000", "5100", "4950"],
+              "correct": 0,
+              "explanation": "n(n+1)/2 = 100×101/2 = 5050.",
+              "xp": 10
+            },
+            {
+              "id": "cm-ss-2",
+              "type": "multiple-choice",
+              "question": "Sum of the first 20 odd numbers?",
+              "options": ["400", "200", "380", "420"],
+              "correct": 0,
+              "explanation": "Sum of first n odd = n² = 20² = 400.",
+              "xp": 10
+            },
+            {
+              "id": "cm-ss-3",
+              "type": "multiple-choice",
+              "question": "1/2 + 1/4 + 1/8 + ... (infinite) = ?",
+              "options": ["1", "2", "1/2", "3/2"],
+              "correct": 0,
+              "explanation": "a/(1-r) = (1/2)/(1-1/2) = 1.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "cm-a3",
-          "type": "text-input",
-          "question": "Find GCD(252, 198)",
-          "answer": "18",
-          "explanation": "Use Euclidean algorithm",
-          "xp": 20,
-          "timeLimit": 30
+          "id": "cm-bases",
+          "title": "Number Bases & Conversions",
+          "explainer": "## Number Bases\n\n### Base Conversion\nA number in base b: (dₙ...d₁d₀)_b = dₙ×bⁿ + ... + d₁×b + d₀\n\n### Decimal to Base b\nRepeatedly divide by b; remainders (right to left) give the digits.\n\n**Example:** 156 in base 7:\n156÷7=22 R2, 22÷7=3 R1, 3÷7=0 R3 → (312)₇\n\n### Binary Tricks\n- Powers of 2: 1,2,4,8,16,32,64,128,256,512,1024\n- Each hex digit = 4 binary digits\n- 0xFF = 255, 0x100 = 256\n\n### Quick Conversions\n- Binary to octal: group by 3 bits\n- Binary to hex: group by 4 bits",
+          "visual": "  156 in different bases:\n  ┌──────────────────────────┐\n  │  Base 10: 156            │\n  │  Base 2:  10011100       │\n  │  Base 7:  312            │\n  │  Base 16: 9C             │\n  │                          │\n  │  Binary: 128+16+8+4=156  │\n  └──────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-base-1",
+              "type": "multiple-choice",
+              "question": "What is (1101)₂ in decimal?",
+              "options": ["13", "11", "14", "12"],
+              "correct": 0,
+              "explanation": "1×8 + 1×4 + 0×2 + 1×1 = 13.",
+              "xp": 10
+            },
+            {
+              "id": "cm-base-2",
+              "type": "multiple-choice",
+              "question": "Convert 255 to hexadecimal.",
+              "options": ["FF", "FE", "100", "EF"],
+              "correct": 0,
+              "explanation": "255 = 15×16 + 15 = FF.",
+              "xp": 10
+            },
+            {
+              "id": "cm-base-3",
+              "type": "multiple-choice",
+              "question": "What is (234)₅ in decimal?",
+              "options": ["69", "64", "74", "59"],
+              "correct": 0,
+              "explanation": "2×25 + 3×5 + 4×1 = 50+15+4 = 69.",
+              "xp": 10
+            }
+          ]
+        }
+      ]
+    },
+    "counting-combinatorics": {
+      "name": "Counting & Combinatorics",
+      "description": "Permutations, combinations, inclusion-exclusion, probability",
+      "order": 4,
+      "topics": [
+        {
+          "id": "cm-perms-combs",
+          "title": "Permutations & Combinations",
+          "explainer": "## Permutations & Combinations\n\n### Fundamental Counting Principle\nTask A has m ways, Task B has n ways → total = m × n\n\n### Permutations (order matters)\nP(n,r) = n!/(n-r)!\n\n### Combinations (order doesn't matter)\nC(n,r) = n!/(r!(n-r)!)\n\n### Key Identities\n- C(n,r) = C(n, n−r)\n- C(n,0)+C(n,1)+...+C(n,n) = 2ⁿ\n- Pascal's Rule: C(n,r) = C(n-1,r-1) + C(n-1,r)\n- Stars & Bars: n identical into k bins = C(n+k-1, k-1)",
+          "visual": "  Pascal's Triangle:\n  ┌─────────────────────┐\n  │         1           │\n  │        1 1          │\n  │       1 2 1         │\n  │      1 3 3 1        │\n  │     1 4 6 4 1       │\n  │    1 5 10 10 5 1    │\n  │  Row sum = 2ⁿ       │\n  └─────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-pc-1",
+              "type": "multiple-choice",
+              "question": "How many ways to choose 3 books from 8?",
+              "options": ["56", "336", "24", "120"],
+              "correct": 0,
+              "explanation": "C(8,3) = 8!/(3!5!) = 56.",
+              "xp": 10
+            },
+            {
+              "id": "cm-pc-2",
+              "type": "multiple-choice",
+              "question": "How many 4-letter arrangements from ABCDE (no repeats)?",
+              "options": ["120", "24", "60", "625"],
+              "correct": 0,
+              "explanation": "P(5,4) = 5!/1! = 120.",
+              "xp": 10
+            },
+            {
+              "id": "cm-pc-3",
+              "type": "multiple-choice",
+              "question": "Sum of row 10 of Pascal's triangle?",
+              "options": ["1024", "512", "2048", "100"],
+              "correct": 0,
+              "explanation": "Sum of row n = 2ⁿ = 2¹⁰ = 1024.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "cm-a4",
-          "type": "text-input",
-          "question": "What is 999²?",
-          "answer": "998001",
-          "explanation": "999² = (1000-1)² = 1000000 - 2000 + 1 = 998001",
-          "xp": 20,
-          "timeLimit": 30
+          "id": "cm-inclusion-exclusion",
+          "title": "Inclusion-Exclusion & Derangements",
+          "explainer": "## Inclusion-Exclusion\n\n### Two Sets\n|A ∪ B| = |A| + |B| − |A ∩ B|\n\n### Three Sets\n|A ∪ B ∪ C| = |A|+|B|+|C| − |A∩B|−|A∩C|−|B∩C| + |A∩B∩C|\n\n### Derangements\nA permutation where NO element is in its original position.\nD(n) = n! × (1 − 1/1! + 1/2! − 1/3! + ... + (−1)ⁿ/n!)\n\n- D(1)=0, D(2)=1, D(3)=2, D(4)=9, D(5)=44\n\n### Euler's Totient\nφ(n) = n × ∏(1 − 1/p) for each prime p | n",
+          "visual": "  Inclusion-Exclusion:\n  ┌──────────────────────────┐\n  │    ┌─────┬───┬─────┐     │\n  │    │  A  │A∩B│  B  │     │\n  │    └─────┴───┴─────┘     │\n  │  |A∪B| = |A|+|B|-|A∩B|  │\n  │                          │\n  │  Derangements D(n):      │\n  │  D(3)=2  D(4)=9  D(5)=44│\n  └──────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-ie-1",
+              "type": "multiple-choice",
+              "question": "Class of 30: 18 play soccer, 15 basketball, 10 both. How many play neither?",
+              "options": ["7", "5", "3", "10"],
+              "correct": 0,
+              "explanation": "|S∪B| = 18+15−10 = 23. Neither = 30−23 = 7.",
+              "xp": 10
+            },
+            {
+              "id": "cm-ie-2",
+              "type": "multiple-choice",
+              "question": "How many derangements of {1,2,3,4}?",
+              "options": ["9", "8", "12", "6"],
+              "correct": 0,
+              "explanation": "D(4) = 4!(1-1+1/2-1/6+1/24) = 24×(9/24) = 9.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "cm-a5",
-          "type": "text-input",
-          "question": "What is 125 × 88?",
-          "answer": "11000",
-          "explanation": "125 × 88 = 125 × 8 × 11 = 1000 × 11",
-          "xp": 20,
-          "timeLimit": 30
+          "id": "cm-probability",
+          "title": "Competition Probability",
+          "explainer": "## Probability for Competitions\n\n### Basic Rules\n- P(A) = favorable / total\n- P(A or B) = P(A) + P(B) − P(A and B)\n- P(A and B) = P(A) × P(B|A)\n\n### Complementary Counting\nP(at least one) = 1 − P(none)\n\n### Expected Value\nE[X] = Σ xᵢ × P(xᵢ)\nLinearity: E[X+Y] = E[X] + E[Y] (always!)\n\n### Geometric Probability\nP = favorable region / total region",
+          "visual": "  Probability Tree: 2 flips\n  ┌─────────────────────────┐\n  │       Start             │\n  │      /     \\            │\n  │    H(½)   T(½)         │\n  │   / \\     / \\          │\n  │  HH  HT TH  TT        │\n  │  ¼   ¼   ¼   ¼        │\n  │                         │\n  │  P(≥1 H) = 1-¼ = ¾    │\n  └─────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-prob-1",
+              "type": "multiple-choice",
+              "question": "Two dice rolled. P(sum = 7)?",
+              "options": ["1/6", "1/8", "1/12", "7/36"],
+              "correct": 0,
+              "explanation": "6 favorable out of 36: (1,6),(2,5),(3,4),(4,3),(5,2),(6,1). P = 1/6.",
+              "xp": 10
+            },
+            {
+              "id": "cm-prob-2",
+              "type": "multiple-choice",
+              "question": "Coin flipped 4 times. P(at least one head)?",
+              "options": ["15/16", "1/2", "7/8", "3/4"],
+              "correct": 0,
+              "explanation": "1 − P(all tails) = 1 − (1/2)⁴ = 15/16.",
+              "xp": 10
+            }
+          ]
+        }
+      ]
+    },
+    "geometry-speed": {
+      "name": "Geometry Speed",
+      "description": "Triangle formulas, coordinate geometry, and spatial reasoning",
+      "order": 5,
+      "topics": [
+        {
+          "id": "cm-triangles",
+          "title": "Triangle Area & Special Triangles",
+          "explainer": "## Triangle Formulas\n\n### Area Formulas\n1. A = ½bh\n2. A = ½ab sin C\n3. Heron's: A = √(s(s-a)(s-b)(s-c)), s = (a+b+c)/2\n4. Shoelace: A = ½|x₁(y₂−y₃) + x₂(y₃−y₁) + x₃(y₁−y₂)|\n\n### Special Right Triangles (memorize!)\n- 30-60-90: sides 1 : √3 : 2\n- 45-45-90: sides 1 : 1 : √2\n\n### Pythagorean Triples\n3-4-5, 5-12-13, 8-15-17, 7-24-25, 9-40-41\n\n### Circle Relationships\n- Inscribed angle = ½ central angle\n- Power of a point: PA×PB = PC×PD",
+          "visual": "  Special Right Triangles:\n  ┌──────────────────────────────┐\n  │  30-60-90:     45-45-90:    │\n  │      /|           /|        │\n  │    2/ |         √2/ |       │\n  │    /  | 1        /  | 1     │\n  │   /60°|        /45°|        │\n  │  /____| √3    /____| 1      │\n  │                              │\n  │  Triples: 3-4-5  5-12-13   │\n  │  8-15-17  7-24-25  9-40-41 │\n  └──────────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-tri-1",
+              "type": "multiple-choice",
+              "question": "Triangle with vertices (0,0), (6,0), (3,4). Area?",
+              "options": ["12", "24", "10", "8"],
+              "correct": 0,
+              "explanation": "Base=6, height=4. A = ½×6×4 = 12.",
+              "xp": 10
+            },
+            {
+              "id": "cm-tri-2",
+              "type": "multiple-choice",
+              "question": "In a 30-60-90 triangle with hypotenuse 10, shortest side?",
+              "options": ["5", "5√3", "10√3", "√5"],
+              "correct": 0,
+              "explanation": "Ratio 1:√3:2. Shortest = 10/2 = 5.",
+              "xp": 10
+            },
+            {
+              "id": "cm-tri-3",
+              "type": "multiple-choice",
+              "question": "Which is a Pythagorean triple?",
+              "options": ["8-15-17", "8-14-17", "9-12-16", "7-12-15"],
+              "correct": 0,
+              "explanation": "8²+15² = 64+225 = 289 = 17². ✓",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "cm-a6",
-          "type": "text-input",
-          "question": "What is 1/7 as decimal (first 6 digits)?",
-          "answer": "0.142857",
-          "explanation": "1/7 = 0.142857... (repeating)",
-          "xp": 20,
-          "timeLimit": 30
-        },
-        {
-          "id": "cm-a7",
-          "type": "text-input",
-          "question": "Find GCD(252, 198)",
-          "answer": "18",
-          "explanation": "Use Euclidean algorithm",
-          "xp": 20,
-          "timeLimit": 30
-        },
-        {
-          "id": "cm-a8",
-          "type": "text-input",
-          "question": "What is 999²?",
-          "answer": "998001",
-          "explanation": "999² = (1000-1)² = 1000000 - 2000 + 1 = 998001",
-          "xp": 20,
-          "timeLimit": 30
-        },
-        {
-          "id": "cm-a9",
-          "type": "text-input",
-          "question": "What is 125 × 88?",
-          "answer": "11000",
-          "explanation": "125 × 88 = 125 × 8 × 11 = 1000 × 11",
-          "xp": 20,
-          "timeLimit": 30
-        },
-        {
-          "id": "cm-a10",
-          "type": "text-input",
-          "question": "What is 1/7 as decimal (first 6 digits)?",
-          "answer": "0.142857",
-          "explanation": "1/7 = 0.142857... (repeating)",
-          "xp": 20,
-          "timeLimit": 30
-        },
-        {
-          "id": "cm-a11",
-          "type": "text-input",
-          "question": "Find GCD(252, 198)",
-          "answer": "18",
-          "explanation": "Use Euclidean algorithm",
-          "xp": 20,
-          "timeLimit": 30
-        },
-        {
-          "id": "cm-a12",
-          "type": "text-input",
-          "question": "What is 999²?",
-          "answer": "998001",
-          "explanation": "999² = (1000-1)² = 1000000 - 2000 + 1 = 998001",
-          "xp": 20,
-          "timeLimit": 30
-        },
-        {
-          "id": "cm-a13",
-          "type": "text-input",
-          "question": "What is 125 × 88?",
-          "answer": "11000",
-          "explanation": "125 × 88 = 125 × 8 × 11 = 1000 × 11",
-          "xp": 20,
-          "timeLimit": 30
-        },
-        {
-          "id": "cm-a14",
-          "type": "text-input",
-          "question": "What is 1/7 as decimal (first 6 digits)?",
-          "answer": "0.142857",
-          "explanation": "1/7 = 0.142857... (repeating)",
-          "xp": 20,
-          "timeLimit": 30
-        },
-        {
-          "id": "cm-a15",
-          "type": "text-input",
-          "question": "Find GCD(252, 198)",
-          "answer": "18",
-          "explanation": "Use Euclidean algorithm",
-          "xp": 20,
-          "timeLimit": 30
-        },
-        {
-          "id": "cm-a16",
-          "type": "text-input",
-          "question": "What is 999²?",
-          "answer": "998001",
-          "explanation": "999² = (1000-1)² = 1000000 - 2000 + 1 = 998001",
-          "xp": 20,
-          "timeLimit": 30
-        },
-        {
-          "id": "cm-a17",
-          "type": "text-input",
-          "question": "What is 125 × 88?",
-          "answer": "11000",
-          "explanation": "125 × 88 = 125 × 8 × 11 = 1000 × 11",
-          "xp": 20,
-          "timeLimit": 30
-        },
-        {
-          "id": "cm-a18",
-          "type": "text-input",
-          "question": "What is 1/7 as decimal (first 6 digits)?",
-          "answer": "0.142857",
-          "explanation": "1/7 = 0.142857... (repeating)",
-          "xp": 20,
-          "timeLimit": 30
-        },
-        {
-          "id": "cm-a19",
-          "type": "text-input",
-          "question": "Find GCD(252, 198)",
-          "answer": "18",
-          "explanation": "Use Euclidean algorithm",
-          "xp": 20,
-          "timeLimit": 30
-        },
-        {
-          "id": "cm-a20",
-          "type": "text-input",
-          "question": "What is 999²?",
-          "answer": "998001",
-          "explanation": "999² = (1000-1)² = 1000000 - 2000 + 1 = 998001",
-          "xp": 20,
-          "timeLimit": 30
+          "id": "cm-coordinate-geo",
+          "title": "Coordinate Geometry Speed",
+          "explainer": "## Coordinate Geometry\n\n### Distance Formula\nd = √((x₂−x₁)² + (y₂−y₁)²)\n\n### Midpoint\nM = ((x₁+x₂)/2, (y₁+y₂)/2)\n\n### Slope\nm = (y₂−y₁)/(x₂−x₁)\n- Parallel lines: same slope\n- Perpendicular: m₁ × m₂ = −1\n\n### Line Equations\n- Slope-intercept: y = mx + b\n- Point-slope: y − y₁ = m(x − x₁)\n\n### Circle Equation\n(x−h)² + (y−k)² = r² (center (h,k), radius r)\n\n### Area of Polygon (Shoelace)\nA = ½|Σ(xᵢyᵢ₊₁ − xᵢ₊₁yᵢ)|",
+          "visual": "  Distance & Midpoint:\n  ┌──────────────────────────┐\n  │  B(x₂,y₂)               │\n  │  /|                      │\n  │ / |  d = √(Δx²+Δy²)     │\n  │/  | Δy                   │\n  │A──┘                      │\n  │ Δx                       │\n  │                          │\n  │ M = midpoint = avg of    │\n  │ coordinates              │\n  └──────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-cg-1",
+              "type": "multiple-choice",
+              "question": "Distance between (1,2) and (4,6)?",
+              "options": ["5", "7", "√13", "√25"],
+              "correct": 0,
+              "explanation": "d = √(3²+4²) = √(9+16) = √25 = 5.",
+              "xp": 10
+            },
+            {
+              "id": "cm-cg-2",
+              "type": "multiple-choice",
+              "question": "Line through (2,3) with slope 4. What's y when x=5?",
+              "options": ["15", "12", "18", "23"],
+              "correct": 0,
+              "explanation": "y−3 = 4(x−2). At x=5: y = 3+4(3) = 15.",
+              "xp": 10
+            }
+          ]
         }
       ]
     }

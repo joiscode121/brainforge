@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Fraunces, DM_Sans } from "next/font/google";
+import { Fraunces, DM_Sans, Inter } from "next/font/google";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -14,6 +15,12 @@ const dmSans = DM_Sans({
   variable: "--font-body",
   display: "swap",
   weight: ["400", "500", "600", "700"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -34,14 +41,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="scholar" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/icon-192.png" />
         <link rel="apple-touch-icon" href="/icon-192.png" />
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              try {
+                var t = localStorage.getItem('brainforge-theme');
+                if (t === 'forge' || t === 'scholar') {
+                  document.documentElement.setAttribute('data-theme', t);
+                }
+              } catch(e) {}
+            })();
+          `
+        }} />
       </head>
-      <body className={`${fraunces.variable} ${dmSans.variable} font-sans`}
+      <body className={`${fraunces.variable} ${dmSans.variable} ${inter.variable} font-sans`}
             style={{ fontFamily: 'var(--font-body), system-ui, sans-serif' }}>
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -3,45 +3,111 @@
 @tailwind utilities;
 
 /* ═══════════════════════════════════════════════════
-   BrainForge — "Editorial Scholar" Design System
-   Warm, refined, magazine-inspired learning interface
+   BrainForge — Dual Theme System
+   "Scholar" (warm editorial) + "Forge" (dark glassmorphism)
    ═══════════════════════════════════════════════════ */
 
-/* --- Design Tokens --- */
-:root {
-  /* Warm tinted neutrals (OKLCH with warm hue ~60) */
-  --bg-base: oklch(97% 0.008 75);          /* warm ivory */
-  --bg-surface: oklch(94% 0.012 75);       /* warm cream */
-  --bg-elevated: oklch(99% 0.005 75);      /* near-white warm */
-  --bg-sunken: oklch(91% 0.015 75);        /* deeper cream */
+/* ─── Scholar Theme (default) ─── */
+:root,
+[data-theme="scholar"] {
+  /* Warm tinted neutrals */
+  --bg-base: oklch(97% 0.008 75);
+  --bg-surface: oklch(94% 0.012 75);
+  --bg-elevated: oklch(99% 0.005 75);
+  --bg-sunken: oklch(91% 0.015 75);
   
   /* Text hierarchy */
-  --text-primary: oklch(22% 0.015 60);     /* deep warm charcoal */
-  --text-secondary: oklch(45% 0.02 60);    /* warm medium gray */
-  --text-tertiary: oklch(62% 0.015 60);    /* warm light gray */
-  --text-muted: oklch(72% 0.01 60);        /* very subtle */
+  --text-primary: oklch(22% 0.015 60);
+  --text-secondary: oklch(45% 0.02 60);
+  --text-tertiary: oklch(62% 0.015 60);
+  --text-muted: oklch(72% 0.01 60);
   
   /* Brand: Terracotta */
-  --accent: oklch(55% 0.16 35);            /* rich terracotta */
-  --accent-light: oklch(75% 0.1 35);       /* soft terracotta */
-  --accent-subtle: oklch(92% 0.04 35);     /* barely there */
-  --accent-dark: oklch(40% 0.14 35);       /* deep terracotta */
+  --accent: oklch(55% 0.16 35);
+  --accent-light: oklch(75% 0.1 35);
+  --accent-subtle: oklch(92% 0.04 35);
+  --accent-dark: oklch(40% 0.14 35);
   
   /* Semantic */
-  --success: oklch(52% 0.14 155);          /* forest green */
+  --success: oklch(52% 0.14 155);
   --success-light: oklch(90% 0.06 155);
-  --error: oklch(52% 0.18 25);             /* brick red */
+  --error: oklch(52% 0.18 25);
   --error-light: oklch(90% 0.06 25);
-  --warning: oklch(65% 0.16 80);           /* warm amber */
+  --warning: oklch(65% 0.16 80);
   --warning-light: oklch(92% 0.05 80);
-  --info: oklch(50% 0.1 250);              /* muted slate blue */
+  --info: oklch(50% 0.1 250);
   --info-light: oklch(92% 0.03 250);
   
   /* Borders */
   --border: oklch(85% 0.015 60);
   --border-subtle: oklch(90% 0.01 60);
   
-  /* Spacing rhythm (4pt base) */
+  /* Shadows */
+  --shadow-sm: 0 1px 3px oklch(75% 0.01 60 / 0.12);
+  --shadow-md: 0 4px 12px oklch(65% 0.01 60 / 0.1);
+  --shadow-lg: 0 8px 24px oklch(55% 0.01 60 / 0.08);
+
+  /* Forge-specific (hidden in scholar) */
+  --gradient-bg-visible: 0;
+  --glass-blur: 0px;
+  --glass-bg: transparent;
+  --glass-border: transparent;
+  --nav-text: var(--text-tertiary);
+  --nav-text-active: var(--accent);
+  --nav-bg-active: var(--accent-subtle);
+}
+
+/* ─── Forge Theme (dark glassmorphism) ─── */
+[data-theme="forge"] {
+  /* Dark backgrounds */
+  --bg-base: #0a0a1a;
+  --bg-surface: rgba(255, 255, 255, 0.03);
+  --bg-elevated: rgba(255, 255, 255, 0.05);
+  --bg-sunken: rgba(255, 255, 255, 0.02);
+  
+  /* Light text */
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-tertiary: rgba(255, 255, 255, 0.5);
+  --text-muted: rgba(255, 255, 255, 0.35);
+  
+  /* Cyan/Purple accents */
+  --accent: #22d3ee;
+  --accent-light: #67e8f9;
+  --accent-subtle: rgba(34, 211, 238, 0.1);
+  --accent-dark: #0891b2;
+  
+  /* Semantic */
+  --success: #34d399;
+  --success-light: rgba(52, 211, 153, 0.15);
+  --error: #f87171;
+  --error-light: rgba(248, 113, 113, 0.15);
+  --warning: #fbbf24;
+  --warning-light: rgba(251, 191, 36, 0.15);
+  --info: #a78bfa;
+  --info-light: rgba(167, 139, 250, 0.15);
+  
+  /* Borders */
+  --border: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+
+  /* Forge visuals */
+  --gradient-bg-visible: 1;
+  --glass-blur: 16px;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --nav-text: rgba(255, 255, 255, 0.6);
+  --nav-text-active: #22d3ee;
+  --nav-bg-active: rgba(34, 211, 238, 0.1);
+}
+
+/* ─── Spacing ─── */
+:root {
   --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 16px;
@@ -51,7 +117,7 @@
   --space-3xl: 64px;
   --space-4xl: 96px;
   
-  /* Type scale (perfect fourth: 1.333) */
+  /* Type scale */
   --text-xs: clamp(0.7rem, 0.65rem + 0.2vw, 0.75rem);
   --text-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.875rem);
   --text-base: clamp(0.95rem, 0.9rem + 0.25vw, 1rem);
@@ -67,13 +133,9 @@
   --duration-normal: 250ms;
   --duration-slow: 400ms;
   --duration-entrance: 600ms;
-  
-  /* Shadows (subtle, warm-tinted) */
-  --shadow-sm: 0 1px 3px oklch(75% 0.01 60 / 0.12);
-  --shadow-md: 0 4px 12px oklch(65% 0.01 60 / 0.1);
-  --shadow-lg: 0 8px 24px oklch(55% 0.01 60 / 0.08);
 }
 
+/* ─── Base ─── */
 @layer base {
   body {
     background: var(--bg-base);
@@ -82,25 +144,133 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
+    transition: background-color 0.4s ease, color 0.3s ease;
   }
   
-  /* Fluid vertical rhythm */
   h1, h2, h3, h4 {
     line-height: 1.2;
     letter-spacing: -0.02em;
   }
 }
 
-/* --- Component Utilities --- */
+/* ─── Theme Transition ─── */
+[data-theme] * {
+  transition: background-color 0.3s ease, color 0.2s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
 
-/* Surface card — replaces glassmorphism */
+/* ─── Animated Gradient Background (Forge only) ─── */
+.gradient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 100%);
+  overflow: hidden;
+  opacity: var(--gradient-bg-visible);
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.gradient-bg::before,
+.gradient-bg::after,
+.gradient-orb-1,
+.gradient-orb-2 {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.gradient-bg::before {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #a855f7 0%, transparent 70%);
+  top: -100px;
+  left: -100px;
+  animation: float1 20s ease-in-out infinite alternate;
+}
+
+.gradient-bg::after {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #3b82f6 0%, transparent 70%);
+  bottom: -100px;
+  right: -100px;
+  animation: float2 18s ease-in-out infinite alternate;
+}
+
+.gradient-orb-1 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, #06b6d4 0%, transparent 70%);
+  top: 50%;
+  right: -150px;
+  animation: float3 22s ease-in-out infinite alternate;
+}
+
+.gradient-orb-2 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, #ec4899 0%, transparent 70%);
+  bottom: 20%;
+  left: 10%;
+  animation: float4 19s ease-in-out infinite alternate;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(100px, 150px) scale(1.1); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-80px, -120px) scale(0.9); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-120px, 100px) scale(1.15); }
+}
+
+@keyframes float4 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(90px, -80px) scale(0.95); }
+}
+
+@media (max-width: 640px) {
+  .gradient-bg::before,
+  .gradient-bg::after,
+  .gradient-orb-1,
+  .gradient-orb-2 {
+    filter: blur(60px);
+    opacity: 0.2;
+  }
+  .gradient-bg::before { width: 300px; height: 300px; }
+  .gradient-bg::after { width: 250px; height: 250px; }
+  .gradient-orb-1 { width: 280px; height: 280px; }
+  .gradient-orb-2 { width: 200px; height: 200px; }
+}
+
+/* ─── Surface Cards ─── */
 .surface-card {
   background: var(--bg-elevated);
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
   box-shadow: var(--shadow-sm);
   transition: box-shadow var(--duration-normal) var(--ease-out-quart),
-              transform var(--duration-normal) var(--ease-out-quart);
+              transform var(--duration-normal) var(--ease-out-quart),
+              background-color 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme="forge"] .surface-card {
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
 }
 
 .surface-card:hover {
@@ -114,8 +284,14 @@
   box-shadow: var(--shadow-sm);
   transition: box-shadow var(--duration-normal) var(--ease-out-quart),
               transform var(--duration-normal) var(--ease-out-quart),
-              border-color var(--duration-normal) var(--ease-out-quart);
+              border-color var(--duration-normal) var(--ease-out-quart),
+              background-color 0.3s ease;
   cursor: pointer;
+}
+
+[data-theme="forge"] .surface-card-interactive {
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
 }
 
 .surface-card-interactive:hover {
@@ -128,14 +304,23 @@
   transform: translateY(0) scale(0.995);
 }
 
+/* Glass card (Forge compatibility) */
+.glass-card {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
 /* Accent surface */
 .accent-surface {
   background: var(--accent-subtle);
-  border: 1px solid oklch(85% 0.06 35);
+  border: 1px solid color-mix(in oklch, var(--accent) 20%, transparent);
   border-radius: 12px;
 }
 
-/* Sunken surface for inset areas */
+/* Sunken surface */
 .sunken-surface {
   background: var(--bg-sunken);
   border-radius: 8px;
@@ -153,7 +338,83 @@
   transition: width 800ms var(--ease-out-quart);
 }
 
-/* --- Scrollbar (warm tinted) --- */
+/* ─── Theme Toggle Button ─── */
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--accent-subtle);
+  color: var(--accent);
+  border-color: var(--accent-light);
+  transform: scale(1.05);
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.theme-toggle-btn:hover .theme-toggle-icon {
+  transform: rotate(15deg);
+}
+
+/* Large theme toggle (settings page) */
+.theme-toggle-lg {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.theme-toggle-track {
+  width: 56px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--bg-sunken);
+  border: 1px solid var(--border);
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+[data-theme="forge"] .theme-toggle-track {
+  background: rgba(34, 211, 238, 0.15);
+  border-color: rgba(34, 211, 238, 0.3);
+}
+
+.theme-toggle-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: absolute;
+  top: 2px;
+}
+
+/* ─── Scrollbar ─── */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -168,7 +429,7 @@
   background: var(--text-muted);
 }
 
-/* --- Touch targets --- */
+/* ─── Touch targets ─── */
 @media (pointer: coarse) {
   button, a {
     min-height: 44px;
@@ -181,33 +442,29 @@
   padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
 }
 
-/* Selection */
 .no-select {
   -webkit-user-select: none;
   user-select: none;
 }
 
-/* Smooth scrolling */
 .scroll-smooth {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
 }
 
-/* --- Staggered entrance animations --- */
+/* ─── Animations ─── */
 @keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes fillRing {
+  from { stroke-dashoffset: 283; }
 }
 
 .animate-entrance {
@@ -219,7 +476,6 @@
   animation-delay: calc(var(--i, 0) * 60ms);
 }
 
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -227,12 +483,11 @@
   }
 }
 
-/* --- Code blocks --- */
+/* ─── Type utilities ─── */
 pre code {
   font-family: 'DM Mono', 'Menlo', monospace;
 }
 
-/* --- Type utilities --- */
 .font-display {
   font-family: var(--font-display);
   font-weight: 700;
@@ -247,3 +502,42 @@ pre code {
 .bg-sunken { background: var(--bg-sunken); }
 .border-default { border-color: var(--border); }
 .border-subtle { border-color: var(--border-subtle); }
+
+/* ─── Forge-specific font override ─── */
+[data-theme="forge"] body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+[data-theme="forge"] .font-display,
+[data-theme="forge"] [style*="font-display"] {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700;
+}
+
+/* ─── Theme selector cards (settings) ─── */
+.theme-card {
+  padding: 16px;
+  border-radius: 12px;
+  border: 2px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-card:hover {
+  border-color: var(--border);
+}
+
+.theme-card.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-subtle);
+}
+
+.theme-card-scholar {
+  background: oklch(97% 0.008 75);
+  color: oklch(22% 0.015 60);
+}
+
+.theme-card-forge {
+  background: #0a0a1a;
+  color: rgba(255, 255, 255, 0.9);
+}

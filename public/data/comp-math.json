@@ -1,711 +1,498 @@
 {
   "id": "comp-math",
-  "name": "Computational Math",
+  "name": "Competition Math",
   "icon": "⚡",
-  "color": "#a855f7",
-  "description": "Mental math shortcuts and computational strategies from basic tricks to advanced calculus techniques",
-  "topics": [
-    {
-      "id": "multiplication-shortcuts",
-      "title": "Multiplication Shortcuts",
-      "chapter": 1,
-      "difficulty": "beginner",
-      "study": {
-        "content": "**Mental multiplication** becomes effortless with strategic shortcuts. The key is recognizing patterns that simplify calculations.\n\n**Multiplying by 11**: For two-digit numbers, add the digits and place the sum in the middle. For $45 \\times 11$: write $4\\_5$, add $4+5=9$, result is $495$. For sums ≥10, carry: $67 \\times 11$ → $6\\_7$ → $6+7=13$ → $6(1+6)7 = 737$.\n\n**Squaring numbers ending in 5**: Use the formula $$(10a + 5)^2 = 100a(a+1) + 25$$ For $35^2$: $a=3$, so $3 \\times 4 = 12$, append $25$ → $1225$. For $85^2$: $8 \\times 9 = 72$ → $7225$.\n\n**Multiplying near powers of 10**: For numbers close to 100, use $(100-a)(100-b) = 10000 - 100(a+b) + ab$. For $97 \\times 96$: $a=3, b=4$, so $10000 - 700 + 12 = 9312$.\n\n**Doubling and halving**: For $16 \\times 35$, double one and halve the other: $32 \\times 17.5$ → $64 \\times 8.75$ is awkward, but $8 \\times 70 = 560$ works better. Choose direction wisely.\n\n**Cross multiplication** (for products like $23 \\times 17$): $(20+3)(10+7) = 200 + 140 + 30 + 21 = 391$. Break numbers into manageable parts and distribute.\n\nThe **Trachtenberg system** offers systematic methods for all operations. Practice transforms these from tricks into intuition, enabling rapid mental arithmetic that impresses in interviews, competitions, and daily life.",
-        "keyPoints": [
-          "Multiplying by 11: sum digits and insert between originals",
-          "Squaring numbers ending in 5: n(n+1) then append 25",
-          "Break complex multiplications into simpler components using distributive property"
-        ],
-        "readingTimeMin": 4
-      },
-      "mindmap": "mindmap\n  root((Multiplication Shortcuts))\n    By 11\n      Two-digit\n      Three-digit\n      Carrying\n    Squaring\n      Ending in 5\n      Near 50, 500\n    Near Powers\n      Close to 10\n      Close to 100\n    Techniques\n      Doubling/Halving\n      Cross Multiplication\n      Trachtenberg",
-      "slides": [
+  "color": "#f59e0b",
+  "description": "TMSCA, Number Sense, speed drills, mental math shortcuts",
+  "levels": {
+    "mental-arithmetic": {
+      "name": "Mental Arithmetic",
+      "description": "Speed tricks for addition, subtraction, multiplication",
+      "order": 1,
+      "topics": [
         {
-          "title": "Multiply by 11 Trick",
-          "content": "To multiply a two-digit number by 11, write the first digit, then the sum of both digits, then the last digit.",
-          "visual": "equation",
-          "visualData": "45 × 11 = 4[4+5]5 = 495\n67 × 11 = 6[6+7]7 = 6[13]7 = 737",
-          "narration": "Multiplying by eleven has an elegant pattern. Write the outer digits, then insert their sum in the middle. If the sum exceeds nine, carry to the left."
+          "id": "cm-complement-addition",
+          "title": "Complement Addition & Subtraction",
+          "explainer": "## Complement Addition & Subtraction\n\n### The Core Idea\nInstead of subtracting directly, **add the complement** to make the math easier.\n\n### Complements to 10\n- Complement of 3 → 7 (3 + 7 = 10)\n- Complement of 8 → 2\n- Complement of 6 → 4\n\n### Subtract from Powers of 10\nTo compute **1000 − 637**:\n1. Complement each digit to 9 (except last to 10)\n2. 6→3, 3→6, 7→3\n3. Answer: **363**\n\n### Speed Rule\nFor subtraction from 10^n: complement each digit to 9, last digit to 10.\n\n### TMSCA Tip\nThis lets you subtract from round numbers in under 2 seconds.",
+          "visual": "  Complement Subtraction: 1000 - 637\n  ┌──────────────────────────────────┐\n  │  Each digit's complement to 9:   │\n  │  6 → 3,  3 → 6,  7 → 3          │\n  │  (last digit: complement to 10)  │\n  │                                  │\n  │  1000 - 637 = 363               │\n  │  Check: 363 + 637 = 1000 ✓      │\n  └──────────────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-ca-1",
+              "type": "multiple-choice",
+              "question": "What is 1000 − 456?",
+              "options": ["544", "554", "444", "644"],
+              "correct": 0,
+              "explanation": "Complement: 4→5, 5→4, 6→4. Answer: 544.",
+              "xp": 10
+            },
+            {
+              "id": "cm-ca-2",
+              "type": "multiple-choice",
+              "question": "What is the complement of 73 to 100?",
+              "options": ["37", "27", "17", "33"],
+              "correct": 1,
+              "explanation": "100 − 73 = 27.",
+              "xp": 10
+            },
+            {
+              "id": "cm-ca-3",
+              "type": "multiple-choice",
+              "question": "Compute 10000 − 3782 using complements.",
+              "options": ["7218", "6228", "6218", "6318"],
+              "correct": 2,
+              "explanation": "Complements: 3→6, 7→2, 8→1, 2→8. Answer: 6218.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "title": "Squaring Numbers Ending in 5",
-          "content": "For any number ending in 5, multiply the tens digit by the next higher number, then append 25.",
-          "visual": "equation",
-          "visualData": "35² = [3×4][25] = 1225\n85² = [8×9][25] = 7225\n\n(10a+5)² = 100a(a+1) + 25",
-          "narration": "Squaring numbers that end in five follows a beautiful pattern. Take the tens digit, multiply by one more than itself, then append twenty-five to get your answer."
+          "id": "cm-multiply-11",
+          "title": "Multiplying by 11 and Near-Powers",
+          "explainer": "## Lightning Multiplication by 11\n\n### The 11 Trick\nTo multiply any 2-digit number by 11:\n1. Write the two digits apart: a _ b\n2. Put their sum in the middle: a (a+b) b\n3. If sum > 9, carry the 1\n\n**Example:** 72 × 11 → 7_(7+2)_2 = 7_9_2 = **792**\n\n**Example:** 85 × 11 → 8_(8+5)_5 = 8_13_5 → carry → **935**\n\n### Multiplying by 9, 99, 999\nShortcut: n × 99 = n × 100 − n\n- 47 × 99 = 4700 − 47 = **4653**\n- 63 × 999 = 63000 − 63 = **62937**",
+          "visual": "  72 × 11 = ?\n  ┌───────────────────┐\n  │  Step 1: Split     │\n  │    7 _ 2           │\n  │  Step 2: Add       │\n  │    7 (7+2) 2 = 792 │\n  └───────────────────┘\n\n  85 × 11 = ?\n  ┌───────────────────┐\n  │  8 (13) 5 → carry │\n  │  9  3   5 = 935   │\n  └───────────────────┘",
+          "questions": [
+            {
+              "id": "cm-m11-1",
+              "type": "multiple-choice",
+              "question": "What is 63 × 11?",
+              "options": ["693", "633", "703", "696"],
+              "correct": 0,
+              "explanation": "6_(6+3)_3 = 6_9_3 = 693.",
+              "xp": 10
+            },
+            {
+              "id": "cm-m11-2",
+              "type": "multiple-choice",
+              "question": "What is 78 × 11?",
+              "options": ["848", "858", "868", "838"],
+              "correct": 1,
+              "explanation": "7_(7+8)_8 = 7_15_8 → carry → 858.",
+              "xp": 10
+            },
+            {
+              "id": "cm-m11-3",
+              "type": "multiple-choice",
+              "question": "What is 47 × 99?",
+              "options": ["4553", "4653", "4753", "4647"],
+              "correct": 1,
+              "explanation": "47 × 99 = 4700 − 47 = 4653.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "title": "Cross Multiplication",
-          "content": "Break numbers into tens and ones, then distribute: (a+b)(c+d) = ac + ad + bc + bd.",
-          "visual": "text",
-          "visualData": "23 × 17 = (20+3)(10+7)\n= 200 + 140 + 30 + 21\n= 391",
-          "narration": "Cross multiplication decomposes hard problems into easy ones. Break each number into parts, multiply all combinations, then add. This leverages the distributive property."
-        }
-      ],
-      "questions": [
-        {
-          "id": "mult-q1",
-          "type": "multiple-choice",
-          "question": "What is 72 × 11 using the quick method?",
-          "options": [
-            "782",
-            "792",
-            "802",
-            "712"
-          ],
-          "correct": 1,
-          "explanation": "72 × 11: Write 7[7+2]2 = 7[9]2 = 792. The sum of digits goes in the middle.",
-          "xp": 10
-        },
-        {
-          "id": "mult-q2",
-          "type": "multiple-choice",
-          "question": "What is 65² using the ending-in-5 shortcut?",
-          "options": [
-            "4025",
-            "4125",
-            "4225",
-            "4325"
-          ],
-          "correct": 2,
-          "explanation": "65² = [6×7][25] = 42[25] = 4225. Multiply 6 by 7 to get 42, then append 25.",
-          "xp": 10
-        },
-        {
-          "id": "mult-q3",
-          "type": "multiple-choice",
-          "question": "When multiplying 16 × 25, which doubling/halving step is most efficient?",
-          "options": [
-            "32 × 12.5",
-            "8 × 50",
-            "4 × 100",
-            "64 × 6.25"
-          ],
-          "correct": 2,
-          "explanation": "16 → 8 → 4 (halving), 25 → 50 → 100 (doubling) gives 4 × 100 = 400. This reaches a power of 10 quickly.",
-          "xp": 10
-        },
-        {
-          "id": "mult-q4",
-          "type": "multiple-choice",
-          "question": "What is 98 × 97 using the near-100 method?",
-          "options": [
-            "9406",
-            "9506",
-            "9606",
-            "9706"
-          ],
-          "correct": 0,
-          "explanation": "98 × 97: (100-2)(100-3) = 10000 - 500 + 6 = 9506. Wait, 100(2+3) = 500, and 2×3 = 6, so 10000-500+6 = 9506. Actually let me recalculate: (98)(97) = (100-2)(100-3) = 9700 - 300 + 6 = 9406. Better: 98×97 = 98×100 - 98×3 = 9800 - 294 = 9506. Hmm, let's verify: 95×2 = 190, 90×100 = 9000, 8×97 = 776, total 9776? No. Direct: 98×97 = (100-2)(100-3) = 10000 - 300 - 200 + 6 = 9506. Actually the correct answer using the formula: result = (98-3)×100 + 2×3 = 9500 + 6 = 9506. Let me recalculate the formula: for (100-a)(100-b), the trick is: subtract (a+b) from 100 to get the first part, multiply a×b for the last part: (100-5)×100 + 2×3 = 9500+6 = 9506. But the question says the answer is 9406. Let me verify by direct calculation: 98×97 = 98×(100-3) = 9800 - 294 = 9506. So actually 9506 is correct. Let me check the original answers again... the options are 9406, 9506, 9606, 9706. So 9506 (index 1) is correct.",
-          "xp": 10
-        },
-        {
-          "id": "mult-q5",
-          "type": "multiple-choice",
-          "question": "Using cross multiplication, what is 31 × 12?",
-          "options": [
-            "362",
-            "372",
-            "382",
-            "392"
-          ],
-          "correct": 1,
-          "explanation": "31×12 = (30+1)(10+2) = 300 + 60 + 10 + 2 = 372.",
-          "xp": 10
-        }
-      ],
-      "resources": [
-        {
-          "title": "Mental Math Tricks - Art of Problem Solving",
-          "url": "https://artofproblemsolving.com/wiki/index.php/Mental_math"
+          "id": "cm-squaring",
+          "title": "Speed Squaring Techniques",
+          "explainer": "## Speed Squaring\n\n### Numbers Ending in 5\n1. Take tens digit, multiply by (itself + 1)\n2. Append 25\n\n**35²:** 3×4 = 12, append 25 → **1225**\n**85²:** 8×9 = 72, append 25 → **7225**\n\n### Near 50: n = 50 ± d\n(50+d)² = (25+d)×100 + d²\n\n**53²:** (25+3)×100 + 9 = 2809\n**47²:** (25−3)×100 + 9 = 2209\n\n### Near 100: n = 100 − d\n(100−d)² = (100−2d)×100 + d²\n\n**97²:** 94×100 + 9 = **9409**\n**96²:** 92×100 + 16 = **9216**",
+          "visual": "  Squaring numbers ending in 5:\n  ┌─────────────────────────┐\n  │  n5² = n×(n+1) | 25     │\n  │  25² = 2×3|25 = 625     │\n  │  35² = 3×4|25 = 1225    │\n  │  65² = 6×7|25 = 4225    │\n  │  95² = 9×10|25 = 9025   │\n  └─────────────────────────┘\n\n  Near-50: (50+d)² = (25+d)×100 + d²\n  ┌─────────────────────────┐\n  │  48² = 23×100+4 = 2304  │\n  │  54² = 29×100+16 = 2916 │\n  └─────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-sq-1",
+              "type": "multiple-choice",
+              "question": "What is 45²?",
+              "options": ["2025", "1925", "2125", "2225"],
+              "correct": 0,
+              "explanation": "4×5 = 20, append 25 → 2025.",
+              "xp": 10
+            },
+            {
+              "id": "cm-sq-2",
+              "type": "multiple-choice",
+              "question": "What is 52² using the near-50 trick?",
+              "options": ["2704", "2604", "2804", "2904"],
+              "correct": 0,
+              "explanation": "d=2: (25+2)×100 + 4 = 2704.",
+              "xp": 10
+            },
+            {
+              "id": "cm-sq-3",
+              "type": "multiple-choice",
+              "question": "What is 95²?",
+              "options": ["9025", "9125", "8925", "9225"],
+              "correct": 0,
+              "explanation": "9×10 = 90, append 25 → 9025.",
+              "xp": 10
+            }
+          ]
         }
       ]
     },
-    {
-      "id": "divisibility-rules",
-      "title": "Divisibility Rules",
-      "chapter": 2,
-      "difficulty": "beginner",
-      "study": {
-        "content": "**Divisibility rules** enable instant recognition of factors without division. These patterns emerge from modular arithmetic and place-value systems.\n\n**Divisibility by 2**: Last digit is even (0,2,4,6,8). Example: $1,234$ ends in $4$ → divisible by $2$.\n\n**Divisibility by 3**: Sum of digits is divisible by $3$. For $12,345$: $1+2+3+4+5=15$, and $15 \\div 3 = 5$ → yes. This works because $10 \\equiv 1 \\pmod{3}$, so $abc = 100a + 10b + c \\equiv a+b+c \\pmod{3}$.\n\n**Divisibility by 4**: Last two digits form a number divisible by $4$. For $3,416$: check if $16 \\div 4 = 4$ → yes. Since $100 \\equiv 0 \\pmod{4}$, only the last two digits matter.\n\n**Divisibility by 5**: Last digit is $0$ or $5$. Trivial since $10 \\equiv 0 \\pmod{5}$.\n\n**Divisibility by 6**: Must be divisible by both $2$ and $3$ (since $6 = 2 \\times 3$ and $\\gcd(2,3)=1$).\n\n**Divisibility by 7**: Subtract $2 \\times$ (last digit) from remaining number. For $203$: $20 - 2(3) = 14$, which is $7 \\times 2$ → yes. Or use the pattern: $1, 3, 2, -1, -3, -2$ multipliers from right to left.\n\n**Divisibility by 9**: Sum of digits divisible by $9$ (similar to $3$ rule). For $7,821$: $7+8+2+1=18 = 2 \\times 9$ → yes.\n\n**Divisibility by 11**: Alternating sum of digits. For $2,728$: $(2+2) - (7+8) = 4 - 15 = -11$ → divisible. This works because $10 \\equiv -1 \\pmod{11}$.\n\nThese rules accelerate fraction simplification, GCD computation, and prime factorization—essential for competitive math.",
-        "keyPoints": [
-          "Divisibility by 3 or 9: sum of digits must be divisible by that number",
-          "Divisibility by 4 or 8: check last 2 or 3 digits respectively",
-          "Divisibility by 11: alternating sum of digits must be divisible by 11"
-        ],
-        "readingTimeMin": 5
-      },
-      "mindmap": "mindmap\n  root((Divisibility))\n    Simple\n      By 2: last digit even\n      By 5: ends 0 or 5\n      By 10: ends in 0\n    Digit Sum\n      By 3: sum÷3\n      By 9: sum÷9\n    Last Digits\n      By 4: last 2 digits\n      By 8: last 3 digits\n    Special\n      By 11: alternating sum\n      By 7: recursive test",
-      "slides": [
+    "algebraic-shortcuts": {
+      "name": "Algebraic Shortcuts",
+      "description": "Difference of squares, factoring tricks, algebraic identities",
+      "order": 2,
+      "topics": [
         {
-          "title": "Divisibility by 3 and 9",
-          "content": "A number is divisible by 3 (or 9) if the sum of its digits is divisible by 3 (or 9). This works because 10 ≡ 1 (mod 3).",
-          "visual": "equation",
-          "visualData": "12,345 → 1+2+3+4+5 = 15\n15 ÷ 3 = 5 ✓\n15 ÷ 9 ≠ integer ✗",
-          "narration": "To check divisibility by three or nine, simply add all the digits. If that sum is divisible by three or nine, so is the original number."
-        },
-        {
-          "title": "Divisibility by 11",
-          "content": "Subtract the sum of odd-position digits from the sum of even-position digits. If the result is divisible by 11, so is the number.",
-          "visual": "text",
-          "visualData": "2,728:\n(2+2) - (7+8) = 4 - 15 = -11\n-11 ÷ 11 = -1 ✓",
-          "narration": "For divisibility by eleven, use the alternating sum. Add digits in odd positions, subtract those in even positions. If the result is divisible by eleven, you're done."
-        },
-        {
-          "title": "Last Digit Rules",
-          "content": "Divisibility by powers of 2 and 5 depends only on the last few digits, since higher place values are already divisible.",
-          "visual": "text",
-          "visualData": "By 4: last 2 digits\nBy 8: last 3 digits\n\n3,416: 16÷4=4 ✓\n7,000: 000÷8=0 ✓",
-          "narration": "Powers of two and five have shortcut rules. For four, check the last two digits. For eight, the last three. This works because hundreds and thousands are already divisible."
-        }
-      ],
-      "questions": [
-        {
-          "id": "div-q1",
-          "type": "multiple-choice",
-          "question": "Is 4,578 divisible by 3?",
-          "options": [
-            "Yes",
-            "No",
-            "Cannot determine",
-            "Only if divided by 2 first"
-          ],
-          "correct": 0,
-          "explanation": "Sum of digits: 4+5+7+8 = 24, and 24÷3 = 8, so yes, 4,578 is divisible by 3.",
-          "xp": 10
-        },
-        {
-          "id": "div-q2",
-          "type": "multiple-choice",
-          "question": "Which of these is divisible by 11?",
-          "options": [
-            "132",
-            "253",
-            "374",
-            "495"
-          ],
-          "correct": 0,
-          "explanation": "132: (1+2)-3 = 0, divisible by 11. The others don't pass the alternating sum test.",
-          "xp": 10
-        },
-        {
-          "id": "div-q3",
-          "type": "multiple-choice",
-          "question": "Is 5,624 divisible by 4?",
-          "options": [
-            "Yes",
-            "No",
-            "Only by 2",
-            "Need full division"
-          ],
-          "correct": 0,
-          "explanation": "Last two digits: 24. Since 24÷4 = 6, yes, 5,624 is divisible by 4.",
-          "xp": 10
-        },
-        {
-          "id": "div-q4",
-          "type": "multiple-choice",
-          "question": "A number is divisible by 6 if and only if:",
-          "options": [
-            "It ends in 6",
-            "It's divisible by both 2 and 3",
-            "Its digit sum is 6",
-            "It's even and greater than 6"
-          ],
-          "correct": 1,
-          "explanation": "Since 6 = 2×3 and gcd(2,3)=1, a number is divisible by 6 iff it's divisible by both 2 and 3.",
-          "xp": 10
-        },
-        {
-          "id": "div-q5",
-          "type": "multiple-choice",
-          "question": "Is 8,991 divisible by 9?",
-          "options": [
-            "Yes",
-            "No",
-            "Only by 3",
-            "Cannot tell"
-          ],
-          "correct": 0,
-          "explanation": "Sum: 8+9+9+1 = 27 = 3×9, so yes, 8,991 is divisible by 9.",
-          "xp": 10
-        }
-      ],
-      "resources": [
-        {
-          "title": "Divisibility Rules - Math is Fun",
-          "url": "https://www.mathsisfun.com/divisibility-rules.html"
-        }
-      ]
-    },
-    {
-      "id": "number-sense",
-      "title": "Number Sense & Speed",
-      "chapter": 3,
-      "difficulty": "intermediate",
-      "study": {
-        "content": "**Number sense** is intuition about quantities, relationships, and estimates. It transforms arithmetic from mechanical calculation into fluid reasoning.\n\n**Estimation mastery**: Round strategically. For $47 \\times 23$, think $50 \\times 20 = 1000$, but we overshot on first and undershot on second, so adjust: actual $\\approx 1080$ (exact: $1081$). The key is **compensating errors**.\n\n**Benchmark numbers**: Memorize key values. $\\sqrt{2} \\approx 1.414$, $\\pi \\approx 3.14159$, $e \\approx 2.718$, $\\phi \\approx 1.618$. Know squares up to $30^2 = 900$ and cubes to $12^3 = 1728$.\n\n**Fraction sense**: Recognize $\\frac{1}{7} \\approx 0.143$, $\\frac{1}{9} \\approx 0.111$, $\\frac{1}{11} \\approx 0.091$. Convert mentally: $\\frac{3}{8} = 0.375$ (half of $\\frac{3}{4}$).\n\n**Percentage shortcuts**: $1\\% = \\frac{1}{100}$, so move decimal two left. $15\\%$ of $80 = 10\\% + 5\\% = 8 + 4 = 12$. Or use symmetry: $15\\%$ of $80 = 80\\%$ of $15 = 12$.\n\n**Ratio scaling**: If $\\frac{a}{b} = \\frac{c}{d}$, then $ad = bc$ (cross-multiply). For $\\frac{x}{12} = \\frac{5}{8}$: $8x = 60$, so $x = 7.5$.\n\n**Order-of-magnitude checks**: Before detailed calculation, estimate scale. Is the answer tens, hundreds, thousands? This catches errors. For $(3.2 \\times 10^4)(5.1 \\times 10^{-6})$, expect $\\sim 15 \\times 10^{-2} = 0.15$.\n\nDeveloping number sense requires deliberate practice: estimate first, calculate second, reflect on accuracy. Over time, intuition replaces rote calculation.",
-        "keyPoints": [
-          "Estimate before calculating using rounded numbers and order-of-magnitude reasoning",
-          "Memorize benchmark values (key fractions, squares, roots) for quick reference",
-          "Use compensating errors when rounding—adjust when you overshot or undershot"
-        ],
-        "readingTimeMin": 5
-      },
-      "mindmap": "mindmap\n  root((Number Sense))\n    Estimation\n      Rounding\n      Compensating Errors\n      Order of Magnitude\n    Benchmarks\n      Squares\n      Roots\n      Constants\n    Conversions\n      Fractions↔Decimals\n      Percentages\n      Ratios\n    Speed Techniques\n      Pattern Recognition\n      Chunking\n      Working Memory",
-      "slides": [
-        {
-          "title": "Strategic Estimation",
-          "content": "Round numbers intelligently and use compensating errors. If you round one number up and another down, they partly cancel.",
-          "visual": "text",
-          "visualData": "47 × 23:\n50 × 20 = 1,000\nBut 50>47 (+3) and 20<23 (-3)\nAdjust: ≈ 1,080\nExact: 1,081",
-          "narration": "Estimation isn't guessing—it's strategic rounding with error correction. Round one up, another down, then adjust mentally for a close approximation."
-        },
-        {
-          "title": "Percentage Symmetry",
-          "content": "Use the commutative property: A% of B = B% of A. This often makes mental math easier.",
-          "visual": "equation",
-          "visualData": "15% of 80 = 80% of 15\n80% of 15 = \\frac{4}{5} × 15 = 12",
-          "narration": "Here's a beautiful shortcut: fifteen percent of eighty equals eighty percent of fifteen. Choose whichever direction is easier to calculate mentally."
-        },
-        {
-          "title": "Order of Magnitude",
-          "content": "Before detailed calculation, estimate the scale. This catches errors and builds intuition about reasonable answers.",
-          "visual": "equation",
-          "visualData": "(3.2 × 10⁴)(5.1 × 10⁻⁶)\n≈ (3)(5) × 10⁴⁺⁽⁻⁶⁾\n≈ 15 × 10⁻²\n= 0.15",
-          "narration": "Always check order of magnitude first. Multiply the rough numbers and add exponents. This prevents errors like placing a decimal point incorrectly."
-        }
-      ],
-      "questions": [
-        {
-          "id": "num-q1",
-          "type": "multiple-choice",
-          "question": "What is a good estimate for 48 × 31?",
-          "options": [
-            "1,200",
-            "1,500",
-            "1,800",
-            "2,100"
-          ],
-          "correct": 1,
-          "explanation": "50 × 30 = 1,500. The exact answer is 1,488, so 1,500 is the closest estimate.",
-          "xp": 10
-        },
-        {
-          "id": "num-q2",
-          "type": "multiple-choice",
-          "question": "Using symmetry, what is 25% of 84?",
-          "options": [
-            "19",
-            "21",
-            "23",
-            "25"
-          ],
-          "correct": 1,
-          "explanation": "25% of 84 = 84% of 25 = (80% + 4%) of 25 = 20 + 1 = 21. Or directly: 25% = ¼, so 84÷4 = 21.",
-          "xp": 10
-        },
-        {
-          "id": "num-q3",
-          "type": "multiple-choice",
-          "question": "What is 12² (mental calculation)?",
-          "options": [
-            "124",
-            "134",
-            "144",
-            "154"
-          ],
-          "correct": 2,
-          "explanation": "12² = (10+2)² = 100 + 40 + 4 = 144. Or memorize: 12² = 144.",
-          "xp": 10
-        },
-        {
-          "id": "num-q4",
-          "type": "multiple-choice",
-          "question": "Approximately how many seconds in a day?",
-          "options": [
-            "86,400",
-            "100,000",
-            "75,000",
-            "90,000"
-          ],
-          "correct": 0,
-          "explanation": "24 hrs × 60 min × 60 sec = 24 × 3,600 ≈ 24 × 3,600 = 86,400 exactly.",
-          "xp": 10
-        },
-        {
-          "id": "num-q5",
-          "type": "multiple-choice",
-          "question": "What is ⅜ as a decimal?",
-          "options": [
-            "0.325",
-            "0.375",
-            "0.425",
-            "0.475"
-          ],
-          "correct": 1,
-          "explanation": "⅜ = 3/8 = (3×125)/(8×125) = 375/1000 = 0.375. Or: 1/8 = 0.125, so 3/8 = 0.375.",
-          "xp": 10
-        }
-      ],
-      "resources": [
-        {
-          "title": "Number Sense Routines",
-          "url": "https://www.youcubed.org/resources/number-sense/"
-        }
-      ]
-    },
-    {
-      "id": "algebraic-tricks",
-      "title": "Algebraic Tricks",
-      "chapter": 4,
-      "difficulty": "intermediate",
-      "study": {
-        "content": "**Algebraic manipulation** shortcuts accelerate equation solving and simplification. Master these patterns to transform complex expressions instantly.\n\n**Difference of squares**: $a^2 - b^2 = (a+b)(a-b)$. For $99^2 - 1 = (99+1)(99-1) = 100 \\times 98 = 9800$. Instantly factor without expansion.\n\n**Perfect square trinomials**: $(a \\pm b)^2 = a^2 \\pm 2ab + b^2$. Recognize $x^2 + 6x + 9 = (x+3)^2$ immediately.\n\n**Sum and product patterns**: For $x^2 + bx + c$, find numbers that sum to $b$ and multiply to $c$. Example: $x^2 + 7x + 12 = (x+3)(x+4)$ since $3+4=7$ and $3 \\times 4 = 12$.\n\n**Completing the square**: Transform $ax^2 + bx + c$ into $a(x-h)^2 + k$ form. For $x^2 + 6x + 5$: take half of $6$ to get $3$, so $(x+3)^2 - 9 + 5 = (x+3)^2 - 4$.\n\n**Vieta's formulas**: For $x^2 + px + q = 0$ with roots $r,s$: sum $r+s = -p$ and product $rs = q$. Quickly find root relationships without solving.\n\n**Simon's Favorite Factoring Trick (SFFT)**: Add and subtract the same term to enable factoring. For $x^4 + x^2 + 1$, add/subtract $x^2$: $x^4 + 2x^2 + 1 - x^2 = (x^2+1)^2 - x^2 = (x^2+x+1)(x^2-x+1)$.\n\n**Substitution**: Let $y = x^2$ to simplify $x^4 - 5x^2 + 4 = 0$ into $y^2 - 5y + 4 = 0$, giving $y=1$ or $y=4$, so $x = \\pm 1$ or $x = \\pm 2$.\n\nThese tricks don't replace understanding—they enhance it, revealing structure that brute force obscures.",
-        "keyPoints": [
-          "Difference of squares and perfect square patterns enable instant factoring",
-          "Completing the square converts quadratics to vertex form",
-          "Simon's Favorite Factoring Trick: add/subtract terms to create factorable expressions"
-        ],
-        "readingTimeMin": 5
-      },
-      "mindmap": "mindmap\n  root((Algebraic Tricks))\n    Factoring\n      Difference of Squares\n      Perfect Squares\n      Sum/Product\n    Equations\n      Completing Square\n      Quadratic Formula\n      Vieta's Formulas\n    Advanced\n      SFFT\n      Substitution\n      Symmetric Sums",
-      "slides": [
-        {
+          "id": "cm-diff-squares",
           "title": "Difference of Squares",
-          "content": "The pattern a²-b² = (a+b)(a-b) enables instant factoring and mental calculation of special products.",
-          "visual": "equation",
-          "visualData": "99² - 1² = (99+1)(99-1)\n= 100 × 98 = 9,800",
-          "narration": "Difference of squares is one of algebra's most useful patterns. Factor immediately into sum times difference, perfect for mental math."
+          "explainer": "## Difference of Squares\n\n### The Identity\n**a² − b² = (a+b)(a−b)**\n\n### Mental Multiplication\nMultiply numbers equidistant from a center:\n- 23 × 17 = (20+3)(20−3) = 400 − 9 = **391**\n- 48 × 52 = (50−2)(50+2) = 2500 − 4 = **2496**\n- 101 × 99 = 10000 − 1 = **9999**\n\n### Recognizing Patterns\n- 31 × 29 = 30² − 1 = 899\n- 64 × 56 = 60² − 4² = 3584\n- 67² − 33² = (67+33)(67−33) = 100 × 34 = 3400",
+          "visual": "  a² - b² = (a+b)(a-b)\n\n  Example: 37 × 43\n  ┌──────────────────────┐\n  │  midpoint = 40       │\n  │  37 = 40-3, 43 = 40+3│\n  │  = 40² - 3²          │\n  │  = 1600 - 9 = 1591   │\n  └──────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-ds-1",
+              "type": "multiple-choice",
+              "question": "Compute 46 × 54 using difference of squares.",
+              "options": ["2484", "2496", "2516", "2504"],
+              "correct": 0,
+              "explanation": "(50−4)(50+4) = 2500 − 16 = 2484.",
+              "xp": 10
+            },
+            {
+              "id": "cm-ds-2",
+              "type": "multiple-choice",
+              "question": "What is 101 × 99?",
+              "options": ["9999", "10001", "9899", "9901"],
+              "correct": 0,
+              "explanation": "(100+1)(100−1) = 10000 − 1 = 9999.",
+              "xp": 10
+            },
+            {
+              "id": "cm-ds-3",
+              "type": "multiple-choice",
+              "question": "67² − 33² equals:",
+              "options": ["3400", "3434", "3366", "3500"],
+              "correct": 0,
+              "explanation": "(67+33)(67−33) = 100 × 34 = 3400.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "title": "Completing the Square",
-          "content": "Transform any quadratic into vertex form by taking half the linear coefficient, squaring it, then adjusting.",
-          "visual": "equation",
-          "visualData": "x² + 6x + 5\n= (x + 3)² - 9 + 5\n= (x + 3)² - 4",
-          "narration": "Completing the square reveals the vertex form. Take half of the x coefficient, square it, then balance the equation. This is foundational for calculus and optimization."
+          "id": "cm-modular",
+          "title": "Modular Arithmetic Tricks",
+          "explainer": "## Modular Arithmetic\n\n### What is Mod?\na mod n = remainder when a is divided by n.\n\n### Key Rules\n1. (a + b) mod n = ((a mod n) + (b mod n)) mod n\n2. (a × b) mod n = ((a mod n) × (b mod n)) mod n\n\n### Last Digit Problems\nLast digit = number mod 10\n- 7^100: Pattern 7,9,3,1 repeats every 4. 100 mod 4 = 0 → last digit **1**\n- 3^2024: Pattern 3,9,7,1. 2024 mod 4 = 0 → last digit **1**\n\n### Divisibility Rules\n- **By 3:** sum of digits ÷ 3\n- **By 4:** last 2 digits ÷ 4\n- **By 7:** double last digit, subtract from rest\n- **By 8:** last 3 digits ÷ 8\n- **By 11:** alternating sum ÷ 11",
+          "visual": "  Powers of 7 mod 10 (cycle = 4):\n  ┌──────────────────────────┐\n  │  7¹ mod 10 = 7  ┌→ 7    │\n  │  7² mod 10 = 9  │  ↓    │\n  │  7³ mod 10 = 3  1 ← 9   │\n  │  7⁴ mod 10 = 1  ↑  ↓    │\n  │  repeats!        └─ 3   │\n  └──────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-mod-1",
+              "type": "multiple-choice",
+              "question": "What is the last digit of 3^2024?",
+              "options": ["3", "9", "7", "1"],
+              "correct": 3,
+              "explanation": "Cycle: 3,9,7,1 (length 4). 2024 mod 4 = 0 → same as 3^4 → last digit 1.",
+              "xp": 10
+            },
+            {
+              "id": "cm-mod-2",
+              "type": "multiple-choice",
+              "question": "Is 31415 divisible by 11?",
+              "options": ["Yes", "No"],
+              "correct": 1,
+              "explanation": "Alternating sum: 3−1+4−1+5 = 10. Not divisible by 11.",
+              "xp": 10
+            },
+            {
+              "id": "cm-mod-3",
+              "type": "multiple-choice",
+              "question": "What is 2^10 mod 7?",
+              "options": ["1", "2", "4", "6"],
+              "correct": 1,
+              "explanation": "2^3 = 8 ≡ 1 (mod 7). 10 mod 3 = 1, so 2^10 ≡ 2^1 = 2 (mod 7).",
+              "xp": 10
+            }
+          ]
         },
         {
-          "title": "Simon's Favorite Factoring Trick",
-          "content": "Add and subtract the same term to create a factorable expression, especially useful for symmetric polynomials.",
-          "visual": "equation",
-          "visualData": "x⁴ + x² + 1\n= x⁴ + 2x² + 1 - x²\n= (x²+1)² - x²\n= (x²+x+1)(x²-x+1)",
-          "narration": "SFFT is a competition math secret weapon. Add and subtract a strategic term to create a difference of squares or other factorable pattern."
-        }
-      ],
-      "questions": [
-        {
-          "id": "alg-q1",
-          "type": "multiple-choice",
-          "question": "Factor x² - 49 using difference of squares:",
-          "options": [
-            "(x-7)(x-7)",
-            "(x+7)(x+7)",
-            "(x+7)(x-7)",
-            "Cannot factor"
-          ],
-          "correct": 2,
-          "explanation": "x² - 49 = x² - 7² = (x+7)(x-7) by difference of squares pattern.",
-          "xp": 10
-        },
-        {
-          "id": "alg-q2",
-          "type": "multiple-choice",
-          "question": "Complete the square for x² + 10x:",
-          "options": [
-            "(x+5)² - 25",
-            "(x+5)² + 25",
-            "(x+10)² - 100",
-            "(x+5)²"
-          ],
-          "correct": 0,
-          "explanation": "Take half of 10 to get 5, then (x+5)² = x² + 10x + 25, so x² + 10x = (x+5)² - 25.",
-          "xp": 10
-        },
-        {
-          "id": "alg-q3",
-          "type": "multiple-choice",
-          "question": "For x² - 7x + 12 = 0, what is the sum of the roots (using Vieta)?",
-          "options": [
-            "5",
-            "6",
-            "7",
-            "12"
-          ],
-          "correct": 2,
-          "explanation": "By Vieta's formulas, sum of roots = -b/a = -(-7)/1 = 7.",
-          "xp": 10
-        },
-        {
-          "id": "alg-q4",
-          "type": "multiple-choice",
-          "question": "Factor x² + 8x + 16:",
-          "options": [
-            "(x+4)²",
-            "(x+2)²",
-            "(x+4)(x+4)",
-            "Both A and C"
-          ],
-          "correct": 3,
-          "explanation": "x² + 8x + 16 is a perfect square trinomial: (x+4)². Both A and C represent the same factorization.",
-          "xp": 10
-        },
-        {
-          "id": "alg-q5",
-          "type": "multiple-choice",
-          "question": "Using substitution y = x², solve x⁴ - 13x² + 36 = 0. What are the real solutions?",
-          "options": [
-            "±2, ±3",
-            "±3, ±4",
-            "±2, ±6",
-            "±1, ±6"
-          ],
-          "correct": 0,
-          "explanation": "y² - 13y + 36 = 0 gives (y-4)(y-9) = 0, so y = 4 or 9. Thus x² = 4 or x² = 9, giving x = ±2 or ±3.",
-          "xp": 10
-        }
-      ],
-      "resources": [
-        {
-          "title": "AOPS Algebraic Manipulations",
-          "url": "https://artofproblemsolving.com/wiki/index.php/Algebraic_manipulation"
-        }
-      ]
-    },
-    {
-      "id": "trig-identities",
-      "title": "Trigonometric Identities",
-      "chapter": 5,
-      "difficulty": "advanced",
-      "study": {
-        "content": "**Trigonometric identities** are the backbone of advanced mathematics, from calculus to differential equations. Mastery enables elegant problem-solving.\n\n**Pythagorean identities**: The fundamental $\\sin^2\\theta + \\cos^2\\theta = 1$ spawns $1 + \\tan^2\\theta = \\sec^2\\theta$ (divide by $\\cos^2\\theta$) and $1 + \\cot^2\\theta = \\csc^2\\theta$ (divide by $\\sin^2\\theta$).\n\n**Angle sum formulas**: $$\\sin(\\alpha \\pm \\beta) = \\sin\\alpha\\cos\\beta \\pm \\cos\\alpha\\sin\\beta$$ $$\\cos(\\alpha \\pm \\beta) = \\cos\\alpha\\cos\\beta \\mp \\sin\\alpha\\sin\\beta$$ These derive all other identities. For $\\tan$: $$\\tan(\\alpha \\pm \\beta) = \\frac{\\tan\\alpha \\pm \\tan\\beta}{1 \\mp \\tan\\alpha\\tan\\beta}$$\n\n**Double angle formulas**: From sum formulas with $\\alpha = \\beta$: $$\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta$$ $$\\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta$$ The three forms of $\\cos(2\\theta)$ offer strategic choices.\n\n**Half-angle formulas**: Rearrange double-angle: $$\\sin^2\\theta = \\frac{1-\\cos(2\\theta)}{2}, \\quad \\cos^2\\theta = \\frac{1+\\cos(2\\theta)}{2}$$\n\n**Product-to-sum**: $$\\sin\\alpha\\sin\\beta = \\frac{1}{2}[\\cos(\\alpha-\\beta) - \\cos(\\alpha+\\beta)]$$ Crucial for integral evaluation and Fourier analysis.\n\n**Euler's formula**: The deepest identity links trig to exponentials: $$e^{i\\theta} = \\cos\\theta + i\\sin\\theta$$ This yields $\\cos\\theta = \\frac{e^{i\\theta}+e^{-i\\theta}}{2}$ and $\\sin\\theta = \\frac{e^{i\\theta}-e^{-i\\theta}}{2i}$, connecting trigonometry, complex analysis, and differential equations.\n\nPractice recognizing which identity simplifies an expression. Trig is pattern matching—build your library.",
-        "keyPoints": [
-          "Pythagorean identities relate sin, cos, tan, and their reciprocals",
-          "Angle sum/difference formulas generate all other trig identities",
-          "Euler's formula connects trigonometry to complex exponentials"
-        ],
-        "readingTimeMin": 6
-      },
-      "mindmap": "mindmap\n  root((Trig Identities))\n    Fundamental\n      Pythagorean\n      Reciprocal\n      Quotient\n    Angle Formulas\n      Sum/Difference\n      Double Angle\n      Half Angle\n    Product/Sum\n      Product-to-Sum\n      Sum-to-Product\n    Advanced\n      Euler's Formula\n      De Moivre's Theorem",
-      "slides": [
-        {
-          "title": "Pythagorean Identity",
-          "content": "The fundamental identity sin²θ + cos²θ = 1 derives from the unit circle and generates other forms.",
-          "visual": "equation",
-          "visualData": "\\sin^2\\theta + \\cos^2\\theta = 1\n\n÷\\cos^2\\theta: \\tan^2\\theta + 1 = \\sec^2\\theta\n÷\\sin^2\\theta: 1 + \\cot^2\\theta = \\csc^2\\theta",
-          "narration": "All Pythagorean identities stem from the unit circle. Dividing by cos squared or sin squared gives the tan-sec and cot-csc forms."
-        },
-        {
-          "title": "Angle Sum Formulas",
-          "content": "Sum and difference formulas enable calculation of trig values for any angle using known values.",
-          "visual": "equation",
-          "visualData": "\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta\n\n\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta",
-          "narration": "Angle sum formulas are foundational. They let you find sine and cosine of any angle combination, and every other identity derives from them."
-        },
-        {
-          "title": "Euler's Formula",
-          "content": "Euler's formula elegantly connects trigonometry with complex exponentials, revealing deep mathematical unity.",
-          "visual": "equation",
-          "visualData": "e^{i\\theta} = \\cos\\theta + i\\sin\\theta\n\ne^{i\\pi} + 1 = 0",
-          "narration": "Euler's formula is mathematics' most beautiful equation, linking five fundamental constants. It shows trig functions are just the real and imaginary parts of complex exponentials."
-        }
-      ],
-      "questions": [
-        {
-          "id": "trig-q1",
-          "type": "multiple-choice",
-          "question": "What is sin²θ in terms of cos(2θ)?",
-          "options": [
-            "[1 + cos(2θ)]/2",
-            "[1 - cos(2θ)]/2",
-            "[1 + sin(2θ)]/2",
-            "2sin(θ)cos(θ)"
-          ],
-          "correct": 1,
-          "explanation": "From cos(2θ) = 1 - 2sin²θ, rearrange: sin²θ = [1 - cos(2θ)]/2.",
-          "xp": 10
-        },
-        {
-          "id": "trig-q2",
-          "type": "multiple-choice",
-          "question": "Using angle sum, what is sin(75°)?",
-          "options": [
-            "(√6 + √2)/4",
-            "(√6 - √2)/4",
-            "(√3 + 1)/(2√2)",
-            "1/2"
-          ],
-          "correct": 0,
-          "explanation": "sin(75°) = sin(45° + 30°) = sin45°cos30° + cos45°sin30° = (√2/2)(√3/2) + (√2/2)(1/2) = (√6 + √2)/4.",
-          "xp": 10
-        },
-        {
-          "id": "trig-q3",
-          "type": "multiple-choice",
-          "question": "Simplify: 1 + tan²θ",
-          "options": [
-            "sec²θ",
-            "csc²θ",
-            "cos²θ",
-            "sin²θ"
-          ],
-          "correct": 0,
-          "explanation": "Pythagorean identity: 1 + tan²θ = sec²θ.",
-          "xp": 10
-        },
-        {
-          "id": "trig-q4",
-          "type": "multiple-choice",
-          "question": "What is sin(2θ) in terms of sin(θ) and cos(θ)?",
-          "options": [
-            "sin²θ + cos²θ",
-            "2sin(θ)cos(θ)",
-            "sin²θ - cos²θ",
-            "sin(θ) + cos(θ)"
-          ],
-          "correct": 1,
-          "explanation": "Double angle formula: sin(2θ) = 2sin(θ)cos(θ).",
-          "xp": 10
-        },
-        {
-          "id": "trig-q5",
-          "type": "multiple-choice",
-          "question": "According to Euler's formula, what is e^(iπ)?",
-          "options": [
-            "1",
-            "-1",
-            "i",
-            "-i"
-          ],
-          "correct": 1,
-          "explanation": "e^(iπ) = cos(π) + i·sin(π) = -1 + 0i = -1. This gives Euler's identity: e^(iπ) + 1 = 0.",
-          "xp": 10
-        }
-      ],
-      "resources": [
-        {
-          "title": "Trigonometric Identities - Paul's Online Notes",
-          "url": "https://tutorial.math.lamar.edu/classes/calci/TrigFormulas.aspx"
+          "id": "cm-factoring",
+          "title": "Rapid Factoring & Prime Testing",
+          "explainer": "## Rapid Factoring\n\n### Trial Division\nTo test if n is prime, check primes up to √n.\n- √100 ≈ 10 → check 2, 3, 5, 7\n- √400 = 20 → check 2, 3, 5, 7, 11, 13, 17, 19\n\n### Quick Factor Recognition\n- Even → factor of 2\n- Ends in 0/5 → factor of 5\n- Digit sum ÷ 3 → factor of 3\n- Alternating digit sum ÷ 11 → factor of 11\n\n### Number of Factors\nIf n = p₁^a × p₂^b × p₃^c, then:\n# factors = (a+1)(b+1)(c+1)\n\n360 = 2³ × 3² × 5¹ → (4)(3)(2) = 24 factors\n\n### GCD/LCM\n- GCD: take minimum power of each prime\n- LCM: take maximum power of each prime\n- LCM(a,b) = ab / GCD(a,b)",
+          "visual": "  Factor Tree: 360\n  ┌─────────────────────────┐\n  │        360              │\n  │       /   \\             │\n  │     36    10            │\n  │    / \\   / \\            │\n  │   4   9  2  5           │\n  │  / \\ / \\               │\n  │ 2  2 3  3              │\n  │                         │\n  │ 360 = 2³ × 3² × 5      │\n  │ # factors = 4×3×2 = 24  │\n  └─────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-fac-1",
+              "type": "multiple-choice",
+              "question": "How many positive factors does 360 have?",
+              "options": ["24", "18", "12", "36"],
+              "correct": 0,
+              "explanation": "360 = 2³×3²×5¹. Factors = (3+1)(2+1)(1+1) = 24.",
+              "xp": 10
+            },
+            {
+              "id": "cm-fac-2",
+              "type": "multiple-choice",
+              "question": "What is GCD(84, 126)?",
+              "options": ["42", "21", "14", "28"],
+              "correct": 0,
+              "explanation": "84 = 2²×3×7, 126 = 2×3²×7. GCD = 2×3×7 = 42.",
+              "xp": 10
+            },
+            {
+              "id": "cm-fac-3",
+              "type": "multiple-choice",
+              "question": "Is 437 prime?",
+              "options": ["Yes", "No — it's 19 × 23", "No — it's 17 × 25", "No — it's 13 × 33"],
+              "correct": 1,
+              "explanation": "√437 ≈ 20.9. Testing: 437/19 = 23. So 437 = 19 × 23.",
+              "xp": 10
+            }
+          ]
         }
       ]
     },
-    {
-      "id": "calculus-shortcuts",
-      "title": "Calculus Shortcuts",
-      "chapter": 6,
-      "difficulty": "advanced",
-      "study": {
-        "content": "**Calculus shortcuts** transform tedious derivations into instant insights. These aren't tricks—they're deep patterns worth internalizing.\n\n**Power rule mastery**: $\\frac{d}{dx}[x^n] = nx^{n-1}$ extends beyond integers. For $\\sqrt{x} = x^{1/2}$: derivative is $\\frac{1}{2}x^{-1/2} = \\frac{1}{2\\sqrt{x}}$. For $\\frac{1}{x^2} = x^{-2}$: derivative is $-2x^{-3} = -\\frac{2}{x^3}$.\n\n**Chain rule pattern recognition**: $\\frac{d}{dx}[f(g(x))] = f'(g(x)) \\cdot g'(x)$. For $\\sin(x^2)$: outer is $\\sin$, inner is $x^2$, so $\\cos(x^2) \\cdot 2x = 2x\\cos(x^2)$. Spot the layers instantly.\n\n**Integration by pattern**: Recognize derivatives backwards. $\\int x^n dx = \\frac{x^{n+1}}{n+1} + C$ (except $n=-1$). For $\\int \\frac{1}{x}dx = \\ln|x| + C$ (special case). For $\\int e^x dx = e^x + C$ (unchanged!).\n\n**U-substitution shortcuts**: When you see $f'(x) \\cdot g(f(x))$, let $u = f(x)$. For $\\int 2x\\cos(x^2)dx$, spot $2x = \\frac{d}{dx}[x^2]$, so $u = x^2$ gives $\\int \\cos(u)du = \\sin(u) + C = \\sin(x^2) + C$.\n\n**Symmetry in definite integrals**: If $f(-x) = f(x)$ (even), $\\int_{-a}^{a}f(x)dx = 2\\int_0^a f(x)dx$. If $f(-x) = -f(x)$ (odd), $\\int_{-a}^{a}f(x)dx = 0$. Exploit symmetry ruthlessly.\n\n**Leibniz rule** (differentiating under integral): $$\\frac{d}{dx}\\int_{a(x)}^{b(x)} f(t,x)dt = \\int_{a(x)}^{b(x)}\\frac{\\partial f}{\\partial x}dt + f(b,x)b'(x) - f(a,x)a'(x)$$ Powerful for parameter-dependent integrals.\n\n**L'Hôpital's rule**: For $\\frac{0}{0}$ or $\\frac{\\infty}{\\infty}$ limits: $$\\lim_{x \\to c}\\frac{f(x)}{g(x)} = \\lim_{x \\to c}\\frac{f'(x)}{g'(x)}$$ For $\\lim_{x\\to 0}\\frac{\\sin x}{x}$: apply once to get $\\lim_{x\\to 0}\\frac{\\cos x}{1} = 1$.\n\nThese patterns accelerate problem-solving once you recognize the structure.",
-        "keyPoints": [
-          "Power rule works for all real exponents, including fractions and negatives",
-          "Chain rule: derivative of outer at inner times derivative of inner",
-          "U-substitution: look for a function's derivative multiplying something dependent on that function"
-        ],
-        "readingTimeMin": 6
-      },
-      "mindmap": "mindmap\n  root((Calculus Shortcuts))\n    Differentiation\n      Power Rule\n      Chain Rule\n      Product/Quotient\n    Integration\n      Power Rule Reverse\n      U-Substitution\n      By Parts\n    Special Techniques\n      Symmetry\n      L'Hôpital's Rule\n      Leibniz Rule\n    Optimization\n      Critical Points\n      Second Derivative Test",
-      "slides": [
+    "number-theory": {
+      "name": "Number Theory",
+      "description": "Pigeonhole principle, sequences, number bases",
+      "order": 3,
+      "topics": [
         {
-          "title": "Power Rule for All Exponents",
-          "content": "The power rule d/dx[x^n] = nx^(n-1) works for any real number n, not just positive integers.",
-          "visual": "equation",
-          "visualData": "\\frac{d}{dx}[\\sqrt{x}] = \\frac{d}{dx}[x^{1/2}] = \\frac{1}{2}x^{-1/2}\n\n\\frac{d}{dx}[\\frac{1}{x^3}] = \\frac{d}{dx}[x^{-3}] = -3x^{-4}",
-          "narration": "The power rule extends beautifully. Fractional exponents? Negative exponents? No problem. Bring down the exponent and subtract one—it always works."
+          "id": "cm-pigeonhole",
+          "title": "Pigeonhole Principle",
+          "explainer": "## The Pigeonhole Principle\n\n### Statement\nIf n+1 pigeons go into n holes, at least one hole has ≥ 2 pigeons.\n\n### Generalized\nN objects into k boxes → at least one box has ≥ ⌈N/k⌉ objects.\n\n### Classic Problems\n**Problem 1:** Among 13 people, at least 2 share a birth month.\n13 people, 12 months → collision guaranteed.\n\n**Problem 2:** Among any 5 integers, some pair has an even sum.\nRemainders mod 2: {0,1}. 5 numbers, 2 boxes → ≥3 in one → pair with same parity → even sum.\n\n**Problem 3:** Pick 5 points in a 2×2 square. Two are within √2 distance.\nDivide into 4 unit squares → some square has 2 points → max distance in unit square = √2.",
+          "visual": "  Pigeonhole Principle:\n  ┌─────────────────────────────────┐\n  │  5 pigeons → 4 holes            │\n  │  At least one hole has ≥ 2!     │\n  │  🐦🐦 🐦 🐦 🐦                  │\n  │  [🐦🐦][🐦][🐦][🐦]            │\n  └─────────────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-ph-1",
+              "type": "multiple-choice",
+              "question": "In a group of 367 people, what can we guarantee?",
+              "options": ["At least 2 share a birthday", "At least 2 share a birth month", "Everyone has a unique birthday", "At least 3 share a birthday"],
+              "correct": 0,
+              "explanation": "366 possible days (including leap year), 367 people → pigeonhole guarantees shared birthday.",
+              "xp": 10
+            },
+            {
+              "id": "cm-ph-2",
+              "type": "multiple-choice",
+              "question": "How many integers from {1,...,10} must you pick to guarantee two with the same remainder mod 3?",
+              "options": ["3", "4", "5", "2"],
+              "correct": 1,
+              "explanation": "3 possible remainders (0,1,2). Need 3+1=4 picks to guarantee collision.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "title": "Chain Rule Pattern",
-          "content": "Chain rule is just composition awareness: derivative of outer function at inner times derivative of inner.",
-          "visual": "equation",
-          "visualData": "\\frac{d}{dx}[\\sin(x^2)] = \\cos(x^2) \\cdot 2x\n\nouter: sin → cos\ninner: x² → 2x\nmultiply!",
-          "narration": "Chain rule becomes automatic with practice. Identify the outer layer, take its derivative, evaluate at the inner layer, then multiply by the inner's derivative."
+          "id": "cm-sequences",
+          "title": "Arithmetic & Geometric Series",
+          "explainer": "## Series Formulas\n\n### Arithmetic Series\nSum = n/2 × (first + last) = n/2 × (2a + (n-1)d)\n\n**Speed tricks:**\n- Sum 1 to n = n(n+1)/2\n- Sum of first n odd numbers = n²\n- Sum of first n even numbers = n(n+1)\n\n### Geometric Series\nFinite: S = a(rⁿ − 1)/(r − 1)\nInfinite (|r| < 1): S = a/(1 − r)\n\n### Telescoping\n1/(1×2) + 1/(2×3) + ... + 1/(n(n+1)) = n/(n+1)",
+          "visual": "  Gauss's Sum: 1+2+3+...+n\n  ┌────────────────────────────┐\n  │  S = 1 + 2 + ... + n      │\n  │  S = n + (n-1) + ... + 1  │\n  │  ─────────────────────     │\n  │  2S = n × (n+1)           │\n  │  S = n(n+1)/2             │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-ss-1",
+              "type": "multiple-choice",
+              "question": "What is 1 + 2 + 3 + ... + 100?",
+              "options": ["5050", "5000", "5100", "4950"],
+              "correct": 0,
+              "explanation": "n(n+1)/2 = 100×101/2 = 5050.",
+              "xp": 10
+            },
+            {
+              "id": "cm-ss-2",
+              "type": "multiple-choice",
+              "question": "Sum of the first 20 odd numbers?",
+              "options": ["400", "200", "380", "420"],
+              "correct": 0,
+              "explanation": "Sum of first n odd = n² = 20² = 400.",
+              "xp": 10
+            },
+            {
+              "id": "cm-ss-3",
+              "type": "multiple-choice",
+              "question": "1/2 + 1/4 + 1/8 + ... (infinite) = ?",
+              "options": ["1", "2", "1/2", "3/2"],
+              "correct": 0,
+              "explanation": "a/(1-r) = (1/2)/(1-1/2) = 1.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "title": "L'Hôpital's Rule",
-          "content": "For indeterminate forms 0/0 or ∞/∞, differentiate numerator and denominator separately until the limit resolves.",
-          "visual": "equation",
-          "visualData": "\\lim_{x \\to 0} \\frac{\\sin x}{x} = \\lim_{x \\to 0} \\frac{\\cos x}{1} = 1\n\n\\lim_{x \\to \\infty} \\frac{\\ln x}{x} = \\lim_{x \\to \\infty} \\frac{1/x}{1} = 0",
-          "narration": "L'Hôpital's rule is your escape hatch for tricky limits. When you get zero over zero or infinity over infinity, differentiate top and bottom separately."
+          "id": "cm-bases",
+          "title": "Number Bases & Conversions",
+          "explainer": "## Number Bases\n\n### Base Conversion\nA number in base b: (dₙ...d₁d₀)_b = dₙ×bⁿ + ... + d₁×b + d₀\n\n### Decimal to Base b\nRepeatedly divide by b; remainders (right to left) give the digits.\n\n**Example:** 156 in base 7:\n156÷7=22 R2, 22÷7=3 R1, 3÷7=0 R3 → (312)₇\n\n### Binary Tricks\n- Powers of 2: 1,2,4,8,16,32,64,128,256,512,1024\n- Each hex digit = 4 binary digits\n- 0xFF = 255, 0x100 = 256\n\n### Quick Conversions\n- Binary to octal: group by 3 bits\n- Binary to hex: group by 4 bits",
+          "visual": "  156 in different bases:\n  ┌──────────────────────────┐\n  │  Base 10: 156            │\n  │  Base 2:  10011100       │\n  │  Base 7:  312            │\n  │  Base 16: 9C             │\n  │                          │\n  │  Binary: 128+16+8+4=156  │\n  └──────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-base-1",
+              "type": "multiple-choice",
+              "question": "What is (1101)₂ in decimal?",
+              "options": ["13", "11", "14", "12"],
+              "correct": 0,
+              "explanation": "1×8 + 1×4 + 0×2 + 1×1 = 13.",
+              "xp": 10
+            },
+            {
+              "id": "cm-base-2",
+              "type": "multiple-choice",
+              "question": "Convert 255 to hexadecimal.",
+              "options": ["FF", "FE", "100", "EF"],
+              "correct": 0,
+              "explanation": "255 = 15×16 + 15 = FF.",
+              "xp": 10
+            },
+            {
+              "id": "cm-base-3",
+              "type": "multiple-choice",
+              "question": "What is (234)₅ in decimal?",
+              "options": ["69", "64", "74", "59"],
+              "correct": 0,
+              "explanation": "2×25 + 3×5 + 4×1 = 50+15+4 = 69.",
+              "xp": 10
+            }
+          ]
         }
-      ],
-      "questions": [
+      ]
+    },
+    "counting-combinatorics": {
+      "name": "Counting & Combinatorics",
+      "description": "Permutations, combinations, inclusion-exclusion, probability",
+      "order": 4,
+      "topics": [
         {
-          "id": "calc-q1",
-          "type": "multiple-choice",
-          "question": "What is d/dx[x^(-2)]?",
-          "options": [
-            "-2x^(-3)",
-            "2x^(-3)",
-            "-2x^(-1)",
-            "-x^(-3)"
-          ],
-          "correct": 0,
-          "explanation": "Power rule: d/dx[x^(-2)] = -2x^(-3) = -2/x³.",
-          "xp": 10
+          "id": "cm-perms-combs",
+          "title": "Permutations & Combinations",
+          "explainer": "## Permutations & Combinations\n\n### Fundamental Counting Principle\nTask A has m ways, Task B has n ways → total = m × n\n\n### Permutations (order matters)\nP(n,r) = n!/(n-r)!\n\n### Combinations (order doesn't matter)\nC(n,r) = n!/(r!(n-r)!)\n\n### Key Identities\n- C(n,r) = C(n, n−r)\n- C(n,0)+C(n,1)+...+C(n,n) = 2ⁿ\n- Pascal's Rule: C(n,r) = C(n-1,r-1) + C(n-1,r)\n- Stars & Bars: n identical into k bins = C(n+k-1, k-1)",
+          "visual": "  Pascal's Triangle:\n  ┌─────────────────────┐\n  │         1           │\n  │        1 1          │\n  │       1 2 1         │\n  │      1 3 3 1        │\n  │     1 4 6 4 1       │\n  │    1 5 10 10 5 1    │\n  │  Row sum = 2ⁿ       │\n  └─────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-pc-1",
+              "type": "multiple-choice",
+              "question": "How many ways to choose 3 books from 8?",
+              "options": ["56", "336", "24", "120"],
+              "correct": 0,
+              "explanation": "C(8,3) = 8!/(3!5!) = 56.",
+              "xp": 10
+            },
+            {
+              "id": "cm-pc-2",
+              "type": "multiple-choice",
+              "question": "How many 4-letter arrangements from ABCDE (no repeats)?",
+              "options": ["120", "24", "60", "625"],
+              "correct": 0,
+              "explanation": "P(5,4) = 5!/1! = 120.",
+              "xp": 10
+            },
+            {
+              "id": "cm-pc-3",
+              "type": "multiple-choice",
+              "question": "Sum of row 10 of Pascal's triangle?",
+              "options": ["1024", "512", "2048", "100"],
+              "correct": 0,
+              "explanation": "Sum of row n = 2ⁿ = 2¹⁰ = 1024.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "calc-q2",
-          "type": "multiple-choice",
-          "question": "What is d/dx[cos(3x)] using chain rule?",
-          "options": [
-            "-sin(3x)",
-            "-3sin(3x)",
-            "3cos(3x)",
-            "sin(3x)"
-          ],
-          "correct": 1,
-          "explanation": "Outer: d/dx[cos(u)] = -sin(u). Inner: d/dx[3x] = 3. Result: -sin(3x)·3 = -3sin(3x).",
-          "xp": 10
+          "id": "cm-inclusion-exclusion",
+          "title": "Inclusion-Exclusion & Derangements",
+          "explainer": "## Inclusion-Exclusion\n\n### Two Sets\n|A ∪ B| = |A| + |B| − |A ∩ B|\n\n### Three Sets\n|A ∪ B ∪ C| = |A|+|B|+|C| − |A∩B|−|A∩C|−|B∩C| + |A∩B∩C|\n\n### Derangements\nA permutation where NO element is in its original position.\nD(n) = n! × (1 − 1/1! + 1/2! − 1/3! + ... + (−1)ⁿ/n!)\n\n- D(1)=0, D(2)=1, D(3)=2, D(4)=9, D(5)=44\n\n### Euler's Totient\nφ(n) = n × ∏(1 − 1/p) for each prime p | n",
+          "visual": "  Inclusion-Exclusion:\n  ┌──────────────────────────┐\n  │    ┌─────┬───┬─────┐     │\n  │    │  A  │A∩B│  B  │     │\n  │    └─────┴───┴─────┘     │\n  │  |A∪B| = |A|+|B|-|A∩B|  │\n  │                          │\n  │  Derangements D(n):      │\n  │  D(3)=2  D(4)=9  D(5)=44│\n  └──────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-ie-1",
+              "type": "multiple-choice",
+              "question": "Class of 30: 18 play soccer, 15 basketball, 10 both. How many play neither?",
+              "options": ["7", "5", "3", "10"],
+              "correct": 0,
+              "explanation": "|S∪B| = 18+15−10 = 23. Neither = 30−23 = 7.",
+              "xp": 10
+            },
+            {
+              "id": "cm-ie-2",
+              "type": "multiple-choice",
+              "question": "How many derangements of {1,2,3,4}?",
+              "options": ["9", "8", "12", "6"],
+              "correct": 0,
+              "explanation": "D(4) = 4!(1-1+1/2-1/6+1/24) = 24×(9/24) = 9.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "calc-q3",
-          "type": "multiple-choice",
-          "question": "What is ∫x³ dx?",
-          "options": [
-            "x⁴/4 + C",
-            "3x² + C",
-            "x⁴ + C",
-            "4x⁴ + C"
-          ],
-          "correct": 0,
-          "explanation": "Power rule for integration: ∫x^n dx = x^(n+1)/(n+1) + C. So ∫x³ dx = x⁴/4 + C.",
-          "xp": 10
-        },
-        {
-          "id": "calc-q4",
-          "type": "multiple-choice",
-          "question": "For ∫₋₂² x³ dx, what shortcut applies?",
-          "options": [
-            "Even function: double the positive half",
-            "Odd function: integral equals zero",
-            "U-substitution needed",
-            "Integration by parts"
-          ],
-          "correct": 1,
-          "explanation": "x³ is an odd function (f(-x) = -f(x)), so the integral over a symmetric interval is zero.",
-          "xp": 10
-        },
-        {
-          "id": "calc-q5",
-          "type": "multiple-choice",
-          "question": "Using L'Hôpital's, what is lim(x→∞) [x/e^x]?",
-          "options": [
-            "0",
-            "1",
-            "∞",
-            "Does not exist"
-          ],
-          "correct": 0,
-          "explanation": "∞/∞ form. Apply L'Hôpital's: lim(x→∞)[1/e^x] = 0 since e^x grows much faster than x.",
-          "xp": 10
+          "id": "cm-probability",
+          "title": "Competition Probability",
+          "explainer": "## Probability for Competitions\n\n### Basic Rules\n- P(A) = favorable / total\n- P(A or B) = P(A) + P(B) − P(A and B)\n- P(A and B) = P(A) × P(B|A)\n\n### Complementary Counting\nP(at least one) = 1 − P(none)\n\n### Expected Value\nE[X] = Σ xᵢ × P(xᵢ)\nLinearity: E[X+Y] = E[X] + E[Y] (always!)\n\n### Geometric Probability\nP = favorable region / total region",
+          "visual": "  Probability Tree: 2 flips\n  ┌─────────────────────────┐\n  │       Start             │\n  │      /     \\            │\n  │    H(½)   T(½)         │\n  │   / \\     / \\          │\n  │  HH  HT TH  TT        │\n  │  ¼   ¼   ¼   ¼        │\n  │                         │\n  │  P(≥1 H) = 1-¼ = ¾    │\n  └─────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-prob-1",
+              "type": "multiple-choice",
+              "question": "Two dice rolled. P(sum = 7)?",
+              "options": ["1/6", "1/8", "1/12", "7/36"],
+              "correct": 0,
+              "explanation": "6 favorable out of 36: (1,6),(2,5),(3,4),(4,3),(5,2),(6,1). P = 1/6.",
+              "xp": 10
+            },
+            {
+              "id": "cm-prob-2",
+              "type": "multiple-choice",
+              "question": "Coin flipped 4 times. P(at least one head)?",
+              "options": ["15/16", "1/2", "7/8", "3/4"],
+              "correct": 0,
+              "explanation": "1 − P(all tails) = 1 − (1/2)⁴ = 15/16.",
+              "xp": 10
+            }
+          ]
         }
-      ],
-      "resources": [
+      ]
+    },
+    "geometry-speed": {
+      "name": "Geometry Speed",
+      "description": "Triangle formulas, coordinate geometry, and spatial reasoning",
+      "order": 5,
+      "topics": [
         {
-          "title": "Calculus Cheat Sheet - Paul's Notes",
-          "url": "https://tutorial.math.lamar.edu/pdf/Calculus_Cheat_Sheet_All.pdf"
+          "id": "cm-triangles",
+          "title": "Triangle Area & Special Triangles",
+          "explainer": "## Triangle Formulas\n\n### Area Formulas\n1. A = ½bh\n2. A = ½ab sin C\n3. Heron's: A = √(s(s-a)(s-b)(s-c)), s = (a+b+c)/2\n4. Shoelace: A = ½|x₁(y₂−y₃) + x₂(y₃−y₁) + x₃(y₁−y₂)|\n\n### Special Right Triangles (memorize!)\n- 30-60-90: sides 1 : √3 : 2\n- 45-45-90: sides 1 : 1 : √2\n\n### Pythagorean Triples\n3-4-5, 5-12-13, 8-15-17, 7-24-25, 9-40-41\n\n### Circle Relationships\n- Inscribed angle = ½ central angle\n- Power of a point: PA×PB = PC×PD",
+          "visual": "  Special Right Triangles:\n  ┌──────────────────────────────┐\n  │  30-60-90:     45-45-90:    │\n  │      /|           /|        │\n  │    2/ |         √2/ |       │\n  │    /  | 1        /  | 1     │\n  │   /60°|        /45°|        │\n  │  /____| √3    /____| 1      │\n  │                              │\n  │  Triples: 3-4-5  5-12-13   │\n  │  8-15-17  7-24-25  9-40-41 │\n  └──────────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-tri-1",
+              "type": "multiple-choice",
+              "question": "Triangle with vertices (0,0), (6,0), (3,4). Area?",
+              "options": ["12", "24", "10", "8"],
+              "correct": 0,
+              "explanation": "Base=6, height=4. A = ½×6×4 = 12.",
+              "xp": 10
+            },
+            {
+              "id": "cm-tri-2",
+              "type": "multiple-choice",
+              "question": "In a 30-60-90 triangle with hypotenuse 10, shortest side?",
+              "options": ["5", "5√3", "10√3", "√5"],
+              "correct": 0,
+              "explanation": "Ratio 1:√3:2. Shortest = 10/2 = 5.",
+              "xp": 10
+            },
+            {
+              "id": "cm-tri-3",
+              "type": "multiple-choice",
+              "question": "Which is a Pythagorean triple?",
+              "options": ["8-15-17", "8-14-17", "9-12-16", "7-12-15"],
+              "correct": 0,
+              "explanation": "8²+15² = 64+225 = 289 = 17². ✓",
+              "xp": 10
+            }
+          ]
+        },
+        {
+          "id": "cm-coordinate-geo",
+          "title": "Coordinate Geometry Speed",
+          "explainer": "## Coordinate Geometry\n\n### Distance Formula\nd = √((x₂−x₁)² + (y₂−y₁)²)\n\n### Midpoint\nM = ((x₁+x₂)/2, (y₁+y₂)/2)\n\n### Slope\nm = (y₂−y₁)/(x₂−x₁)\n- Parallel lines: same slope\n- Perpendicular: m₁ × m₂ = −1\n\n### Line Equations\n- Slope-intercept: y = mx + b\n- Point-slope: y − y₁ = m(x − x₁)\n\n### Circle Equation\n(x−h)² + (y−k)² = r² (center (h,k), radius r)\n\n### Area of Polygon (Shoelace)\nA = ½|Σ(xᵢyᵢ₊₁ − xᵢ₊₁yᵢ)|",
+          "visual": "  Distance & Midpoint:\n  ┌──────────────────────────┐\n  │  B(x₂,y₂)               │\n  │  /|                      │\n  │ / |  d = √(Δx²+Δy²)     │\n  │/  | Δy                   │\n  │A──┘                      │\n  │ Δx                       │\n  │                          │\n  │ M = midpoint = avg of    │\n  │ coordinates              │\n  └──────────────────────────┘",
+          "questions": [
+            {
+              "id": "cm-cg-1",
+              "type": "multiple-choice",
+              "question": "Distance between (1,2) and (4,6)?",
+              "options": ["5", "7", "√13", "√25"],
+              "correct": 0,
+              "explanation": "d = √(3²+4²) = √(9+16) = √25 = 5.",
+              "xp": 10
+            },
+            {
+              "id": "cm-cg-2",
+              "type": "multiple-choice",
+              "question": "Line through (2,3) with slope 4. What's y when x=5?",
+              "options": ["15", "12", "18", "23"],
+              "correct": 0,
+              "explanation": "y−3 = 4(x−2). At x=5: y = 3+4(3) = 15.",
+              "xp": 10
+            }
+          ]
         }
       ]
     }
-  ]
+  }
 }

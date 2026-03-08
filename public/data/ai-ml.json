@@ -1,747 +1,1548 @@
 {
   "id": "ai-ml",
-  "name": "AI & Machine Learning",
+  "name": "AI/ML Research",
   "icon": "🤖",
-  "color": "#8B5CF6",
-  "description": "Deep dive into modern AI architectures, from neural networks to transformers and beyond",
-  "topics": [
-    {
-      "id": "neural-networks-fundamentals",
-      "title": "Neural Networks Fundamentals",
-      "chapter": 1,
-      "difficulty": "beginner",
-      "study": {
-        "content": "# Neural Networks: The Foundation of Deep Learning\n\nNeural networks are computational models inspired by the human brain, consisting of interconnected nodes (neurons) organized in layers. At their core, they learn to map inputs to outputs through **backpropagation**.\n\n## The Perceptron\n\nThe simplest unit is the **perceptron**, which computes:\n\n$$y = f\\left(\\sum_{i=1}^{n} w_i x_i + b\\right)$$\n\nWhere $w_i$ are weights, $x_i$ are inputs, $b$ is the bias, and $f$ is an activation function.\n\n## Activation Functions\n\nActivation functions introduce non-linearity:\n\n**Sigmoid**: $\\sigma(x) = \\frac{1}{1 + e^{-x}}$ - Squashes to (0,1)\n\n**ReLU**: $\\text{ReLU}(x) = \\max(0, x)$ - Most popular, solves vanishing gradient\n\n**Tanh**: $\\tanh(x) = \\frac{e^x - e^{-x}}{e^x + e^{-x}}$ - Range (-1,1)\n\n## Backpropagation\n\nTraining uses the **chain rule**:\n\n$$\\frac{\\partial L}{\\partial w} = \\frac{\\partial L}{\\partial y} \\cdot \\frac{\\partial y}{\\partial w}$$\n\nWeights update via gradient descent:\n\n$$w_{new} = w_{old} - \\eta \\frac{\\partial L}{\\partial w}$$\n\nDeep networks learn hierarchical representations, with early layers detecting simple features and deeper layers combining them into complex abstractions. This enables neural networks to solve previously intractable problems in computer vision, natural language processing, and beyond.",
-        "keyPoints": [
-          "Perceptrons are linear classifiers; activation functions add non-linearity",
-          "Backpropagation uses chain rule to compute gradients for weight updates",
-          "ReLU activation solves vanishing gradient problem in deep networks",
-          "Deep networks learn hierarchical feature representations"
-        ],
-        "readingTimeMin": 4
-      },
-      "mindmap": "mindmap\n  root((Neural Networks))\n    Architecture\n      Input Layer\n      Hidden Layers\n      Output Layer\n    Perceptron\n      Weights\n      Bias\n      Activation\n    Training\n      Forward Pass\n      Loss Calculation\n      Backpropagation\n      Gradient Descent\n    Activation Functions\n      Sigmoid\n      ReLU\n      Tanh",
-      "slides": [
+  "color": "#06b6d4",
+  "description": "Neural networks, transformers, diffusion models, and cutting-edge ML research — from foundations to frontier",
+  "levels": {
+    "foundations": {
+      "name": "Foundations",
+      "description": "Linear algebra, calculus, probability, and Python for ML",
+      "order": 1,
+      "topics": [
         {
-          "title": "What is a Neural Network?",
-          "content": "Computational models inspired by biological neurons, organized in layers that transform inputs to outputs through learned weights.",
-          "visual": "diagram",
-          "visualData": "Input → Hidden → Output",
-          "narration": "Neural networks are inspired by the brain. They consist of layers of artificial neurons that process information and learn patterns from data."
-        },
-        {
-          "title": "The Perceptron",
-          "content": "The basic unit that computes a weighted sum of inputs, adds bias, and applies an activation function.",
-          "visual": "equation",
-          "visualData": "y = f(Σ wᵢxᵢ + b)",
-          "narration": "Each neuron performs a simple calculation: multiply inputs by weights, add a bias term, and pass through an activation function."
-        },
-        {
-          "title": "Activation Functions",
-          "content": "Non-linear functions that enable networks to learn complex patterns. ReLU is most common.",
-          "visual": "equation",
-          "visualData": "ReLU(x) = max(0, x)",
-          "narration": "Without activation functions, neural networks would just be linear models. ReLU is simple and effective, solving gradient problems in deep networks."
-        },
-        {
-          "title": "Backpropagation",
-          "content": "Training algorithm that uses chain rule to compute gradients and adjust weights.",
-          "visual": "equation",
-          "visualData": "∂L/∂w = ∂L/∂y · ∂y/∂w",
-          "narration": "Backpropagation is the magic that makes neural networks learn. It calculates gradients backwards through the network."
-        }
-      ],
-      "questions": [
-        {
-          "id": "nn-q1",
-          "type": "multiple-choice",
-          "question": "What is the primary purpose of activation functions in neural networks?",
-          "options": [
-            "Introduce non-linearity to learn complex patterns",
-            "Speed up training time",
-            "Reduce memory usage",
-            "Initialize weights"
+          "id": "vectors-matrices",
+          "title": "Vectors, Matrices & Dot Products",
+          "explainer": "## Vectors & Matrices: The Language of ML\n\nEvery piece of data in machine learning is represented as numbers arranged in structures called **vectors** and **matrices**.\n\n### Step 1: What is a Vector?\nA vector is simply a list of numbers. Think of it as coordinates:\n- A 2D vector: [3, 4] — a point on a plane\n- A 3D vector: [1, 2, 3] — a point in space\n- A 768D vector: an embedding of a word in a language model\n\n### Step 2: What is a Matrix?\nA matrix is a grid of numbers (rows × columns). Think of it as a spreadsheet:\n- A 3×2 matrix has 3 rows and 2 columns\n- An image is a matrix of pixel values\n- A weight matrix transforms inputs in a neural network\n\n### Step 3: The Dot Product\nThe dot product takes two vectors and produces a single number:\n- Multiply corresponding elements, then sum\n- [1,2,3] · [4,5,6] = 1×4 + 2×5 + 3×6 = 32\n- It measures **similarity** between vectors (core of attention!)\n\n### Step 4: Matrix Multiplication\nMatrix multiplication is just many dot products at once:\n- Each element in the result = dot product of a row from A and column from B\n- This is the fundamental operation in neural networks\n- GPU parallelism makes this fast",
+          "visual": "  Vector (1D)          Matrix (2D)           Matrix Multiply\n  ┌───┐               ┌───┬───┐             A(2×3)  ×  B(3×2)  =  C(2×2)\n  │ 3 │               │ 1 │ 2 │             ┌─────┐   ┌───┐     ┌─────┐\n  │ 4 │               ├───┼───┤             │1 2 3│ × │4 5│  =  │· · │\n  │ 5 │               │ 3 │ 4 │             │4 5 6│   │6 7│     │· · │\n  └───┘               ├───┼───┤             └─────┘   │8 9│     └─────┘\n                      │ 5 │ 6 │                        └───┘\n  Dot Product:        └───┴───┘             C[0,0] = 1×4 + 2×6 + 3×8 = 40\n  [1,2,3]·[4,5,6]                           C[0,1] = 1×5 + 2×7 + 3×9 = 46\n  = 1×4+2×5+3×6 = 32",
+          "questions": [
+            {
+              "id": "f-vm-1",
+              "type": "multiple-choice",
+              "question": "What is the dot product of [2, 3] and [4, 1]?",
+              "options": [
+                "5",
+                "11",
+                "14",
+                "8"
+              ],
+              "correct": 1,
+              "explanation": "Dot product = 2×4 + 3×1 = 8 + 3 = 11.",
+              "xp": 10
+            },
+            {
+              "id": "f-vm-2",
+              "type": "multiple-choice",
+              "question": "If matrix A is 3×4 and matrix B is 4×2, what is the shape of A×B?",
+              "options": [
+                "3×2",
+                "4×4",
+                "3×4",
+                "2×3"
+              ],
+              "correct": 0,
+              "explanation": "Matrix multiplication: (m×n) × (n×p) = (m×p). So 3×4 times 4×2 = 3×2.",
+              "xp": 10
+            },
+            {
+              "id": "f-vm-3",
+              "type": "multiple-choice",
+              "question": "Why are dot products important in attention mechanisms?",
+              "options": [
+                "They reduce dimensionality",
+                "They measure similarity between query and key vectors",
+                "They normalize the input",
+                "They add non-linearity"
+              ],
+              "correct": 1,
+              "explanation": "In attention, the dot product between query and key vectors computes how much 'attention' one token should pay to another.",
+              "xp": 15
+            }
           ],
-          "correct": 0,
-          "explanation": "Activation functions introduce non-linearity, allowing networks to learn complex, non-linear relationships. Without them, multiple layers would collapse into a single linear transformation.",
-          "xp": 10
+          "coding_challenge": {
+            "prompt": "Implement matrix multiplication from scratch using only Python lists (no numpy).",
+            "starter_code": "def matmul(A, B):\n    \"\"\"Multiply matrices A and B.\"\"\"\n    pass\n\nA = [[1, 2], [3, 4]]\nB = [[5, 6], [7, 8]]\nprint(matmul(A, B))  # [[19, 22], [43, 50]]",
+            "solution": "def matmul(A, B):\n    m, n, p = len(A), len(A[0]), len(B[0])\n    C = [[0]*p for _ in range(m)]\n    for i in range(m):\n        for j in range(p):\n            for k in range(n):\n                C[i][j] += A[i][k] * B[k][j]\n    return C\n\nprint(matmul([[1,2],[3,4]], [[5,6],[7,8]]))",
+            "tests": "assert matmul([[1,2],[3,4]], [[5,6],[7,8]]) == [[19,22],[43,50]]"
+          },
+          "source": "foundations"
         },
         {
-          "id": "nn-q2",
-          "type": "multiple-choice",
-          "question": "Which activation function is most commonly used in modern deep networks?",
-          "options": [
-            "Sigmoid",
-            "Tanh",
-            "ReLU",
-            "Linear"
+          "id": "gradients-chain-rule",
+          "title": "Gradients & The Chain Rule",
+          "explainer": "## Gradients: How Neural Networks Learn\n\n### Step 1: What is a Gradient?\nThe gradient tells you how the output changes when you slightly change the input:\n- If f(x) = x², then f'(x) = 2x\n- At x=3: gradient = 6, meaning \"if x increases by 1, f increases by ~6\"\n\n### Step 2: Partial Derivatives\nWith multiple inputs, take the derivative with respect to each one separately:\n- f(x, y) = x²y → ∂f/∂x = 2xy, ∂f/∂y = x²\n\n### Step 3: The Chain Rule\nWhen functions are composed: d/dx f(g(x)) = f'(g(x)) · g'(x)\nThis is EXACTLY how backpropagation works!\n\n### Step 4: Why This Matters\n- A neural network is a composition of many functions\n- Chain rule lets us compute ∂Loss/∂weight for EVERY weight\n- Then we nudge each weight to reduce loss",
+          "visual": "  Forward:   x ──→ [×w] ──→ z ──→ [ReLU] ──→ a ──→ [×w2] ──→ y ──→ [Loss] ──→ L\n  Backward:  ∂L/∂w = ∂L/∂y · ∂y/∂a · ∂a/∂z · ∂z/∂w\n              loss_grad  ×  w2  × ReLU'(z) ×  x",
+          "questions": [
+            {
+              "id": "f-gc-1",
+              "type": "multiple-choice",
+              "question": "If f(x) = 3x² + 2x, what is f'(x)?",
+              "options": [
+                "6x + 2",
+                "3x + 2",
+                "6x² + 2",
+                "x² + 2x"
+              ],
+              "correct": 0,
+              "explanation": "Power rule: d/dx(3x²) = 6x, d/dx(2x) = 2. So f'(x) = 6x + 2.",
+              "xp": 10
+            },
+            {
+              "id": "f-gc-2",
+              "type": "multiple-choice",
+              "question": "In the chain rule, if y = f(g(x)), what is dy/dx?",
+              "options": [
+                "f'(x) + g'(x)",
+                "f'(g(x)) · g'(x)",
+                "f(g'(x))",
+                "f'(x) · g'(x)"
+              ],
+              "correct": 1,
+              "explanation": "Chain rule: dy/dx = f'(g(x)) · g'(x). Evaluate outer derivative at inner function, multiply by inner derivative.",
+              "xp": 10
+            },
+            {
+              "id": "f-gc-3",
+              "type": "multiple-choice",
+              "question": "Why does backpropagation go backward?",
+              "options": [
+                "It's faster than going forward",
+                "It uses the chain rule to efficiently compute all gradients in one pass",
+                "Gradients are larger at the output",
+                "It's required by GPU architecture"
+              ],
+              "correct": 1,
+              "explanation": "Going backward, each node multiplies its local gradient by the incoming gradient, computing all weight gradients in a single pass.",
+              "xp": 15
+            }
           ],
-          "correct": 2,
-          "explanation": "ReLU (Rectified Linear Unit) is most popular because it's computationally efficient and solves the vanishing gradient problem.",
-          "xp": 10
+          "coding_challenge": {
+            "prompt": "Implement numerical gradient checking using finite differences: (f(x+h) - f(x-h)) / (2h).",
+            "starter_code": "def numerical_gradient(f, x, h=1e-5):\n    pass\n\ndef f(x): return x ** 2\nprint(numerical_gradient(f, 3.0))  # ~6.0",
+            "solution": "def numerical_gradient(f, x, h=1e-5):\n    return (f(x + h) - f(x - h)) / (2 * h)\n\ndef f(x): return x ** 2\nprint(numerical_gradient(f, 3.0))  # 6.000000000012662",
+            "tests": "assert abs(numerical_gradient(lambda x: x**2, 3.0) - 6.0) < 1e-5"
+          },
+          "source": "foundations/calculus"
         },
         {
-          "id": "nn-q3",
-          "type": "multiple-choice",
-          "question": "What does backpropagation compute?",
-          "options": [
-            "The output of the network",
-            "Gradients of the loss with respect to weights",
-            "The optimal learning rate",
-            "The number of hidden layers needed"
+          "id": "probability-stats",
+          "title": "Probability & Statistics for ML",
+          "explainer": "## Probability: The Language of Uncertainty\n\n### Step 1: Probability Basics\nP(event) is between 0 and 1. P(all outcomes) = 1.0.\n\n### Step 2: Conditional Probability & Bayes\nP(A|B) = P(B|A) · P(A) / P(B) — how spam filters work.\n\n### Step 3: Key Distributions\n- **Normal/Gaussian**: Bell curve — weight initialization\n- **Softmax**: Turns any numbers into probabilities summing to 1\n\n### Step 4: Key Concepts for ML\n- **Cross-entropy**: Measures difference between distributions (loss function!)\n- **KL divergence**: Distance between probability distributions (VAEs, RLHF)",
+          "visual": "  Normal Distribution          Softmax Transformation\n       ▄████▄                  Raw logits:  [2.0, 1.0, 0.1]\n     ▄████████▄                exp:         [7.39, 2.72, 1.11]\n   ▄████████████▄              sum:          11.22\n  ▄██████████████▄             softmax:      [0.66, 0.24, 0.10]\n ████████████████████          probabilities sum to 1.0 ✓\n─┼──┼──┼──┼──┼──┼──┼─\n-3σ -2σ -σ  μ  σ  2σ 3σ",
+          "questions": [
+            {
+              "id": "f-ps-1",
+              "type": "multiple-choice",
+              "question": "What does the softmax function do?",
+              "options": [
+                "Clips values between 0 and 1",
+                "Converts logits into a probability distribution that sums to 1",
+                "Returns the maximum value",
+                "Normalizes by subtracting the mean"
+              ],
+              "correct": 1,
+              "explanation": "Softmax(x_i) = exp(x_i) / Σexp(x_j). Converts arbitrary real numbers into valid probabilities.",
+              "xp": 10
+            },
+            {
+              "id": "f-ps-2",
+              "type": "multiple-choice",
+              "question": "Cross-entropy loss is minimized when:",
+              "options": [
+                "All predictions are 0.5",
+                "The predicted distribution matches the true distribution exactly",
+                "The model predicts uniform probabilities",
+                "The logits are all equal"
+              ],
+              "correct": 1,
+              "explanation": "Cross-entropy H(p,q) = -Σp(x)log(q(x)) is minimized when q = p.",
+              "xp": 15
+            }
           ],
-          "correct": 1,
-          "explanation": "Backpropagation computes gradients (∂L/∂w) using the chain rule, showing how each weight affects the loss.",
-          "xp": 10
+          "coding_challenge": {
+            "prompt": "Implement numerically stable softmax from scratch.",
+            "starter_code": "import math\ndef softmax(logits):\n    pass\nprint(softmax([2.0, 1.0, 0.1]))  # ~[0.659, 0.242, 0.099]",
+            "solution": "import math\ndef softmax(logits):\n    max_val = max(logits)\n    exps = [math.exp(x - max_val) for x in logits]\n    s = sum(exps)\n    return [e / s for e in exps]\nprint(softmax([2.0, 1.0, 0.1]))",
+            "tests": "assert abs(sum(softmax([2.0, 1.0, 0.1])) - 1.0) < 1e-6"
+          },
+          "source": "foundations/probability"
         },
         {
-          "id": "nn-q4",
-          "type": "multiple-choice",
-          "question": "In gradient descent, if the learning rate η is too large, what happens?",
-          "options": [
-            "Training is too slow",
-            "The model underfits",
-            "Weights may oscillate or diverge",
-            "Activation functions stop working"
+          "id": "python-numpy-tensors",
+          "title": "Python for ML: NumPy & Tensors",
+          "explainer": "## NumPy: The Foundation of ML in Python\n\n### Step 1: Arrays vs Lists\nNumPy arrays use C under the hood — 100x faster than Python lists.\n\n### Step 2: Key Operations\n- `np.array()`, element-wise ops, `@` for matmul, `.reshape()`, broadcasting\n\n### Step 3: From NumPy to Tensors\nPyTorch tensors = NumPy arrays + GPU support + autograd.\n`.requires_grad_(True)` enables automatic differentiation.\n\n### Step 4: Broadcasting Rules\nDimensions compared right-to-left. Match if equal or one is 1.",
+          "visual": "  Broadcasting: (3,4) + (4,) → (3,4) + (1,4)\n  ┌─────────────┐    ┌─────────────┐    ┌──────────────────┐\n  │ 1  2  3  4  │ +  │ 10 20 30 40 │ =  │ 11  22  33  44   │\n  │ 5  6  7  8  │    │ (broadcast) │    │ 15  26  37  48   │\n  │ 9 10 11 12  │    │ (broadcast) │    │ 19  30  41  52   │\n  └─────────────┘    └─────────────┘    └──────────────────┘",
+          "questions": [
+            {
+              "id": "f-np-1",
+              "type": "multiple-choice",
+              "question": "Why are NumPy operations faster than Python for-loops?",
+              "options": [
+                "NumPy uses more RAM",
+                "NumPy operations are vectorized and run in compiled C code",
+                "Python loops run in JavaScript",
+                "NumPy automatically uses GPUs"
+              ],
+              "correct": 1,
+              "explanation": "NumPy operations are implemented in C and operate on contiguous memory, making them 10-100x faster.",
+              "xp": 10
+            },
+            {
+              "id": "f-np-2",
+              "type": "multiple-choice",
+              "question": "What does requires_grad=True do in PyTorch?",
+              "options": [
+                "Makes tensor immutable",
+                "Enables GPU acceleration",
+                "Tells PyTorch to track operations for automatic differentiation",
+                "Converts to float32"
+              ],
+              "correct": 2,
+              "explanation": "It tells PyTorch to record operations in a computation graph for automatic gradient computation via .backward().",
+              "xp": 10
+            }
           ],
-          "correct": 2,
-          "explanation": "A learning rate that's too large causes weight updates to overshoot optimal values, leading to oscillation or divergence.",
-          "xp": 15
-        },
-        {
-          "id": "nn-q5",
-          "type": "multiple-choice",
-          "question": "What is a key advantage of deep networks over shallow ones?",
-          "options": [
-            "Always train faster",
-            "Use less memory",
-            "Learn hierarchical feature representations",
-            "Never overfit"
-          ],
-          "correct": 2,
-          "explanation": "Deep networks learn hierarchical features: early layers detect simple patterns, deeper layers combine them into complex concepts.",
-          "xp": 15
-        }
-      ],
-      "resources": [
-        {
-          "title": "Neural Networks and Deep Learning",
-          "url": "http://neuralnetworksanddeeplearning.com/"
-        },
-        {
-          "title": "3Blue1Brown: Neural Networks",
-          "url": "https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi"
-        }
-      ]
-    },
-    {
-      "id": "cnns",
-      "title": "Convolutional Neural Networks",
-      "chapter": 2,
-      "difficulty": "beginner",
-      "study": {
-        "content": "**Convolutional Neural Networks (CNNs)** revolutionized computer vision by exploiting the spatial structure of images. Unlike fully connected networks that treat pixels independently, CNNs use **convolutional layers** that apply learned filters across the image, preserving spatial relationships.\n\nA convolution operation slides a small **kernel** (or filter) across the input, computing dot products at each position: $$(I * K)[i,j] = \\sum_m \\sum_n I[i+m, j+n] \\cdot K[m,n]$$ These kernels learn to detect features like edges, textures, and patterns. Early layers detect simple features (edges, corners), while deeper layers combine these into complex patterns (faces, objects).\n\n**Pooling layers** reduce spatial dimensions while retaining important features. **Max pooling** takes the maximum value in each region: $$P[i,j] = \\max_{m,n \\in R_{i,j}} I[m,n]$$ This provides translation invariance and reduces computational cost.\n\nA typical CNN architecture follows this pattern: `INPUT → CONV → RELU → POOL → CONV → RELU → POOL → FC → OUTPUT`. The **receptive field** of a neuron grows with depth, allowing it to capture increasingly global features. CNNs have dramatically fewer parameters than fully connected networks because of **weight sharing**—the same filter is used across the entire image. For a 224×224 RGB image, a fully connected first layer would need ~150,000 parameters per neuron, while a 3×3 convolutional filter needs only 27 parameters regardless of image size. This efficiency, combined with their ability to learn hierarchical features, makes CNNs the foundation of modern computer vision systems.",
-        "keyPoints": [
-          "Convolutional layers apply learned filters to detect spatial features while preserving image structure",
-          "Pooling layers reduce dimensions and provide translation invariance",
-          "Weight sharing dramatically reduces parameters compared to fully connected networks"
-        ],
-        "readingTimeMin": 5
-      },
-      "mindmap": "mindmap\n  root((CNNs))\n    Layers\n      Convolutional\n      Pooling\n      Fully Connected\n    Operations\n      Convolution\n      Activation\n      Max Pooling\n    Key Concepts\n      Receptive Field\n      Weight Sharing\n      Feature Hierarchy\n    Applications\n      Image Classification\n      Object Detection\n      Segmentation",
-      "slides": [
-        {
-          "title": "Convolution Operation",
-          "content": "Convolutional layers slide learned filters across the input, detecting local patterns while preserving spatial structure.",
-          "visual": "equation",
-          "visualData": "(I * K)[i,j] = \\sum_m \\sum_n I[i+m, j+n] \\cdot K[m,n]",
-          "narration": "The convolution operation applies a small kernel or filter across the image, computing weighted sums at each position to detect features like edges and textures."
-        },
-        {
-          "title": "Pooling for Efficiency",
-          "content": "Pooling layers downsample feature maps, reducing computational cost while maintaining important spatial features through operations like max pooling.",
-          "visual": "equation",
-          "visualData": "MaxPool[i,j] = \\max_{m,n \\in Region} I[m,n]",
-          "narration": "Max pooling takes the maximum activation in each region, providing translation invariance and reducing the spatial dimensions of feature maps."
-        },
-        {
-          "title": "Hierarchical Features",
-          "content": "CNNs learn feature hierarchies: early layers detect edges and textures, middle layers combine these into parts, and deep layers recognize complete objects.",
-          "visual": "text",
-          "visualData": "Layer 1: Edges → Layer 2: Textures → Layer 3: Parts → Layer 4: Objects",
-          "narration": "CNNs build increasingly complex representations. Early layers detect simple features like edges, while deeper layers combine these into sophisticated patterns and objects."
-        }
-      ],
-      "questions": [
-        {
-          "id": "cnn-q1",
-          "type": "multiple-choice",
-          "question": "What is the main advantage of weight sharing in CNNs?",
-          "options": [
-            "Dramatically reduces the number of parameters compared to fully connected layers",
-            "Increases training speed by 10x",
-            "Eliminates the need for activation functions",
-            "Removes the need for pooling layers"
-          ],
-          "correct": 0,
-          "explanation": "Weight sharing means the same filter is applied across the entire image, reducing parameters from potentially millions to just a few dozen per filter, while still capturing spatial patterns.",
-          "xp": 10
-        },
-        {
-          "id": "cnn-q2",
-          "type": "multiple-choice",
-          "question": "What does max pooling do in a CNN?",
-          "options": [
-            "Increases the spatial dimensions of feature maps",
-            "Takes the maximum value in each pooling region",
-            "Applies the ReLU activation function",
-            "Computes the average of all pixels"
-          ],
-          "correct": 1,
-          "explanation": "Max pooling selects the maximum activation value within each pooling window, providing downsampling and translation invariance while preserving the strongest features.",
-          "xp": 10
-        },
-        {
-          "id": "cnn-q3",
-          "type": "multiple-choice",
-          "question": "In a typical CNN, what do early convolutional layers tend to learn?",
-          "options": [
-            "Complete object representations",
-            "Simple features like edges and corners",
-            "Semantic relationships",
-            "Color histograms"
-          ],
-          "correct": 1,
-          "explanation": "Early layers in CNNs learn low-level features such as edges, corners, and simple textures. Deeper layers combine these into more complex patterns and object parts.",
-          "xp": 10
-        },
-        {
-          "id": "cnn-q4",
-          "type": "multiple-choice",
-          "question": "What is a receptive field in a CNN?",
-          "options": [
-            "The size of the convolutional kernel",
-            "The region of the input image that influences a particular neuron's activation",
-            "The total number of parameters in a layer",
-            "The pooling window size"
-          ],
-          "correct": 1,
-          "explanation": "The receptive field is the area of the input that affects a neuron's output. It grows with network depth, allowing deeper neurons to capture more global context.",
-          "xp": 10
-        },
-        {
-          "id": "cnn-q5",
-          "type": "multiple-choice",
-          "question": "For a 3×3 RGB convolutional filter, how many parameters does it have?",
-          "options": [
-            "9 parameters",
-            "27 parameters (plus 1 bias)",
-            "3 parameters",
-            "81 parameters"
-          ],
-          "correct": 1,
-          "explanation": "A 3×3 filter operating on RGB images has 3×3×3 = 27 weight parameters (one per position per color channel), plus typically 1 bias parameter.",
-          "xp": 10
-        }
-      ],
-      "resources": [
-        {
-          "title": "CS231n: CNNs for Visual Recognition",
-          "url": "http://cs231n.stanford.edu/"
-        },
-        {
-          "title": "Understanding CNNs - Distill.pub",
-          "url": "https://distill.pub/2017/feature-visualization/"
+          "coding_challenge": {
+            "prompt": "Implement cosine similarity between two vectors using NumPy.",
+            "starter_code": "import numpy as np\ndef cosine_similarity(a, b):\n    pass\nprint(cosine_similarity(np.array([1,2,3]), np.array([4,5,6])))  # ~0.9746",
+            "solution": "import numpy as np\ndef cosine_similarity(a, b):\n    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))\nprint(cosine_similarity(np.array([1,2,3]), np.array([4,5,6])))",
+            "tests": "assert abs(cosine_similarity(np.array([1,0]), np.array([0,1]))) < 1e-6"
+          },
+          "source": "foundations/numpy"
         }
       ]
     },
-    {
-      "id": "transformers-attention",
-      "title": "Transformers & Attention Mechanisms",
-      "chapter": 3,
-      "difficulty": "intermediate",
-      "study": {
-        "content": "**Transformers** revolutionized deep learning by replacing recurrence with **attention mechanisms**, enabling parallel processing of sequences and capturing long-range dependencies. Introduced in \"Attention Is All You Need\" (2017), they now power models like GPT, BERT, and DALL-E.\n\nThe core innovation is **scaled dot-product attention**: $$\\text{Attention}(Q, K, V) = \\text{softmax}\\left(\\frac{QK^T}{\\sqrt{d_k}}\\right)V$$ Here, queries ($Q$), keys ($K$), and values ($V$) are learned projections of the input. The mechanism computes similarity between queries and keys (via dot products), scales by $\\sqrt{d_k}$ to prevent gradient vanishing, applies softmax to get attention weights, then aggregates values accordingly.\n\n**Multi-head attention** runs multiple attention operations in parallel: $$\\text{MultiHead}(Q,K,V) = \\text{Concat}(\\text{head}_1, ..., \\text{head}_h)W^O$$ where each head learns different aspects of relationships. Combined with **positional encodings** (since attention is permutation-invariant), transformers process entire sequences simultaneously.\n\nThe architecture consists of encoder-decoder stacks with **residual connections** and **layer normalization**: `Embed → [Multi-Head Attention → Add & Norm → FFN → Add & Norm] × N → Output`. The **feed-forward network** applies: $$\\text{FFN}(x) = \\max(0, xW_1 + b_1)W_2 + b_2$$ Self-attention's $O(n^2)$ complexity limits context length, but enables modeling complex dependencies that RNNs struggle with. Transformers achieve state-of-the-art results across NLP, vision (ViT), and multi-modal tasks by learning rich contextual representations where each token attends to all others.",
-        "keyPoints": [
-          "Attention mechanisms compute weighted combinations based on learned query-key similarities",
-          "Multi-head attention captures different types of relationships in parallel",
-          "Transformers eliminate recurrence, enabling parallel training and better long-range dependency modeling"
-        ],
-        "readingTimeMin": 6
-      },
-      "mindmap": "mindmap\n  root((Transformers))\n    Attention\n      Scaled Dot-Product\n      Multi-Head\n      Self-Attention\n    Architecture\n      Encoder Stack\n      Decoder Stack\n      Positional Encoding\n    Components\n      Layer Normalization\n      Residual Connections\n      Feed-Forward Networks\n    Applications\n      NLP (BERT, GPT)\n      Vision (ViT)\n      Multi-modal",
-      "slides": [
+    "neural-nets": {
+      "name": "Neural Network Fundamentals",
+      "description": "Perceptrons to deep networks, activation functions, backprop, and optimizers",
+      "order": 2,
+      "topics": [
         {
-          "title": "Attention Mechanism",
-          "content": "Attention computes similarity between queries and keys, then aggregates values weighted by these similarities. Scaling prevents vanishing gradients.",
-          "visual": "equation",
-          "visualData": "Attention(Q,K,V) = softmax\\left(\\frac{QK^T}{\\sqrt{d_k}}\\right)V",
-          "narration": "The attention mechanism computes how much focus each element should receive. It calculates query-key similarity, scales it, applies softmax for weights, then aggregates values."
-        },
-        {
-          "title": "Multi-Head Attention",
-          "content": "Running multiple attention heads in parallel allows the model to capture different types of relationships and attend to information from different representation subspaces.",
-          "visual": "text",
-          "visualData": "head₁: syntactic relationships\\nhead₂: semantic similarity\\nhead₃: positional patterns\\n...\\nConcatenate all heads",
-          "narration": "Multi-head attention runs several attention operations simultaneously. Each head can specialize in different aspects—some capture syntax, others semantics, creating richer representations."
-        },
-        {
-          "title": "Transformer Architecture",
-          "content": "Transformers stack encoder and decoder layers with residual connections and layer normalization, processing entire sequences in parallel unlike RNNs.",
-          "visual": "text",
-          "visualData": "Input Embedding\n+ Positional Encoding\n↓\n[Multi-Head Attention\n→ Add & Norm\n→ Feed-Forward\n→ Add & Norm] ×N\n↓\nOutput",
-          "narration": "The transformer architecture stacks multiple layers of multi-head attention and feed-forward networks, with residual connections and normalization at each step, enabling parallel sequence processing."
-        }
-      ],
-      "questions": [
-        {
-          "id": "trans-q1",
-          "type": "multiple-choice",
-          "question": "Why is the dot product divided by √dk in scaled dot-product attention?",
-          "options": [
-            "To prevent gradients from vanishing when dk is large",
-            "To speed up computation",
-            "To reduce memory usage",
-            "To ensure the output sums to 1"
+          "id": "perceptron-to-mlp",
+          "title": "Perceptron → MLP → Deep Networks",
+          "explainer": "## From Single Neuron to Deep Networks\n\n### Step 1: The Perceptron\noutput = activation(w₁x₁ + w₂x₂ + ... + b). Can only learn linearly separable patterns. Cannot learn XOR!\n\n### Step 2: Multi-Layer Perceptron (MLP)\nStack neurons in layers. Universal Approximation Theorem: 1 hidden layer can approximate ANY function.\n\n### Step 3: Going Deep\nMore layers = more abstract features. But deeper networks are harder to train (vanishing gradients). Solutions: ResNet, BatchNorm, better activations.\n\n### Step 4: The Micrograd Way\nKarpathy's micrograd: Value class wraps numbers, tracks operations, enables automatic backprop.",
+          "visual": "  Single Neuron:  x₁──w₁──┐                 MLP (2 hidden layers):\n                         ▼                 Input  Hidden1  Hidden2  Output\n                  x₂──w₂──▶ Σ+b → σ → y   │ ○ │──│ ● │──│ ● │──│ ○ │\n                         ▲                 │ ○ │──│ ● │──│ ● │──│ ○ │\n                  x₃──w₃──┘                │ ○ │──│ ● │──│ ● │\n                                           │ ○ │──│ ● │",
+          "questions": [
+            {
+              "id": "nn-pm-1",
+              "type": "multiple-choice",
+              "question": "Why can't a single perceptron learn XOR?",
+              "options": [
+                "Not enough weights",
+                "XOR is not linearly separable",
+                "Wrong activation function",
+                "Needs a bias term"
+              ],
+              "correct": 1,
+              "explanation": "XOR outputs 1 when inputs differ. No single line can separate [0,1],[1,0] from [0,0],[1,1]. Requires a hidden layer.",
+              "xp": 10
+            },
+            {
+              "id": "nn-pm-2",
+              "type": "multiple-choice",
+              "question": "What does the Universal Approximation Theorem state?",
+              "options": [
+                "Deep networks are always better",
+                "A network with one hidden layer can approximate any continuous function",
+                "Neural networks can learn any discrete function exactly",
+                "More parameters always means better performance"
+              ],
+              "correct": 1,
+              "explanation": "The UAT states a feedforward network with one hidden layer and enough neurons can approximate any continuous function. It doesn't say how many neurons or how easy to train.",
+              "xp": 15
+            }
           ],
-          "correct": 0,
-          "explanation": "For large dk, dot products grow large in magnitude, pushing softmax into regions with extremely small gradients. Scaling by √dk keeps values in a reasonable range.",
-          "xp": 10
+          "coding_challenge": {
+            "prompt": "Implement a Value class (micrograd) supporting addition, multiplication, and backward pass.",
+            "starter_code": "class Value:\n    def __init__(self, data, _children=(), _op=''):\n        self.data = data\n        self.grad = 0.0\n        self._backward = lambda: None\n        self._prev = set(_children)\n    def __add__(self, other): pass\n    def __mul__(self, other): pass\n    def backward(self): pass\n\na = Value(2.0); b = Value(3.0)\nc = a * b + b  # should be 9\nc.backward()\nprint(f'c={c.data}, da={a.grad}, db={b.grad}')",
+            "solution": "class Value:\n    def __init__(self, data, _children=(), _op=''):\n        self.data = data; self.grad = 0.0\n        self._backward = lambda: None; self._prev = set(_children)\n    def __add__(self, other):\n        other = other if isinstance(other, Value) else Value(other)\n        out = Value(self.data + other.data, (self, other), '+')\n        def _bw(): self.grad += out.grad; other.grad += out.grad\n        out._backward = _bw; return out\n    def __mul__(self, other):\n        other = other if isinstance(other, Value) else Value(other)\n        out = Value(self.data * other.data, (self, other), '*')\n        def _bw(): self.grad += other.data * out.grad; other.grad += self.data * out.grad\n        out._backward = _bw; return out\n    def backward(self):\n        topo, visited = [], set()\n        def build(v):\n            if v not in visited: visited.add(v); [build(c) for c in v._prev]; topo.append(v)\n        build(self); self.grad = 1.0\n        for v in reversed(topo): v._backward()\na = Value(2.0); b = Value(3.0); c = a * b + b; c.backward()\nprint(f'c={c.data}, da={a.grad}, db={b.grad}')",
+            "tests": "a=Value(2.0);b=Value(3.0);c=a*b+b;c.backward();assert c.data==9.0 and a.grad==3.0"
+          },
+          "paper_ref": "https://github.com/karpathy/micrograd",
+          "source": "karpathy/micrograd"
         },
         {
-          "id": "trans-q2",
-          "type": "multiple-choice",
-          "question": "What is the computational complexity of self-attention with respect to sequence length n?",
-          "options": [
-            "O(n)",
-            "O(n log n)",
-            "O(n²)",
-            "O(2ⁿ)"
+          "id": "activation-functions",
+          "title": "Activation Functions Deep Dive",
+          "explainer": "## Activation Functions: Adding Non-Linearity\n\n### Why Non-Linearity?\nWithout activations, stacking linear layers is still linear: f(x) = W₂(W₁x) = Wx.\n\n### Classic: Sigmoid σ(x)=1/(1+e⁻ˣ) output (0,1). Tanh output (-1,1). Both suffer vanishing gradients.\n\n### Modern: ReLU max(0,x) — simple, fast. GELU x·Φ(x) — smooth, used in GPT/BERT. SiLU x·σ(x) — self-gated.",
+          "visual": "  Sigmoid            ReLU              GELU\n  1 ┤    ╭──────     │      ╱          │      ╱\n    │   ╱             │    ╱            │    ╱\n  .5┤──╱              │  ╱             │  ╱\n    │╱                │╱               │╱\n  0 ┤─────            ┼────────        ┤───╮──",
+          "questions": [
+            {
+              "id": "nn-af-1",
+              "type": "multiple-choice",
+              "question": "What is the 'dying ReLU' problem?",
+              "options": [
+                "ReLU uses too much memory",
+                "Neurons with negative inputs always output 0 and stop learning",
+                "ReLU is too slow",
+                "ReLU causes exploding gradients"
+              ],
+              "correct": 1,
+              "explanation": "When a ReLU neuron's input is always negative, it outputs 0 and receives zero gradient — permanently dead.",
+              "xp": 10
+            },
+            {
+              "id": "nn-af-2",
+              "type": "multiple-choice",
+              "question": "Why is GELU preferred in modern transformers?",
+              "options": [
+                "Faster to compute",
+                "Smooth with probabilistic interpretation, better gradient flow",
+                "Always positive",
+                "Less memory"
+              ],
+              "correct": 1,
+              "explanation": "GELU is smooth everywhere, provides soft gating, and empirically improves transformer training. Default in GPT-2, BERT, LLaMA.",
+              "xp": 15
+            }
           ],
-          "correct": 2,
-          "explanation": "Self-attention computes pairwise interactions between all tokens, resulting in O(n²) complexity. This limits context length but enables modeling all relationships.",
-          "xp": 10
+          "coding_challenge": {
+            "prompt": "Implement ReLU, Sigmoid, and GELU activation functions from scratch.",
+            "starter_code": "import math\ndef relu(x): pass\ndef sigmoid(x): pass\ndef gelu(x): pass\nfor fn in [relu, sigmoid, gelu]:\n    print(f'{fn.__name__}: {fn(-1):.4f}, {fn(0):.4f}, {fn(1):.4f}')",
+            "solution": "import math\ndef relu(x): return max(0.0, x)\ndef sigmoid(x): return 1/(1+math.exp(-x))\ndef gelu(x): return 0.5*x*(1+math.tanh(math.sqrt(2/math.pi)*(x+0.044715*x**3)))\nfor fn in [relu, sigmoid, gelu]:\n    print(f'{fn.__name__}: {fn(-1):.4f}, {fn(0):.4f}, {fn(1):.4f}')",
+            "tests": "assert relu(-5)==0 and relu(3)==3 and abs(sigmoid(0)-0.5)<1e-6"
+          },
+          "source": "neural-nets"
         },
         {
-          "id": "trans-q3",
-          "type": "multiple-choice",
-          "question": "Why do transformers need positional encodings?",
-          "options": [
-            "To reduce the number of parameters",
-            "Because attention is permutation-invariant and doesn't inherently encode position",
-            "To speed up training",
-            "To enable multi-head attention"
+          "id": "loss-functions",
+          "title": "Loss Functions: MSE, Cross-Entropy & Beyond",
+          "explainer": "## Loss Functions: Measuring How Wrong You Are\n\n### MSE: (1/n) Σ(pred - actual)² — for regression, penalizes large errors quadratically.\n### Cross-Entropy: -Σ y·log(ŷ) — for classification, huge penalty when confidently wrong.\n### Contrastive: InfoNCE loss — pulls similar pairs closer, pushes different apart (CLIP, SimCLR).",
+          "visual": "  MSE (regression):          Cross-Entropy (classification):\n  L │                         L │\n    │╲                ╱         │╲\n    │  ╲            ╱           │  ╲\n    │    ╲________╱             │    ╲_________\n    └───────────────           └───────────────\n    Symmetric, smooth           -log(p): huge penalty when confident & wrong",
+          "questions": [
+            {
+              "id": "nn-lf-1",
+              "type": "multiple-choice",
+              "question": "Why is cross-entropy preferred over MSE for classification?",
+              "options": [
+                "Faster to compute",
+                "Provides stronger gradients when predictions are confidently wrong",
+                "MSE doesn't work with networks",
+                "Always gives smaller values"
+              ],
+              "correct": 1,
+              "explanation": "When confidently wrong, CE gives gradient proportional to 1/p (huge), while MSE gives ~2(p-t) (moderate). CE corrects mistakes faster.",
+              "xp": 15
+            },
+            {
+              "id": "nn-lf-2",
+              "type": "multiple-choice",
+              "question": "What loss function does CLIP use?",
+              "options": [
+                "MSE",
+                "Cross-entropy on image-text similarity matrix (contrastive)",
+                "Binary cross-entropy",
+                "Hinge loss"
+              ],
+              "correct": 1,
+              "explanation": "CLIP uses InfoNCE contrastive loss on the similarity matrix between image and text embeddings, matching pairs on the diagonal.",
+              "xp": 15
+            }
           ],
-          "correct": 1,
-          "explanation": "Attention operations treat the input as a set, ignoring order. Positional encodings add information about token positions so the model can utilize sequence order.",
-          "xp": 10
+          "coding_challenge": {
+            "prompt": "Implement cross-entropy loss for multi-class classification.",
+            "starter_code": "import math\ndef cross_entropy(preds, targets):\n    pass\nprint(cross_entropy([0.7, 0.2, 0.1], [1, 0, 0]))  # ~0.357",
+            "solution": "import math\ndef cross_entropy(preds, targets):\n    return -sum(t * math.log(p + 1e-12) for p, t in zip(preds, targets))\nprint(cross_entropy([0.7, 0.2, 0.1], [1, 0, 0]))",
+            "tests": "assert abs(cross_entropy([1.0, 0.0], [1, 0])) < 1e-6"
+          },
+          "source": "neural-nets"
         },
         {
-          "id": "trans-q4",
-          "type": "multiple-choice",
-          "question": "What is the purpose of multi-head attention compared to single-head attention?",
-          "options": [
-            "To reduce computational cost",
-            "To allow the model to attend to different representation subspaces simultaneously",
-            "To eliminate the need for feed-forward layers",
-            "To simplify the architecture"
+          "id": "backpropagation",
+          "title": "Backpropagation: Implement from Scratch",
+          "explainer": "## Backpropagation: The Engine of Deep Learning\n\n### Forward Pass: z₁=W₁x+b₁ → a₁=ReLU(z₁) → z₂=W₂a₁+b₂ → ŷ=softmax(z₂) → L=CE(ŷ,y)\n\n### Backward Pass: ∂L/∂z₂ = ŷ-y → ∂L/∂W₂ = a₁ᵀ·∂L/∂z₂ → ∂L/∂a₁ = ∂L/∂z₂·W₂ᵀ → ...\n\n### Weight Update: W = W - lr · ∂L/∂W",
+          "visual": "  FORWARD:  x ──▶ [W₁x+b₁] ──▶ [ReLU] ──▶ [W₂a₁+b₂] ──▶ [softmax] ──▶ [CE Loss]\n  BACKWARD: ∂L/∂W₁ ◀── ∂L/∂z₁ ◀── ∂L/∂a₁ ◀── ∂L/∂z₂ ◀── (ŷ-y) ◀── 1.0",
+          "questions": [
+            {
+              "id": "nn-bp-1",
+              "type": "multiple-choice",
+              "question": "What is the gradient of ReLU(x) w.r.t. x?",
+              "options": [
+                "x",
+                "1 if x>0, else 0",
+                "Always 1",
+                "e^x"
+              ],
+              "correct": 1,
+              "explanation": "ReLU(x) = max(0,x). Derivative is 1 for x>0 and 0 for x<0.",
+              "xp": 10
+            },
+            {
+              "id": "nn-bp-2",
+              "type": "multiple-choice",
+              "question": "Why is topological sort needed in backpropagation?",
+              "options": [
+                "Makes computation faster",
+                "Ensures each node's gradient is fully accumulated before propagating backward",
+                "Sorts weights by magnitude",
+                "Prevents cycles"
+              ],
+              "correct": 1,
+              "explanation": "A node's gradient may receive contributions from multiple paths. Topological sort guarantees all are accumulated before propagating further.",
+              "xp": 15
+            }
           ],
-          "correct": 1,
-          "explanation": "Multiple heads allow the model to capture different types of relationships (syntactic, semantic, positional) in parallel, creating richer representations than a single attention mechanism.",
-          "xp": 10
+          "coding_challenge": {
+            "prompt": "Implement a 2-layer neural network with backpropagation using only NumPy. Train on XOR.",
+            "starter_code": "import numpy as np\nnp.random.seed(42)\nX = np.array([[0,0],[0,1],[1,0],[1,1]])\ny = np.array([[0],[1],[1],[0]])\n# Initialize weights and train\n# ...",
+            "solution": "import numpy as np\nnp.random.seed(42)\nX = np.array([[0,0],[0,1],[1,0],[1,1]])\ny = np.array([[0],[1],[1],[0]])\nW1 = np.random.randn(2,4)*0.5; b1 = np.zeros((1,4))\nW2 = np.random.randn(4,1)*0.5; b2 = np.zeros((1,1))\nsig = lambda x: 1/(1+np.exp(-x))\nfor _ in range(10000):\n    a1 = sig(X@W1+b1); a2 = sig(a1@W2+b2)\n    dz2 = 2*(a2-y)*a2*(1-a2)/4\n    W2 -= 0.5*(a1.T@dz2); b2 -= 0.5*dz2.sum(0,keepdims=True)\n    dz1 = (dz2@W2.T)*a1*(1-a1)\n    W1 -= 0.5*(X.T@dz1); b1 -= 0.5*dz1.sum(0,keepdims=True)\nprint(a2.round(2).flatten())",
+            "tests": "# Predictions should approximate [0, 1, 1, 0]"
+          },
+          "paper_ref": "https://github.com/karpathy/micrograd",
+          "source": "karpathy/micrograd"
         },
         {
-          "id": "trans-q5",
-          "type": "multiple-choice",
-          "question": "In the transformer, what connects Q, K, and V to the input?",
-          "options": [
-            "They are the raw input tokens",
-            "They are fixed lookup tables",
-            "They are learned linear projections of the input",
-            "They are outputs from the previous layer only"
+          "id": "optimizers",
+          "title": "Optimizers: SGD → Adam & Beyond",
+          "explainer": "## Optimizers: How to Update Weights\n\n### SGD: w = w - lr × gradient. Simple but slow.\n### Momentum: v = β·v + g; w -= lr·v. Like a ball rolling downhill.\n### Adam: Combines momentum + per-parameter learning rates. Default choice!\n  m = β₁·m + (1-β₁)·g (mean), v = β₂·v + (1-β₂)·g² (variance)\n### Learning Rate Schedules: Warmup → cosine decay (GPT, LLaMA recipe).",
+          "visual": "  SGD (oscillates)    Momentum (smooth)    Adam (direct)\n  ╲╱╲╱╲●              ╲──╲──●               ╲──●\n  \n  LR Schedule (GPT-style):\n  lr │  ╱╲╲╲╲╲╲______\n     └──────────────── step\n     warmup  cosine decay",
+          "questions": [
+            {
+              "id": "nn-opt-1",
+              "type": "multiple-choice",
+              "question": "Why is Adam the default optimizer?",
+              "options": [
+                "Always finds global minimum",
+                "Adapts per-parameter learning rates + uses momentum, works well without tuning",
+                "Uses less memory than SGD",
+                "Invented most recently"
+              ],
+              "correct": 1,
+              "explanation": "Adam combines momentum and per-parameter adaptive LR. Robust with defaults (β₁=0.9, β₂=0.999, ε=1e-8).",
+              "xp": 15
+            },
+            {
+              "id": "nn-opt-2",
+              "type": "multiple-choice",
+              "question": "What is learning rate warmup?",
+              "options": [
+                "Using a high LR at the start",
+                "Gradually increasing LR from 0 at the beginning of training to prevent instability",
+                "Training only the last layer first",
+                "Using a constant LR"
+              ],
+              "correct": 1,
+              "explanation": "Starting with a high LR can cause instability because initial gradients are noisy. Warmup gradually increases LR, letting the model find a stable region first.",
+              "xp": 10
+            }
           ],
-          "correct": 2,
-          "explanation": "Q, K, and V are created by multiplying the input with learned weight matrices WQ, WK, and WV. This allows the model to learn what queries, keys, and values are useful.",
-          "xp": 10
-        }
-      ],
-      "resources": [
-        {
-          "title": "Attention Is All You Need (Original Paper)",
-          "url": "https://arxiv.org/abs/1706.03762"
+          "coding_challenge": {
+            "prompt": "Implement one step of the Adam optimizer from scratch.",
+            "starter_code": "def adam_step(params, grads, m, v, t, lr=0.001, b1=0.9, b2=0.999, eps=1e-8):\n    pass",
+            "solution": "def adam_step(params, grads, m, v, t, lr=0.001, b1=0.9, b2=0.999, eps=1e-8):\n    new_p, new_m, new_v = [], [], []\n    for p, g, mi, vi in zip(params, grads, m, v):\n        mi = b1*mi + (1-b1)*g; vi = b2*vi + (1-b2)*g**2\n        mh = mi/(1-b1**t); vh = vi/(1-b2**t)\n        new_p.append(p - lr*mh/(vh**0.5+eps)); new_m.append(mi); new_v.append(vi)\n    return new_p, new_m, new_v",
+            "tests": "p,m,v = adam_step([1.0],[0.1],[0.0],[0.0],1); assert p[0] < 1.0"
+          },
+          "paper_ref": "https://arxiv.org/abs/1412.6980",
+          "source": "neural-nets"
         },
         {
-          "title": "The Illustrated Transformer",
-          "url": "http://jalammar.github.io/illustrated-transformer/"
-        }
-      ]
-    },
-    {
-      "id": "gans",
-      "title": "Generative Adversarial Networks",
-      "chapter": 4,
-      "difficulty": "intermediate",
-      "study": {
-        "content": "**Generative Adversarial Networks (GANs)** pit two neural networks against each other in a game-theoretic framework. The **generator** $G$ creates fake samples from random noise, while the **discriminator** $D$ tries to distinguish real from generated samples. This adversarial training produces remarkably realistic synthetic data.\n\nThe GAN objective is a minimax game: $$\\min_G \\max_D V(D,G) = \\mathbb{E}_{x\\sim p_{data}}[\\log D(x)] + \\mathbb{E}_{z\\sim p_z}[\\log(1-D(G(z)))]$$ The discriminator maximizes its ability to classify real vs. fake (first term for real data, second for generated), while the generator minimizes $\\log(1-D(G(z)))$—equivalently trying to maximize $D(G(z))$, making discriminator classify fakes as real.\n\nTraining alternates between updating $D$ and $G$. For discriminator training, we maximize: $$\\nabla_{\\theta_d} \\frac{1}{m}\\sum_{i=1}^m[\\log D(x^{(i)}) + \\log(1-D(G(z^{(i)})))]$$ For generator training, we update using: $$\\nabla_{\\theta_g} \\frac{1}{m}\\sum_{i=1}^m \\log(1-D(G(z^{(i)})))$$ or equivalently maximize $\\log D(G(z))$ for better gradients.\n\n**Training challenges** include mode collapse (generator produces limited variety), vanishing gradients (when discriminator becomes too strong), and instability. Modern variants address these: **WGAN** uses Wasserstein distance, **StyleGAN** introduces style-based generation with unprecedented quality, and **conditional GANs** enable controlled generation. Despite difficulties, GANs excel at high-quality image synthesis, data augmentation, domain transfer (CycleGAN), and creative applications, pushing the boundaries of generative modeling.",
-        "keyPoints": [
-          "GANs train generator and discriminator networks in adversarial competition",
-          "The minimax objective drives the generator to produce increasingly realistic samples",
-          "Training instability and mode collapse are key challenges addressed by modern variants"
-        ],
-        "readingTimeMin": 6
-      },
-      "mindmap": "mindmap\n  root((GANs))\n    Components\n      Generator\n      Discriminator\n      Latent Space\n    Training\n      Minimax Game\n      Alternating Updates\n      Nash Equilibrium\n    Challenges\n      Mode Collapse\n      Vanishing Gradients\n      Training Instability\n    Variants\n      DCGAN\n      WGAN\n      StyleGAN\n      Conditional GAN",
-      "slides": [
-        {
-          "title": "Adversarial Framework",
-          "content": "GANs consist of two networks: a generator creating fake samples and a discriminator distinguishing real from fake. They train in opposition, improving each other.",
-          "visual": "text",
-          "visualData": "Generator: noise → fake image\nDiscriminator: image → real/fake\n\nG tries to fool D\nD tries to catch G's fakes",
-          "narration": "The GAN framework is like a counterfeiter versus detective game. The generator creates fake data while the discriminator learns to spot fakes, pushing both to improve."
-        },
-        {
-          "title": "Minimax Objective",
-          "content": "The GAN objective is a minimax game where the discriminator maximizes classification accuracy while the generator minimizes the discriminator's ability to detect fakes.",
-          "visual": "equation",
-          "visualData": "\\min_G \\max_D \\mathbb{E}_x[\\log D(x)] + \\mathbb{E}_z[\\log(1-D(G(z)))]",
-          "narration": "This equation captures the adversarial game. The discriminator wants to maximize the value function by correctly classifying real and fake. The generator wants to minimize it by fooling the discriminator."
-        },
-        {
-          "title": "Training Dynamics",
-          "content": "Training alternates between updating the discriminator (to better classify) and generator (to better fool). At equilibrium, the generator produces realistic samples the discriminator cannot distinguish.",
-          "visual": "text",
-          "visualData": "Repeat:\n1. Train D on real + fake batch\n2. Train G to maximize D(G(z))\n\nEquilibrium: D(G(z)) = 0.5\n(discriminator can't tell)",
-          "narration": "GAN training alternates between strengthening the discriminator's detection and improving the generator's fakes. At Nash equilibrium, generated samples are indistinguishable from real data."
-        }
-      ],
-      "questions": [
-        {
-          "id": "gan-q1",
-          "type": "multiple-choice",
-          "question": "What is the role of the generator in a GAN?",
-          "options": [
-            "To create synthetic samples that fool the discriminator",
-            "To classify images as real or fake",
-            "To compute the loss function",
-            "To validate the training data"
+          "id": "regularization",
+          "title": "Regularization: Dropout, BatchNorm & Weight Decay",
+          "explainer": "## Regularization: Preventing Overfitting\n\n### Dropout: Randomly zero neurons during training (p=0.1-0.5). Forces redundant representations.\n### BatchNorm: Normalize activations within mini-batch. Speeds training. BN(x) = γ·(x-μ)/√(σ²+ε)+β\n### Weight Decay: Add λ·||w||² to loss. Keeps weights small = simpler model.\n### LayerNorm: Like BatchNorm but across features. Used in Transformers.",
+          "visual": "  Without Dropout:       With Dropout (p=0.3):\n  ● ──▶ ● ──▶ ●         ● ──▶ ● ──▶ ●\n  ● ──▶ ● ──▶ ●         ● ──▶ ✗       ●\n  ● ──▶ ● ──▶ ●         ● ──▶ ● ──▶ ●\n  ● ──▶ ●               ✗      ●\n  \n  BatchNorm (↕ columns)    LayerNorm (← rows)\n  (CNNs)                   (Transformers)",
+          "questions": [
+            {
+              "id": "nn-reg-1",
+              "type": "multiple-choice",
+              "question": "Why do Transformers use LayerNorm instead of BatchNorm?",
+              "options": [
+                "Faster to compute",
+                "LayerNorm normalizes across features independently of batch size, works for variable-length sequences",
+                "BatchNorm doesn't work with attention",
+                "Fewer parameters"
+              ],
+              "correct": 1,
+              "explanation": "LayerNorm normalizes each example independently. BatchNorm depends on batch statistics, problematic for variable-length sequences and small batches.",
+              "xp": 15
+            },
+            {
+              "id": "nn-reg-2",
+              "type": "multiple-choice",
+              "question": "Why must dropout be turned off during inference?",
+              "options": [
+                "It would make inference slower",
+                "Dropping neurons randomly would make predictions inconsistent and suboptimal",
+                "It causes memory issues",
+                "It only works with gradients"
+              ],
+              "correct": 1,
+              "explanation": "During inference, we want deterministic, optimal predictions using all neurons. Dropout randomly zeroing neurons would degrade quality and make outputs non-deterministic.",
+              "xp": 10
+            }
           ],
-          "correct": 0,
-          "explanation": "The generator's role is to produce fake samples from random noise that are realistic enough to deceive the discriminator into classifying them as real.",
-          "xp": 10
-        },
-        {
-          "id": "gan-q2",
-          "type": "multiple-choice",
-          "question": "What is mode collapse in GAN training?",
-          "options": [
-            "When the discriminator becomes too powerful",
-            "When the generator produces limited variety in outputs",
-            "When training diverges completely",
-            "When the loss function reaches zero"
-          ],
-          "correct": 1,
-          "explanation": "Mode collapse occurs when the generator learns to produce only a limited set of outputs (often a single mode of the data distribution) rather than capturing the full diversity of real data.",
-          "xp": 10
-        },
-        {
-          "id": "gan-q3",
-          "type": "multiple-choice",
-          "question": "At Nash equilibrium in a perfectly trained GAN, what should D(G(z)) equal?",
-          "options": [
-            "0",
-            "0.5",
-            "1",
-            "It varies randomly"
-          ],
-          "correct": 1,
-          "explanation": "At equilibrium, the discriminator cannot distinguish generated from real samples, outputting 0.5 (50% confidence either way) for generated samples.",
-          "xp": 10
-        },
-        {
-          "id": "gan-q4",
-          "type": "multiple-choice",
-          "question": "Why might training the generator with max log(D(G(z))) be preferred over min log(1-D(G(z)))?",
-          "options": [
-            "It provides stronger gradients early in training when D(G(z)) is small",
-            "It reduces computational cost",
-            "It prevents mode collapse",
-            "It eliminates the need for a discriminator"
-          ],
-          "correct": 0,
-          "explanation": "When the generator is poor early on, D(G(z)) is near 0. The gradient of log(1-D(G(z))) saturates, while log(D(G(z))) provides stronger signals for improvement.",
-          "xp": 10
-        },
-        {
-          "id": "gan-q5",
-          "type": "multiple-choice",
-          "question": "What improvement does Wasserstein GAN (WGAN) introduce?",
-          "options": [
-            "Eliminates the discriminator entirely",
-            "Uses Wasserstein distance for more stable training",
-            "Requires no hyperparameter tuning",
-            "Trains 10x faster than standard GANs"
-          ],
-          "correct": 1,
-          "explanation": "WGAN uses the Wasserstein (Earth Mover's) distance instead of Jensen-Shannon divergence, providing more meaningful gradients and improving training stability.",
-          "xp": 10
-        }
-      ],
-      "resources": [
-        {
-          "title": "GAN Original Paper (Goodfellow et al.)",
-          "url": "https://arxiv.org/abs/1406.2661"
-        },
-        {
-          "title": "GAN Lab - Interactive Visualization",
-          "url": "https://poloclub.github.io/ganlab/"
-        }
-      ]
-    },
-    {
-      "id": "diffusion-models",
-      "title": "Diffusion Models",
-      "chapter": 5,
-      "difficulty": "advanced",
-      "study": {
-        "content": "**Diffusion models** generate data by learning to reverse a gradual noising process, achieving state-of-the-art results in image synthesis (DALL-E 2, Stable Diffusion, Imagen). Unlike GANs' adversarial training, diffusion models use a more stable process based on non-equilibrium thermodynamics.\n\nThe framework consists of two processes. The **forward process** gradually adds Gaussian noise over $T$ steps: $$q(x_t|x_{t-1}) = \\mathcal{N}(x_t; \\sqrt{1-\\beta_t}x_{t-1}, \\beta_t I)$$ where $\\beta_t$ is a variance schedule. Using the reparameterization trick, we can sample at any timestep directly: $$x_t = \\sqrt{\\bar{\\alpha}_t}x_0 + \\sqrt{1-\\bar{\\alpha}_t}\\epsilon$$ where $\\bar{\\alpha}_t = \\prod_{s=1}^t(1-\\beta_s)$ and $\\epsilon \\sim \\mathcal{N}(0,I)$.\n\nThe **reverse process** learns to denoise: $$p_\\theta(x_{t-1}|x_t) = \\mathcal{N}(x_{t-1}; \\mu_\\theta(x_t, t), \\Sigma_\\theta(x_t, t))$$ We train a neural network to predict the noise $\\epsilon_\\theta(x_t, t)$ added at each step. The simplified training objective is: $$L_{\\text{simple}} = \\mathbb{E}_{t,x_0,\\epsilon}[\\|\\epsilon - \\epsilon_\\theta(x_t, t)\\|^2]$$ This is equivalent to score matching and denoising score matching.\n\n**DDPM (Denoising Diffusion Probabilistic Models)** requires many sampling steps (often 1000+), but **DDIM (Denoising Diffusion Implicit Models)** enables faster sampling through deterministic, non-Markovian processes. **Classifier-free guidance** controls generation by training on conditional and unconditional objectives: $$\\tilde{\\epsilon}_\\theta(x_t, c) = \\epsilon_\\theta(x_t, \\emptyset) + s \\cdot (\\epsilon_\\theta(x_t, c) - \\epsilon_\\theta(x_t, \\emptyset))$$ where $s$ is guidance scale. Modern diffusion models achieve photorealistic synthesis, controllable generation, and excel at tasks requiring high sample quality and diversity.",
-        "keyPoints": [
-          "Diffusion models learn to reverse a gradual noising process through denoising score matching",
-          "The forward process adds Gaussian noise; the reverse process is learned by predicting added noise",
-          "Classifier-free guidance and DDIM sampling enable controllable, efficient generation"
-        ],
-        "readingTimeMin": 7
-      },
-      "mindmap": "mindmap\n  root((Diffusion Models))\n    Forward Process\n      Gradual Noising\n      Variance Schedule\n      Markov Chain\n    Reverse Process\n      Learned Denoising\n      Score Matching\n      Sampling\n    Training\n      Noise Prediction\n      Simplified Objective\n      Timestep Conditioning\n    Techniques\n      DDPM\n      DDIM\n      Classifier-Free Guidance\n      Latent Diffusion",
-      "slides": [
-        {
-          "title": "Forward Diffusion Process",
-          "content": "The forward process gradually corrupts data by adding Gaussian noise over many timesteps, eventually producing pure noise. This process is fixed and doesn't require learning.",
-          "visual": "equation",
-          "visualData": "x_t = \\sqrt{\\bar{\\alpha}_t}x_0 + \\sqrt{1-\\bar{\\alpha}_t}\\epsilon\n\nx_0 → x_1 → ... → x_T ≈ \\mathcal{N}(0,I)",
-          "narration": "The forward process systematically adds noise to data over many steps. Starting from a clean image, we progressively corrupt it until it becomes indistinguishable from random Gaussian noise."
-        },
-        {
-          "title": "Learning to Reverse",
-          "content": "A neural network learns to predict and remove the noise added at each timestep. Training minimizes the difference between predicted and actual noise.",
-          "visual": "equation",
-          "visualData": "L = \\mathbb{E}_{t,x_0,\\epsilon}[\\|\\epsilon - \\epsilon_\\theta(x_t, t)\\|^2]",
-          "narration": "We train a neural network to predict what noise was added at each step. By learning this, the model can reverse the diffusion process, gradually denoising pure noise into realistic samples."
-        },
-        {
-          "title": "Controlled Generation",
-          "content": "Classifier-free guidance steers generation toward desired conditions by interpolating between conditional and unconditional predictions with a guidance scale.",
-          "visual": "equation",
-          "visualData": "\\tilde{\\epsilon} = \\epsilon_{uncond} + s \\cdot (\\epsilon_{cond} - \\epsilon_{uncond})\n\ns = 1: normal\ns > 1: stronger condition\ns = 0: ignore condition",
-          "narration": "Classifier-free guidance controls generation by combining conditional and unconditional predictions. Higher guidance scales produce samples that more strongly match the condition, like a text prompt."
-        }
-      ],
-      "questions": [
-        {
-          "id": "diff-q1",
-          "type": "multiple-choice",
-          "question": "What does the neural network in a diffusion model learn to predict?",
-          "options": [
-            "The final generated image directly",
-            "The noise that was added at each timestep",
-            "The probability distribution of the data",
-            "The variance schedule parameters"
-          ],
-          "correct": 1,
-          "explanation": "The network learns to predict ε (epsilon), the noise added at each timestep. By predicting and subtracting this noise, the model can iteratively denoise random noise into realistic samples.",
-          "xp": 10
-        },
-        {
-          "id": "diff-q2",
-          "type": "multiple-choice",
-          "question": "What is the main advantage of DDIM over DDPM sampling?",
-          "options": [
-            "Better image quality",
-            "Faster sampling with fewer steps",
-            "Easier training",
-            "Smaller model size"
-          ],
-          "correct": 1,
-          "explanation": "DDIM uses a deterministic, non-Markovian sampling process that can skip many timesteps, generating samples in 10-50 steps instead of 1000+ required by DDPM while maintaining quality.",
-          "xp": 10
-        },
-        {
-          "id": "diff-q3",
-          "type": "multiple-choice",
-          "question": "In classifier-free guidance, what does a guidance scale s > 1 accomplish?",
-          "options": [
-            "Speeds up sampling",
-            "Reduces model size",
-            "Strengthens adherence to the conditioning signal",
-            "Eliminates the need for conditioning"
-          ],
-          "correct": 2,
-          "explanation": "A guidance scale greater than 1 amplifies the difference between conditional and unconditional predictions, making generated samples more strongly aligned with the condition (e.g., text prompt).",
-          "xp": 10
-        },
-        {
-          "id": "diff-q4",
-          "type": "multiple-choice",
-          "question": "What is the forward process in diffusion models?",
-          "options": [
-            "Training the neural network",
-            "A fixed process that gradually adds noise to data",
-            "Generating samples from noise",
-            "Computing the loss function"
-          ],
-          "correct": 1,
-          "explanation": "The forward process is a fixed, predefined Markov chain that progressively adds Gaussian noise to data over T timesteps. It requires no learning and defines the corruption process to reverse.",
-          "xp": 10
-        },
-        {
-          "id": "diff-q5",
-          "type": "multiple-choice",
-          "question": "How does the diffusion model training objective relate to denoising?",
-          "options": [
-            "It minimizes classification error",
-            "It minimizes the difference between predicted and actual noise",
-            "It maximizes likelihood directly",
-            "It minimizes adversarial loss"
-          ],
-          "correct": 1,
-          "explanation": "The simplified training objective ||ε - ε_θ(x_t, t)||² trains the model to accurately predict the noise added at each timestep, which is equivalent to denoising score matching.",
-          "xp": 10
-        }
-      ],
-      "resources": [
-        {
-          "title": "Denoising Diffusion Probabilistic Models (DDPM Paper)",
-          "url": "https://arxiv.org/abs/2006.11239"
-        },
-        {
-          "title": "Understanding Diffusion Models (Tutorial)",
-          "url": "https://arxiv.org/abs/2208.11970"
+          "coding_challenge": {
+            "prompt": "Implement dropout from scratch with inverted dropout scaling.",
+            "starter_code": "import numpy as np\ndef dropout(x, p=0.5, training=True):\n    pass\nnp.random.seed(42)\nprint(dropout(np.ones((2,4)), p=0.5))",
+            "solution": "import numpy as np\ndef dropout(x, p=0.5, training=True):\n    if not training: return x\n    mask = (np.random.rand(*x.shape) > p).astype(float)\n    return x * mask / (1 - p)\nnp.random.seed(42)\nprint(dropout(np.ones((2,4)), p=0.5))",
+            "tests": "np.random.seed(0); x=np.ones(1000); assert 900 < dropout(x,0.5).sum() < 1100"
+          },
+          "source": "neural-nets"
         }
       ]
     },
-    {
-      "id": "llms",
-      "title": "Large Language Models",
-      "chapter": 6,
-      "difficulty": "advanced",
-      "study": {
-        "content": "**Large Language Models (LLMs)** like GPT-4, PaLM, and Claude demonstrate emergent abilities in reasoning, generation, and comprehension through massive scale. Built on transformer architecture, they're trained on trillions of tokens to predict next tokens, developing sophisticated language understanding.\n\nThe foundational training objective is **next-token prediction**: $$\\mathcal{L} = -\\sum_{t=1}^T \\log P(x_t | x_{<t}; \\theta)$$ where $x_{<t}$ represents all previous tokens. At scale, this simple objective leads to emergent capabilities. The model learns contextual representations through self-attention: $$h_t = \\text{Attention}(Q_t, K_{\\leq t}, V_{\\leq t})$$ with causal masking ensuring $h_t$ depends only on previous tokens.\n\n**Scaling laws** (Kaplan et al.) show performance improves predictably with model size $N$, dataset size $D$, and compute $C$: $$L(N) \\propto N^{-\\alpha}$$ Doubling model parameters yields consistent improvements, driving models from GPT-2 (1.5B parameters) to GPT-3 (175B) to GPT-4 (estimated 1T+).\n\nModern LLMs use **instruction tuning** and **RLHF (Reinforcement Learning from Human Feedback)**. Instruction tuning fine-tunes on task demonstrations. RLHF trains a reward model from human preferences, then optimizes the LLM using **PPO (Proximal Policy Optimization)**: $$\\mathcal{L}^{\\text{RLHF}} = \\mathbb{E}[r_\\phi(x,y)] - \\beta \\cdot D_{KL}[\\pi_\\theta \\| \\pi_{\\text{ref}}]$$ balancing reward maximization with staying close to the reference policy.\n\n**In-context learning** enables few-shot adaptation without parameter updates—models learn from examples in the prompt. **Chain-of-thought prompting** elicits reasoning by encouraging step-by-step explanations. Techniques like **retrieval-augmented generation (RAG)** ground responses in external knowledge. LLMs exhibit capabilities beyond simple text completion: mathematical reasoning, code generation, tool use, and multi-step planning, making them foundation models for diverse AI applications.",
-        "keyPoints": [
-          "LLMs use transformer architecture trained on next-token prediction at massive scale",
-          "Scaling laws show predictable improvement with model size, data, and compute",
-          "RLHF and instruction tuning align models with human preferences and task formats"
-        ],
-        "readingTimeMin": 7
-      },
-      "mindmap": "mindmap\n  root((LLMs))\n    Architecture\n      Transformer\n      Causal Masking\n      Positional Encoding\n    Training\n      Next-Token Prediction\n      Scaling Laws\n      Pretraining Corpus\n    Alignment\n      Instruction Tuning\n      RLHF\n      Human Feedback\n    Capabilities\n      In-Context Learning\n      Chain-of-Thought\n      Tool Use\n      Code Generation",
-      "slides": [
+    "architectures": {
+      "name": "Architectures",
+      "description": "CNNs, RNNs, Transformers, and self-attention from scratch",
+      "order": 3,
+      "topics": [
         {
-          "title": "Next-Token Prediction",
-          "content": "LLMs are trained to predict the next token given all previous tokens. This simple objective, when applied at scale, leads to sophisticated language understanding and generation.",
-          "visual": "equation",
-          "visualData": "\\mathcal{L} = -\\sum_{t=1}^T \\log P(x_t | x_{<t})\n\n\"The cat sat on the ___\" → mat",
-          "narration": "The core training objective is predicting the next token. By learning patterns across trillions of tokens, models develop deep understanding of language structure, facts, and reasoning."
+          "id": "cnns",
+          "title": "Convolutional Neural Networks",
+          "explainer": "## CNNs: Learning Spatial Patterns\n\n### Convolution: Slide filter across image, dot product at each position → feature map.\n### Key: Filters (3×3), Stride (step size), Padding, Pooling (downsample).\n### Hierarchy: edges → shapes → objects (emerges from training!).\n### Famous: LeNet(1998), AlexNet(2012), VGG(2014), ResNet(2015, skip connections!).",
+          "visual": "  Input(5×5) * Filter(3×3) = Output(3×3)\n  ┌─┬─┬─┬─┬─┐   ┌─┬─┬─┐   ┌──┬──┬──┐\n  │1│0│1│0│1│   │1│0│1│   │ 4│ 3│ 4│\n  │0│1│0│1│0│ * │0│1│0│ = │ 2│ 4│ 3│\n  │1│0│1│0│1│   │1│0│1│   │ 4│ 3│ 4│\n  └─┴─┴─┴─┴─┘   └─┴─┴─┘   └──┴──┴──┘\n  \n  ResNet: x ──▶ [Conv→BN→ReLU] ──▶ (+) ──▶ out\n          └──── identity ──────────▶",
+          "questions": [
+            {
+              "id": "arch-cnn-1",
+              "type": "multiple-choice",
+              "question": "What do ResNet skip connections solve?",
+              "options": [
+                "Overfitting",
+                "Vanishing gradients in very deep networks",
+                "Slow inference",
+                "Large model size"
+              ],
+              "correct": 1,
+              "explanation": "Skip connections allow gradients to flow directly through the identity path, enabling training of 100+ layer networks.",
+              "xp": 15
+            },
+            {
+              "id": "arch-cnn-2",
+              "type": "multiple-choice",
+              "question": "If input is 32×32, filter 5×5, stride 1, no padding: output size?",
+              "options": [
+                "32×32",
+                "28×28",
+                "30×30",
+                "27×27"
+              ],
+              "correct": 1,
+              "explanation": "Output = (input - filter)/stride + 1 = (32-5)/1 + 1 = 28.",
+              "xp": 10
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Implement 2D convolution from scratch using NumPy.",
+            "starter_code": "import numpy as np\ndef conv2d(image, kernel, stride=1):\n    pass\nkernel = np.array([[-1,-1,-1],[-1,8,-1],[-1,-1,-1]])\nimage = np.array([[0,0,0,0,0],[0,1,1,1,0],[0,1,1,1,0],[0,1,1,1,0],[0,0,0,0,0]])\nprint(conv2d(image, kernel))",
+            "solution": "import numpy as np\ndef conv2d(image, kernel, stride=1):\n    h, w = image.shape; kh, kw = kernel.shape\n    oh, ow = (h-kh)//stride+1, (w-kw)//stride+1\n    out = np.zeros((oh, ow))\n    for i in range(oh):\n        for j in range(ow):\n            out[i,j] = np.sum(image[i*stride:i*stride+kh, j*stride:j*stride+kw] * kernel)\n    return out\nprint(conv2d(np.array([[0,0,0,0,0],[0,1,1,1,0],[0,1,1,1,0],[0,1,1,1,0],[0,0,0,0,0]]), np.array([[-1,-1,-1],[-1,8,-1],[-1,-1,-1]])))",
+            "tests": "assert conv2d(np.ones((5,5)), np.ones((3,3))).shape == (3,3)"
+          },
+          "paper_ref": "https://arxiv.org/abs/1512.03385",
+          "source": "architectures"
         },
         {
-          "title": "Scaling Laws",
-          "content": "Model performance improves predictably with scale. Doubling parameters, data, or compute yields consistent gains, motivating the trend toward ever-larger models.",
-          "visual": "equation",
-          "visualData": "Loss ∝ N^{-α}\n\nGPT-2: 1.5B params\nGPT-3: 175B params\nGPT-4: 1T+ params\n\nEach step: better performance",
-          "narration": "Scaling laws reveal that larger models consistently perform better. This predictable relationship has driven the evolution from billion to trillion parameter models, each showing improved capabilities."
+          "id": "rnns-lstms",
+          "title": "RNNs & LSTMs: Sequence Modeling",
+          "explainer": "## RNNs: Processing Sequences\n\n### RNN Cell: h_t = tanh(W_hh·h_{t-1} + W_xh·x_t + b). Hidden state = memory.\n### Problem: Vanishing gradients after many steps.\n### LSTM: Adds cell state + 3 gates (forget, input, output). Solves long-range dependencies.\n### Why Transformers Won: RNNs are sequential (can't parallelize). Attention replaces recurrence.",
+          "visual": "  RNN Unrolled: x₁→[RNN]→h₁→[RNN]→h₂→[RNN]→h₃\n  \n  LSTM: C_{t-1}──[×forget]──[+input]──C_t\n        h_{t-1}──[forget_gate σ]\n                 [input_gate  σ]\n                 [output_gate σ]──h_t = o_t ⊙ tanh(C_t)",
+          "questions": [
+            {
+              "id": "arch-rnn-1",
+              "type": "multiple-choice",
+              "question": "What is the forget gate in LSTM?",
+              "options": [
+                "Speeds up training",
+                "Decides what information to discard from cell state",
+                "Computes the output",
+                "Prevents gradient explosion"
+              ],
+              "correct": 1,
+              "explanation": "Forget gate f_t = σ(W_f·[h_{t-1}, x_t]) outputs 0-1 per element. Near 0 = forget, near 1 = keep.",
+              "xp": 15
+            },
+            {
+              "id": "arch-rnn-2",
+              "type": "multiple-choice",
+              "question": "Why did Transformers replace RNNs/LSTMs?",
+              "options": [
+                "Simpler to implement",
+                "Transformers can process all positions in parallel and handle long-range dependencies better via attention",
+                "RNNs use more memory",
+                "LSTMs can't learn from data"
+              ],
+              "correct": 1,
+              "explanation": "RNNs must process tokens sequentially — slow and gradients still degrade over very long sequences. Transformers compute attention over all positions simultaneously.",
+              "xp": 15
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Implement an RNN cell from scratch.",
+            "starter_code": "import numpy as np\ndef rnn_cell(x_t, h_prev, W_xh, W_hh, b_h):\n    pass",
+            "solution": "import numpy as np\ndef rnn_cell(x_t, h_prev, W_xh, W_hh, b_h):\n    return np.tanh(x_t @ W_xh + h_prev @ W_hh + b_h)",
+            "tests": "h = rnn_cell(np.zeros(3), np.zeros(4), np.zeros((3,4)), np.zeros((4,4)), np.zeros(4)); assert np.allclose(h, 0)"
+          },
+          "paper_ref": "https://www.bioinf.jku.at/publications/older/2604.pdf",
+          "source": "karpathy/makemore"
         },
         {
-          "title": "RLHF Alignment",
-          "content": "Reinforcement Learning from Human Feedback trains models to generate outputs humans prefer, balancing reward maximization with staying close to the base model.",
-          "visual": "equation",
-          "visualData": "\\mathcal{L} = \\mathbb{E}[r(x,y)] - \\beta \\cdot D_{KL}[\\pi_{\\theta} \\| \\pi_{ref}]\n\nreward - KL penalty",
-          "narration": "RLHF aligns model outputs with human values. A reward model learns from human preferences, then policy optimization improves responses while preventing deviation from the original model."
+          "id": "transformers",
+          "title": "Transformers: Attention Is All You Need",
+          "explainer": "## The Transformer: Foundation of Modern AI\n\n### Self-Attention: Q (what am I looking for?), K (what do I contain?), V (what info do I carry?)\n  Attention(Q,K,V) = softmax(QKᵀ/√d_k)V\n\n### Scale by √d_k: Without it, dot products grow → softmax saturates → zero gradients.\n\n### Multi-Head: Run attention multiple times with different projections. Each head learns different relationships.\n\n### Transformer Block: MultiHead Attention + Residual + LayerNorm → FFN + Residual + LayerNorm. Stack N times.",
+          "visual": "  \"The cat sat\" → Q,K,V projections → Attention weights → Output\n  \n  Attention = softmax(Q·Kᵀ/√d) · V\n  \n  Transformer Block:\n  Input → [Multi-Head Attn] + residual → LayerNorm\n        → [FFN: Linear→GELU→Linear] + residual → LayerNorm → Output\n  \n  GPT-2 Sizes:\n  Small:124M, 12 layers, d=768,  12 heads\n  XL:  1.5B,  48 layers, d=1600, 25 heads",
+          "questions": [
+            {
+              "id": "arch-tf-1",
+              "type": "multiple-choice",
+              "question": "Why divide attention scores by √d_k?",
+              "options": [
+                "Faster computation",
+                "Prevents softmax saturation by keeping variance ~1",
+                "Normalizes output values",
+                "Reduces memory"
+              ],
+              "correct": 1,
+              "explanation": "Large d_k → large dot products → softmax near one-hot → tiny gradients. Dividing by √d_k keeps variance ~1.",
+              "xp": 15
+            },
+            {
+              "id": "arch-tf-2",
+              "type": "multiple-choice",
+              "question": "Computational complexity of self-attention w.r.t. sequence length n?",
+              "options": [
+                "O(n)",
+                "O(n log n)",
+                "O(n²)",
+                "O(n³)"
+              ],
+              "correct": 2,
+              "explanation": "Q·Kᵀ is (n×d)·(d×n) = n×n. O(n²) is why long sequences are expensive and efficient attention variants matter.",
+              "xp": 15
+            },
+            {
+              "id": "arch-tf-3",
+              "type": "multiple-choice",
+              "question": "What is multi-head attention for?",
+              "options": [
+                "Makes model larger",
+                "Allows attending to different representation subspaces simultaneously",
+                "Speeds up training",
+                "Reduces parameters"
+              ],
+              "correct": 1,
+              "explanation": "Different heads learn different relationship types (syntactic, semantic, positional). Concatenated for richer representation.",
+              "xp": 15
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Implement scaled dot-product attention from scratch.",
+            "starter_code": "import numpy as np\ndef attention(Q, K, V, mask=None):\n    pass\nnp.random.seed(42)\nQ = np.random.randn(4, 8)\nK = np.random.randn(4, 8)\nV = np.random.randn(4, 8)\nout, w = attention(Q, K, V)\nprint('Weights sum:', w.sum(axis=1))",
+            "solution": "import numpy as np\ndef softmax(x, axis=-1):\n    e = np.exp(x - np.max(x, axis=axis, keepdims=True))\n    return e / e.sum(axis=axis, keepdims=True)\ndef attention(Q, K, V, mask=None):\n    d_k = Q.shape[-1]\n    scores = Q @ K.T / np.sqrt(d_k)\n    if mask is not None: scores = np.where(mask==0, -1e9, scores)\n    w = softmax(scores)\n    return w @ V, w",
+            "tests": "_, w = attention(np.ones((2,3)), np.ones((2,3)), np.ones((2,3))); assert np.allclose(w.sum(axis=1), 1.0)"
+          },
+          "paper_ref": "https://arxiv.org/abs/1706.03762",
+          "source": "Vaswani et al. 2017"
+        },
+        {
+          "id": "positional-encoding",
+          "title": "Positional Encoding: Sinusoidal, RoPE & ALiBi",
+          "explainer": "## Positional Encoding: Giving Order to Transformers\n\n### Why: 'Dog bites man' ≠ 'Man bites dog'. Transformers need explicit position info.\n### Sinusoidal: PE(pos,2i) = sin(pos/10000^(2i/d)). Different frequencies per dimension.\n### Learned: Lookup table of position embeddings (GPT-2). Can't extrapolate beyond training length.\n### RoPE: Rotates Q,K vectors by position angle. Relative position in dot product. Used in LLaMA.\n### ALiBi: Linear attention bias by distance. No parameters. Good length generalization.",
+          "visual": "  Sinusoidal PE:            RoPE (rotate Q,K):\n  pos 0: [sin(0), cos(0)]   q' = q·cos(mθ) - q·sin(mθ)\n  pos 1: [sin(1/f), cos(1/f)]  Dot product encodes RELATIVE position\n  \n  ALiBi: attention + bias    ┌──────────────┐\n  ┌──────────────┐           │ 0  -1  -2  -3│\n  │ 0  -1  -2  -3│ × slope  │ Closer = higher │\n  │ -1  0  -1  -2│          └──────────────┘\n  └──────────────┘",
+          "questions": [
+            {
+              "id": "arch-pe-1",
+              "type": "multiple-choice",
+              "question": "Why is RoPE preferred in modern LLMs?",
+              "options": [
+                "Fewer parameters",
+                "Encodes relative positions and generalizes better to longer sequences",
+                "Faster to compute",
+                "Works without attention"
+              ],
+              "correct": 1,
+              "explanation": "RoPE encodes relative position through rotation, enabling better length generalization than learned absolute embeddings.",
+              "xp": 15
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Implement sinusoidal positional encoding.",
+            "starter_code": "import numpy as np\ndef positional_encoding(max_len, d_model):\n    pass\npe = positional_encoding(50, 16)\nprint(pe.shape)  # (50, 16)",
+            "solution": "import numpy as np\ndef positional_encoding(max_len, d_model):\n    pe = np.zeros((max_len, d_model))\n    pos = np.arange(max_len)[:, None]\n    div = np.exp(np.arange(0, d_model, 2) * -(np.log(10000.0) / d_model))\n    pe[:, 0::2] = np.sin(pos * div)\n    pe[:, 1::2] = np.cos(pos * div)\n    return pe\nprint(positional_encoding(50, 16).shape)",
+            "tests": "pe = positional_encoding(10, 8); assert pe.shape == (10,8)"
+          },
+          "paper_ref": "https://arxiv.org/abs/2104.09864",
+          "source": "architectures"
         }
-      ],
-      "questions": [
+      ]
+    },
+    "language-models": {
+      "name": "Language Models",
+      "description": "Tokenization, GPT, BERT, training LLMs, scaling laws, and inference optimization",
+      "order": 4,
+      "topics": [
         {
-          "id": "llm-q1",
-          "type": "multiple-choice",
-          "question": "What is the primary training objective for large language models?",
-          "options": [
-            "Sentiment classification",
-            "Next-token prediction given previous context",
-            "Machine translation",
-            "Question answering"
+          "id": "tokenization-bpe",
+          "title": "Tokenization & BPE",
+          "explainer": "## Tokenization: Text → Numbers\n\n### Character-level: tiny vocab (~256) but long sequences.\n### Word-level: reasonable length but huge vocab, can't handle new words.\n### BPE: Start with bytes, iteratively merge most common pairs. Best balance. Used by GPT-2/3/4, LLaMA.\n### Karpathy's minbpe: BasicTokenizer (raw BPE), RegexTokenizer (category splitting), GPT4Tokenizer (tiktoken clone).",
+          "visual": "  BPE Training: \"low lower lowest\"\n  Step 0: l o w   l o w e r   l o w e s t\n  Step 1: merge (l,o)→'lo':  lo w  lo w e r  lo w e s t\n  Step 2: merge (lo,w)→'low': low  low e r  low e s t\n  \n  \"Hello world!\" → [9906, 1917, 0] (3 tokens, not 12 chars)",
+          "questions": [
+            {
+              "id": "lm-tok-1",
+              "type": "multiple-choice",
+              "question": "Why does GPT use BPE instead of word tokenization?",
+              "options": [
+                "Faster to compute",
+                "Handles rare/new words by breaking into known subwords, no OOV issues",
+                "Produces shorter sequences",
+                "Word tokenization doesn't work"
+              ],
+              "correct": 1,
+              "explanation": "BPE can tokenize any text by falling back to individual bytes. Common words get single tokens, rare words split into subwords.",
+              "xp": 15
+            },
+            {
+              "id": "lm-tok-2",
+              "type": "multiple-choice",
+              "question": "In BPE training, what happens at each step?",
+              "options": [
+                "Neural network weights optimize",
+                "Most frequent adjacent pair merges into new token",
+                "Words split by linguistic rules",
+                "Dictionary loaded from file"
+              ],
+              "correct": 1,
+              "explanation": "BPE iteratively finds and merges the most frequent adjacent pair, building up common subwords from individual bytes.",
+              "xp": 10
+            }
           ],
-          "correct": 1,
-          "explanation": "LLMs are trained using next-token prediction: given previous tokens, predict the next one. This self-supervised objective enables learning from massive unlabeled text corpora.",
-          "xp": 10
+          "coding_challenge": {
+            "prompt": "Implement a minimal BPE tokenizer: train, encode, decode.",
+            "starter_code": "def get_stats(ids):\n    pass\ndef merge(ids, pair, new_id):\n    pass\ndef train_bpe(text, num_merges):\n    tokens = list(text.encode('utf-8'))\n    merges = {}\n    # ...\n    return tokens, merges\ntokens, merges = train_bpe('aaabdaaabac', 3)\nprint(tokens, merges)",
+            "solution": "def get_stats(ids):\n    counts = {}\n    for p in zip(ids, ids[1:]): counts[p] = counts.get(p, 0) + 1\n    return counts\ndef merge(ids, pair, new_id):\n    out, i = [], 0\n    while i < len(ids):\n        if i < len(ids)-1 and ids[i]==pair[0] and ids[i+1]==pair[1]:\n            out.append(new_id); i += 2\n        else: out.append(ids[i]); i += 1\n    return out\ndef train_bpe(text, num_merges):\n    tokens = list(text.encode('utf-8')); merges = {}\n    for i in range(num_merges):\n        stats = get_stats(tokens)\n        if not stats: break\n        top = max(stats, key=stats.get)\n        tokens = merge(tokens, top, 256+i); merges[top] = 256+i\n    return tokens, merges\nprint(train_bpe('aaabdaaabac', 3))",
+            "tests": "t, m = train_bpe('aaabdaaabac', 3); assert len(m) == 3"
+          },
+          "paper_ref": "https://github.com/karpathy/minbpe",
+          "source": "karpathy/minbpe"
         },
         {
-          "id": "llm-q2",
-          "type": "multiple-choice",
-          "question": "What do scaling laws suggest about LLM performance?",
-          "options": [
-            "Performance plateaus after 1B parameters",
-            "Performance improves predictably with model size, data, and compute",
-            "Smaller models always outperform larger ones",
-            "Scaling has no consistent effect"
+          "id": "gpt-architecture",
+          "title": "GPT Architecture: nanoGPT Deep Dive",
+          "explainer": "## GPT: Generative Pre-trained Transformer\n\n### Decoder-only: Stack of transformer decoder blocks. Causal attention (can't see future).\n### Components: Token embedding + Position embedding → N × (Attention + FFN + LayerNorm) → LM Head.\n### Training: Next-token prediction. Simple objective → emergent capabilities!\n### Generation: Predict next token probs → sample (with temperature) → append → repeat.\n### nanoGPT: train.py (~300 lines) + model.py (~300 lines). Reproduces GPT-2 (124M).",
+          "visual": "  \"The cat sat\" → Token+Pos Embedding\n  → Transformer Block ×12:\n    [Causal Self-Attention] + residual → LayerNorm\n    [FFN: d→4d→d + GELU] + residual → LayerNorm\n  → LM Head: d→vocab_size → softmax → P(next token)\n  \n  Causal Mask:  sat sees [The, cat, sat]\n                cat sees [The, cat]\n                The sees [The]",
+          "questions": [
+            {
+              "id": "lm-gpt-1",
+              "type": "multiple-choice",
+              "question": "What is the causal mask in GPT?",
+              "options": [
+                "Regularization technique",
+                "Prevents tokens from attending to future tokens (autoregressive)",
+                "Handles padding",
+                "Applied to output logits"
+              ],
+              "correct": 1,
+              "explanation": "Causal mask sets future attention scores to -∞, so each token only attends to itself and previous tokens.",
+              "xp": 15
+            },
+            {
+              "id": "lm-gpt-2",
+              "type": "multiple-choice",
+              "question": "How does temperature affect text generation?",
+              "options": [
+                "Higher T = more deterministic",
+                "No effect on quality",
+                "Lower T = more deterministic, higher T = more creative/random",
+                "Controls learning rate"
+              ],
+              "correct": 2,
+              "explanation": "Temperature scales logits before softmax. T<1 makes distribution peaky (deterministic), T>1 makes it flatter (random).",
+              "xp": 10
+            }
           ],
-          "correct": 1,
-          "explanation": "Scaling laws show that loss decreases as a power law with model parameters, dataset size, and compute. This predictable relationship motivates training increasingly large models.",
-          "xp": 10
+          "coding_challenge": {
+            "prompt": "Implement causal mask and temperature-based sampling.",
+            "starter_code": "import numpy as np\ndef causal_mask(n):\n    pass\ndef sample_with_temp(logits, temp=1.0):\n    pass",
+            "solution": "import numpy as np\ndef causal_mask(n): return np.tril(np.ones((n,n)))\ndef softmax(x): e=np.exp(x-np.max(x)); return e/e.sum()\ndef sample_with_temp(logits, temp=1.0):\n    probs = softmax(logits / max(temp, 1e-8))\n    return np.random.choice(len(logits), p=probs)\nm = causal_mask(4)\nprint(m)\nprint([sample_with_temp(np.array([2.0,1.0,0.1]), 0.1) for _ in range(5)])",
+            "tests": "m = causal_mask(3); assert m[0,1]==0 and m[1,0]==1"
+          },
+          "paper_ref": "https://github.com/karpathy/nanoGPT",
+          "source": "karpathy/nanoGPT"
         },
         {
-          "id": "llm-q3",
-          "type": "multiple-choice",
-          "question": "What is the purpose of the KL divergence term in RLHF?",
-          "options": [
-            "To maximize reward",
-            "To prevent the model from deviating too far from the original policy",
-            "To speed up training",
-            "To reduce model size"
+          "id": "training-llms",
+          "title": "Training LLMs: Pretraining, SFT, RLHF & DPO",
+          "explainer": "## The LLM Training Pipeline\n\n### Pretraining: Massive text corpus, predict next token. Enormous compute. Result: text completer.\n### SFT: Fine-tune on instruction/response pairs. Model learns to follow instructions.\n### RLHF: Human preferences → reward model → PPO optimization. Aligns with human values.\n### DPO: Skip reward model, directly optimize from preference pairs. Simpler and effective.\n### Chinchilla Law: Optimal tokens ≈ 20× parameters. 7B→140B tokens, 70B→1.4T tokens.",
+          "visual": "  Pretraining (internet)  →  SFT (instructions)  →  RLHF/DPO (preferences)\n  ┌──────────────┐          ┌──────────────┐          ┌──────────────┐\n  │ Base Model   │    →     │ Instruction  │    →     │ Aligned &    │\n  │ (completes)  │          │ Following    │          │ Safe Model   │\n  └──────────────┘          └──────────────┘          └──────────────┘\n  \n  Chinchilla: Tokens ≈ 20 × Parameters",
+          "questions": [
+            {
+              "id": "lm-train-1",
+              "type": "multiple-choice",
+              "question": "Main advantage of DPO over RLHF?",
+              "options": [
+                "Better models",
+                "Skips reward model — simpler and more stable",
+                "Less training data",
+                "Works without reference model"
+              ],
+              "correct": 1,
+              "explanation": "DPO eliminates separate reward model training and PPO instability. Directly optimizes from preference pairs.",
+              "xp": 15
+            },
+            {
+              "id": "lm-train-2",
+              "type": "multiple-choice",
+              "question": "Chinchilla law: a 10B model should train on ~?",
+              "options": [
+                "10B tokens",
+                "100B tokens",
+                "200B tokens",
+                "1T tokens"
+              ],
+              "correct": 2,
+              "explanation": "Chinchilla: optimal tokens ≈ 20× params. 10B × 20 = 200B tokens.",
+              "xp": 15
+            }
           ],
-          "correct": 1,
-          "explanation": "The KL divergence penalty D_KL[π_θ || π_ref] keeps the optimized policy close to the reference model, preventing over-optimization on the reward model which could lead to mode collapse or nonsensical outputs.",
-          "xp": 10
+          "coding_challenge": {
+            "prompt": "Implement simplified DPO loss.",
+            "starter_code": "import math\ndef dpo_loss(lp_c, lp_r, lr_c, lr_r, beta=0.1):\n    pass\nprint(dpo_loss(-2.0, -3.0, -2.5, -2.5))",
+            "solution": "import math\ndef sigmoid(x): return 1/(1+math.exp(-x))\ndef dpo_loss(lp_c, lp_r, lr_c, lr_r, beta=0.1):\n    return -math.log(sigmoid(beta * ((lp_c - lr_c) - (lp_r - lr_r))))\nprint(dpo_loss(-2.0, -3.0, -2.5, -2.5))",
+            "tests": "assert dpo_loss(-1.0, -3.0, -2.0, -2.0, 0.1) < dpo_loss(-2.5, -3.0, -2.0, -2.0, 0.1)"
+          },
+          "paper_ref": "https://arxiv.org/abs/2305.18290",
+          "source": "deeplearning.ai"
         },
         {
-          "id": "llm-q4",
-          "type": "multiple-choice",
-          "question": "What is in-context learning in LLMs?",
-          "options": [
-            "Fine-tuning on new tasks",
-            "Learning from examples provided in the prompt without parameter updates",
-            "Training on larger datasets",
-            "Using external memory"
+          "id": "inference-optimization",
+          "title": "Inference: KV Cache, Quantization & Speculative Decoding",
+          "explainer": "## Making LLM Inference Fast\n\n### KV Cache: Store computed K,V from previous tokens. Only compute Q for new token. O(n)→O(1) per step.\n### Quantization: FP32→FP16→INT8→INT4. Less memory, faster, small quality tradeoff.\n### Speculative Decoding: Small model drafts N tokens, big model verifies in 1 pass. Same output, 2-3× faster.\n### FlashAttention: Memory-efficient O(n²) attention without O(n²) memory.\n### Paged Attention (vLLM): Efficient KV cache memory management.",
+          "visual": "  KV Cache:\n  Without: Step n recomputes ALL previous tokens (O(n²) total)\n  With:    Step n: just compute Q_new, lookup K,V from cache (O(n) total)\n  \n  Speculative Decoding:\n  Draft(small)→\"The cat sat on\" → Target(large) verifies in 1 pass\n  ✓The ✓cat ✓sat ✗in → resample \"on\". Accept 3 tokens in 1 pass!\n  \n  Quantization: FP32(4B) → FP16(2B) → INT8(1B) → INT4(0.5B)",
+          "questions": [
+            {
+              "id": "lm-inf-1",
+              "type": "multiple-choice",
+              "question": "How does KV cache speed up generation?",
+              "options": [
+                "Caches model weights",
+                "Stores previous K,V pairs so only new token needs attention computation",
+                "Reduces vocabulary",
+                "Compresses model"
+              ],
+              "correct": 1,
+              "explanation": "Without cache, generating token N recomputes attention for all N-1 tokens. With cache, only compute Q for new token.",
+              "xp": 15
+            },
+            {
+              "id": "lm-inf-2",
+              "type": "multiple-choice",
+              "question": "Why does speculative decoding produce identical output?",
+              "options": [
+                "Draft model is perfect",
+                "Uses rejection sampling that mathematically matches target distribution",
+                "Averages both outputs",
+                "Only uses draft for first token"
+              ],
+              "correct": 1,
+              "explanation": "Acceptance probability p_target/p_draft mathematically guarantees output distribution identical to target model.",
+              "xp": 20
+            }
           ],
-          "correct": 1,
-          "explanation": "In-context learning is the ability to adapt to new tasks from examples in the prompt alone, without gradient updates. The model learns patterns from the context window.",
-          "xp": 10
-        },
-        {
-          "id": "llm-q5",
-          "type": "multiple-choice",
-          "question": "What does chain-of-thought prompting encourage?",
-          "options": [
-            "Faster inference",
-            "Step-by-step reasoning in model outputs",
-            "Shorter responses",
-            "Higher temperature sampling"
-          ],
-          "correct": 1,
-          "explanation": "Chain-of-thought prompting asks models to show their reasoning process step-by-step. This intermediate reasoning improves performance on complex tasks like math and logical reasoning.",
-          "xp": 10
+          "coding_challenge": {
+            "prompt": "Implement a simple KV cache class for attention.",
+            "starter_code": "import numpy as np\nclass KVCache:\n    def __init__(self): self.k = None; self.v = None\n    def update(self, new_k, new_v): pass\n    def get(self): pass",
+            "solution": "import numpy as np\nclass KVCache:\n    def __init__(self): self.k = None; self.v = None\n    def update(self, new_k, new_v):\n        if self.k is None: self.k, self.v = new_k, new_v\n        else:\n            self.k = np.concatenate([self.k, new_k], axis=0)\n            self.v = np.concatenate([self.v, new_v], axis=0)\n    def get(self): return self.k, self.v\nc = KVCache()\nc.update(np.ones((1,4)), np.ones((1,4)))\nc.update(np.ones((1,4))*2, np.ones((1,4))*2)\nprint(c.get()[0].shape)  # (2, 4)",
+            "tests": "c=KVCache();c.update(np.ones((1,3)),np.ones((1,3)));assert c.get()[0].shape==(1,3)"
+          },
+          "source": "language-models"
         }
-      ],
-      "resources": [
+      ]
+    },
+    "computer-vision": {
+      "name": "Computer Vision",
+      "description": "Image classification, diffusion models, vision transformers, and multimodal learning",
+      "order": 5,
+      "topics": [
         {
-          "title": "GPT-3 Paper (Brown et al.)",
-          "url": "https://arxiv.org/abs/2005.14165"
+          "id": "image-classification",
+          "title": "Image Classification & Object Detection",
+          "explainer": "## Computer Vision Fundamentals\n\n### Classification: Input image → single label (cat, dog, car).\n### Object Detection: Locate + classify multiple objects. Output: bounding boxes + labels.\n### Key Architectures:\n- R-CNN → Fast R-CNN → Faster R-CNN (region proposals)\n- YOLO: Single-shot, real-time detection\n- SSD: Multi-scale detection\n\n### Transfer Learning: Use ImageNet-pretrained CNN, fine-tune on your data. Almost always better than training from scratch.",
+          "visual": "  Classification:          Object Detection:\n  ┌──────────┐              ┌──────────────────┐\n  │          │              │  ┌──────┐        │\n  │   🐱     │ → \"cat\"     │  │ 🐱   │ cat 95%│\n  │          │              │  └──────┘   ┌──┐ │\n  └──────────┘              │             │🐕│ │\n                            │             └──┘ │\n                            └──────────────────┘\n  \n  YOLO: Divide image into grid → each cell predicts boxes + classes simultaneously",
+          "questions": [
+            {
+              "id": "cv-ic-1",
+              "type": "multiple-choice",
+              "question": "What is transfer learning in CV?",
+              "options": [
+                "Training from scratch on new data",
+                "Using a model pretrained on ImageNet and fine-tuning on target domain",
+                "Transferring data between datasets",
+                "Using multiple GPUs"
+              ],
+              "correct": 1,
+              "explanation": "Transfer learning reuses features learned on large datasets (like ImageNet). Early layers (edges, textures) transfer well to new tasks.",
+              "xp": 10
+            },
+            {
+              "id": "cv-ic-2",
+              "type": "multiple-choice",
+              "question": "What makes YOLO different from R-CNN for object detection?",
+              "options": [
+                "YOLO is more accurate",
+                "YOLO processes the entire image in one pass (single-shot), enabling real-time detection",
+                "YOLO uses transformers",
+                "R-CNN is faster"
+              ],
+              "correct": 1,
+              "explanation": "YOLO divides the image into a grid and predicts all boxes and classes simultaneously in one forward pass, unlike R-CNN which proposes regions first. This makes YOLO much faster.",
+              "xp": 15
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Implement Intersection over Union (IoU) for bounding boxes. IoU = Area of Overlap / Area of Union.",
+            "starter_code": "def iou(box1, box2):\n    \"\"\"Compute IoU of two boxes [x1, y1, x2, y2].\"\"\"\n    pass\nprint(iou([0,0,2,2], [1,1,3,3]))  # ~0.143",
+            "solution": "def iou(box1, box2):\n    x1 = max(box1[0], box2[0]); y1 = max(box1[1], box2[1])\n    x2 = min(box1[2], box2[2]); y2 = min(box1[3], box2[3])\n    inter = max(0, x2-x1) * max(0, y2-y1)\n    a1 = (box1[2]-box1[0]) * (box1[3]-box1[1])\n    a2 = (box2[2]-box2[0]) * (box2[3]-box2[1])\n    return inter / (a1 + a2 - inter)\nprint(iou([0,0,2,2], [1,1,3,3]))",
+            "tests": "assert abs(iou([0,0,2,2],[0,0,2,2]) - 1.0) < 1e-6"
+          },
+          "source": "computer-vision"
         },
         {
-          "title": "Scaling Laws for Neural Language Models",
-          "url": "https://arxiv.org/abs/2001.08361"
+          "id": "diffusion-models",
+          "title": "Diffusion Models: DDPM & Stable Diffusion",
+          "explainer": "## Diffusion Models: Learning to Denoise\n\n### Forward Process: Gradually add Gaussian noise to image over T steps until pure noise.\n### Reverse Process: Neural network learns to denoise step by step. Start from noise → generate image.\n### Training: Add noise at random step t, train network to predict the noise that was added.\n### Stable Diffusion: Runs diffusion in latent space (compressed representation) — much faster!\n### Components: VAE encoder/decoder + U-Net denoiser + text encoder (CLIP) for conditioning.",
+          "visual": "  Forward (add noise):\n  [Clean Image] → [Slightly Noisy] → [More Noisy] → ... → [Pure Noise]\n      x₀              x₁                x₂                    x_T\n  \n  Reverse (denoise):\n  [Pure Noise] → [Less Noisy] → [Less Noisy] → ... → [Clean Image]\n      x_T            x_{T-1}         x_{T-2}              x₀\n  \n  Stable Diffusion:\n  Text → [CLIP] → conditioning\n                      ↓\n  Noise → [U-Net denoiser in latent space] → Latent → [VAE Decoder] → Image",
+          "questions": [
+            {
+              "id": "cv-diff-1",
+              "type": "multiple-choice",
+              "question": "What does the neural network learn in DDPM?",
+              "options": [
+                "To generate images directly",
+                "To predict the noise that was added at each timestep",
+                "To classify images",
+                "To compress images"
+              ],
+              "correct": 1,
+              "explanation": "The network is trained with a simple MSE loss: given a noisy image at step t, predict the noise ε that was added. At inference, iteratively denoise from pure noise.",
+              "xp": 15
+            },
+            {
+              "id": "cv-diff-2",
+              "type": "multiple-choice",
+              "question": "Why does Stable Diffusion work in latent space?",
+              "options": [
+                "Better image quality",
+                "Much faster — operates on compressed representations instead of full pixel space",
+                "Requires less training data",
+                "Produces higher resolution"
+              ],
+              "correct": 1,
+              "explanation": "Operating in latent space (e.g., 64×64 instead of 512×512) reduces computation by ~64×, making diffusion practical for high-res images.",
+              "xp": 15
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Implement the forward diffusion process: add noise to an image at timestep t.",
+            "starter_code": "import numpy as np\ndef forward_diffusion(x0, t, T=1000):\n    \"\"\"Add noise at step t. Returns noisy image and the noise.\"\"\"\n    pass",
+            "solution": "import numpy as np\ndef forward_diffusion(x0, t, T=1000):\n    beta = np.linspace(0.0001, 0.02, T)\n    alpha = 1 - beta\n    alpha_bar = np.prod(alpha[:t])\n    noise = np.random.randn(*x0.shape)\n    xt = np.sqrt(alpha_bar) * x0 + np.sqrt(1 - alpha_bar) * noise\n    return xt, noise\nx0 = np.random.randn(8, 8)  # \"image\"\nxt, noise = forward_diffusion(x0, 500)\nprint('Signal preserved:', np.std(xt))",
+            "tests": "xt, n = forward_diffusion(np.zeros((4,4)), 1); assert xt.shape == (4,4)"
+          },
+          "paper_ref": "https://arxiv.org/abs/2006.11239",
+          "source": "computer-vision"
         },
         {
-          "title": "Training language models to follow instructions with human feedback",
-          "url": "https://arxiv.org/abs/2203.02155"
+          "id": "vision-transformers",
+          "title": "Vision Transformers: ViT, DINO & SAM",
+          "explainer": "## Vision Transformers: Attention for Images\n\n### ViT: Split image into patches (16×16), flatten, add position embeddings, feed to transformer. Simple and powerful.\n### DINOv2: Self-supervised ViT training. No labels needed! Learns universal visual features.\n### SAM (Segment Anything): Foundation model for segmentation. Prompt with point/box/text → mask. Meta AI.\n### Key Insight: With enough data, transformers outperform CNNs for vision. ViT needs more data but scales better.",
+          "visual": "  ViT: Image → Patches → Transformer\n  ┌──┬──┬──┬──┐\n  │P1│P2│P3│P4│  Split into 16×16 patches\n  ├──┼──┼──┼──┤  Flatten + linear projection\n  │P5│P6│P7│P8│  Add [CLS] token + position embeddings\n  ├──┼──┼──┼──┤  → Transformer encoder\n  │P9│..│..│..│  → [CLS] output → classification\n  └──┴──┴──┴──┘\n  \n  SAM: Point/Box prompt → Encoder → Mask Decoder → Segmentation mask",
+          "questions": [
+            {
+              "id": "cv-vit-1",
+              "type": "multiple-choice",
+              "question": "How does ViT process images?",
+              "options": [
+                "Uses convolutions",
+                "Splits image into patches and treats them as tokens for a transformer",
+                "Processes pixel by pixel",
+                "Uses recurrent connections"
+              ],
+              "correct": 1,
+              "explanation": "ViT divides the image into fixed-size patches (e.g., 16×16), linearly embeds each patch, adds positional embeddings, and feeds the sequence to a standard transformer encoder.",
+              "xp": 15
+            },
+            {
+              "id": "cv-vit-2",
+              "type": "multiple-choice",
+              "question": "What makes DINO special?",
+              "options": [
+                "It uses supervised learning with labels",
+                "Self-supervised learning — learns visual features without any labeled data",
+                "It's faster than ViT",
+                "It only works on small images"
+              ],
+              "correct": 1,
+              "explanation": "DINO uses self-distillation (student-teacher framework) with no labels. The resulting features are so good they can be used for classification, segmentation, and retrieval without fine-tuning.",
+              "xp": 15
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Implement the image-to-patches step of ViT: split an image into non-overlapping patches and flatten them.",
+            "starter_code": "import numpy as np\ndef image_to_patches(image, patch_size=4):\n    \"\"\"Split image (H,W,C) into patches of size patch_size.\n    Returns: (num_patches, patch_size*patch_size*C)\"\"\"\n    pass\nimg = np.random.randn(8, 8, 3)\npatches = image_to_patches(img, patch_size=4)\nprint(patches.shape)  # (4, 48)  — 4 patches, each 4*4*3=48",
+            "solution": "import numpy as np\ndef image_to_patches(image, patch_size=4):\n    H, W, C = image.shape\n    nH, nW = H // patch_size, W // patch_size\n    patches = []\n    for i in range(nH):\n        for j in range(nW):\n            patch = image[i*patch_size:(i+1)*patch_size, j*patch_size:(j+1)*patch_size, :]\n            patches.append(patch.flatten())\n    return np.array(patches)\nprint(image_to_patches(np.random.randn(8,8,3), 4).shape)",
+            "tests": "p = image_to_patches(np.zeros((8,8,3)), 4); assert p.shape == (4, 48)"
+          },
+          "paper_ref": "https://arxiv.org/abs/2010.11929",
+          "source": "Meta AI (SAM, DINOv2)"
+        },
+        {
+          "id": "multimodal",
+          "title": "Multimodal: CLIP, LLaVA & Flamingo",
+          "explainer": "## Multimodal Models: Connecting Vision and Language\n\n### CLIP: Trained on 400M image-text pairs. Learns shared embedding space. Zero-shot classification!\n### Contrastive Learning: Match image-text pairs (diagonal of similarity matrix), push non-matches apart.\n### LLaVA: Visual instruction tuning. Image encoder (CLIP ViT) + LLM (LLaMA). Can describe, reason about images.\n### Applications: Text-to-image search, zero-shot classification, visual QA, image generation guidance.",
+          "visual": "  CLIP Training:\n  Images: [🐱, 🐕, 🚗]     Texts: [\"a cat\", \"a dog\", \"a car\"]\n  \n  Similarity Matrix (cosine):\n       text₁  text₂  text₃\n  img₁ [0.9   0.1   0.0 ]  ← maximize diagonal\n  img₂ [0.1   0.9   0.1 ]  ← minimize off-diagonal\n  img₃ [0.0   0.1   0.9 ]\n  \n  LLaVA:\n  [Image] → CLIP ViT → visual tokens ──┐\n                                        ├──▶ LLM (LLaMA) → text response\n  [\"Describe this image\"] ─────────────┘",
+          "questions": [
+            {
+              "id": "cv-mm-1",
+              "type": "multiple-choice",
+              "question": "How does CLIP enable zero-shot classification?",
+              "options": [
+                "It was trained on all ImageNet classes",
+                "It learns a shared embedding space where images and text can be directly compared via cosine similarity",
+                "It uses a separate classifier head for each class",
+                "It memorizes image-label pairs"
+              ],
+              "correct": 1,
+              "explanation": "CLIP learns to embed images and text in the same space. For zero-shot classification, encode the image and candidate text labels, then pick the text with highest cosine similarity to the image.",
+              "xp": 20
+            },
+            {
+              "id": "cv-mm-2",
+              "type": "multiple-choice",
+              "question": "What is contrastive loss in CLIP?",
+              "options": [
+                "MSE between image and text",
+                "Cross-entropy on similarity matrix — maximize matching pairs, minimize non-matching",
+                "Binary classification of matching vs non-matching",
+                "Reconstruction loss"
+              ],
+              "correct": 1,
+              "explanation": "CLIP uses InfoNCE loss on the image-text similarity matrix. Diagonal elements (matching pairs) should have high similarity, off-diagonal (non-matching) should be low.",
+              "xp": 15
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Implement CLIP-style contrastive loss. Given image and text embeddings, compute the InfoNCE loss.",
+            "starter_code": "import numpy as np\ndef clip_loss(image_embeds, text_embeds, temperature=0.07):\n    \"\"\"Compute CLIP contrastive loss.\"\"\"\n    pass",
+            "solution": "import numpy as np\ndef clip_loss(image_embeds, text_embeds, temperature=0.07):\n    # Normalize\n    img_norm = image_embeds / np.linalg.norm(image_embeds, axis=1, keepdims=True)\n    txt_norm = text_embeds / np.linalg.norm(text_embeds, axis=1, keepdims=True)\n    # Similarity matrix\n    logits = (img_norm @ txt_norm.T) / temperature\n    n = len(logits)\n    labels = np.arange(n)\n    # Cross-entropy in both directions\n    def ce(logits, labels):\n        log_sum_exp = np.log(np.sum(np.exp(logits - np.max(logits, axis=1, keepdims=True)), axis=1))\n        return -np.mean(logits[np.arange(n), labels] - np.max(logits, axis=1) - log_sum_exp)\n    return (ce(logits, labels) + ce(logits.T, labels)) / 2\nprint(clip_loss(np.eye(3), np.eye(3)))",
+            "tests": "# Perfect alignment should give low loss"
+          },
+          "paper_ref": "https://arxiv.org/abs/2103.00020",
+          "source": "Meta AI / OpenAI"
+        }
+      ]
+    },
+    "reinforcement-learning": {
+      "name": "Reinforcement Learning",
+      "description": "MDPs, Q-learning, policy gradients, PPO, and RLHF for LLMs",
+      "order": 6,
+      "topics": [
+        {
+          "id": "rl-fundamentals",
+          "title": "RL Fundamentals: MDPs & Value Functions",
+          "explainer": "## Reinforcement Learning: Learning from Rewards\n\n### The Setup: Agent interacts with environment. Takes actions, receives rewards, observes new state.\n### MDP: (States, Actions, Transitions, Rewards, Discount γ). Markov: next state depends only on current state+action.\n### Value Function V(s): Expected total reward from state s. V(s) = E[R_t + γR_{t+1} + γ²R_{t+2} + ...]\n### Q Function Q(s,a): Expected total reward from state s, taking action a, then following policy.\n### Bellman Equation: V(s) = max_a [R(s,a) + γ·V(s')]. Foundation of dynamic programming in RL.",
+          "visual": "  Agent-Environment Loop:\n  ┌──────────┐  action a_t  ┌─────────────┐\n  │  Agent   │─────────────▶│ Environment │\n  │ (policy) │◀─────────────│  (world)    │\n  └──────────┘  reward r_t  └─────────────┘\n                state s_{t+1}\n  \n  Value Function:\n  State A ──(reward=1)──▶ State B ──(reward=0)──▶ State C (terminal, reward=10)\n  V(C) = 10, V(B) = 0 + γ·10, V(A) = 1 + γ·(0 + γ·10) = 1 + 10γ²",
+          "questions": [
+            {
+              "id": "rl-fund-1",
+              "type": "multiple-choice",
+              "question": "What does the discount factor γ control?",
+              "options": [
+                "Learning rate",
+                "How much future rewards are valued vs immediate rewards",
+                "Exploration rate",
+                "Network size"
+              ],
+              "correct": 1,
+              "explanation": "γ∈[0,1] discounts future rewards. γ=0: only care about immediate reward. γ=0.99: strongly value future rewards. Ensures convergence of infinite sums.",
+              "xp": 10
+            },
+            {
+              "id": "rl-fund-2",
+              "type": "multiple-choice",
+              "question": "What is the Bellman equation?",
+              "options": [
+                "Loss function for RL",
+                "Recursive relationship: V(s) = max_a[R(s,a) + γV(s')]",
+                "Activation function",
+                "Optimization algorithm"
+              ],
+              "correct": 1,
+              "explanation": "The Bellman equation expresses the value of a state in terms of immediate reward plus discounted value of the next state. It's the foundation of value-based RL methods.",
+              "xp": 15
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Implement value iteration for a simple gridworld MDP.",
+            "starter_code": "import numpy as np\ndef value_iteration(rewards, gamma=0.9, threshold=1e-4):\n    \"\"\"Simple 1D gridworld. States 0..n-1, actions: left/right.\"\"\"\n    pass",
+            "solution": "import numpy as np\ndef value_iteration(rewards, gamma=0.9, threshold=1e-4):\n    n = len(rewards)\n    V = np.zeros(n)\n    while True:\n        V_new = np.zeros(n)\n        for s in range(n):\n            vals = []\n            for a in [-1, 1]:  # left, right\n                s_next = max(0, min(n-1, s + a))\n                vals.append(rewards[s] + gamma * V[s_next])\n            V_new[s] = max(vals)\n        if np.max(np.abs(V_new - V)) < threshold: break\n        V = V_new\n    return V\nprint(value_iteration([0, 0, 0, 0, 10]))",
+            "tests": "V = value_iteration([0,0,0,0,10]); assert V[4] > V[0]"
+          },
+          "source": "reinforcement-learning"
+        },
+        {
+          "id": "q-learning-dqn",
+          "title": "Q-Learning & Deep Q-Networks",
+          "explainer": "## Q-Learning: Learning Action Values\n\n### Q-Learning: Learn Q(s,a) from experience. Update: Q(s,a) ← Q(s,a) + α[r + γ·max_a'Q(s',a') - Q(s,a)]\n### ε-Greedy: With probability ε, explore (random action). Otherwise exploit (best action).\n### DQN: Replace Q-table with neural network. Input: state → Output: Q-value for each action.\n### Key DQN Innovations:\n- Experience replay: Store transitions, sample random mini-batches (breaks correlation)\n- Target network: Separate network for targets, update periodically (stabilizes training)",
+          "visual": "  Q-Table:           DQN:\n  ┌──────┬──────┐    State ──▶ [Neural Net] ──▶ Q(s, left)\n  │State │ Q(a) │                                Q(s, right)\n  │  s₁  │ 2.1  │                                Q(s, up)\n  │  s₂  │ 3.5  │    Experience Replay Buffer:\n  │  s₃  │ 1.2  │    [(s,a,r,s'), (s,a,r,s'), ...]\n  └──────┴──────┘    Sample random batch → train",
+          "questions": [
+            {
+              "id": "rl-ql-1",
+              "type": "multiple-choice",
+              "question": "Why does DQN use experience replay?",
+              "options": [
+                "To save memory",
+                "To break temporal correlations between consecutive experiences, improving training stability",
+                "To generate more data",
+                "To speed up inference"
+              ],
+              "correct": 1,
+              "explanation": "Consecutive experiences are correlated (similar states). Random sampling from a replay buffer provides more i.i.d.-like mini-batches, which neural networks need for stable training.",
+              "xp": 15
+            },
+            {
+              "id": "rl-ql-2",
+              "type": "multiple-choice",
+              "question": "What is the exploration-exploitation tradeoff?",
+              "options": [
+                "Trading speed for accuracy",
+                "Balancing trying new actions (exploration) vs using known good actions (exploitation)",
+                "Choosing between models",
+                "CPU vs GPU tradeoff"
+              ],
+              "correct": 1,
+              "explanation": "Too much exploitation: stuck in local optima, never discover better strategies. Too much exploration: never fully leverage what you've learned. ε-greedy balances both.",
+              "xp": 10
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Implement tabular Q-learning for a simple environment.",
+            "starter_code": "import numpy as np\ndef q_learning(n_states, n_actions, episodes=1000, alpha=0.1, gamma=0.99, epsilon=0.1):\n    Q = np.zeros((n_states, n_actions))\n    # ... environment interaction and Q-updates\n    return Q",
+            "solution": "import numpy as np\ndef q_learning(n_states=5, n_actions=2, episodes=1000, alpha=0.1, gamma=0.99, eps=0.1):\n    Q = np.zeros((n_states, n_actions))\n    for _ in range(episodes):\n        s = 0\n        for _ in range(100):\n            a = np.random.randint(n_actions) if np.random.rand()<eps else np.argmax(Q[s])\n            s_next = min(n_states-1, max(0, s + (1 if a==1 else -1)))\n            r = 10.0 if s_next == n_states-1 else -0.1\n            Q[s,a] += alpha * (r + gamma * np.max(Q[s_next]) - Q[s,a])\n            s = s_next\n            if s == n_states-1: break\n    return Q\nprint(q_learning())",
+            "tests": "Q = q_learning(); assert Q[0,1] > Q[0,0]  # should prefer going right"
+          },
+          "paper_ref": "https://arxiv.org/abs/1312.5602",
+          "source": "DeepMind (AlphaGo)"
+        },
+        {
+          "id": "policy-gradient-ppo",
+          "title": "Policy Gradients & PPO",
+          "explainer": "## Policy Gradient Methods\n\n### Idea: Directly optimize the policy π(a|s) instead of learning Q-values.\n### REINFORCE: ∇J = E[∇log π(a|s) · R]. Increase probability of actions that led to high reward.\n### Problem: High variance! Lots of noise in gradient estimates.\n### PPO (Proximal Policy Optimization):\n- Clip the policy ratio to prevent too-large updates\n- ratio = π_new(a|s) / π_old(a|s)\n- L = min(ratio·A, clip(ratio, 1-ε, 1+ε)·A)\n- Default algorithm for RLHF in LLMs!",
+          "visual": "  REINFORCE:\n  Episode: s₁→a₁→r₁→s₂→a₂→r₂→...→sT\n  For each (s,a): ∇log π(a|s) × (total_reward - baseline)\n  → increase prob of good actions, decrease bad\n  \n  PPO Clipping:\n  ratio │     ┌────────\n        │    ╱\n  1+ε   │───╱──────────  ← clip high\n  1     │──╱\n  1-ε   │─╱────────────  ← clip low\n        │╱\n        └──────────────\n        Prevents too-large policy updates",
+          "questions": [
+            {
+              "id": "rl-ppo-1",
+              "type": "multiple-choice",
+              "question": "Why does PPO clip the policy ratio?",
+              "options": [
+                "To speed up training",
+                "To prevent destructively large policy updates that could collapse performance",
+                "To reduce memory usage",
+                "To handle continuous actions"
+              ],
+              "correct": 1,
+              "explanation": "Without clipping, a single large gradient update could drastically change the policy, causing catastrophic performance collapse. PPO's clipping keeps updates conservative and stable.",
+              "xp": 15
+            },
+            {
+              "id": "rl-ppo-2",
+              "type": "multiple-choice",
+              "question": "Why is PPO used for RLHF in LLMs?",
+              "options": [
+                "It's the fastest RL algorithm",
+                "It's stable, sample-efficient, and well-suited for fine-tuning large pretrained models",
+                "It doesn't need rewards",
+                "It was specifically designed for NLP"
+              ],
+              "correct": 1,
+              "explanation": "PPO provides stable policy updates (critical when fine-tuning expensive LLMs), works well with neural network policies, and is relatively simple to implement and tune.",
+              "xp": 15
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Implement the PPO clipping objective.",
+            "starter_code": "import numpy as np\ndef ppo_clip_objective(ratio, advantage, epsilon=0.2):\n    \"\"\"Compute PPO clipped objective.\"\"\"\n    pass",
+            "solution": "import numpy as np\ndef ppo_clip_objective(ratio, advantage, epsilon=0.2):\n    unclipped = ratio * advantage\n    clipped = np.clip(ratio, 1-epsilon, 1+epsilon) * advantage\n    return np.minimum(unclipped, clipped)\nratios = np.array([0.5, 1.0, 1.5, 2.0])\nadvantages = np.array([1.0, 1.0, 1.0, 1.0])\nprint(ppo_clip_objective(ratios, advantages))",
+            "tests": "assert ppo_clip_objective(np.array([2.0]), np.array([1.0]))[0] == 1.2"
+          },
+          "paper_ref": "https://arxiv.org/abs/1707.06347",
+          "source": "reinforcement-learning"
+        },
+        {
+          "id": "multi-agent-rl",
+          "title": "Multi-Agent RL & Game Playing",
+          "explainer": "## Multi-Agent RL\n\n### Self-Play: Agent plays against itself. Both sides improve simultaneously (AlphaGo, AlphaZero).\n### MCTS (Monte Carlo Tree Search): Simulate many possible futures, pick the best move.\n### AlphaZero: Neural net (policy + value) + MCTS. Mastered Chess, Go, Shogi from scratch.\n### Emergent Behavior: Simple rules → complex strategies emerge from multi-agent interaction.\n### Meta's Cicero: Combined LLM + RL for Diplomacy — strategic reasoning + natural language.",
+          "visual": "  AlphaZero Self-Play:\n  ┌──────────┐          ┌──────────┐\n  │ Player A │ ◀──────▶ │ Player B │  (same network!)\n  │ (net v1) │  game    │ (net v1) │\n  └──────────┘          └──────────┘\n       ↓ training data\n  ┌──────────┐\n  │ net v2   │  (improved from self-play games)\n  └──────────┘\n  \n  MCTS: Explore game tree → simulate → evaluate → update\n  ┌─┐\n  │S│──┬──[a1]──┬──[expand]──[simulate]──[score]\n  └─┘  │       │\n       └──[a2]──└──...",
+          "questions": [
+            {
+              "id": "rl-ma-1",
+              "type": "multiple-choice",
+              "question": "How did AlphaZero learn to play Chess, Go, and Shogi?",
+              "options": [
+                "Trained on millions of human games",
+                "Self-play with MCTS — no human knowledge except the rules",
+                "Reinforcement learning with human rewards",
+                "Transfer learning from a language model"
+              ],
+              "correct": 1,
+              "explanation": "AlphaZero learned purely through self-play, starting from random play. It used a neural network to evaluate positions and guide MCTS, improving both through self-play training data.",
+              "xp": 20
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Implement a simple self-play framework for Tic-Tac-Toe with random agents.",
+            "starter_code": "import numpy as np\ndef play_game():\n    board = np.zeros((3,3), dtype=int)\n    player = 1\n    for _ in range(9):\n        # Random valid move\n        pass\n    return 0  # winner or 0 for draw",
+            "solution": "import numpy as np\ndef check_winner(board):\n    for p in [1, -1]:\n        for i in range(3):\n            if all(board[i,:]==p) or all(board[:,i]==p): return p\n        if board[0,0]==board[1,1]==board[2,2]==p: return p\n        if board[0,2]==board[1,1]==board[2,0]==p: return p\n    return 0\ndef play_game():\n    board = np.zeros((3,3), dtype=int); player = 1\n    for _ in range(9):\n        empty = list(zip(*np.where(board==0)))\n        if not empty: break\n        r, c = empty[np.random.randint(len(empty))]\n        board[r,c] = player\n        if check_winner(board): return player\n        player *= -1\n    return 0\nresults = [play_game() for _ in range(1000)]\nprint(f'P1 wins: {results.count(1)}, P2 wins: {results.count(-1)}, Draws: {results.count(0)}')",
+            "tests": "r = play_game(); assert r in [-1, 0, 1]"
+          },
+          "paper_ref": "https://arxiv.org/abs/1712.01815",
+          "source": "DeepMind (AlphaZero)"
+        }
+      ]
+    },
+    "systems-production": {
+      "name": "Systems & Production",
+      "description": "Distributed training, GPU programming, inference serving, and MLOps",
+      "order": 7,
+      "topics": [
+        {
+          "id": "distributed-training",
+          "title": "Distributed Training: Data, Model & Pipeline Parallelism",
+          "explainer": "## Training on Multiple GPUs\n\n### Data Parallelism (DDP): Copy model to each GPU, split data. Average gradients. Most common.\n### Model Parallelism: Split model layers across GPUs. For models too large for one GPU.\n### Pipeline Parallelism: Split model into stages, process micro-batches in pipeline fashion.\n### Tensor Parallelism: Split individual layers across GPUs (split weight matrices).\n### FSDP: Fully Sharded Data Parallel. Shard model parameters, gradients, and optimizer states across GPUs.",
+          "visual": "  Data Parallel (DDP):\n  GPU 0: [Full Model] ← batch 0   ┐\n  GPU 1: [Full Model] ← batch 1   ├── average gradients → update\n  GPU 2: [Full Model] ← batch 2   ┘\n  \n  Pipeline Parallel:\n  GPU 0: [Layers 1-4]  ──▶  GPU 1: [Layers 5-8]  ──▶  GPU 2: [Layers 9-12]\n  micro-batch 1 ────────▶  micro-batch 1 ──────────▶  micro-batch 1\n  micro-batch 2 ────────▶  micro-batch 2 ──────────▶  ...\n  \n  Tensor Parallel:\n  GPU 0: [W[:, :d/2]]  ┐\n                        ├── concat → output\n  GPU 1: [W[:, d/2:]]  ┘",
+          "questions": [
+            {
+              "id": "sys-dt-1",
+              "type": "multiple-choice",
+              "question": "When should you use model parallelism instead of data parallelism?",
+              "options": [
+                "When you have many small GPUs",
+                "When the model is too large to fit on a single GPU",
+                "When you want faster training with small models",
+                "When your dataset is very large"
+              ],
+              "correct": 1,
+              "explanation": "Data parallelism copies the full model to each GPU — impossible if the model exceeds one GPU's memory. Model parallelism splits the model across GPUs, enabling training of very large models.",
+              "xp": 15
+            },
+            {
+              "id": "sys-dt-2",
+              "type": "multiple-choice",
+              "question": "What does FSDP (Fully Sharded Data Parallel) shard?",
+              "options": [
+                "Only data",
+                "Model parameters, gradients, AND optimizer states",
+                "Only gradients",
+                "Only the dataset"
+              ],
+              "correct": 1,
+              "explanation": "FSDP shards all three: parameters, gradients, and optimizer states. Each GPU only stores 1/N of everything, dramatically reducing memory. Parameters are gathered just-in-time for computation.",
+              "xp": 15
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Implement a simple all-reduce operation (average gradients across simulated GPUs).",
+            "starter_code": "import numpy as np\ndef all_reduce_average(gpu_gradients):\n    \"\"\"Average gradients across GPUs.\"\"\"\n    pass\ngrads = [np.array([1.0, 2.0]), np.array([3.0, 4.0]), np.array([5.0, 6.0])]\nprint(all_reduce_average(grads))  # [3.0, 4.0]",
+            "solution": "import numpy as np\ndef all_reduce_average(gpu_gradients):\n    return np.mean(gpu_gradients, axis=0)\nprint(all_reduce_average([np.array([1.0,2.0]), np.array([3.0,4.0]), np.array([5.0,6.0])]))",
+            "tests": "assert np.allclose(all_reduce_average([np.array([1,2]), np.array([3,4])]), [2,3])"
+          },
+          "paper_ref": "https://arxiv.org/abs/2304.11277",
+          "source": "NVIDIA/Meta"
+        },
+        {
+          "id": "gpu-programming",
+          "title": "GPU Programming & CUDA Concepts",
+          "explainer": "## GPU Programming for ML\n\n### Why GPUs: Thousands of cores for parallel math. Matrix multiply → massive parallelism.\n### CUDA Hierarchy: Grid → Blocks → Threads. Each thread computes one element.\n### Memory Hierarchy: Global (slow, large) → Shared (fast, small per block) → Registers (fastest).\n### Key Operations: MatMul, attention, element-wise ops, reduction (sum/max across threads).\n### FlashAttention: Fuses attention computation, tiles in SRAM. O(n²) compute but O(n) memory!\n\n### llm.c Connection: Karpathy implements full GPT training in pure CUDA — the best way to learn.",
+          "visual": "  GPU Architecture:\n  ┌─────────────────────────────────┐\n  │ GPU                              │\n  │ ┌──────┐ ┌──────┐ ┌──────┐     │\n  │ │ SM 0 │ │ SM 1 │ │ SM 2 │ ... │  (Streaming Multiprocessors)\n  │ │┌────┐│ │┌────┐│ │┌────┐│     │\n  │ ││core││ ││core││ ││core││     │  (thousands of CUDA cores)\n  │ ││core││ ││core││ ││core││     │\n  │ │└────┘│ │└────┘│ │└────┘│     │\n  │ └──────┘ └──────┘ └──────┘     │\n  │ ┌──────────────────────────┐    │\n  │ │    Global Memory (HBM)   │    │  (80GB on A100)\n  │ └──────────────────────────┘    │\n  └─────────────────────────────────┘\n  \n  Memory Speed: Registers > Shared > L2 > Global (HBM)\n                ~20TB/s    ~20TB/s  ~6TB/s  ~2TB/s",
+          "questions": [
+            {
+              "id": "sys-gpu-1",
+              "type": "multiple-choice",
+              "question": "Why is FlashAttention faster than standard attention?",
+              "options": [
+                "It uses approximate attention",
+                "It tiles computation to fit in fast SRAM, avoiding slow HBM reads/writes for the full attention matrix",
+                "It reduces the number of operations",
+                "It uses fewer GPU cores"
+              ],
+              "correct": 1,
+              "explanation": "Standard attention materializes the full n×n attention matrix in slow HBM. FlashAttention tiles the computation into blocks that fit in fast SRAM (shared memory), reducing memory accesses by orders of magnitude.",
+              "xp": 20
+            },
+            {
+              "id": "sys-gpu-2",
+              "type": "multiple-choice",
+              "question": "What does Karpathy's llm.c demonstrate?",
+              "options": [
+                "Python is best for ML",
+                "LLM training can be done in pure C/CUDA without Python or PyTorch, and be faster",
+                "C is too slow for ML",
+                "GPUs aren't needed for training"
+              ],
+              "correct": 1,
+              "explanation": "llm.c implements GPT-2 training in ~1000 lines of C/CUDA, is ~7% faster than PyTorch, and demonstrates that the underlying computation is straightforward without framework overhead.",
+              "xp": 15
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Simulate a simple parallel matrix multiply by breaking it into blocks (like GPU thread blocks).",
+            "starter_code": "import numpy as np\ndef blocked_matmul(A, B, block_size=2):\n    \"\"\"Block matrix multiplication (simulates GPU tiling).\"\"\"\n    pass",
+            "solution": "import numpy as np\ndef blocked_matmul(A, B, block_size=2):\n    M, K = A.shape; K2, N = B.shape\n    assert K == K2\n    C = np.zeros((M, N))\n    for i in range(0, M, block_size):\n        for j in range(0, N, block_size):\n            for k in range(0, K, block_size):\n                ib, jb, kb = min(i+block_size,M), min(j+block_size,N), min(k+block_size,K)\n                C[i:ib, j:jb] += A[i:ib, k:kb] @ B[k:kb, j:jb]\n    return C\nA = np.random.randn(4,4); B = np.random.randn(4,4)\nassert np.allclose(blocked_matmul(A,B), A@B)",
+            "tests": "A=np.eye(4);B=np.ones((4,4));assert np.allclose(blocked_matmul(A,B),B)"
+          },
+          "paper_ref": "https://github.com/karpathy/llm.c",
+          "source": "karpathy/llm.c"
+        },
+        {
+          "id": "inference-serving",
+          "title": "Inference Serving: vLLM, TensorRT & ONNX",
+          "explainer": "## Serving ML Models in Production\n\n### vLLM: High-throughput LLM serving with PagedAttention. Continuous batching. 10-24× faster than HuggingFace.\n### TensorRT: NVIDIA's inference optimizer. Graph optimization, kernel fusion, quantization.\n### ONNX: Open model format. Export from PyTorch/TF, run anywhere with optimized runtime.\n### Key Techniques:\n- Continuous batching: Don't wait for whole batch, add new requests immediately\n- PagedAttention: Manage KV cache like virtual memory pages\n- Kernel fusion: Combine multiple ops into one GPU kernel call",
+          "visual": "  Static Batching:           Continuous Batching (vLLM):\n  ┌─────────────────┐        ┌─────────────────┐\n  │ req1 ████████   │        │ req1 ████████   │\n  │ req2 ████       │        │ req2 ████ req4█ │  ← new req fills gap\n  │ req3 ██████     │        │ req3 ██████req5█│\n  │      (padding)  │        │ (no wasted GPU) │\n  └─────────────────┘        └─────────────────┘\n  Wait for all to finish     Process continuously\n  \n  PagedAttention:\n  KV Cache as virtual memory pages:\n  [Page1][Page2][Page3] → can be non-contiguous in GPU memory\n  Efficient memory allocation, sharing, and eviction",
+          "questions": [
+            {
+              "id": "sys-is-1",
+              "type": "multiple-choice",
+              "question": "What is continuous batching?",
+              "options": [
+                "Batching all requests at once",
+                "Dynamically adding new requests to the batch as previous ones finish, maximizing GPU utilization",
+                "Processing one request at a time",
+                "Batching by request size"
+              ],
+              "correct": 1,
+              "explanation": "Static batching pads shorter sequences and waits for all to finish. Continuous batching fills gaps immediately when requests finish, achieving near-100% GPU utilization.",
+              "xp": 15
+            },
+            {
+              "id": "sys-is-2",
+              "type": "multiple-choice",
+              "question": "What does TensorRT do to speed up inference?",
+              "options": [
+                "Retrains the model",
+                "Optimizes computation graphs, fuses operations, quantizes weights, and generates hardware-specific kernels",
+                "Uses more GPUs",
+                "Reduces model accuracy"
+              ],
+              "correct": 1,
+              "explanation": "TensorRT analyzes the model graph, fuses compatible operations (fewer kernel launches), applies quantization (INT8/FP16), and generates CUDA kernels optimized for specific GPU hardware.",
+              "xp": 15
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Implement a simple request scheduler with continuous batching simulation.",
+            "starter_code": "class InferenceServer:\n    def __init__(self, max_batch=4):\n        self.max_batch = max_batch\n        self.queue = []\n        self.active = []\n    def add_request(self, req_id, tokens_remaining): pass\n    def step(self): pass  # process one step, return completed",
+            "solution": "class InferenceServer:\n    def __init__(self, max_batch=4):\n        self.max_batch = max_batch; self.queue = []; self.active = []\n    def add_request(self, req_id, tokens_remaining):\n        self.queue.append({'id': req_id, 'remaining': tokens_remaining})\n    def step(self):\n        # Fill batch from queue\n        while len(self.active) < self.max_batch and self.queue:\n            self.active.append(self.queue.pop(0))\n        # Process one token for each active request\n        completed = []\n        for req in self.active:\n            req['remaining'] -= 1\n        completed = [r for r in self.active if r['remaining'] <= 0]\n        self.active = [r for r in self.active if r['remaining'] > 0]\n        return [c['id'] for c in completed]\nserver = InferenceServer(max_batch=2)\nserver.add_request('A', 3); server.add_request('B', 1); server.add_request('C', 2)\nfor step in range(5): print(f'Step {step}: completed={server.step()}, active={len(server.active)}')",
+            "tests": "s=InferenceServer(2);s.add_request('a',1);assert s.step()==['a']"
+          },
+          "source": "systems-production"
+        },
+        {
+          "id": "mlops",
+          "title": "MLOps: Experiment Tracking & Deployment",
+          "explainer": "## MLOps: From Experiment to Production\n\n### Experiment Tracking: Log hyperparameters, metrics, artifacts. Tools: W&B, MLflow, TensorBoard.\n### Model Registry: Version models, track lineage, manage deployment stages (staging → production).\n### Deployment Patterns:\n- Online: Real-time API (REST/gRPC)\n- Batch: Process large datasets offline\n- Edge: Run on device (mobile, embedded)\n\n### Monitoring: Track latency, throughput, data drift, model degradation.\n### CI/CD for ML: Automated testing of model quality, not just code correctness.",
+          "visual": "  MLOps Lifecycle:\n  ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐\n  │ Develop  │ →  │  Train   │ →  │ Evaluate │ →  │ Deploy   │\n  │ (code)   │    │ (compute)│    │ (metrics)│    │ (serve)  │\n  └──────────┘    └──────────┘    └──────────┘    └──────────┘\n       ↑                                               │\n       └──────────── Monitor & Retrain ◀───────────────┘\n  \n  Experiment Tracking:\n  Run #42: lr=3e-4, batch=64, loss=0.23, acc=97.1%\n  Run #43: lr=1e-4, batch=128, loss=0.21, acc=97.8% ← best",
+          "questions": [
+            {
+              "id": "sys-ml-1",
+              "type": "multiple-choice",
+              "question": "What is data drift?",
+              "options": [
+                "Moving data between servers",
+                "When production data distribution changes from training data, degrading model performance",
+                "Data corruption",
+                "Too much training data"
+              ],
+              "correct": 1,
+              "explanation": "Data drift occurs when real-world data evolves differently from training data. E.g., user behavior changes, new products appear. Models must be monitored and retrained to maintain performance.",
+              "xp": 10
+            },
+            {
+              "id": "sys-ml-2",
+              "type": "multiple-choice",
+              "question": "Why is experiment tracking important in ML?",
+              "options": [
+                "Legal compliance",
+                "Enables reproducibility, comparison of approaches, and identification of best hyperparameters",
+                "Required by GPUs",
+                "Reduces training time"
+              ],
+              "correct": 1,
+              "explanation": "ML development involves many experiments varying hyperparameters, architectures, and data. Without systematic tracking, you lose track of what worked, can't reproduce results, and waste compute.",
+              "xp": 10
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Implement a simple experiment tracker that logs runs, metrics, and finds the best run.",
+            "starter_code": "class ExperimentTracker:\n    def __init__(self): self.runs = []\n    def log_run(self, name, params, metrics): pass\n    def best_run(self, metric, higher_is_better=True): pass",
+            "solution": "class ExperimentTracker:\n    def __init__(self): self.runs = []\n    def log_run(self, name, params, metrics):\n        self.runs.append({'name': name, 'params': params, 'metrics': metrics})\n    def best_run(self, metric, higher_is_better=True):\n        return sorted(self.runs, key=lambda r: r['metrics'].get(metric, 0), reverse=higher_is_better)[0]\ntracker = ExperimentTracker()\ntracker.log_run('run1', {'lr': 0.01}, {'acc': 0.95, 'loss': 0.3})\ntracker.log_run('run2', {'lr': 0.001}, {'acc': 0.97, 'loss': 0.2})\nprint(tracker.best_run('acc'))",
+            "tests": "t=ExperimentTracker();t.log_run('a',{},{'acc':0.9});t.log_run('b',{},{'acc':0.95});assert t.best_run('acc')['name']=='b'"
+          },
+          "source": "systems-production"
+        }
+      ]
+    },
+    "research-frontier": {
+      "name": "Research Frontier",
+      "description": "Latest papers, paper reading skills, reproducing results, and open source ML",
+      "order": 8,
+      "topics": [
+        {
+          "id": "reading-ml-papers",
+          "title": "How to Read ML Papers",
+          "explainer": "## Reading ML Papers Effectively\n\n### Three-Pass Approach:\n1. **First Pass (5 min)**: Title, abstract, figures, conclusions.\n2. **Second Pass (30 min)**: Read fully, skip proofs. Understand method + results.\n3. **Third Pass (hours)**: Every equation, could re-implement.\n\n### Focus On: Problem → Key Insight → Method → Results → Limitations.\n### Keep a Paper Log: Title, date read, key idea, relevance to your work.",
+          "visual": "  Paper Reading Flow:\n  Title/Abstract → Figures → Method → Experiments → Conclusion\n  (5 min)          (10 min)  (deep)   (tables)      (summary)\n\n  Paper Log Template:\n  | Paper | Key Idea | Relevance | Implementation? |",
+          "questions": [
+            {
+              "id": "rf-rp-1",
+              "type": "multiple-choice",
+              "question": "In a first pass of an ML paper, what should you read?",
+              "options": [
+                "Every equation carefully",
+                "Title, abstract, section headers, figures, and conclusion",
+                "Only the related work section",
+                "The appendix first"
+              ],
+              "correct": 1,
+              "explanation": "First pass gives you the big picture in ~5 minutes. Figures often convey the main idea better than text. Abstract + conclusion tell you what was done and what was found.",
+              "xp": 10
+            },
+            {
+              "id": "rf-rp-2",
+              "type": "multiple-choice",
+              "question": "What makes a good ML paper contribution?",
+              "options": [
+                "More parameters than previous work",
+                "A clear, novel insight that improves upon the state of the art with solid experimental evidence",
+                "Using the latest framework",
+                "Longer papers are better"
+              ],
+              "correct": 1,
+              "explanation": "A good contribution has: (1) clear problem statement, (2) novel technical insight, (3) rigorous experiments with fair baselines, (4) honest limitations.",
+              "xp": 10
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Build a paper summary template generator that extracts key fields from a paper description.",
+            "starter_code": "def summarize_paper(title, abstract, key_results):\n    \"\"\"Generate structured summary.\"\"\"\n    pass",
+            "solution": "def summarize_paper(title, abstract, key_results):\n    return {\n        'title': title,\n        'problem': abstract.split('.')[0],\n        'key_results': key_results,\n        'questions': ['What is the key insight?', 'How does it compare to baselines?', 'What are limitations?']\n    }\nprint(summarize_paper('Attention Is All You Need', 'We propose a new architecture based solely on attention mechanisms.', ['BLEU 28.4 on WMT']))",
+            "tests": "s = summarize_paper('Test', 'A paper.', ['good']); assert s['title'] == 'Test'"
+          },
+          "paper_ref": "https://web.stanford.edu/class/ee384m/Handouts/HowtoReadPaper.pdf",
+          "source": "research-frontier"
+        },
+        {
+          "id": "frontier-papers",
+          "title": "Frontier Research: Key Papers 2023-2026",
+          "explainer": "## Key Papers Shaping the Field\n\n### Language Models:\n- **LLaMA/LLaMA 2/3** (Meta): Open-weight LLMs, competitive with GPT\n- **Mixtral** (Mistral): Mixture of Experts, 8×7B = 12B active params\n- **GPT-4/o** (OpenAI): Multimodal, reasoning\n\n### Vision:\n- **SAM** (Meta): Segment Anything — foundation model for segmentation\n- **DINOv2** (Meta): Self-supervised vision features\n- **Stable Diffusion 3**: Rectified flow, DiT architecture\n\n### Agents & Reasoning:\n- **Chain-of-Thought**: Step-by-step reasoning improves LLM accuracy\n- **ReAct**: Reasoning + Acting — LLMs use tools\n- **SIMA** (DeepMind): 3D game-playing agents\n\n### Systems:\n- **FlashAttention 2/3**: Memory-efficient attention\n- **Mamba/S4**: State space models as alternative to transformers\n- **Ring Attention**: Distributed attention across devices",
+          "visual": "  2023-2026 AI Timeline:\n  2023: LLaMA, GPT-4, SAM, SDXL, Mixtral\n  2024: LLaMA3, Gemini, Claude3, SORA, FlashAttn3\n  2025: DeepSeek-R1, o3, Gemini2, Claude4, Genie3\n  2026: Gemini Robotics, Physical AI frontier\n\n  Architecture Evolution:\n  RNN → LSTM → Transformer → MoE → SSM (Mamba)?",
+          "questions": [
+            {
+              "id": "rf-fp-1",
+              "type": "multiple-choice",
+              "question": "What is Mixture of Experts (MoE)?",
+              "options": [
+                "Ensemble of separate models",
+                "Architecture where only a subset of parameters (experts) are activated per input, enabling larger models with less compute",
+                "Multiple training runs averaged",
+                "Expert human annotation"
+              ],
+              "correct": 1,
+              "explanation": "MoE uses a router to select K of N expert FFN blocks per token. Mixtral 8×7B has 46B total parameters but only activates ~12B per token, getting near-GPT-3.5 quality at much lower inference cost.",
+              "xp": 20
+            },
+            {
+              "id": "rf-fp-2",
+              "type": "multiple-choice",
+              "question": "What are state space models (Mamba) an alternative to?",
+              "options": [
+                "CNNs",
+                "Transformer self-attention — they process sequences in O(n) instead of O(n²)",
+                "Batch normalization",
+                "Dropout"
+              ],
+              "correct": 1,
+              "explanation": "Mamba and other SSMs process sequences linearly O(n) by maintaining a hidden state, similar to RNNs but with better training parallelism. They challenge the dominance of quadratic-cost attention for long sequences.",
+              "xp": 20
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Implement a simple Mixture of Experts layer with top-k routing.",
+            "starter_code": "import numpy as np\ndef moe_layer(x, expert_weights, router_weights, top_k=2):\n    \"\"\"x: (d,), expert_weights: list of (d,d) matrices, router: (d, n_experts)\"\"\"\n    pass",
+            "solution": "import numpy as np\ndef softmax(x): e=np.exp(x-np.max(x)); return e/e.sum()\ndef moe_layer(x, expert_weights, router_weights, top_k=2):\n    # Router: select top-k experts\n    router_logits = x @ router_weights  # (n_experts,)\n    top_indices = np.argsort(router_logits)[-top_k:]\n    gate_values = softmax(router_logits[top_indices])\n    # Compute weighted sum of expert outputs\n    output = np.zeros_like(x)\n    for idx, gate in zip(top_indices, gate_values):\n        expert_out = np.tanh(x @ expert_weights[idx])\n        output += gate * expert_out\n    return output\nd = 4; n_experts = 4\nexperts = [np.random.randn(d,d)*0.1 for _ in range(n_experts)]\nrouter = np.random.randn(d, n_experts)*0.1\nx = np.random.randn(d)\nprint(moe_layer(x, experts, router, top_k=2))",
+            "tests": "d=4;e=[np.eye(d)]*4;r=np.ones((d,4));assert moe_layer(np.ones(d),e,r,2).shape==(d,)"
+          },
+          "paper_ref": "https://arxiv.org/abs/2401.04088",
+          "source": "research-frontier"
+        },
+        {
+          "id": "reproducing-results",
+          "title": "Reproducing Paper Results",
+          "explainer": "## Reproducing ML Papers\n\n### Why Reproduce?\n- Deepest way to understand a method\n- Reveals details papers often omit\n- Builds real implementation skills\n\n### Steps:\n1. Read paper thoroughly (3rd pass)\n2. Find reference implementation (GitHub, Papers with Code)\n3. Start small: implement core algorithm on toy data\n4. Match reference numbers on small benchmarks\n5. Scale up to full experiments\n\n### Common Gotchas:\n- Hyperparameters not fully specified\n- Data preprocessing details missing\n- Random seeds matter more than expected\n- Compute budget differences\n- Trick: Read the appendix carefully — that's where details hide!",
+          "visual": "  Reproduction Workflow:\n  Paper → Understand → Toy Implementation → Match Reference → Scale\n  \n  Common Gotchas:\n  ┌─────────────────────────────────────────┐\n  │ 1. Hidden hyperparams (check appendix!) │\n  │ 2. Data preprocessing details           │\n  │ 3. Evaluation methodology differences   │\n  │ 4. Random seed sensitivity              │\n  │ 5. Compute budget gaps                  │\n  └─────────────────────────────────────────┘",
+          "questions": [
+            {
+              "id": "rf-rr-1",
+              "type": "multiple-choice",
+              "question": "What is the most important first step when reproducing a paper?",
+              "options": [
+                "Download the code and run it",
+                "Implement the full method from scratch immediately",
+                "Understand the method deeply, then implement core algorithm on simple data first",
+                "Contact the authors"
+              ],
+              "correct": 2,
+              "explanation": "Starting with a toy implementation on simple data lets you verify your understanding of the algorithm without debugging scale issues. Once the core works, scale up incrementally.",
+              "xp": 10
+            },
+            {
+              "id": "rf-rr-2",
+              "type": "multiple-choice",
+              "question": "Where do papers typically hide implementation details?",
+              "options": [
+                "Introduction",
+                "Related work",
+                "Appendix and supplementary material",
+                "Abstract"
+              ],
+              "correct": 2,
+              "explanation": "Due to page limits, critical details (hyperparameters, ablations, preprocessing steps) are often in the appendix. Always read appendices when reproducing.",
+              "xp": 10
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Implement a minimal version of the attention mechanism from 'Attention Is All You Need' and verify it matches expected output.",
+            "starter_code": "import numpy as np\ndef transformer_attention(Q, K, V, d_k):\n    \"\"\"Exact implementation from the paper.\"\"\"\n    pass\n# Verify: when Q==K, attention weights should be uniform",
+            "solution": "import numpy as np\ndef softmax(x, axis=-1):\n    e = np.exp(x - np.max(x, axis=axis, keepdims=True))\n    return e / e.sum(axis=axis, keepdims=True)\ndef transformer_attention(Q, K, V, d_k):\n    scores = Q @ K.T / np.sqrt(d_k)\n    weights = softmax(scores)\n    return weights @ V, weights\n# Verify uniform when Q==K\nX = np.ones((3, 4))\nout, w = transformer_attention(X, X, X, 4)\nprint('Uniform weights:', np.allclose(w, 1/3))  # True\nprint('Output equals input:', np.allclose(out, X))  # True",
+            "tests": "X=np.ones((3,4));_,w=transformer_attention(X,X,X,4);assert np.allclose(w, 1/3)"
+          },
+          "paper_ref": "https://arxiv.org/abs/1706.03762",
+          "source": "research-frontier"
+        },
+        {
+          "id": "open-source-ml",
+          "title": "Contributing to Open Source ML",
+          "explainer": "## Contributing to Open Source ML\n\n### Where to Start:\n- **Karpathy repos**: micrograd, nanoGPT, minbpe — small, educational, well-documented\n- **Hugging Face**: transformers, datasets, diffusers — massive ecosystem\n- **PyTorch**: Core framework contributions\n- **Papers with Code**: Find implementations, improve benchmarks\n\n### Types of Contributions:\n1. Bug fixes and documentation\n2. Adding new models/features\n3. Performance optimizations\n4. New benchmarks and evaluations\n5. Educational content and tutorials\n\n### Best Practices:\n- Start with issues labeled 'good first issue'\n- Read contribution guidelines\n- Write tests for your code\n- Keep PRs focused and small\n- Engage with maintainer feedback constructively",
+          "visual": "  Open Source ML Ecosystem:\n  ┌────────────────────────────────────────────┐\n  │ Educational:  micrograd, nanoGPT, minbpe   │\n  │ Frameworks:   PyTorch, JAX, TensorFlow     │\n  │ Libraries:    HuggingFace, LangChain       │\n  │ Tools:        vLLM, TensorRT, ONNX         │\n  │ Research:     Papers with Code              │\n  └────────────────────────────────────────────┘\n\n  Contribution Flow:\n  Fork → Branch → Code → Test → PR → Review → Merge",
+          "questions": [
+            {
+              "id": "rf-os-1",
+              "type": "multiple-choice",
+              "question": "What's the best way to start contributing to open source ML?",
+              "options": [
+                "Rewrite the entire codebase",
+                "Start with 'good first issue' labels — small bug fixes, docs, and tests",
+                "Only submit large feature PRs",
+                "Fork and never upstream"
+              ],
+              "correct": 1,
+              "explanation": "Good first issues are designed for newcomers. They help you learn the codebase, build trust with maintainers, and understand contribution workflows before tackling larger features.",
+              "xp": 10
+            }
+          ],
+          "coding_challenge": {
+            "prompt": "Write a comprehensive test suite for the softmax function (edge cases, numerical stability, properties).",
+            "starter_code": "import numpy as np\ndef softmax(x):\n    e = np.exp(x - np.max(x))\n    return e / e.sum()\n\ndef test_softmax():\n    # Test 1: Output sums to 1\n    # Test 2: All outputs positive\n    # Test 3: Numerical stability with large values\n    # Test 4: Single element\n    # Test 5: Correct ranking preserved\n    pass\ntest_softmax()\nprint('All tests passed!')",
+            "solution": "import numpy as np\ndef softmax(x):\n    e = np.exp(x - np.max(x))\n    return e / e.sum()\ndef test_softmax():\n    # Test 1: Sums to 1\n    assert abs(softmax(np.array([1.0, 2.0, 3.0])).sum() - 1.0) < 1e-6\n    # Test 2: All positive\n    assert all(softmax(np.array([-10, 0, 10])) > 0)\n    # Test 3: Numerical stability\n    result = softmax(np.array([1000, 1001, 1002]))\n    assert not np.any(np.isnan(result)) and not np.any(np.isinf(result))\n    # Test 4: Single element\n    assert abs(softmax(np.array([42.0]))[0] - 1.0) < 1e-6\n    # Test 5: Ranking preserved\n    s = softmax(np.array([1.0, 3.0, 2.0]))\n    assert s[1] > s[2] > s[0]\n    # Test 6: Uniform input → uniform output\n    s = softmax(np.array([5.0, 5.0, 5.0]))\n    assert np.allclose(s, 1/3)\ntest_softmax()\nprint('All tests passed!')",
+            "tests": "test_softmax()"
+          },
+          "source": "research-frontier"
         }
       ]
     }
-  ]
+  }
 }

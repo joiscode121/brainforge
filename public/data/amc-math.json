@@ -2,662 +2,433 @@
   "id": "amc-math",
   "name": "AMC Math",
   "icon": "🏆",
-  "color": "#6366f1",
-  "description": "AMC 10/12, AIME-level competition problems",
+  "color": "#ef4444",
+  "description": "AMC 10/12 competition math, proofs, olympiad problem solving",
   "levels": {
-    "beginner": {
-      "name": "Beginner",
-      "description": "AMC 8 / early AMC 10 level",
-      "questions": [
+    "algebra": {
+      "name": "Algebra",
+      "description": "Polynomials, equations, inequalities, functions",
+      "order": 1,
+      "topics": [
         {
-          "id": "amc-b1",
-          "type": "multiple-choice",
-          "question": "A rectangle has area 36 and perimeter 26. What are its dimensions?",
-          "options": [
-            "4×9",
-            "6×6",
-            "3×12",
-            "2×18"
-          ],
-          "correct": 0,
-          "explanation": "Let l×w=36, 2(l+w)=26 → l+w=13. Solve: 9+4=13, 9×4=36.",
-          "xp": 10
+          "id": "amc-vieta",
+          "title": "Vieta's Formulas",
+          "explainer": "## Vieta's Formulas\n\n### For Quadratics\nIf r and s are roots of ax² + bx + c = 0:\n- r + s = −b/a\n- r × s = c/a\n\n### For Cubics\nIf r, s, t are roots of ax³ + bx² + cx + d = 0:\n- r+s+t = −b/a\n- rs+rt+st = c/a\n- rst = −d/a\n\n### Key Insight\nYou can find sums/products of roots WITHOUT finding the roots themselves!\n\n### AMC Application\n**Problem:** If r and s are roots of x²−5x+3=0, find r²+s².\n\n**Solution:** \n- r+s = 5, rs = 3\n- r²+s² = (r+s)² − 2rs = 25 − 6 = **19**\n\n### Useful Identities\n- r² + s² = (r+s)² − 2rs\n- r³ + s³ = (r+s)³ − 3rs(r+s)\n- 1/r + 1/s = (r+s)/(rs)",
+          "visual": "  Vieta's for x² - 5x + 3 = 0:\n  ┌────────────────────────────┐\n  │  roots r, s                │\n  │  r + s = −(−5)/1 = 5      │\n  │  r × s = 3/1 = 3          │\n  │                            │\n  │  Without finding r, s:     │\n  │  r² + s² = (r+s)²−2rs     │\n  │         = 25 − 6 = 19     │\n  │                            │\n  │  1/r+1/s = (r+s)/(rs)     │\n  │         = 5/3              │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "amc-v-1",
+              "type": "multiple-choice",
+              "question": "If r,s are roots of x²−7x+10=0, what is r+s?",
+              "options": ["7", "10", "-7", "-10"],
+              "correct": 0,
+              "explanation": "By Vieta's: r+s = −(−7)/1 = 7.",
+              "xp": 10
+            },
+            {
+              "id": "amc-v-2",
+              "type": "multiple-choice",
+              "question": "Roots of x²−3x+1=0. Find r²+s².",
+              "options": ["7", "9", "5", "3"],
+              "correct": 0,
+              "explanation": "r+s=3, rs=1. r²+s² = (r+s)²−2rs = 9−2 = 7.",
+              "xp": 10
+            },
+            {
+              "id": "amc-v-3",
+              "type": "multiple-choice",
+              "question": "Roots of 2x²+6x−4=0. Product of roots?",
+              "options": ["-2", "3", "-3", "2"],
+              "correct": 0,
+              "explanation": "rs = c/a = −4/2 = −2.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "amc-b2",
-          "type": "text-input",
-          "question": "What is the sum of the first 10 positive integers?",
-          "answer": "55",
-          "explanation": "1+2+...+10 = n(n+1)/2 = 10×11/2 = 55",
-          "xp": 10
+          "id": "amc-inequalities",
+          "title": "AM-GM & Cauchy-Schwarz",
+          "explainer": "## Classic Inequalities\n\n### AM-GM (Arithmetic Mean ≥ Geometric Mean)\nFor non-negative a, b:\n(a+b)/2 ≥ √(ab)\n\nEquality when a = b.\n\n**General:** (a₁+a₂+...+aₙ)/n ≥ (a₁a₂...aₙ)^(1/n)\n\n### Application\nMinimize x + 1/x for x > 0:\nBy AM-GM: x + 1/x ≥ 2√(x·1/x) = 2\nMinimum is **2** when x = 1.\n\n### Cauchy-Schwarz\n(a²+b²)(c²+d²) ≥ (ac+bd)²\n\nMore generally:\n(Σaᵢ²)(Σbᵢ²) ≥ (Σaᵢbᵢ)²\n\n### QM-AM-GM-HM Chain\nQuadratic Mean ≥ AM ≥ GM ≥ Harmonic Mean\n√((a²+b²)/2) ≥ (a+b)/2 ≥ √(ab) ≥ 2ab/(a+b)",
+          "visual": "  AM-GM Inequality:\n  ┌────────────────────────────┐\n  │  AM ≥ GM                   │\n  │  (a+b)/2 ≥ √(ab)          │\n  │                            │\n  │  a=3, b=12:                │\n  │  AM = (3+12)/2 = 7.5      │\n  │  GM = √(36) = 6           │\n  │  7.5 ≥ 6 ✓                │\n  │                            │\n  │  Equality iff a = b        │\n  │                            │\n  │  QM ≥ AM ≥ GM ≥ HM        │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "amc-ineq-1",
+              "type": "multiple-choice",
+              "question": "Minimum value of x + 4/x for x > 0?",
+              "options": ["4", "2", "5", "8"],
+              "correct": 0,
+              "explanation": "AM-GM: x + 4/x ≥ 2√(x·4/x) = 2√4 = 4. Min at x=2.",
+              "xp": 10
+            },
+            {
+              "id": "amc-ineq-2",
+              "type": "multiple-choice",
+              "question": "AM-GM: equality holds when:",
+              "options": ["All terms are equal", "One term is zero", "Terms sum to 1", "Never"],
+              "correct": 0,
+              "explanation": "AM = GM if and only if a₁ = a₂ = ... = aₙ.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "amc-b3",
-          "type": "multiple-choice",
-          "question": "How many prime numbers are between 20 and 30?",
-          "options": [
-            "1",
-            "2 (23, 29)",
-            "3",
-            "4"
-          ],
-          "correct": 1,
-          "explanation": "23 and 29 are the only primes in this range.",
-          "xp": 10
-        },
-        {
-          "id": "amc-b4",
-          "type": "text-input",
-          "question": "If x+y=10 and x-y=4, what is x?",
-          "answer": "7",
-          "explanation": "Add equations: 2x=14, so x=7.",
-          "xp": 10
-        },
-        {
-          "id": "amc-b5",
-          "type": "multiple-choice",
-          "question": "A triangle has angles 2x, 3x, and 4x. What is x?",
-          "options": [
-            "18°",
-            "20°",
-            "25°",
-            "30°"
-          ],
-          "correct": 1,
-          "explanation": "2x+3x+4x=180°, 9x=180°, x=20°.",
-          "xp": 10
-        },
-        {
-          "id": "amc-b6",
-          "type": "text-input",
-          "question": "What is 15% of 200?",
-          "answer": "30",
-          "explanation": "0.15 × 200 = 30",
-          "xp": 10
-        },
-        {
-          "id": "amc-b7",
-          "type": "multiple-choice",
-          "question": "The average of 5 numbers is 12. If one number is removed, average becomes 10. What was the number?",
-          "options": [
-            "15",
-            "20",
-            "22",
-            "25"
-          ],
-          "correct": 1,
-          "explanation": "Sum was 60. New sum is 40. Removed: 60-40=20.",
-          "xp": 10
-        },
-        {
-          "id": "amc-b8",
-          "type": "text-input",
-          "question": "How many diagonals does a hexagon have?",
-          "answer": "9",
-          "explanation": "n(n-3)/2 = 6(3)/2 = 9 diagonals.",
-          "xp": 10
-        },
-        {
-          "id": "amc-b9",
-          "type": "multiple-choice",
-          "question": "If 2^x = 32, what is x?",
-          "options": [
-            "4",
-            "5",
-            "6",
-            "7"
-          ],
-          "correct": 1,
-          "explanation": "2^5 = 32, so x=5.",
-          "xp": 10
-        },
-        {
-          "id": "amc-b10",
-          "type": "text-input",
-          "question": "What is the LCM of 12 and 18?",
-          "answer": "36",
-          "explanation": "12=2²×3, 18=2×3². LCM=2²×3²=36.",
-          "xp": 10
-        },
-        {
-          "id": "amc-b11",
-          "type": "multiple-choice",
-          "question": "A square has perimeter 20. What is its area?",
-          "options": [
-            "16",
-            "20",
-            "25",
-            "100"
-          ],
-          "correct": 2,
-          "explanation": "Side=20/4=5, Area=5²=25.",
-          "xp": 10
-        },
-        {
-          "id": "amc-b12",
-          "type": "text-input",
-          "question": "What is 7! / 5!?",
-          "answer": "42",
-          "explanation": "7!/5! = 7×6 = 42.",
-          "xp": 10
-        },
-        {
-          "id": "amc-b13",
-          "type": "multiple-choice",
-          "question": "How many factors does 60 have?",
-          "options": [
-            "10",
-            "12",
-            "14",
-            "16"
-          ],
-          "correct": 1,
-          "explanation": "60=2²×3×5. Factors: (2+1)(1+1)(1+1)=12.",
-          "xp": 10
-        },
-        {
-          "id": "amc-b14",
-          "type": "text-input",
-          "question": "If f(x)=2x+3, what is f(5)?",
-          "answer": "13",
-          "explanation": "f(5)=2(5)+3=13.",
-          "xp": 10
-        },
-        {
-          "id": "amc-b15",
-          "type": "multiple-choice",
-          "question": "What is the next number: 2, 6, 12, 20, 30, ?",
-          "options": [
-            "40",
-            "42",
-            "44",
-            "48"
-          ],
-          "correct": 1,
-          "explanation": "Differences: 4,6,8,10... Next: 30+12=42.",
-          "xp": 10
-        },
-        {
-          "id": "amc-b16",
-          "type": "text-input",
-          "question": "What is 3³ + 4²?",
-          "answer": "43",
-          "explanation": "27 + 16 = 43.",
-          "xp": 10
-        },
-        {
-          "id": "amc-b17",
-          "type": "multiple-choice",
-          "question": "A cube has volume 64. What is its surface area?",
-          "options": [
-            "64",
-            "96",
-            "128",
-            "256"
-          ],
-          "correct": 1,
-          "explanation": "Side=4, SA=6×4²=96.",
-          "xp": 10
-        },
-        {
-          "id": "amc-b18",
-          "type": "text-input",
-          "question": "How many ways to arrange 3 distinct objects?",
-          "answer": "6",
-          "explanation": "3! = 6 permutations.",
-          "xp": 10
-        },
-        {
-          "id": "amc-b19",
-          "type": "multiple-choice",
-          "question": "If 3x-7=14, what is x?",
-          "options": [
-            "5",
-            "6",
-            "7",
-            "8"
-          ],
-          "correct": 2,
-          "explanation": "3x=21, x=7.",
-          "xp": 10
-        },
-        {
-          "id": "amc-b20",
-          "type": "text-input",
-          "question": "What is the sum of angles in a pentagon?",
-          "answer": "540",
-          "explanation": "(n-2)×180° = 3×180° = 540°.",
-          "xp": 10
+          "id": "amc-polynomials",
+          "title": "Polynomial Tricks",
+          "explainer": "## Polynomial Techniques\n\n### Remainder Theorem\nThe remainder when P(x) is divided by (x−a) is P(a).\n\n### Factor Theorem\n(x−a) is a factor of P(x) iff P(a) = 0.\n\n### Rational Root Theorem\nIf p/q is a rational root of aₙxⁿ+...+a₀, then:\n- p divides a₀\n- q divides aₙ\n\n### Sum of Roots = −b/a (Vieta's)\n\n### Newton's Sums\nRelate power sums (r₁ᵏ+r₂ᵏ+...) to elementary symmetric polynomials.\n\n### Common Factorizations\n- a³+b³ = (a+b)(a²−ab+b²)\n- a³−b³ = (a−b)(a²+ab+b²)\n- a³+b³+c³−3abc = (a+b+c)(a²+b²+c²−ab−bc−ca)\n- If a+b+c = 0, then a³+b³+c³ = 3abc",
+          "visual": "  Remainder Theorem:\n  ┌────────────────────────────┐\n  │  P(x) = x³ − 2x + 1      │\n  │                            │\n  │  Remainder when ÷ (x−3):  │\n  │  P(3) = 27 − 6 + 1 = 22   │\n  │                            │\n  │  Factor check (x−1):      │\n  │  P(1) = 1 − 2 + 1 = 0     │\n  │  So (x−1) IS a factor! ✓  │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "amc-poly-1",
+              "type": "multiple-choice",
+              "question": "Remainder when x⁴+x²+1 is divided by x−1?",
+              "options": ["3", "1", "0", "2"],
+              "correct": 0,
+              "explanation": "P(1) = 1+1+1 = 3 by the Remainder Theorem.",
+              "xp": 10
+            },
+            {
+              "id": "amc-poly-2",
+              "type": "multiple-choice",
+              "question": "If a+b+c = 0, then a³+b³+c³ = ?",
+              "options": ["3abc", "0", "abc", "(a+b+c)³"],
+              "correct": 0,
+              "explanation": "When a+b+c=0: a³+b³+c³ = 3abc. Classic competition identity.",
+              "xp": 10
+            }
+          ]
         }
       ]
     },
-    "intermediate": {
-      "name": "Intermediate",
-      "description": "AMC 10/12 medium difficulty",
-      "questions": [
+    "geometry": {
+      "name": "Geometry",
+      "description": "Triangles, circles, coordinate geometry, transformations",
+      "order": 2,
+      "topics": [
         {
-          "id": "amc-i1",
-          "type": "text-input",
-          "question": "How many positive integer divisors does 2^4 × 3^2 have?",
-          "answer": "15",
-          "explanation": "(4+1)(2+1) = 15 divisors",
-          "xp": 15
+          "id": "amc-triangle-centers",
+          "title": "Triangle Centers & Properties",
+          "explainer": "## Triangle Centers\n\n### Centroid (G)\nIntersection of medians. Divides each median in 2:1 ratio.\nG = ((x₁+x₂+x₃)/3, (y₁+y₂+y₃)/3)\n\n### Circumcenter (O)\nCenter of circumscribed circle. Equidistant from all vertices.\nPerpendicular bisectors meet here.\n\n### Incenter (I)\nCenter of inscribed circle. Equidistant from all sides.\nAngle bisectors meet here. r = Area/s (s = semi-perimeter)\n\n### Orthocenter (H)\nIntersection of altitudes.\n\n### Euler Line\nH, G, O are collinear! G divides HO in ratio 2:1 (HG:GO = 2:1).\n\n### Key Formulas\n- Area = rs (r = inradius, s = semi-perimeter)\n- Area = abc/(4R) (R = circumradius)\n- Stewart's Theorem: a²n + b²m − c·m·n = c·d² (cevian length)",
+          "visual": "  Triangle Centers:\n  ┌────────────────────────────┐\n  │         A                  │\n  │        /\\                  │\n  │       /  \\                 │\n  │      / G  \\  G = centroid  │\n  │     / ·    \\  (medians)   │\n  │    /   O    \\ O = circumctr│\n  │   /    ·     \\ (⊥ bisectors)│\n  │  /      I     \\ I = incenter│\n  │ B───────────────C (∠ bisectors)│\n  │                            │\n  │ Euler Line: H, G, O       │\n  │ (collinear!)               │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "amc-tc-1",
+              "type": "multiple-choice",
+              "question": "The centroid divides each median in the ratio:",
+              "options": ["2:1 (from vertex)", "1:1", "3:1", "1:2 (from vertex)"],
+              "correct": 0,
+              "explanation": "Centroid is 2/3 of the way from vertex to opposite midpoint (ratio 2:1).",
+              "xp": 10
+            },
+            {
+              "id": "amc-tc-2",
+              "type": "multiple-choice",
+              "question": "The incircle radius r equals:",
+              "options": ["Area / semi-perimeter", "Area / perimeter", "Perimeter / Area", "Side / 2"],
+              "correct": 0,
+              "explanation": "Area = r × s, so r = Area/s where s = (a+b+c)/2.",
+              "xp": 10
+            },
+            {
+              "id": "amc-tc-3",
+              "type": "multiple-choice",
+              "question": "Which three triangle centers lie on the Euler line?",
+              "options": ["Orthocenter, Centroid, Circumcenter", "Incenter, Centroid, Circumcenter", "Orthocenter, Incenter, Centroid", "All four centers"],
+              "correct": 0,
+              "explanation": "H (orthocenter), G (centroid), O (circumcenter) are always collinear on the Euler line.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "amc-i2",
-          "type": "multiple-choice",
-          "question": "If log₂(x) = 5, what is x?",
-          "options": [
-            "16",
-            "25",
-            "32",
-            "64"
-          ],
-          "correct": 2,
-          "explanation": "2^5 = 32",
-          "xp": 15
+          "id": "amc-circle-theorems",
+          "title": "Circle Theorems",
+          "explainer": "## Circle Theorems\n\n### Inscribed Angle Theorem\nInscribed angle = ½ central angle (same arc).\n\n### Thales' Theorem\nAngle inscribed in a semicircle = 90°.\n\n### Power of a Point\nFor point P and circle:\n- External: PA × PB = PC × PD (two secants)\n- Internal: PA × PB = PC × PD (two chords)\n- Tangent: PT² = PA × PB\n\n### Cyclic Quadrilateral\nOpposite angles sum to 180° (supplementary).\n\n### Tangent Properties\n- Tangent ⊥ radius at point of tangency\n- Two tangents from external point are equal length\n\n### Ptolemy's Theorem\nFor cyclic quadrilateral ABCD:\nAC × BD = AB × CD + AD × BC\n(Diagonal product = sum of opposite side products)",
+          "visual": "  Inscribed Angle Theorem:\n  ┌────────────────────────────┐\n  │        ·  A  ·             │\n  │      ·    |    ·           │\n  │    ·   θ  |      ·        │\n  │   · ─────○──────  ·       │\n  │    ·  2θ  |      ·        │\n  │      ·    |    ·           │\n  │        ·  B  ·             │\n  │                            │\n  │  inscribed θ = ½ central   │\n  │                            │\n  │  Power of a Point:         │\n  │  PA·PB = PC·PD             │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "amc-circ-1",
+              "type": "multiple-choice",
+              "question": "An angle inscribed in a semicircle measures:",
+              "options": ["90°", "180°", "45°", "60°"],
+              "correct": 0,
+              "explanation": "Thales' theorem: inscribed angle in semicircle = ½ × 180° = 90°.",
+              "xp": 10
+            },
+            {
+              "id": "amc-circ-2",
+              "type": "multiple-choice",
+              "question": "In a cyclic quadrilateral, opposite angles:",
+              "options": ["Sum to 180°", "Are equal", "Sum to 360°", "Are right angles"],
+              "correct": 0,
+              "explanation": "Opposite angles of a cyclic quadrilateral are supplementary (sum = 180°).",
+              "xp": 10
+            },
+            {
+              "id": "amc-circ-3",
+              "type": "multiple-choice",
+              "question": "From external point P, tangent to circle has length 8, secant passes through at distances 4 and x. Find x.",
+              "options": ["16", "12", "8", "20"],
+              "correct": 0,
+              "explanation": "PT² = PA×PB → 64 = 4×x → x = 16.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "amc-i3",
-          "type": "multiple-choice",
-          "question": "What is the sum of coefficients in (x+y)³?",
-          "options": [
-            "6",
-            "8",
-            "9",
-            "12"
-          ],
-          "correct": 1,
-          "explanation": "Binomial theorem or substitution: x=y=1 gives 2³=8",
-          "xp": 15
-        },
-        {
-          "id": "amc-i4",
-          "type": "text-input",
-          "question": "How many ways to choose 2 items from 5?",
-          "answer": "10",
-          "explanation": "C(5,2) = 10",
-          "xp": 15
-        },
-        {
-          "id": "amc-i5",
-          "type": "multiple-choice",
-          "question": "A circle has area 16π. What is its circumference?",
-          "options": [
-            "4π",
-            "8π",
-            "12π",
-            "16π"
-          ],
-          "correct": 1,
-          "explanation": "r²=16, r=4, C=2πr=8π",
-          "xp": 15
-        },
-        {
-          "id": "amc-i6",
-          "type": "multiple-choice",
-          "question": "How many positive integer divisors does 2^4 × 3^2 have?",
-          "options": [
-            "10",
-            "15",
-            "20",
-            "25"
-          ],
-          "correct": 1,
-          "explanation": "(4+1)(2+1) = 15 divisors",
-          "xp": 15
-        },
-        {
-          "id": "amc-i7",
-          "type": "text-input",
-          "question": "If log₂(x) = 5, what is x?",
-          "answer": "32",
-          "explanation": "2^5 = 32",
-          "xp": 15
-        },
-        {
-          "id": "amc-i8",
-          "type": "multiple-choice",
-          "question": "What is the sum of coefficients in (x+y)³?",
-          "options": [
-            "6",
-            "8",
-            "9",
-            "12"
-          ],
-          "correct": 1,
-          "explanation": "Binomial theorem or substitution: x=y=1 gives 2³=8",
-          "xp": 15
-        },
-        {
-          "id": "amc-i9",
-          "type": "multiple-choice",
-          "question": "How many ways to choose 2 items from 5?",
-          "options": [
-            "5",
-            "10",
-            "15",
-            "20"
-          ],
-          "correct": 1,
-          "explanation": "C(5,2) = 10",
-          "xp": 15
-        },
-        {
-          "id": "amc-i10",
-          "type": "text-input",
-          "question": "A circle has area 16π. What is its circumference?",
-          "answer": "8",
-          "explanation": "r²=16, r=4, C=2πr=8π",
-          "xp": 15
-        },
-        {
-          "id": "amc-i11",
-          "type": "multiple-choice",
-          "question": "How many positive integer divisors does 2^4 × 3^2 have?",
-          "options": [
-            "10",
-            "15",
-            "20",
-            "25"
-          ],
-          "correct": 1,
-          "explanation": "(4+1)(2+1) = 15 divisors",
-          "xp": 15
-        },
-        {
-          "id": "amc-i12",
-          "type": "multiple-choice",
-          "question": "If log₂(x) = 5, what is x?",
-          "options": [
-            "16",
-            "25",
-            "32",
-            "64"
-          ],
-          "correct": 2,
-          "explanation": "2^5 = 32",
-          "xp": 15
-        },
-        {
-          "id": "amc-i13",
-          "type": "text-input",
-          "question": "What is the sum of coefficients in (x+y)³?",
-          "answer": "8",
-          "explanation": "Binomial theorem or substitution: x=y=1 gives 2³=8",
-          "xp": 15
-        },
-        {
-          "id": "amc-i14",
-          "type": "multiple-choice",
-          "question": "How many ways to choose 2 items from 5?",
-          "options": [
-            "5",
-            "10",
-            "15",
-            "20"
-          ],
-          "correct": 1,
-          "explanation": "C(5,2) = 10",
-          "xp": 15
-        },
-        {
-          "id": "amc-i15",
-          "type": "multiple-choice",
-          "question": "A circle has area 16π. What is its circumference?",
-          "options": [
-            "4π",
-            "8π",
-            "12π",
-            "16π"
-          ],
-          "correct": 1,
-          "explanation": "r²=16, r=4, C=2πr=8π",
-          "xp": 15
-        },
-        {
-          "id": "amc-i16",
-          "type": "text-input",
-          "question": "How many positive integer divisors does 2^4 × 3^2 have?",
-          "answer": "15",
-          "explanation": "(4+1)(2+1) = 15 divisors",
-          "xp": 15
-        },
-        {
-          "id": "amc-i17",
-          "type": "multiple-choice",
-          "question": "If log₂(x) = 5, what is x?",
-          "options": [
-            "16",
-            "25",
-            "32",
-            "64"
-          ],
-          "correct": 2,
-          "explanation": "2^5 = 32",
-          "xp": 15
-        },
-        {
-          "id": "amc-i18",
-          "type": "multiple-choice",
-          "question": "What is the sum of coefficients in (x+y)³?",
-          "options": [
-            "6",
-            "8",
-            "9",
-            "12"
-          ],
-          "correct": 1,
-          "explanation": "Binomial theorem or substitution: x=y=1 gives 2³=8",
-          "xp": 15
-        },
-        {
-          "id": "amc-i19",
-          "type": "text-input",
-          "question": "How many ways to choose 2 items from 5?",
-          "answer": "10",
-          "explanation": "C(5,2) = 10",
-          "xp": 15
-        },
-        {
-          "id": "amc-i20",
-          "type": "multiple-choice",
-          "question": "A circle has area 16π. What is its circumference?",
-          "options": [
-            "4π",
-            "8π",
-            "12π",
-            "16π"
-          ],
-          "correct": 1,
-          "explanation": "r²=16, r=4, C=2πr=8π",
-          "xp": 15
+          "id": "amc-area-methods",
+          "title": "Area Methods & Ratios",
+          "explainer": "## Area Methods\n\n### Coordinate Area (Shoelace)\nA = ½|Σ(xᵢyᵢ₊₁ − xᵢ₊₁yᵢ)|\n\n### Area Ratios\nIf triangles share a vertex, their area ratio = ratio of their bases.\nIf they share a base, ratio = ratio of heights.\n\n### Mass Point Geometry\nAssign masses to vertices such that the triangle balances at the desired point. Useful for finding ratios of segments.\n\n### Pick's Theorem\nFor lattice polygons:\nA = I + B/2 − 1\n- I = interior lattice points\n- B = boundary lattice points\n\n### Cross Ratio / Area Ratio Trick\nIn triangle ABC, if D divides BC in ratio m:n, then:\nArea(ABD)/Area(ADC) = m/n",
+          "visual": "  Pick's Theorem:\n  ┌────────────────────────────┐\n  │  ·  ·  ·  ·  ·            │\n  │  ·  ┌──●──┐  ·  B = 4    │\n  │  ·  │  ·  │  ·  I = 1    │\n  │  ·  └──●──┘  ·            │\n  │  ·  ·  ·  ·  ·            │\n  │                            │\n  │  A = I + B/2 - 1          │\n  │  A = 1 + 4/2 - 1 = 2     │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "amc-area-1",
+              "type": "multiple-choice",
+              "question": "Lattice polygon with 5 interior points and 8 boundary points. Area?",
+              "options": ["8", "9", "7", "10"],
+              "correct": 0,
+              "explanation": "Pick's: A = I + B/2 − 1 = 5 + 8/2 − 1 = 5+4−1 = 8.",
+              "xp": 10
+            },
+            {
+              "id": "amc-area-2",
+              "type": "multiple-choice",
+              "question": "Triangle ABC: D on BC with BD:DC = 2:3. Area(ABD):Area(ABC) = ?",
+              "options": ["2:5", "2:3", "3:5", "1:2"],
+              "correct": 0,
+              "explanation": "Same height from A. Base ratio BD:BC = 2:5 → area ratio = 2:5.",
+              "xp": 10
+            }
+          ]
         }
       ]
     },
-    "advanced": {
-      "name": "Advanced",
-      "description": "AIME-level problems",
-      "questions": [
+    "number-theory-advanced": {
+      "name": "Number Theory",
+      "description": "Congruences, Fermat's theorem, Chinese Remainder Theorem",
+      "order": 3,
+      "topics": [
         {
-          "id": "amc-a1",
-          "type": "text-input",
-          "question": "Find the remainder when 7^100 is divided by 13.",
-          "answer": "9",
-          "explanation": "Use Fermats Little Theorem: 7^12≡1 (mod 13), so 7^96≡1, 7^100=7^96×7^4≡7^4≡9 (mod 13)",
-          "xp": 20,
-          "timeLimit": 120
+          "id": "amc-fermats-little",
+          "title": "Fermat's Little Theorem & Euler's",
+          "explainer": "## Fermat's Little Theorem\n\n### Statement\nIf p is prime and gcd(a,p)=1:\n**a^(p−1) ≡ 1 (mod p)**\n\nEquivalently: a^p ≡ a (mod p) for any a.\n\n### Example\n2^100 mod 13:\n- p=13, so 2^12 ≡ 1 (mod 13)\n- 100 = 12×8 + 4\n- 2^100 = (2^12)^8 × 2^4 ≡ 1^8 × 16 ≡ 3 (mod 13)\n\n### Euler's Theorem (generalization)\nIf gcd(a,n)=1:\n**a^φ(n) ≡ 1 (mod n)**\n\nwhere φ(n) = Euler's totient = count of integers 1..n coprime to n.\n\n### Computing φ(n)\n- φ(p) = p−1 (prime)\n- φ(p^k) = p^k − p^(k−1)\n- φ(mn) = φ(m)φ(n) if gcd(m,n)=1\n- φ(n) = n × ∏(1 − 1/p) for each prime p|n",
+          "visual": "  Fermat's Little Theorem:\n  ┌────────────────────────────┐\n  │  a^(p-1) ≡ 1 (mod p)      │\n  │  (p prime, gcd(a,p)=1)    │\n  │                            │\n  │  Example: 2^100 mod 13    │\n  │  p=13 → 2^12 ≡ 1 mod 13  │\n  │  100 = 12×8 + 4           │\n  │  2^100 ≡ 2^4 = 16 ≡ 3    │\n  │                            │\n  │  Euler: a^φ(n) ≡ 1 mod n  │\n  │  φ(12) = 12(1-½)(1-⅓) = 4│\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "amc-flt-1",
+              "type": "multiple-choice",
+              "question": "By Fermat's Little Theorem, 3^6 mod 7 = ?",
+              "options": ["1", "3", "6", "0"],
+              "correct": 0,
+              "explanation": "7 is prime, gcd(3,7)=1. By FLT: 3^(7-1) = 3^6 ≡ 1 (mod 7).",
+              "xp": 10
+            },
+            {
+              "id": "amc-flt-2",
+              "type": "multiple-choice",
+              "question": "φ(12) = ?",
+              "options": ["4", "6", "3", "8"],
+              "correct": 0,
+              "explanation": "12 = 2²×3. φ(12) = 12(1−½)(1−⅓) = 12×½×⅔ = 4. (Numbers coprime to 12: 1,5,7,11)",
+              "xp": 10
+            },
+            {
+              "id": "amc-flt-3",
+              "type": "multiple-choice",
+              "question": "2^100 mod 13 = ?",
+              "options": ["3", "1", "8", "5"],
+              "correct": 0,
+              "explanation": "2^12 ≡ 1 (mod 13). 100=12×8+4. 2^100 ≡ 2^4 = 16 ≡ 3 (mod 13).",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "amc-a2",
-          "type": "text-input",
-          "question": "How many positive integers n satisfy: n! ends in exactly 20 zeros?",
-          "answer": "4",
-          "explanation": "Zeros from factors of 5: ⌊n/5⌋+⌊n/25⌋+... = 20. Test: 80! has 19 zeros, 85-99! have 20 zeros, 100! has 24. Answer: 85,86,87,88,89 = 5 numbers (check carefully: actually 4 in some formulations)",
-          "xp": 20,
-          "timeLimit": 120
+          "id": "amc-crt",
+          "title": "Chinese Remainder Theorem",
+          "explainer": "## Chinese Remainder Theorem (CRT)\n\n### Statement\nIf n₁,n₂,...,nₖ are pairwise coprime, the system:\nx ≡ a₁ (mod n₁)\nx ≡ a₂ (mod n₂)\n...\nhas a unique solution modulo N = n₁n₂...nₖ.\n\n### Example\nFind x where:\n- x ≡ 2 (mod 3)\n- x ≡ 3 (mod 5)\n- x ≡ 2 (mod 7)\n\nN = 3×5×7 = 105\nTest: x=23. 23 mod 3=2 ✓, 23 mod 5=3 ✓, 23 mod 7=2 ✓\nSolution: x ≡ 23 (mod 105)\n\n### AMC Application\nOften used when asked: 'What is the smallest positive integer that gives remainder r₁ when divided by m₁ and remainder r₂ when divided by m₂?'",
+          "visual": "  Chinese Remainder Theorem:\n  ┌────────────────────────────┐\n  │  x ≡ 2 (mod 3) → 2,5,8..│\n  │  x ≡ 3 (mod 5) → 3,8,13.│\n  │  x ≡ 2 (mod 7) → 2,9,16.│\n  │                            │\n  │  Intersection: x = 23     │\n  │  (unique mod 105)          │\n  │                            │\n  │  3,5,7 pairwise coprime ✓ │\n  │  N = 3×5×7 = 105          │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "amc-crt-1",
+              "type": "multiple-choice",
+              "question": "Smallest positive x where x≡1(mod 3) and x≡2(mod 5)?",
+              "options": ["7", "13", "4", "11"],
+              "correct": 0,
+              "explanation": "x≡1(mod3): 1,4,7,10,13... x≡2(mod5): 2,7,12... Smallest common: 7.",
+              "xp": 10
+            },
+            {
+              "id": "amc-crt-2",
+              "type": "multiple-choice",
+              "question": "CRT requires the moduli to be:",
+              "options": ["Pairwise coprime", "All prime", "In increasing order", "All even"],
+              "correct": 0,
+              "explanation": "CRT guarantees a unique solution when all moduli are pairwise coprime (gcd of any two = 1).",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "amc-a3",
-          "type": "text-input",
-          "question": "Find the number of ordered pairs (a,b) where 1≤a,b≤100 and gcd(a,b)=1.",
-          "answer": "6087",
-          "explanation": "Count using Eulers totient: Sum of φ(n) for n=1 to 100, then account for pairs. Actually complex, requires inclusion-exclusion. Approximate: ~6087.",
-          "xp": 20,
-          "timeLimit": 120
+          "id": "amc-diophantine",
+          "title": "Diophantine Equations",
+          "explainer": "## Diophantine Equations\n\nInteger-only solutions to equations.\n\n### Linear Diophantine: ax + by = c\nSolution exists iff gcd(a,b) | c.\n\n**Extended Euclidean Algorithm** finds x₀, y₀ such that ax₀+by₀ = gcd(a,b).\n\nGeneral solution: x = x₀ + (b/d)t, y = y₀ − (a/d)t where d = gcd(a,b).\n\n### Pythagorean Triples\nAll primitive triples (a,b,c) with a²+b²=c²:\n- a = m²−n², b = 2mn, c = m²+n²\n- where m>n>0, gcd(m,n)=1, m−n is odd\n\n### Pell's Equation\nx² − Dy² = 1 (D not a perfect square)\nInfinite solutions from continued fraction of √D.\n\n### Sum of Two Squares\nn = a²+b² iff every prime p≡3(mod 4) divides n an even number of times.",
+          "visual": "  Pythagorean Triple Generator:\n  ┌────────────────────────────┐\n  │  m=2, n=1:                 │\n  │  a = 4-1 = 3              │\n  │  b = 2×2×1 = 4            │\n  │  c = 4+1 = 5  → (3,4,5)   │\n  │                            │\n  │  m=3, n=2:                 │\n  │  a=5, b=12, c=13 → (5,12,13)│\n  │                            │\n  │  m=4, n=1:                 │\n  │  a=15, b=8, c=17 → (8,15,17)│\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "amc-dio-1",
+              "type": "multiple-choice",
+              "question": "Does 6x + 9y = 10 have integer solutions?",
+              "options": ["No, because gcd(6,9)=3 does not divide 10", "Yes, x=1 y=1", "Yes, infinitely many", "Cannot determine"],
+              "correct": 0,
+              "explanation": "gcd(6,9)=3. Since 3 does not divide 10, no integer solutions exist.",
+              "xp": 10
+            },
+            {
+              "id": "amc-dio-2",
+              "type": "multiple-choice",
+              "question": "Using m=3, n=1 in the Pythagorean triple generator gives:",
+              "options": ["(8, 6, 10)", "(5, 12, 13)", "(3, 4, 5)", "(7, 24, 25)"],
+              "correct": 0,
+              "explanation": "a=9-1=8, b=2×3×1=6, c=9+1=10 → (6,8,10). Note: this is 2×(3,4,5), not primitive since gcd(3,1)=1 but 3-1=2 is even.",
+              "xp": 10
+            }
+          ]
+        }
+      ]
+    },
+    "counting-probability": {
+      "name": "Counting & Probability",
+      "description": "Advanced combinatorics, generating functions, expected value",
+      "order": 4,
+      "topics": [
+        {
+          "id": "amc-stars-bars",
+          "title": "Stars and Bars & Generating Functions",
+          "explainer": "## Stars and Bars\n\n### Problem Type\nDistribute n identical objects into k distinct bins.\n\n### Formula\nC(n+k−1, k−1) = C(n+k−1, n)\n\n### With Constraints\nEach bin gets ≥ 1: substitute xᵢ = yᵢ+1, solve with n−k objects.\nEach bin gets ≤ M: use inclusion-exclusion.\n\n### Example\nDistribute 10 identical candies among 3 children:\nC(10+3−1, 3−1) = C(12,2) = **66** ways\n\nEach child gets ≥ 2 candies:\nGive 2 to each first → 4 remaining → C(4+2,2) = C(6,2) = **15** ways\n\n### Generating Functions\nEncode counting problems as polynomial coefficients:\n- Coefficient of xⁿ in (1+x+x²+...)^k = C(n+k-1, k-1)\n- Each factor represents choices for one variable",
+          "visual": "  Stars and Bars:\n  ┌────────────────────────────┐\n  │ 10 candies, 3 children:    │\n  │                            │\n  │ ★★★★|★★★|★★★              │\n  │ ★★|★★★★★|★★★              │\n  │ ★|★★★★★★★|★★              │\n  │ ...                        │\n  │                            │\n  │ 10 stars + 2 bars          │\n  │ Choose 2 bar positions:    │\n  │ C(12, 2) = 66 ways        │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "amc-sb-1",
+              "type": "multiple-choice",
+              "question": "Number of ways to put 8 identical balls in 4 distinct boxes?",
+              "options": ["165", "70", "330", "56"],
+              "correct": 0,
+              "explanation": "C(8+4-1, 4-1) = C(11,3) = 165.",
+              "xp": 10
+            },
+            {
+              "id": "amc-sb-2",
+              "type": "multiple-choice",
+              "question": "Distribute 7 cookies among 3 kids, each gets ≥ 1. How many ways?",
+              "options": ["15", "21", "36", "10"],
+              "correct": 0,
+              "explanation": "Give 1 each first → 4 remaining. C(4+2,2) = C(6,2) = 15.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "amc-a4",
-          "type": "text-input",
-          "question": "What is φ(100)? (Eulers totient)",
-          "answer": "40",
-          "explanation": "φ(100) = 100(1-1/2)(1-1/5) = 100×1/2×4/5 = 40",
-          "xp": 20,
-          "timeLimit": 120
+          "id": "amc-expected-value",
+          "title": "Expected Value & Linearity",
+          "explainer": "## Expected Value\n\n### Definition\nE[X] = Σ xᵢ × P(xᵢ)\n\n### Linearity of Expectation\n**E[X+Y] = E[X] + E[Y]** (ALWAYS, even if dependent!)\n\n### Powerful Applications\n\n**Example 1:** Expected number of fixed points in a random permutation of n elements?\nLet Xᵢ = 1 if element i is in position i.\nE[Xᵢ] = 1/n.\nE[X] = E[X₁]+...+E[Xₙ] = n × (1/n) = **1**\n\n**Example 2:** Expected number of coin flips to get heads?\nGeometric distribution: E[X] = 1/p = 1/(1/2) = **2**\n\n### Indicator Random Variables\nDefine Xᵢ = 1 if event i occurs, 0 otherwise.\nE[Xᵢ] = P(event i). Sum them up using linearity!\n\n### Geometric Distribution\nTrials until first success: E[X] = 1/p",
+          "visual": "  Linearity of Expectation:\n  ┌────────────────────────────┐\n  │  Even when X and Y are     │\n  │  dependent:                │\n  │                            │\n  │  E[X+Y] = E[X] + E[Y]     │\n  │                            │\n  │  Fixed points in perm:     │\n  │  E = Σ P(i stays) = n×1/n │\n  │    = 1 (regardless of n!)  │\n  │                            │\n  │  Incredibly powerful for   │\n  │  competition problems!     │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "amc-ev-1",
+              "type": "multiple-choice",
+              "question": "Expected number of heads in 10 fair coin flips?",
+              "options": ["5", "10", "1", "0.5"],
+              "correct": 0,
+              "explanation": "E = np = 10 × 0.5 = 5. By linearity: each flip has E[Xᵢ]=0.5, sum = 5.",
+              "xp": 10
+            },
+            {
+              "id": "amc-ev-2",
+              "type": "multiple-choice",
+              "question": "Linearity of expectation works:",
+              "options": ["Always, even for dependent variables", "Only for independent variables", "Only for discrete variables", "Only for identical distributions"],
+              "correct": 0,
+              "explanation": "E[X+Y] = E[X]+E[Y] holds unconditionally — the most powerful tool in probability!",
+              "xp": 10
+            },
+            {
+              "id": "amc-ev-3",
+              "type": "multiple-choice",
+              "question": "Expected flips until first heads (fair coin)?",
+              "options": ["2", "1", "4", "0.5"],
+              "correct": 0,
+              "explanation": "Geometric distribution: E = 1/p = 1/(1/2) = 2.",
+              "xp": 10
+            }
+          ]
+        }
+      ]
+    },
+    "problem-solving": {
+      "name": "Problem Solving Strategies",
+      "description": "General techniques for competition math",
+      "order": 5,
+      "topics": [
+        {
+          "id": "amc-strategies",
+          "title": "Competition Problem Solving Toolkit",
+          "explainer": "## Competition Strategies\n\n### 1. Try Small Cases\nCan't solve for n? Try n=1,2,3 and look for patterns.\n\n### 2. Work Backwards\nKnow the answer format? Work from it back to the given info.\n\n### 3. Symmetry\nLook for symmetry to simplify. If f(x)+f(1-x) = constant, use it!\n\n### 4. Extreme Cases\nTest boundary values. What happens at 0, 1, ∞?\n\n### 5. Complementary Counting\nCount what you DON'T want, subtract from total.\nP(at least one) = 1 − P(none)\n\n### 6. Invariants\nFind a quantity that doesn't change. Use it to prove impossibility.\n\n### 7. Pigeonhole Principle\nn+1 objects in n boxes → some box has ≥ 2.\n\n### 8. Parity\nOdd/even arguments. Sum parity, count parity.\n\n### Time Management (AMC)\n- Easy (1-10): 2 min each\n- Medium (11-20): 3-4 min each\n- Hard (21-25): 5+ min each\n- Skip and return to hard problems",
+          "visual": "  AMC Strategy Flowchart:\n  ┌────────────────────────────┐\n  │  Read problem carefully    │\n  │         ↓                  │\n  │  Try small cases?          │\n  │    Yes → find pattern      │\n  │    No ↓                    │\n  │  Recognize known formula?  │\n  │    Yes → apply directly    │\n  │    No ↓                    │\n  │  Complementary counting?   │\n  │    Maybe → try it          │\n  │    No ↓                    │\n  │  Work backwards from       │\n  │  answer choices!           │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "amc-strat-1",
+              "type": "multiple-choice",
+              "question": "When stuck on a combinatorics problem, the best first step is often:",
+              "options": ["Try small cases and look for a pattern", "Memorize more formulas", "Skip it immediately", "Guess the answer"],
+              "correct": 0,
+              "explanation": "Small cases reveal patterns: try n=1,2,3 to build intuition before tackling the general case.",
+              "xp": 10
+            },
+            {
+              "id": "amc-strat-2",
+              "type": "multiple-choice",
+              "question": "'How many integers from 1 to 100 are NOT divisible by 2 or 3?' Best approach?",
+              "options": ["Complementary counting with inclusion-exclusion", "List all of them", "Use calculus", "Random sampling"],
+              "correct": 0,
+              "explanation": "Count those divisible by 2 or 3 using inclusion-exclusion, subtract from 100.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "amc-a5",
-          "type": "text-input",
-          "question": "Find the remainder when 7^100 is divided by 13.",
-          "answer": "9",
-          "explanation": "Use Fermats Little Theorem: 7^12≡1 (mod 13), so 7^96≡1, 7^100=7^96×7^4≡7^4≡9 (mod 13)",
-          "xp": 20,
-          "timeLimit": 120
-        },
-        {
-          "id": "amc-a6",
-          "type": "text-input",
-          "question": "How many positive integers n satisfy: n! ends in exactly 20 zeros?",
-          "answer": "4",
-          "explanation": "Zeros from factors of 5: ⌊n/5⌋+⌊n/25⌋+... = 20. Test: 80! has 19 zeros, 85-99! have 20 zeros, 100! has 24. Answer: 85,86,87,88,89 = 5 numbers (check carefully: actually 4 in some formulations)",
-          "xp": 20,
-          "timeLimit": 120
-        },
-        {
-          "id": "amc-a7",
-          "type": "text-input",
-          "question": "Find the number of ordered pairs (a,b) where 1≤a,b≤100 and gcd(a,b)=1.",
-          "answer": "6087",
-          "explanation": "Count using Eulers totient: Sum of φ(n) for n=1 to 100, then account for pairs. Actually complex, requires inclusion-exclusion. Approximate: ~6087.",
-          "xp": 20,
-          "timeLimit": 120
-        },
-        {
-          "id": "amc-a8",
-          "type": "text-input",
-          "question": "What is φ(100)? (Eulers totient)",
-          "answer": "40",
-          "explanation": "φ(100) = 100(1-1/2)(1-1/5) = 100×1/2×4/5 = 40",
-          "xp": 20,
-          "timeLimit": 120
-        },
-        {
-          "id": "amc-a9",
-          "type": "text-input",
-          "question": "Find the remainder when 7^100 is divided by 13.",
-          "answer": "9",
-          "explanation": "Use Fermats Little Theorem: 7^12≡1 (mod 13), so 7^96≡1, 7^100=7^96×7^4≡7^4≡9 (mod 13)",
-          "xp": 20,
-          "timeLimit": 120
-        },
-        {
-          "id": "amc-a10",
-          "type": "text-input",
-          "question": "How many positive integers n satisfy: n! ends in exactly 20 zeros?",
-          "answer": "4",
-          "explanation": "Zeros from factors of 5: ⌊n/5⌋+⌊n/25⌋+... = 20. Test: 80! has 19 zeros, 85-99! have 20 zeros, 100! has 24. Answer: 85,86,87,88,89 = 5 numbers (check carefully: actually 4 in some formulations)",
-          "xp": 20,
-          "timeLimit": 120
-        },
-        {
-          "id": "amc-a11",
-          "type": "text-input",
-          "question": "Find the number of ordered pairs (a,b) where 1≤a,b≤100 and gcd(a,b)=1.",
-          "answer": "6087",
-          "explanation": "Count using Eulers totient: Sum of φ(n) for n=1 to 100, then account for pairs. Actually complex, requires inclusion-exclusion. Approximate: ~6087.",
-          "xp": 20,
-          "timeLimit": 120
-        },
-        {
-          "id": "amc-a12",
-          "type": "text-input",
-          "question": "What is φ(100)? (Eulers totient)",
-          "answer": "40",
-          "explanation": "φ(100) = 100(1-1/2)(1-1/5) = 100×1/2×4/5 = 40",
-          "xp": 20,
-          "timeLimit": 120
-        },
-        {
-          "id": "amc-a13",
-          "type": "text-input",
-          "question": "Find the remainder when 7^100 is divided by 13.",
-          "answer": "9",
-          "explanation": "Use Fermats Little Theorem: 7^12≡1 (mod 13), so 7^96≡1, 7^100=7^96×7^4≡7^4≡9 (mod 13)",
-          "xp": 20,
-          "timeLimit": 120
-        },
-        {
-          "id": "amc-a14",
-          "type": "text-input",
-          "question": "How many positive integers n satisfy: n! ends in exactly 20 zeros?",
-          "answer": "4",
-          "explanation": "Zeros from factors of 5: ⌊n/5⌋+⌊n/25⌋+... = 20. Test: 80! has 19 zeros, 85-99! have 20 zeros, 100! has 24. Answer: 85,86,87,88,89 = 5 numbers (check carefully: actually 4 in some formulations)",
-          "xp": 20,
-          "timeLimit": 120
-        },
-        {
-          "id": "amc-a15",
-          "type": "text-input",
-          "question": "Find the number of ordered pairs (a,b) where 1≤a,b≤100 and gcd(a,b)=1.",
-          "answer": "6087",
-          "explanation": "Count using Eulers totient: Sum of φ(n) for n=1 to 100, then account for pairs. Actually complex, requires inclusion-exclusion. Approximate: ~6087.",
-          "xp": 20,
-          "timeLimit": 120
-        },
-        {
-          "id": "amc-a16",
-          "type": "text-input",
-          "question": "What is φ(100)? (Eulers totient)",
-          "answer": "40",
-          "explanation": "φ(100) = 100(1-1/2)(1-1/5) = 100×1/2×4/5 = 40",
-          "xp": 20,
-          "timeLimit": 120
-        },
-        {
-          "id": "amc-a17",
-          "type": "text-input",
-          "question": "Find the remainder when 7^100 is divided by 13.",
-          "answer": "9",
-          "explanation": "Use Fermats Little Theorem: 7^12≡1 (mod 13), so 7^96≡1, 7^100=7^96×7^4≡7^4≡9 (mod 13)",
-          "xp": 20,
-          "timeLimit": 120
-        },
-        {
-          "id": "amc-a18",
-          "type": "text-input",
-          "question": "How many positive integers n satisfy: n! ends in exactly 20 zeros?",
-          "answer": "4",
-          "explanation": "Zeros from factors of 5: ⌊n/5⌋+⌊n/25⌋+... = 20. Test: 80! has 19 zeros, 85-99! have 20 zeros, 100! has 24. Answer: 85,86,87,88,89 = 5 numbers (check carefully: actually 4 in some formulations)",
-          "xp": 20,
-          "timeLimit": 120
-        },
-        {
-          "id": "amc-a19",
-          "type": "text-input",
-          "question": "Find the number of ordered pairs (a,b) where 1≤a,b≤100 and gcd(a,b)=1.",
-          "answer": "6087",
-          "explanation": "Count using Eulers totient: Sum of φ(n) for n=1 to 100, then account for pairs. Actually complex, requires inclusion-exclusion. Approximate: ~6087.",
-          "xp": 20,
-          "timeLimit": 120
-        },
-        {
-          "id": "amc-a20",
-          "type": "text-input",
-          "question": "What is φ(100)? (Eulers totient)",
-          "answer": "40",
-          "explanation": "φ(100) = 100(1-1/2)(1-1/5) = 100×1/2×4/5 = 40",
-          "xp": 20,
-          "timeLimit": 120
+          "id": "amc-proof-techniques",
+          "title": "Proof Techniques",
+          "explainer": "## Proof Techniques\n\n### Direct Proof\nAssume hypothesis, derive conclusion through logical steps.\n\n### Proof by Contradiction\nAssume the opposite of what you want to prove, derive a contradiction.\n- Classic: √2 is irrational\n- Assume √2 = p/q in lowest terms → 2q²=p² → p is even → p=2k → q is even → contradiction!\n\n### Mathematical Induction\n1. **Base case:** Prove for n=1 (or n=0)\n2. **Inductive step:** Assume true for n=k, prove for n=k+1\n\n### Strong Induction\nAssume true for ALL values ≤ k, prove for k+1.\n\n### Proof by Construction\nProve existence by explicitly constructing an example.\n\n### Proof by Exhaustion\nCheck all possible cases (only when finite and manageable).\n\n### The Well-Ordering Principle\nEvery non-empty set of positive integers has a smallest element.\nEquivalent to induction!",
+          "visual": "  Mathematical Induction:\n  ┌────────────────────────────┐\n  │  1. Base: P(1) is true ✓  │\n  │                            │\n  │  2. Inductive step:        │\n  │     Assume P(k) true       │\n  │     Prove P(k+1) true     │\n  │                            │\n  │  Like dominoes:            │\n  │  ┌┐┌┐┌┐┌┐┌┐┌┐┌┐           │\n  │  ╱╱╱╱╱╱╱╱╱╱╱╱╱╱           │\n  │  Push first → all fall!    │\n  └────────────────────────────┘",
+          "questions": [
+            {
+              "id": "amc-proof-1",
+              "type": "multiple-choice",
+              "question": "To prove √2 is irrational, you would use:",
+              "options": ["Proof by contradiction", "Direct proof", "Induction", "Construction"],
+              "correct": 0,
+              "explanation": "Assume √2 = p/q in lowest terms, derive that both p and q are even → contradiction.",
+              "xp": 10
+            },
+            {
+              "id": "amc-proof-2",
+              "type": "multiple-choice",
+              "question": "In mathematical induction, the two required steps are:",
+              "options": ["Base case and inductive step", "Hypothesis and conclusion", "Assume and contradict", "Construction and verification"],
+              "correct": 0,
+              "explanation": "Induction: (1) prove base case, (2) prove if P(k) then P(k+1).",
+              "xp": 10
+            },
+            {
+              "id": "amc-proof-3",
+              "type": "multiple-choice",
+              "question": "Strong induction differs from regular induction in that:",
+              "options": ["You assume P(1)...P(k) all true, not just P(k)", "You need multiple base cases always", "It's weaker", "It only works for even numbers"],
+              "correct": 0,
+              "explanation": "Strong induction assumes truth for all values ≤ k, giving more to work with for proving P(k+1).",
+              "xp": 10
+            }
+          ]
         }
       ]
     }

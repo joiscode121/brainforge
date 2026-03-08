@@ -1,865 +1,424 @@
 {
   "id": "stem",
-  "name": "STEM Foundations",
+  "name": "STEM",
   "icon": "🔬",
   "color": "#10b981",
-  "description": "Physics, engineering, chemistry, applied mathematics",
+  "description": "Physics, engineering, circuits, signals — mechanics to modern engineering",
   "levels": {
-    "beginner": {
-      "name": "Beginner",
-      "description": "Basic physics and engineering concepts",
-      "questions": [
+    "classical-mechanics": {
+      "name": "Classical Mechanics",
+      "description": "Newton's laws, kinematics, energy, momentum",
+      "order": 1,
+      "topics": [
         {
-          "id": "st-b1",
-          "type": "multiple-choice",
-          "question": "What is Newtons First Law?",
-          "options": [
-            "F=ma",
-            "Object in motion stays in motion unless acted upon by force",
-            "Every action has equal opposite reaction",
-            "Gravity"
-          ],
-          "correct": 1,
-          "explanation": "Law of inertia: objects resist changes in motion.",
-          "xp": 10
+          "id": "stem-newtons-laws",
+          "title": "Newton's Three Laws of Motion",
+          "explainer": "## Newton's Laws\n\n### First Law (Inertia)\nAn object stays at rest or constant velocity unless acted upon by a net force.\n\n### Second Law (F = ma)\nNet force = mass × acceleration. **F = ma** is the foundation of mechanics.\n- Weight: W = mg (g ≈ 9.8 m/s²)\n- 1 Newton = 1 kg⋅m/s²\n\n### Third Law (Action-Reaction)\nEvery action has an equal and opposite reaction on a *different* object.\n- You push wall → wall pushes you\n- Earth pulls you → you pull Earth\n\n### Free Body Diagrams\nDraw ALL forces: Weight (↓), Normal (⊥ surface), Friction (opposing motion), Applied, Tension.",
+          "visual": "  Free Body Diagram:\n  ┌────────────────────┐\n  │     Normal (N) ↑   │\n  │           │        │\n  │  f_k ← ┌─┤ → F    │\n  │         │m│        │\n  │         └─┘        │\n  │           │        │\n  │     Weight ↓ (mg)  │\n  │                    │\n  │  ΣF_x = F - f = ma │\n  │  ΣF_y = N - mg = 0 │\n  └────────────────────┘",
+          "questions": [
+            {
+              "id": "stem-nl-1",
+              "type": "multiple-choice",
+              "question": "5 kg block pushed with 20 N on frictionless surface. Acceleration?",
+              "options": ["4 m/s²", "100 m/s²", "0.25 m/s²", "25 m/s²"],
+              "correct": 0,
+              "explanation": "a = F/m = 20/5 = 4 m/s².",
+              "xp": 10
+            },
+            {
+              "id": "stem-nl-2",
+              "type": "multiple-choice",
+              "question": "If no net force acts on an object, it will:",
+              "options": ["Continue at constant velocity or stay at rest", "Slow down", "Accelerate", "Change direction"],
+              "correct": 0,
+              "explanation": "Newton's First Law: no net force → no change in velocity.",
+              "xp": 10
+            },
+            {
+              "id": "stem-nl-3",
+              "type": "multiple-choice",
+              "question": "The upward force a table exerts on a book is:",
+              "options": ["Normal force", "Gravity", "Reaction to book's weight on Earth", "Friction"],
+              "correct": 0,
+              "explanation": "Normal force is the contact force perpendicular to the surface.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "st-b2",
-          "type": "multiple-choice",
-          "question": "What is kinetic energy formula?",
-          "options": [
-            "mgh",
-            "½mv²",
-            "mv",
-            "F×d"
-          ],
-          "correct": 1,
-          "explanation": "KE = ½mv²: energy of motion.",
-          "xp": 10
+          "id": "stem-energy",
+          "title": "Energy, Work & Power",
+          "explainer": "## Energy, Work & Power\n\n### Work\nW = F⋅d⋅cos(θ). Units: Joules (J)\n\n### Kinetic Energy\nKE = ½mv². Doubles when speed doubles? No — **quadruples** (v²)!\n\n### Potential Energy\n- Gravitational: PE = mgh\n- Elastic (spring): PE = ½kx²\n\n### Conservation of Energy\nKE + PE = constant (no friction)\n- Ball from height h: mgh = ½mv² → v = √(2gh)\n\n### Power\nP = W/t = F⋅v. Units: Watts (W)\n1 horsepower ≈ 746 W",
+          "visual": "  Energy Conservation:\n  ┌──────────────────────┐\n  │ A (top) PE=max,KE=0  │\n  │  ╲                    │\n  │   ╲    C              │\n  │    ╲  ╱╲              │\n  │     ╲╱  ╲             │\n  │  B       D            │\n  │ PE=0, KE=max          │\n  │                       │\n  │ mgh_A = ½mv²_B       │\n  └──────────────────────┘",
+          "questions": [
+            {
+              "id": "stem-ew-1",
+              "type": "multiple-choice",
+              "question": "Ball dropped from 20m. Speed at ground? (g=10 m/s²)",
+              "options": ["20 m/s", "10 m/s", "40 m/s", "14.1 m/s"],
+              "correct": 0,
+              "explanation": "v = √(2gh) = √(2×10×20) = √400 = 20 m/s.",
+              "xp": 10
+            },
+            {
+              "id": "stem-ew-2",
+              "type": "multiple-choice",
+              "question": "If a car's speed doubles, its kinetic energy:",
+              "options": ["Quadruples", "Doubles", "Triples", "Stays same"],
+              "correct": 0,
+              "explanation": "KE = ½mv². Speed ×2 → KE ×4.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "st-b3",
-          "type": "multiple-choice",
-          "question": "What is Ohms Law?",
-          "options": [
-            "E=mc²",
-            "V=IR",
-            "P=IV",
-            "F=ma"
-          ],
-          "correct": 1,
-          "explanation": "Ohms Law: voltage = current × resistance.",
-          "xp": 10
-        },
-        {
-          "id": "st-b4",
-          "type": "multiple-choice",
-          "question": "What is acceleration?",
-          "options": [
-            "Speed",
-            "Rate of change of velocity",
-            "Distance traveled",
-            "Force applied"
-          ],
-          "correct": 1,
-          "explanation": "Acceleration: how quickly velocity changes.",
-          "xp": 10
-        },
-        {
-          "id": "st-b5",
-          "type": "multiple-choice",
-          "question": "What is potential energy?",
-          "options": [
-            "Energy of motion",
-            "Stored energy based on position (mgh for gravity)",
-            "Heat energy",
-            "Light energy"
-          ],
-          "correct": 1,
-          "explanation": "Gravitational PE = mgh.",
-          "xp": 10
-        },
-        {
-          "id": "st-b6",
-          "type": "multiple-choice",
-          "question": "What is Newtons First Law?",
-          "options": [
-            "F=ma",
-            "Object in motion stays in motion unless acted upon by force",
-            "Every action has equal opposite reaction",
-            "Gravity"
-          ],
-          "correct": 1,
-          "explanation": "Law of inertia: objects resist changes in motion.",
-          "xp": 10
-        },
-        {
-          "id": "st-b7",
-          "type": "multiple-choice",
-          "question": "What is kinetic energy formula?",
-          "options": [
-            "mgh",
-            "½mv²",
-            "mv",
-            "F×d"
-          ],
-          "correct": 1,
-          "explanation": "KE = ½mv²: energy of motion.",
-          "xp": 10
-        },
-        {
-          "id": "st-b8",
-          "type": "multiple-choice",
-          "question": "What is Ohms Law?",
-          "options": [
-            "E=mc²",
-            "V=IR",
-            "P=IV",
-            "F=ma"
-          ],
-          "correct": 1,
-          "explanation": "Ohms Law: voltage = current × resistance.",
-          "xp": 10
-        },
-        {
-          "id": "st-b9",
-          "type": "multiple-choice",
-          "question": "What is acceleration?",
-          "options": [
-            "Speed",
-            "Rate of change of velocity",
-            "Distance traveled",
-            "Force applied"
-          ],
-          "correct": 1,
-          "explanation": "Acceleration: how quickly velocity changes.",
-          "xp": 10
-        },
-        {
-          "id": "st-b10",
-          "type": "multiple-choice",
-          "question": "What is potential energy?",
-          "options": [
-            "Energy of motion",
-            "Stored energy based on position (mgh for gravity)",
-            "Heat energy",
-            "Light energy"
-          ],
-          "correct": 1,
-          "explanation": "Gravitational PE = mgh.",
-          "xp": 10
-        },
-        {
-          "id": "st-b11",
-          "type": "multiple-choice",
-          "question": "What is Newtons First Law?",
-          "options": [
-            "F=ma",
-            "Object in motion stays in motion unless acted upon by force",
-            "Every action has equal opposite reaction",
-            "Gravity"
-          ],
-          "correct": 1,
-          "explanation": "Law of inertia: objects resist changes in motion.",
-          "xp": 10
-        },
-        {
-          "id": "st-b12",
-          "type": "multiple-choice",
-          "question": "What is kinetic energy formula?",
-          "options": [
-            "mgh",
-            "½mv²",
-            "mv",
-            "F×d"
-          ],
-          "correct": 1,
-          "explanation": "KE = ½mv²: energy of motion.",
-          "xp": 10
-        },
-        {
-          "id": "st-b13",
-          "type": "multiple-choice",
-          "question": "What is Ohms Law?",
-          "options": [
-            "E=mc²",
-            "V=IR",
-            "P=IV",
-            "F=ma"
-          ],
-          "correct": 1,
-          "explanation": "Ohms Law: voltage = current × resistance.",
-          "xp": 10
-        },
-        {
-          "id": "st-b14",
-          "type": "multiple-choice",
-          "question": "What is acceleration?",
-          "options": [
-            "Speed",
-            "Rate of change of velocity",
-            "Distance traveled",
-            "Force applied"
-          ],
-          "correct": 1,
-          "explanation": "Acceleration: how quickly velocity changes.",
-          "xp": 10
-        },
-        {
-          "id": "st-b15",
-          "type": "multiple-choice",
-          "question": "What is potential energy?",
-          "options": [
-            "Energy of motion",
-            "Stored energy based on position (mgh for gravity)",
-            "Heat energy",
-            "Light energy"
-          ],
-          "correct": 1,
-          "explanation": "Gravitational PE = mgh.",
-          "xp": 10
-        },
-        {
-          "id": "st-b16",
-          "type": "multiple-choice",
-          "question": "What is Newtons First Law?",
-          "options": [
-            "F=ma",
-            "Object in motion stays in motion unless acted upon by force",
-            "Every action has equal opposite reaction",
-            "Gravity"
-          ],
-          "correct": 1,
-          "explanation": "Law of inertia: objects resist changes in motion.",
-          "xp": 10
-        },
-        {
-          "id": "st-b17",
-          "type": "multiple-choice",
-          "question": "What is kinetic energy formula?",
-          "options": [
-            "mgh",
-            "½mv²",
-            "mv",
-            "F×d"
-          ],
-          "correct": 1,
-          "explanation": "KE = ½mv²: energy of motion.",
-          "xp": 10
-        },
-        {
-          "id": "st-b18",
-          "type": "multiple-choice",
-          "question": "What is Ohms Law?",
-          "options": [
-            "E=mc²",
-            "V=IR",
-            "P=IV",
-            "F=ma"
-          ],
-          "correct": 1,
-          "explanation": "Ohms Law: voltage = current × resistance.",
-          "xp": 10
-        },
-        {
-          "id": "st-b19",
-          "type": "multiple-choice",
-          "question": "What is acceleration?",
-          "options": [
-            "Speed",
-            "Rate of change of velocity",
-            "Distance traveled",
-            "Force applied"
-          ],
-          "correct": 1,
-          "explanation": "Acceleration: how quickly velocity changes.",
-          "xp": 10
-        },
-        {
-          "id": "st-b20",
-          "type": "multiple-choice",
-          "question": "What is potential energy?",
-          "options": [
-            "Energy of motion",
-            "Stored energy based on position (mgh for gravity)",
-            "Heat energy",
-            "Light energy"
-          ],
-          "correct": 1,
-          "explanation": "Gravitational PE = mgh.",
-          "xp": 10
+          "id": "stem-momentum",
+          "title": "Momentum & Collisions",
+          "explainer": "## Momentum\n\n### p = mv (vector)\n\n### Impulse: J = FΔt = Δp\nWhy airbags work: increase Δt → decrease F.\n\n### Conservation\nNo external forces → Σp_before = Σp_after\n\n### Collision Types\n- **Elastic:** Momentum AND KE conserved (billiard balls)\n- **Inelastic:** Only momentum conserved\n- **Perfectly inelastic:** Objects stick → v_f = (m₁v₁+m₂v₂)/(m₁+m₂)\n\n### Equal mass elastic:\nVelocities exchange! Moving ball stops, stationary ball moves.",
+          "visual": "  Elastic (equal mass):\n  Before: →     (rest)\n  ┌──┐    ┌──┐\n  │m │ v  │m │ 0\n  └──┘    └──┘\n\n  After: (stops)  →\n  ┌──┐    ┌──┐\n  │m │ 0  │m │ v\n  └──┘    └──┘\n  Velocities exchange!",
+          "questions": [
+            {
+              "id": "stem-mom-1",
+              "type": "multiple-choice",
+              "question": "2 kg ball at 3 m/s hits stationary 2 kg ball (elastic). Result?",
+              "options": ["First stops, second moves at 3 m/s", "Both at 1.5 m/s", "Both stop", "First bounces back"],
+              "correct": 0,
+              "explanation": "Equal mass elastic collision: velocities exchange.",
+              "xp": 10
+            },
+            {
+              "id": "stem-mom-2",
+              "type": "multiple-choice",
+              "question": "Why do airbags reduce injury?",
+              "options": ["Increase deceleration time, reducing force", "Absorb all KE", "Reduce mass", "Increase momentum change"],
+              "correct": 0,
+              "explanation": "J = FΔt = Δp. Same Δp, larger Δt → smaller F.",
+              "xp": 10
+            }
+          ]
         }
       ]
     },
-    "intermediate": {
-      "name": "Intermediate",
-      "description": "Thermodynamics, electromagnetism, waves",
-      "questions": [
+    "electricity-circuits": {
+      "name": "Electricity & Circuits",
+      "description": "Ohm's law, Kirchhoff's laws, capacitors, semiconductors",
+      "order": 2,
+      "topics": [
         {
-          "id": "st-i1",
-          "type": "multiple-choice",
-          "question": "What is the First Law of Thermodynamics?",
-          "options": [
-            "Entropy increases",
-            "Energy is conserved: ΔU = Q - W",
-            "Heat flows hot to cold",
-            "Absolute zero"
-          ],
-          "correct": 1,
-          "explanation": "ΔU = Q - W: energy conservation.",
-          "xp": 15
+          "id": "stem-ohms-law",
+          "title": "Ohm's Law & Basic Circuits",
+          "explainer": "## Ohm's Law: V = IR\n\n- V = Voltage (Volts)\n- I = Current (Amps)\n- R = Resistance (Ohms, Ω)\n\n### Power: P = IV = I²R = V²/R\n\n### Series\n- Same current, voltages add\n- R_total = R₁ + R₂ + R₃\n\n### Parallel\n- Same voltage, currents add\n- 1/R_total = 1/R₁ + 1/R₂ + 1/R₃\n\n### Kirchhoff's Laws\n1. **KCL:** Sum of currents at node = 0\n2. **KVL:** Sum of voltages around loop = 0",
+          "visual": "  Series:              Parallel:\n  ┌─[R1]─[R2]─[R3]─┐  ┌──[R1]──┐\n  │                 │  ├──[R2]──┤\n  [V]               │  [V]     │\n  │                 │  │       │\n  └─────────────────┘  └──[R3]──┘\n  R = R1+R2+R3        1/R = Σ1/Rᵢ",
+          "questions": [
+            {
+              "id": "stem-ohm-1",
+              "type": "multiple-choice",
+              "question": "Three 6Ω resistors in parallel: total resistance?",
+              "options": ["2Ω", "18Ω", "6Ω", "3Ω"],
+              "correct": 0,
+              "explanation": "1/R = 1/6+1/6+1/6 = 3/6 → R = 2Ω.",
+              "xp": 10
+            },
+            {
+              "id": "stem-ohm-2",
+              "type": "multiple-choice",
+              "question": "12V battery, 3A current. Power dissipated?",
+              "options": ["36W", "4W", "15W", "12W"],
+              "correct": 0,
+              "explanation": "P = IV = 3×12 = 36W.",
+              "xp": 10
+            },
+            {
+              "id": "stem-ohm-3",
+              "type": "multiple-choice",
+              "question": "In a series circuit, what is constant?",
+              "options": ["Current", "Voltage", "Resistance", "Power"],
+              "correct": 0,
+              "explanation": "In series, same current flows through all components.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "st-i2",
-          "type": "multiple-choice",
-          "question": "What is Maxwells equations describe?",
-          "options": [
-            "Gravity",
-            "All classical electromagnetism",
-            "Quantum mechanics",
-            "Thermodynamics"
-          ],
-          "correct": 1,
-          "explanation": "Maxwells equations unify electricity and magnetism.",
-          "xp": 15
+          "id": "stem-capacitors",
+          "title": "Capacitors & RC Circuits",
+          "explainer": "## Capacitors\n\n### C = Q/V (Farads)\nStores energy: E = ½CV²\n\n### Series & Parallel (opposite of resistors!)\n- **Series:** 1/C_total = 1/C₁ + 1/C₂\n- **Parallel:** C_total = C₁ + C₂\n\n### RC Time Constant: τ = RC\n- Charging: V(t) = V₀(1 − e^(−t/τ))\n- Discharging: V(t) = V₀e^(−t/τ)\n\n### Key Points\n- t = τ: ~63% charged / ~37% remaining\n- t = 5τ: ~99% (practically full)\n\n### Applications\nTiming, filtering, smoothing, energy storage (camera flash).",
+          "visual": "  RC Charging:\n  V ┌──────────────────\n    │          __________\n    │         /\n    │        / 63% at τ\n    │       /\n    │      /\n    │     /\n    └──────────────────── t\n    0   τ   2τ  3τ  5τ",
+          "questions": [
+            {
+              "id": "stem-cap-1",
+              "type": "multiple-choice",
+              "question": "Two 10μF capacitors in series: total?",
+              "options": ["5μF", "20μF", "10μF", "100μF"],
+              "correct": 0,
+              "explanation": "1/C = 1/10+1/10 = 2/10 → C = 5μF. Opposite of resistors!",
+              "xp": 10
+            },
+            {
+              "id": "stem-cap-2",
+              "type": "multiple-choice",
+              "question": "RC circuit: R=1kΩ, C=1mF. Time constant?",
+              "options": ["1 second", "1 millisecond", "1 microsecond", "1000 seconds"],
+              "correct": 0,
+              "explanation": "τ = RC = 1000 × 0.001 = 1 second.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "st-i3",
-          "type": "multiple-choice",
-          "question": "What is entropy?",
-          "options": [
-            "Energy",
-            "Measure of disorder/randomness",
-            "Temperature",
-            "Pressure"
-          ],
-          "correct": 1,
-          "explanation": "Entropy: Second Law says it increases.",
-          "xp": 15
-        },
-        {
-          "id": "st-i4",
-          "type": "multiple-choice",
-          "question": "What is Faradays Law?",
-          "options": [
-            "V=IR",
-            "Changing magnetic flux induces EMF",
-            "F=ma",
-            "E=mc²"
-          ],
-          "correct": 1,
-          "explanation": "Faraday: changing magnetic field induces electric field.",
-          "xp": 15
-        },
-        {
-          "id": "st-i5",
-          "type": "multiple-choice",
-          "question": "What is the First Law of Thermodynamics?",
-          "options": [
-            "Entropy increases",
-            "Energy is conserved: ΔU = Q - W",
-            "Heat flows hot to cold",
-            "Absolute zero"
-          ],
-          "correct": 1,
-          "explanation": "ΔU = Q - W: energy conservation.",
-          "xp": 15
-        },
-        {
-          "id": "st-i6",
-          "type": "multiple-choice",
-          "question": "What is Maxwells equations describe?",
-          "options": [
-            "Gravity",
-            "All classical electromagnetism",
-            "Quantum mechanics",
-            "Thermodynamics"
-          ],
-          "correct": 1,
-          "explanation": "Maxwells equations unify electricity and magnetism.",
-          "xp": 15
-        },
-        {
-          "id": "st-i7",
-          "type": "multiple-choice",
-          "question": "What is entropy?",
-          "options": [
-            "Energy",
-            "Measure of disorder/randomness",
-            "Temperature",
-            "Pressure"
-          ],
-          "correct": 1,
-          "explanation": "Entropy: Second Law says it increases.",
-          "xp": 15
-        },
-        {
-          "id": "st-i8",
-          "type": "multiple-choice",
-          "question": "What is Faradays Law?",
-          "options": [
-            "V=IR",
-            "Changing magnetic flux induces EMF",
-            "F=ma",
-            "E=mc²"
-          ],
-          "correct": 1,
-          "explanation": "Faraday: changing magnetic field induces electric field.",
-          "xp": 15
-        },
-        {
-          "id": "st-i9",
-          "type": "multiple-choice",
-          "question": "What is the First Law of Thermodynamics?",
-          "options": [
-            "Entropy increases",
-            "Energy is conserved: ΔU = Q - W",
-            "Heat flows hot to cold",
-            "Absolute zero"
-          ],
-          "correct": 1,
-          "explanation": "ΔU = Q - W: energy conservation.",
-          "xp": 15
-        },
-        {
-          "id": "st-i10",
-          "type": "multiple-choice",
-          "question": "What is Maxwells equations describe?",
-          "options": [
-            "Gravity",
-            "All classical electromagnetism",
-            "Quantum mechanics",
-            "Thermodynamics"
-          ],
-          "correct": 1,
-          "explanation": "Maxwells equations unify electricity and magnetism.",
-          "xp": 15
-        },
-        {
-          "id": "st-i11",
-          "type": "multiple-choice",
-          "question": "What is entropy?",
-          "options": [
-            "Energy",
-            "Measure of disorder/randomness",
-            "Temperature",
-            "Pressure"
-          ],
-          "correct": 1,
-          "explanation": "Entropy: Second Law says it increases.",
-          "xp": 15
-        },
-        {
-          "id": "st-i12",
-          "type": "multiple-choice",
-          "question": "What is Faradays Law?",
-          "options": [
-            "V=IR",
-            "Changing magnetic flux induces EMF",
-            "F=ma",
-            "E=mc²"
-          ],
-          "correct": 1,
-          "explanation": "Faraday: changing magnetic field induces electric field.",
-          "xp": 15
-        },
-        {
-          "id": "st-i13",
-          "type": "multiple-choice",
-          "question": "What is the First Law of Thermodynamics?",
-          "options": [
-            "Entropy increases",
-            "Energy is conserved: ΔU = Q - W",
-            "Heat flows hot to cold",
-            "Absolute zero"
-          ],
-          "correct": 1,
-          "explanation": "ΔU = Q - W: energy conservation.",
-          "xp": 15
-        },
-        {
-          "id": "st-i14",
-          "type": "multiple-choice",
-          "question": "What is Maxwells equations describe?",
-          "options": [
-            "Gravity",
-            "All classical electromagnetism",
-            "Quantum mechanics",
-            "Thermodynamics"
-          ],
-          "correct": 1,
-          "explanation": "Maxwells equations unify electricity and magnetism.",
-          "xp": 15
-        },
-        {
-          "id": "st-i15",
-          "type": "multiple-choice",
-          "question": "What is entropy?",
-          "options": [
-            "Energy",
-            "Measure of disorder/randomness",
-            "Temperature",
-            "Pressure"
-          ],
-          "correct": 1,
-          "explanation": "Entropy: Second Law says it increases.",
-          "xp": 15
-        },
-        {
-          "id": "st-i16",
-          "type": "multiple-choice",
-          "question": "What is Faradays Law?",
-          "options": [
-            "V=IR",
-            "Changing magnetic flux induces EMF",
-            "F=ma",
-            "E=mc²"
-          ],
-          "correct": 1,
-          "explanation": "Faraday: changing magnetic field induces electric field.",
-          "xp": 15
-        },
-        {
-          "id": "st-i17",
-          "type": "multiple-choice",
-          "question": "What is the First Law of Thermodynamics?",
-          "options": [
-            "Entropy increases",
-            "Energy is conserved: ΔU = Q - W",
-            "Heat flows hot to cold",
-            "Absolute zero"
-          ],
-          "correct": 1,
-          "explanation": "ΔU = Q - W: energy conservation.",
-          "xp": 15
-        },
-        {
-          "id": "st-i18",
-          "type": "multiple-choice",
-          "question": "What is Maxwells equations describe?",
-          "options": [
-            "Gravity",
-            "All classical electromagnetism",
-            "Quantum mechanics",
-            "Thermodynamics"
-          ],
-          "correct": 1,
-          "explanation": "Maxwells equations unify electricity and magnetism.",
-          "xp": 15
-        },
-        {
-          "id": "st-i19",
-          "type": "multiple-choice",
-          "question": "What is entropy?",
-          "options": [
-            "Energy",
-            "Measure of disorder/randomness",
-            "Temperature",
-            "Pressure"
-          ],
-          "correct": 1,
-          "explanation": "Entropy: Second Law says it increases.",
-          "xp": 15
-        },
-        {
-          "id": "st-i20",
-          "type": "multiple-choice",
-          "question": "What is Faradays Law?",
-          "options": [
-            "V=IR",
-            "Changing magnetic flux induces EMF",
-            "F=ma",
-            "E=mc²"
-          ],
-          "correct": 1,
-          "explanation": "Faraday: changing magnetic field induces electric field.",
-          "xp": 15
+          "id": "stem-semiconductors",
+          "title": "Semiconductors & Transistors",
+          "explainer": "## Semiconductors\n\n### Doping\n- **N-type:** Extra electrons (phosphorus)\n- **P-type:** Extra holes (boron)\n\n### Diodes (PN Junction)\n- Current in ONE direction (P→N)\n- Forward: ~0.7V drop (Si)\n- Reverse: no current (until breakdown)\n\n### BJT Transistor\nSmall base current → large collector current: I_C = β × I_B (β ≈ 100-300)\n- Switch mode: on/off\n- Amplifier mode: linear\n\n### MOSFET\n- Voltage-controlled (gate voltage → drain current)\n- Very high input impedance\n- Used in ALL modern digital circuits\n- CMOS: NMOS + PMOS for low power",
+          "visual": "  NPN Transistor:\n       C (collector)\n       │\n  B ──┤  I_C = β × I_B\n       │\n       E (emitter)\n\n  Small I_B controls large I_C\n\n  Diode:\n  P │ N\n  →→→→→  forward bias (conducts)\n  ←←←←←  reverse bias (blocks)",
+          "questions": [
+            {
+              "id": "stem-semi-1",
+              "type": "multiple-choice",
+              "question": "NPN with β=200, I_B=0.1mA. I_C = ?",
+              "options": ["20 mA", "200 mA", "0.1 mA", "2 mA"],
+              "correct": 0,
+              "explanation": "I_C = β × I_B = 200 × 0.1 = 20 mA.",
+              "xp": 10
+            },
+            {
+              "id": "stem-semi-2",
+              "type": "multiple-choice",
+              "question": "Why MOSFETs over BJTs in digital circuits?",
+              "options": ["High input impedance, low power", "Cheaper individually", "Handle more current", "Higher frequency"],
+              "correct": 0,
+              "explanation": "MOSFET: voltage-controlled (negligible gate current), CMOS consumes power only during switching.",
+              "xp": 10
+            }
+          ]
         }
       ]
     },
-    "advanced": {
-      "name": "Advanced",
-      "description": "Quantum mechanics and advanced physics",
-      "questions": [
+    "waves-optics": {
+      "name": "Waves & Optics",
+      "description": "Wave properties, sound, light, electromagnetic spectrum",
+      "order": 3,
+      "topics": [
         {
-          "id": "st-a1",
-          "type": "multiple-choice",
-          "question": "What is the Schrödinger equation?",
-          "options": [
-            "Classical mechanics",
-            "Fundamental equation of quantum mechanics: iℏ∂ψ/∂t = Ĥψ",
-            "Relativity",
-            "Thermodynamics"
-          ],
-          "correct": 1,
-          "explanation": "Schrödinger: describes quantum state evolution.",
-          "xp": 20
+          "id": "stem-waves",
+          "title": "Wave Properties",
+          "explainer": "## Wave Properties\n\n### Key Parameters\n- **Wavelength (λ):** Distance between crests\n- **Frequency (f):** Oscillations per second (Hz)\n- **Amplitude (A):** Maximum displacement\n- **Wave speed:** v = fλ\n\n### Types\n- **Transverse:** Oscillation ⊥ travel (light, water surface)\n- **Longitudinal:** Oscillation ∥ travel (sound)\n\n### Wave Phenomena\n- **Reflection:** Angle in = angle out\n- **Refraction:** Speed change at boundary → bending (Snell's law: n₁sinθ₁ = n₂sinθ₂)\n- **Diffraction:** Bending around obstacles\n- **Interference:** Constructive (peaks align) or destructive (peak+trough)",
+          "visual": "  Transverse Wave:\n      λ\n  ←──────→\n  ╱╲      ╱╲\n ╱  ╲    ╱  ╲     A ↕\n╱    ╲  ╱    ╲\n──────╲╱──────╲╱────\n\n  v = f × λ\n  f = 1/T (period)",
+          "questions": [
+            {
+              "id": "stem-wave-1",
+              "type": "multiple-choice",
+              "question": "A wave has f=500 Hz and λ=0.68m. Speed?",
+              "options": ["340 m/s", "500 m/s", "0.68 m/s", "735 m/s"],
+              "correct": 0,
+              "explanation": "v = fλ = 500 × 0.68 = 340 m/s (speed of sound!).",
+              "xp": 10
+            },
+            {
+              "id": "stem-wave-2",
+              "type": "multiple-choice",
+              "question": "Sound is what type of wave?",
+              "options": ["Longitudinal", "Transverse", "Electromagnetic", "Standing"],
+              "correct": 0,
+              "explanation": "Sound oscillates parallel to direction of travel (compression/rarefaction).",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "st-a2",
-          "type": "multiple-choice",
-          "question": "What is the Heisenberg uncertainty principle?",
-          "options": [
-            "Everything uncertain",
-            "Δx·Δp ≥ ℏ/2: cannot know position and momentum exactly",
-            "Measurement errors",
-            "Random motion"
-          ],
-          "correct": 1,
-          "explanation": "Uncertainty: fundamental limit, not measurement error.",
-          "xp": 20
+          "id": "stem-em-spectrum",
+          "title": "Electromagnetic Spectrum",
+          "explainer": "## Electromagnetic Spectrum\n\nAll EM waves travel at c = 3×10⁸ m/s in vacuum.\n\n### Spectrum (low → high frequency)\n1. **Radio** (>1m): communication, WiFi\n2. **Microwave** (1mm-1m): cooking, radar\n3. **Infrared** (700nm-1mm): heat, remote controls\n4. **Visible** (400-700nm): ROY G BIV\n5. **Ultraviolet** (10-400nm): sunburn, sterilization\n6. **X-ray** (0.01-10nm): medical imaging\n7. **Gamma** (<0.01nm): nuclear, cancer treatment\n\n### E = hf\nEnergy proportional to frequency. Higher f = more energy.\nPhoton energy: E = hf = hc/λ (h = 6.626×10⁻³⁴ J⋅s)",
+          "visual": "  EM Spectrum:\n  Radio Micro IR  Vis  UV  X  Gamma\n  ←──────────────────────────────→\n  low f                    high f\n  long λ                   short λ\n  low E                    high E\n\n  Visible: 400nm(violet)→700nm(red)",
+          "questions": [
+            {
+              "id": "stem-em-1",
+              "type": "multiple-choice",
+              "question": "Which EM wave has the highest energy?",
+              "options": ["Gamma rays", "Radio waves", "Visible light", "Microwaves"],
+              "correct": 0,
+              "explanation": "E = hf. Gamma has highest frequency → highest energy.",
+              "xp": 10
+            },
+            {
+              "id": "stem-em-2",
+              "type": "multiple-choice",
+              "question": "Speed of all EM waves in vacuum?",
+              "options": ["3×10⁸ m/s", "340 m/s", "3×10⁶ m/s", "Depends on frequency"],
+              "correct": 0,
+              "explanation": "All EM waves travel at c = 3×10⁸ m/s in vacuum.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "st-a3",
-          "type": "multiple-choice",
-          "question": "What is quantum superposition?",
-          "options": [
-            "Adding forces",
-            "System exists in multiple states simultaneously until measured",
-            "Superposition",
-            "Stacking"
-          ],
-          "correct": 1,
-          "explanation": "Superposition: |ψ⟩ = α|0⟩ + β|1⟩.",
-          "xp": 20
+          "id": "stem-optics",
+          "title": "Lenses & Mirrors",
+          "explainer": "## Optics\n\n### Mirror Equation & Lens Equation\n1/f = 1/d_o + 1/d_i\n\n### Magnification\nm = -d_i/d_o = h_i/h_o\n\n### Mirrors\n- **Concave:** Converging. Real images (if object > f)\n- **Convex:** Diverging. Always virtual, upright, smaller.\n\n### Lenses\n- **Convex (converging):** Real images possible\n- **Concave (diverging):** Always virtual\n\n### Sign Conventions\n- Real image: d_i positive\n- Virtual image: d_i negative\n- Upright image: m positive\n- Inverted: m negative\n\n### Total Internal Reflection\nWhen angle > critical angle at interface (dense → less dense). Used in fiber optics.",
+          "visual": "  Convex Lens:\n       F    F\n  ───→ │\\  /│ ───→\n  ───→ │ \\/ │ ───→  converge\n  ───→ │ /\\ │ ───→  at focal\n  ───→ │/  \\│ ───→  point\n\n  1/f = 1/d_o + 1/d_i",
+          "questions": [
+            {
+              "id": "stem-opt-1",
+              "type": "multiple-choice",
+              "question": "Object at 30cm from lens with f=20cm. Image distance?",
+              "options": ["60 cm", "10 cm", "50 cm", "30 cm"],
+              "correct": 0,
+              "explanation": "1/f = 1/do + 1/di → 1/20 = 1/30 + 1/di → 1/di = 1/20-1/30 = 1/60 → di = 60cm.",
+              "xp": 10
+            },
+            {
+              "id": "stem-opt-2",
+              "type": "multiple-choice",
+              "question": "Convex mirrors always produce images that are:",
+              "options": ["Virtual, upright, smaller", "Real, inverted, larger", "Virtual, inverted, smaller", "Real, upright, larger"],
+              "correct": 0,
+              "explanation": "Convex (diverging) mirrors always produce virtual, upright, diminished images.",
+              "xp": 10
+            }
+          ]
+        }
+      ]
+    },
+    "thermodynamics": {
+      "name": "Thermodynamics",
+      "description": "Heat, temperature, laws of thermodynamics",
+      "order": 4,
+      "topics": [
+        {
+          "id": "stem-heat-transfer",
+          "title": "Heat Transfer & Specific Heat",
+          "explainer": "## Heat Transfer\n\n### Q = mcΔT\n- Q = heat energy (Joules)\n- m = mass\n- c = specific heat capacity\n- ΔT = temperature change\n\n### Specific Heat\nAmount of energy to raise 1 kg by 1°C.\n- Water: 4186 J/(kg⋅°C) — very high!\n- Iron: 450 J/(kg⋅°C)\n\n### Transfer Methods\n- **Conduction:** Through material (touching). Metals are good conductors.\n- **Convection:** Through fluid motion. Hot air rises.\n- **Radiation:** Through EM waves. No medium needed (Sun → Earth).\n\n### Phase Changes\nAt phase change, temperature stays constant!\n- Q = mL (L = latent heat)\n- Fusion (melting), Vaporization (boiling)",
+          "visual": "  Heating Curve:\n  T ┌────────────────────\n    │         _____ gas\n    │        /\n    │  _____/ boiling\n    │ / liquid\n    │/ melting\n    │___ solid\n    └──────────────── Q\n    Flat parts = phase change",
+          "questions": [
+            {
+              "id": "stem-heat-1",
+              "type": "multiple-choice",
+              "question": "Energy to heat 2 kg water by 10°C? (c=4186 J/kg°C)",
+              "options": ["83,720 J", "8,372 J", "41,860 J", "4,186 J"],
+              "correct": 0,
+              "explanation": "Q = mcΔT = 2 × 4186 × 10 = 83,720 J.",
+              "xp": 10
+            },
+            {
+              "id": "stem-heat-2",
+              "type": "multiple-choice",
+              "question": "During a phase change, temperature:",
+              "options": ["Stays constant", "Increases rapidly", "Decreases", "Oscillates"],
+              "correct": 0,
+              "explanation": "Energy goes into breaking bonds, not raising temperature.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "st-a4",
-          "type": "multiple-choice",
-          "question": "What is quantum entanglement?",
-          "options": [
-            "Tangling",
-            "Correlated particles where measuring one affects other",
-            "Confusion",
-            "Complexity"
-          ],
-          "correct": 1,
-          "explanation": "Entanglement: \"spooky action at a distance\".",
-          "xp": 20
+          "id": "stem-thermo-laws",
+          "title": "Laws of Thermodynamics",
+          "explainer": "## Laws of Thermodynamics\n\n### Zeroth Law\nIf A is in thermal equilibrium with B, and B with C, then A with C.\nThis defines temperature!\n\n### First Law (Energy Conservation)\nΔU = Q − W\n- ΔU = change in internal energy\n- Q = heat added\n- W = work done BY system\n\n### Second Law\nEntropy of isolated system never decreases.\n- Heat flows hot → cold spontaneously\n- No heat engine is 100% efficient\n- Carnot efficiency: η = 1 − T_cold/T_hot\n\n### Third Law\nEntropy → 0 as T → 0 K (absolute zero). Can never reach 0 K.",
+          "visual": "  Heat Engine:\n  ┌──────────┐\n  │ Hot (T_H) │\n  └────┬─────┘\n       │ Q_H\n  ┌────▼─────┐\n  │  Engine  │→ W = Q_H - Q_C\n  └────┬─────┘\n       │ Q_C\n  ┌────▼─────┐\n  │Cold (T_C)│\n  └──────────┘\n  η = W/Q_H = 1 - T_C/T_H",
+          "questions": [
+            {
+              "id": "stem-law-1",
+              "type": "multiple-choice",
+              "question": "Carnot efficiency with T_H=600K, T_C=300K?",
+              "options": ["50%", "100%", "33%", "67%"],
+              "correct": 0,
+              "explanation": "η = 1 − T_C/T_H = 1 − 300/600 = 0.5 = 50%.",
+              "xp": 10
+            },
+            {
+              "id": "stem-law-2",
+              "type": "multiple-choice",
+              "question": "The Second Law implies:",
+              "options": ["No heat engine can be 100% efficient", "Energy can be created", "Entropy can decrease in isolation", "Heat flows cold to hot naturally"],
+              "correct": 0,
+              "explanation": "Second Law: some energy always wasted as heat → no 100% efficiency.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "st-a5",
-          "type": "multiple-choice",
-          "question": "What is the Pauli exclusion principle?",
-          "options": [
-            "Exclusivity",
-            "No two fermions can occupy same quantum state",
-            "Repulsion",
-            "Separation"
-          ],
-          "correct": 1,
-          "explanation": "Pauli: explains atomic structure and periodic table.",
-          "xp": 20
+          "id": "stem-ideal-gas",
+          "title": "Ideal Gas Law",
+          "explainer": "## Ideal Gas Law\n\n### PV = nRT\n- P = pressure (Pa)\n- V = volume (m³)\n- n = moles\n- R = 8.314 J/(mol⋅K)\n- T = temperature (Kelvin!)\n\n### Special Cases\n- **Boyle's:** P₁V₁ = P₂V₂ (constant T)\n- **Charles's:** V₁/T₁ = V₂/T₂ (constant P)\n- **Gay-Lussac's:** P₁/T₁ = P₂/T₂ (constant V)\n\n### Kinetic Theory\nKE_avg = (3/2)kT where k = 1.38×10⁻²³ J/K\n- Temperature is average kinetic energy\n- Higher T → faster molecules\n\n### STP\nStandard: 0°C (273.15 K), 1 atm (101325 Pa)\n1 mol of ideal gas at STP = 22.4 L",
+          "visual": "  PV = nRT\n  ┌─────────────────────────┐\n  │ Boyle's (const T):      │\n  │  P↑ → V↓  (squeeze)     │\n  │                         │\n  │ Charles's (const P):    │\n  │  T↑ → V↑  (heat→expand) │\n  │                         │\n  │ Gay-Lussac's (const V): │\n  │  T↑ → P↑  (heat→press)  │\n  └─────────────────────────┘",
+          "questions": [
+            {
+              "id": "stem-gas-1",
+              "type": "multiple-choice",
+              "question": "Gas at 2 atm and 3 L is compressed to 1 L (const T). New pressure?",
+              "options": ["6 atm", "2 atm", "1 atm", "3 atm"],
+              "correct": 0,
+              "explanation": "Boyle's: P₁V₁=P₂V₂ → 2×3 = P₂×1 → P₂ = 6 atm.",
+              "xp": 10
+            },
+            {
+              "id": "stem-gas-2",
+              "type": "multiple-choice",
+              "question": "Temperature in ideal gas law must be in:",
+              "options": ["Kelvin", "Celsius", "Fahrenheit", "Any unit"],
+              "correct": 0,
+              "explanation": "PV=nRT requires absolute temperature (Kelvin). K = °C + 273.15.",
+              "xp": 10
+            }
+          ]
+        }
+      ]
+    },
+    "signals-systems": {
+      "name": "Signals & Systems",
+      "description": "Fourier transforms, filters, digital signals",
+      "order": 5,
+      "topics": [
+        {
+          "id": "stem-fourier",
+          "title": "Fourier Transform Basics",
+          "explainer": "## Fourier Transform\n\n### Core Idea\nAny periodic signal = sum of sinusoids at different frequencies.\n\n### Time Domain → Frequency Domain\nFourier transform decomposes a signal into its frequency components.\n- F(ω) = ∫ f(t) e^(-jωt) dt\n\n### Key Properties\n- Linearity: F{af+bg} = aF{f}+bF{g}\n- Time shift → phase change\n- Convolution in time → multiplication in frequency\n\n### DFT (Discrete)\nFor digital signals: N samples → N frequency bins.\nFFT computes DFT in O(N log N) instead of O(N²).\n\n### Applications\n- Audio: spectrum analysis, EQ, compression (MP3)\n- Images: JPEG compression\n- Communications: OFDM (WiFi, 4G/5G)\n- Signal processing: filtering, noise removal",
+          "visual": "  Time → Frequency:\n  ┌──────────┐  FFT  ┌──────────┐\n  │ ∿∿∿∿∿∿   │ ────→ │  |  |    │\n  │ complex  │       │  |  |  | │\n  │ waveform │       │  |  |  | │\n  │          │       │  |  |  | │\n  └──────────┘       └──────────┘\n   time domain      frequency domain\n\n  Signal = sum of pure frequencies",
+          "questions": [
+            {
+              "id": "stem-fft-1",
+              "type": "multiple-choice",
+              "question": "FFT computes DFT in what time complexity?",
+              "options": ["O(N log N)", "O(N²)", "O(N)", "O(N³)"],
+              "correct": 0,
+              "explanation": "FFT reduces DFT from O(N²) to O(N log N) using divide-and-conquer.",
+              "xp": 10
+            },
+            {
+              "id": "stem-fft-2",
+              "type": "multiple-choice",
+              "question": "Convolution in time domain equals what in frequency domain?",
+              "options": ["Multiplication", "Addition", "Convolution", "Division"],
+              "correct": 0,
+              "explanation": "Convolution theorem: f*g in time = F·G in frequency. This makes filtering efficient.",
+              "xp": 10
+            }
+          ]
         },
         {
-          "id": "st-a6",
-          "type": "multiple-choice",
-          "question": "What is the Schrödinger equation?",
-          "options": [
-            "Classical mechanics",
-            "Fundamental equation of quantum mechanics: iℏ∂ψ/∂t = Ĥψ",
-            "Relativity",
-            "Thermodynamics"
-          ],
-          "correct": 1,
-          "explanation": "Schrödinger: describes quantum state evolution.",
-          "xp": 20
-        },
-        {
-          "id": "st-a7",
-          "type": "multiple-choice",
-          "question": "What is the Heisenberg uncertainty principle?",
-          "options": [
-            "Everything uncertain",
-            "Δx·Δp ≥ ℏ/2: cannot know position and momentum exactly",
-            "Measurement errors",
-            "Random motion"
-          ],
-          "correct": 1,
-          "explanation": "Uncertainty: fundamental limit, not measurement error.",
-          "xp": 20
-        },
-        {
-          "id": "st-a8",
-          "type": "multiple-choice",
-          "question": "What is quantum superposition?",
-          "options": [
-            "Adding forces",
-            "System exists in multiple states simultaneously until measured",
-            "Superposition",
-            "Stacking"
-          ],
-          "correct": 1,
-          "explanation": "Superposition: |ψ⟩ = α|0⟩ + β|1⟩.",
-          "xp": 20
-        },
-        {
-          "id": "st-a9",
-          "type": "multiple-choice",
-          "question": "What is quantum entanglement?",
-          "options": [
-            "Tangling",
-            "Correlated particles where measuring one affects other",
-            "Confusion",
-            "Complexity"
-          ],
-          "correct": 1,
-          "explanation": "Entanglement: \"spooky action at a distance\".",
-          "xp": 20
-        },
-        {
-          "id": "st-a10",
-          "type": "multiple-choice",
-          "question": "What is the Pauli exclusion principle?",
-          "options": [
-            "Exclusivity",
-            "No two fermions can occupy same quantum state",
-            "Repulsion",
-            "Separation"
-          ],
-          "correct": 1,
-          "explanation": "Pauli: explains atomic structure and periodic table.",
-          "xp": 20
-        },
-        {
-          "id": "st-a11",
-          "type": "multiple-choice",
-          "question": "What is the Schrödinger equation?",
-          "options": [
-            "Classical mechanics",
-            "Fundamental equation of quantum mechanics: iℏ∂ψ/∂t = Ĥψ",
-            "Relativity",
-            "Thermodynamics"
-          ],
-          "correct": 1,
-          "explanation": "Schrödinger: describes quantum state evolution.",
-          "xp": 20
-        },
-        {
-          "id": "st-a12",
-          "type": "multiple-choice",
-          "question": "What is the Heisenberg uncertainty principle?",
-          "options": [
-            "Everything uncertain",
-            "Δx·Δp ≥ ℏ/2: cannot know position and momentum exactly",
-            "Measurement errors",
-            "Random motion"
-          ],
-          "correct": 1,
-          "explanation": "Uncertainty: fundamental limit, not measurement error.",
-          "xp": 20
-        },
-        {
-          "id": "st-a13",
-          "type": "multiple-choice",
-          "question": "What is quantum superposition?",
-          "options": [
-            "Adding forces",
-            "System exists in multiple states simultaneously until measured",
-            "Superposition",
-            "Stacking"
-          ],
-          "correct": 1,
-          "explanation": "Superposition: |ψ⟩ = α|0⟩ + β|1⟩.",
-          "xp": 20
-        },
-        {
-          "id": "st-a14",
-          "type": "multiple-choice",
-          "question": "What is quantum entanglement?",
-          "options": [
-            "Tangling",
-            "Correlated particles where measuring one affects other",
-            "Confusion",
-            "Complexity"
-          ],
-          "correct": 1,
-          "explanation": "Entanglement: \"spooky action at a distance\".",
-          "xp": 20
-        },
-        {
-          "id": "st-a15",
-          "type": "multiple-choice",
-          "question": "What is the Pauli exclusion principle?",
-          "options": [
-            "Exclusivity",
-            "No two fermions can occupy same quantum state",
-            "Repulsion",
-            "Separation"
-          ],
-          "correct": 1,
-          "explanation": "Pauli: explains atomic structure and periodic table.",
-          "xp": 20
-        },
-        {
-          "id": "st-a16",
-          "type": "multiple-choice",
-          "question": "What is the Schrödinger equation?",
-          "options": [
-            "Classical mechanics",
-            "Fundamental equation of quantum mechanics: iℏ∂ψ/∂t = Ĥψ",
-            "Relativity",
-            "Thermodynamics"
-          ],
-          "correct": 1,
-          "explanation": "Schrödinger: describes quantum state evolution.",
-          "xp": 20
-        },
-        {
-          "id": "st-a17",
-          "type": "multiple-choice",
-          "question": "What is the Heisenberg uncertainty principle?",
-          "options": [
-            "Everything uncertain",
-            "Δx·Δp ≥ ℏ/2: cannot know position and momentum exactly",
-            "Measurement errors",
-            "Random motion"
-          ],
-          "correct": 1,
-          "explanation": "Uncertainty: fundamental limit, not measurement error.",
-          "xp": 20
-        },
-        {
-          "id": "st-a18",
-          "type": "multiple-choice",
-          "question": "What is quantum superposition?",
-          "options": [
-            "Adding forces",
-            "System exists in multiple states simultaneously until measured",
-            "Superposition",
-            "Stacking"
-          ],
-          "correct": 1,
-          "explanation": "Superposition: |ψ⟩ = α|0⟩ + β|1⟩.",
-          "xp": 20
-        },
-        {
-          "id": "st-a19",
-          "type": "multiple-choice",
-          "question": "What is quantum entanglement?",
-          "options": [
-            "Tangling",
-            "Correlated particles where measuring one affects other",
-            "Confusion",
-            "Complexity"
-          ],
-          "correct": 1,
-          "explanation": "Entanglement: \"spooky action at a distance\".",
-          "xp": 20
-        },
-        {
-          "id": "st-a20",
-          "type": "multiple-choice",
-          "question": "What is the Pauli exclusion principle?",
-          "options": [
-            "Exclusivity",
-            "No two fermions can occupy same quantum state",
-            "Repulsion",
-            "Separation"
-          ],
-          "correct": 1,
-          "explanation": "Pauli: explains atomic structure and periodic table.",
-          "xp": 20
+          "id": "stem-digital-signals",
+          "title": "Digital Signal Processing",
+          "explainer": "## Digital Signal Processing\n\n### Sampling\nConvert analog → digital by measuring at regular intervals.\n\n### Nyquist Theorem\nSampling rate must be ≥ 2× highest frequency to avoid aliasing.\n- Audio: 20kHz max → sample at 44.1kHz (CD quality)\n- If you undersample → aliasing (high freq appears as low)\n\n### Quantization\nRound samples to discrete levels.\n- 8-bit: 256 levels\n- 16-bit: 65536 levels (CD audio)\n- 24-bit: 16.7M levels (studio)\n\n### Digital Filters\n- **Low-pass:** Remove high frequencies (smoothing)\n- **High-pass:** Remove low frequencies (edge detection)\n- **Band-pass:** Keep only a frequency range\n- **FIR:** Finite Impulse Response (always stable)\n- **IIR:** Infinite Impulse Response (can be unstable)",
+          "visual": "  Nyquist Sampling:\n  ┌───────────────────────┐\n  │ f_max = 20 kHz        │\n  │ f_sample ≥ 40 kHz     │\n  │ CD: 44.1 kHz ✓        │\n  │                       │\n  │ Undersampling:        │\n  │ ∿ original            │\n  │ · · · samples         │\n  │ ∿ alias (wrong freq!) │\n  └───────────────────────┘",
+          "questions": [
+            {
+              "id": "stem-dsp-1",
+              "type": "multiple-choice",
+              "question": "Minimum sampling rate to capture a 10kHz signal?",
+              "options": ["20 kHz", "10 kHz", "5 kHz", "40 kHz"],
+              "correct": 0,
+              "explanation": "Nyquist: f_sample ≥ 2 × f_max = 2 × 10kHz = 20kHz.",
+              "xp": 10
+            },
+            {
+              "id": "stem-dsp-2",
+              "type": "multiple-choice",
+              "question": "A low-pass filter:",
+              "options": ["Removes high frequencies", "Removes low frequencies", "Amplifies all frequencies", "Removes mid frequencies"],
+              "correct": 0,
+              "explanation": "Low-pass allows frequencies below cutoff, removes higher ones (smoothing).",
+              "xp": 10
+            }
+          ]
         }
       ]
     }

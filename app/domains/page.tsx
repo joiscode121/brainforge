@@ -71,7 +71,7 @@ export default function DomainsPage() {
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-bold text-base truncate" style={{ color: 'var(--text-primary)' }}>{domain.name}</h3>
+                      <h3 className="font-bold text-base" style={{ color: 'var(--text-primary)' }}>{domain.name}</h3>
                       <p className="text-xs line-clamp-1 mt-0.5" style={{ color: 'var(--text-tertiary)' }}>{domain.description}</p>
                       <div className="flex items-center gap-2 mt-2 text-xs flex-wrap" style={{ color: 'var(--text-muted)' }}>
                         <span>Lvl {level}</span>
@@ -114,7 +114,7 @@ export default function DomainsPage() {
                       </div>
 
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-bold text-base truncate" style={{ color: 'var(--text-primary)' }}>{d.name}</h3>
+                        <h3 className="font-bold text-base" style={{ color: 'var(--text-primary)' }}>{d.name}</h3>
                         <p className="text-xs line-clamp-1 mt-0.5" style={{ color: 'var(--text-tertiary)' }}>{d.description}</p>
                         <div className="flex items-center gap-2 mt-2 text-xs flex-wrap" style={{ color: 'var(--text-muted)' }}>
                           {d.paper_count > 0 && <span className="flex items-center gap-1"><Newspaper size={11} /> {d.paper_count} papers</span>}

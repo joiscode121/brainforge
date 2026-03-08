@@ -182,7 +182,7 @@ export default function Home() {
                          style={{ background: `color-mix(in oklch, ${d.color} 12%, var(--bg-base))` }}>
                       {d.icon}
                     </div>
-                    <div className="font-semibold text-sm truncate flex-1" style={{ color: 'var(--text-primary)' }}>
+                    <div className="font-semibold text-sm leading-tight flex-1" style={{ color: 'var(--text-primary)' }}>
                       {d.name}
                     </div>
                   </div>
@@ -193,7 +193,7 @@ export default function Home() {
                     <span className="text-[11px] font-medium w-7 text-right" style={{ color: 'var(--text-muted)' }}>{d.pct}%</span>
                   </div>
                   {(d.papers > 0 || d.questions > 0) && (
-                    <div className="text-[10px] mt-2 truncate" style={{ color: 'var(--text-muted)' }}>
+                    <div className="text-[10px] mt-2" style={{ color: 'var(--text-muted)' }}>
                       {d.papers > 0 && `${d.papers} papers`}{d.papers > 0 && d.questions > 0 && ' · '}{d.questions > 0 && `${d.questions} Qs`}
                     </div>
                   )}

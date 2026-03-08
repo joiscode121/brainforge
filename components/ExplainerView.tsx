@@ -155,6 +155,19 @@ export default function ExplainerView({ slides, onClose, topicTitle }: Explainer
             </p>
 
             {renderVisual()}
+
+            {/* Show narration text so users can read along */}
+            {slide?.narration && slide.narration !== slide.content && (
+              <div className="mt-4 p-4 rounded-xl" style={{ background: 'var(--bg-sunken)', border: '1px solid var(--border-subtle)' }}>
+                <div className="flex items-center gap-2 mb-2">
+                  <Volume2 size={14} style={{ color: 'var(--text-muted)' }} />
+                  <span className="text-xs font-medium" style={{ color: 'var(--text-muted)' }}>Narration</span>
+                </div>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                  {slide.narration}
+                </p>
+              </div>
+            )}
           </motion.div>
         </AnimatePresence>
       </div>

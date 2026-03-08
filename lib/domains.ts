@@ -38,6 +38,31 @@ export interface Topic {
   resources: { title: string; url: string }[];
 }
 
+export interface CodingChallenge {
+  prompt: string;
+  starter_code: string;
+  solution: string;
+  tests: string;
+}
+
+export interface CurriculumTopic {
+  id: string;
+  title: string;
+  explainer: string;
+  visual: string;
+  questions: Question[];
+  coding_challenge?: CodingChallenge;
+  paper_ref?: string;
+  source?: string;
+}
+
+export interface CurriculumLevel {
+  name: string;
+  description: string;
+  order: number;
+  topics: CurriculumTopic[];
+}
+
 export interface Level {
   name: string;
   description: string;
@@ -51,11 +76,7 @@ export interface Domain {
   color: string;
   description: string;
   topics?: Topic[];
-  levels?: {
-    beginner: Level;
-    intermediate: Level;
-    advanced: Level;
-  };
+  levels?: Record<string, Level | CurriculumLevel>;
 }
 
 const DOMAIN_IDS = [
@@ -88,11 +109,18 @@ export function getAllQuestions(domain: Domain): Question[] {
     return domain.topics.flatMap(t => t.questions || []);
   }
   if (domain.levels) {
-    return [
-      ...domain.levels.beginner.questions,
-      ...domain.levels.intermediate.questions,
-      ...domain.levels.advanced.questions
-    ];
+    const questions: Question[] = [];
+    for (const level of Object.values(domain.levels)) {
+      if ('topics' in level && Array.isArray((level as CurriculumLevel).topics)) {
+        // New curriculum format with topics inside levels
+        for (const topic of (level as CurriculumLevel).topics) {
+          questions.push(...(topic.questions || []));
+        }
+      } else if ('questions' in level) {
+        questions.push(...(level as Level).questions);
+      }
+    }
+    return questions;
   }
   return [];
 }

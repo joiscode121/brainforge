@@ -1,0 +1,12 @@
+{
+  "source": "Google DeepMind",
+  "scraped_at": "2026-03-08",
+  "research_areas": [
+    {"name": "SIMA 2", "area": "game-playing agents", "description": "Agent that plays, reasons, and learns in virtual 3D worlds"},
+    {"name": "Gemini Robotics", "area": "robotics", "description": "Multimodal understanding and embodied reasoning for robots"},
+    {"name": "Genie 3", "area": "world models", "description": "General purpose world model generating interactive environments"},
+    {"name": "AlphaGo/AlphaZero", "area": "reinforcement learning", "description": "Game mastery through self-play and MCTS"},
+    {"name": "AlphaFold", "area": "protein folding", "description": "Protein structure prediction"},
+    {"name": "DolphinGemma", "area": "communication analysis", "description": "Studying dolphin communication patterns"}
+  ]
+}

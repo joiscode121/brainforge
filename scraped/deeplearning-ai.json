@@ -1,0 +1,12 @@
+{
+  "source": "deeplearning.ai",
+  "scraped_at": "2026-03-08",
+  "courses": [
+    {"name": "Deep Learning Specialization", "level": "intermediate", "topics": ["neural networks", "hyperparameter tuning", "CNNs", "sequence models"]},
+    {"name": "Machine Learning Specialization", "level": "beginner", "topics": ["supervised learning", "unsupervised learning", "recommender systems"]},
+    {"name": "Build and Train an LLM with JAX", "level": "intermediate", "topics": ["JAX", "LLM training", "transformer implementation"]},
+    {"name": "Generative AI with LLMs", "level": "intermediate", "topics": ["transformer architecture", "fine-tuning", "RLHF", "PEFT"]},
+    {"name": "AI Agents in LangGraph", "level": "intermediate", "topics": ["agents", "tool use", "planning", "LangGraph"]},
+    {"name": "Reinforcement Learning from Human Feedback", "level": "advanced", "topics": ["RLHF", "reward models", "PPO", "DPO"]}
+  ]
+}

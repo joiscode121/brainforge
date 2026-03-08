@@ -1,0 +1,14 @@
+{
+  "source": "Meta AI Research",
+  "scraped_at": "2026-03-08",
+  "research_areas": ["computer-vision", "robotics", "reinforcement-learning", "core-machine-learning"],
+  "key_papers": [
+    {"title": "Segment Anything (SAM)", "area": "computer-vision", "year": 2023},
+    {"title": "DINOv2", "area": "computer-vision", "year": 2023},
+    {"title": "LLaMA", "area": "language-models", "year": 2023},
+    {"title": "ImageBind", "area": "multimodal", "year": 2023},
+    {"title": "No Language Left Behind", "area": "NLP", "year": 2022},
+    {"title": "Make-A-Video", "area": "generative", "year": 2022},
+    {"title": "Cicero", "area": "reinforcement-learning", "year": 2022}
+  ]
+}

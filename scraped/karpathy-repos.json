@@ -1,0 +1,26 @@
+{
+  "source": "karpathy GitHub repos",
+  "scraped_at": "2026-03-08",
+  "repos": {
+    "micrograd": {
+      "description": "Tiny Autograd engine implementing backpropagation over dynamically built DAG. ~100 lines engine + ~50 lines neural net library. PyTorch-like API. Scalar-valued operations only.",
+      "key_concepts": ["autograd", "backpropagation", "reverse-mode autodiff", "DAG", "Value class", "neural networks", "binary classification", "SGD"]
+    },
+    "nanoGPT": {
+      "description": "Simplest, fastest repo for training/finetuning medium GPTs. train.py ~300 lines, model.py ~300 lines. Reproduces GPT-2 (124M) on OpenWebText on 8xA100 in ~4 days.",
+      "key_concepts": ["GPT-2", "transformer", "training loop", "DDP", "mixed precision", "character-level LM", "finetuning", "sampling"]
+    },
+    "minbpe": {
+      "description": "Minimal byte-level BPE tokenizer. BasicTokenizer, RegexTokenizer (GPT-2 style), GPT4Tokenizer. Train/encode/decode. Feature parity with tiktoken.",
+      "key_concepts": ["BPE", "tokenization", "byte-level encoding", "regex preprocessing", "special tokens", "vocabulary", "merges"]
+    },
+    "llm.c": {
+      "description": "LLM training in pure C/CUDA. No PyTorch needed. Reproduces GPT-2/GPT-3. ~7% faster than PyTorch. Reference CPU fp32 impl in ~1000 lines.",
+      "key_concepts": ["CUDA programming", "C implementation", "GPU training", "flash attention", "cuDNN", "mixed precision", "distributed training"]
+    },
+    "makemore": {
+      "description": "Autoregressive character-level language model. Implements bigrams, MLP, CNN, RNN, LSTM, GRU, Transformer. Educational, single hackable file.",
+      "key_concepts": ["bigram", "MLP", "RNN", "LSTM", "GRU", "transformer", "character-level generation", "autoregressive"]
+    }
+  }
+}

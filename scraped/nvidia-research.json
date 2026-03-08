@@ -1,0 +1,12 @@
+{
+  "source": "NVIDIA Research",
+  "scraped_at": "2026-03-08",
+  "focus_areas": ["training efficiency", "inference optimization", "scaling", "GPU programming"],
+  "key_topics": [
+    {"title": "TensorRT inference optimization", "area": "inference"},
+    {"title": "Megatron-LM distributed training", "area": "distributed"},
+    {"title": "FlashAttention GPU kernels", "area": "efficiency"},
+    {"title": "Quantization (INT8/FP8)", "area": "compression"},
+    {"title": "CUDA programming model", "area": "GPU programming"}
+  ]
+}

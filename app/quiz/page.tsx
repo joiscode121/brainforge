@@ -39,7 +39,13 @@ function QuizContent() {
       if (topicId) {
         qs = getTopicQuestions(d, topicId);
       } else if (levelName && d.levels) {
-        qs = d.levels[levelName as keyof typeof d.levels]?.questions || [];
+        const level = d.levels[levelName as keyof typeof d.levels] as any;
+        if (level?.topics && Array.isArray(level.topics)) {
+          // New curriculum format: questions are inside topics
+          qs = level.topics.flatMap((t: any) => t.questions || []);
+        } else {
+          qs = level?.questions || [];
+        }
       } else {
         qs = getAllQuestions(d).sort(() => Math.random() - 0.5).slice(0, 10);
       }

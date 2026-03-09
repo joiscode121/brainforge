@@ -164,8 +164,8 @@ export default function Home() {
               ...domains.map(d => ({
                 id: d.id, name: d.name, icon: d.icon, color: d.color,
                 papers: getV2Stats(d.id)?.paper_count || 0,
-                questions: (d.topics ? d.topics.reduce((s: number, t: any) => s + (t.questions?.length || 0), 0) : d.levels ? Object.values(d.levels).reduce((s: number, l: any) => s + (l as any).questions.length, 0) : 0) + (getV2Stats(d.id)?.question_count || 0),
-                pct: (() => { const dp = progress.domains[d.id]; const localQ = d.topics ? d.topics.reduce((s: number, t: any) => s + (t.questions?.length || 0), 0) : d.levels ? Object.values(d.levels).reduce((s: number, l: any) => s + (l as any).questions.length, 0) : 0; const totalQ = localQ + (getV2Stats(d.id)?.question_count || 0); const completed = dp?.completedQuestions?.length || 0; return totalQ > 0 ? Math.round((completed / totalQ) * 100) : 0; })()
+                questions: (d.topics ? d.topics.reduce((s: number, t: any) => s + (t.questions?.length || 0), 0) : d.levels ? Object.values(d.levels).reduce((s: number, l: any) => { if (l.topics) return s + l.topics.reduce((ts: number, t: any) => ts + (t.questions?.length || 0), 0); return s + (l.questions?.length || 0); }, 0) : 0) + (getV2Stats(d.id)?.question_count || 0),
+                pct: (() => { const dp = progress.domains[d.id]; const localQ = d.topics ? d.topics.reduce((s: number, t: any) => s + (t.questions?.length || 0), 0) : d.levels ? Object.values(d.levels).reduce((s: number, l: any) => { if (l.topics) return s + l.topics.reduce((ts: number, t: any) => ts + (t.questions?.length || 0), 0); return s + (l.questions?.length || 0); }, 0) : 0; const totalQ = localQ + (getV2Stats(d.id)?.question_count || 0); const completed = dp?.completedQuestions?.length || 0; return totalQ > 0 ? Math.round((completed / totalQ) * 100) : 0; })()
               })),
               ...v2OnlyDomains.map((d: any) => ({
                 id: d.slug, name: d.name, icon: d.icon || '📚', color: d.color || '#6366f1',

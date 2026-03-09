@@ -125,7 +125,7 @@ function CodingChallengeCard({ challenge }: { challenge: CurriculumTopic['coding
               <div className="mt-3">
                 <div className="text-xs mb-1" style={{ color: 'var(--text-muted)' }}>Solution:</div>
                 <pre className="text-xs font-mono rounded-lg p-3 overflow-x-auto whitespace-pre-wrap"
-                     style={{ background: 'var(--success-light)', color: 'oklch(30% 0.08 155)', border: '1px solid oklch(80% 0.06 155)' }}>
+                     style={{ background: 'var(--success-light)', color: 'var(--success)', border: '1px solid var(--success)' }}>
                   {challenge.solution}
                 </pre>
               </div>
